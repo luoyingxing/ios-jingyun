@@ -826,7 +826,7 @@
 
 // like item click listener
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"click item is %li", indexPath.row);
+    NSLog(@"click item %li", indexPath.row);
     
     
 }
