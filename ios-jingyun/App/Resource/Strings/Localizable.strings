@@ -1,0 +1,678 @@
+/* 
+  Localizable.strings
+  ios-jingyun-test
+
+  Created by conwin on 2017/12/15.
+  Copyright © 2017年 conwin. All rights reserved.
+*/
+DataManager_Open        = "撤防";
+DataManager_Away        = "布防";
+DataManager_Capture     = "抓图";
+DataManager_Video       = "视频";
+DataManager_Record      = "录像";
+
+DataManager_OpenRequest         = "请求撤防";
+DataManager_AwayRequest         = "请求布防";
+DataManager_SetPassword         = "设置密码";
+DataManager_BypassRequest       = "请求旁路";
+DataManager_UnBypassRequest     = "请求解除旁路";
+DataManager_QueryRequest        = "刷新状态";
+
+DataManager_CapCmd              = "抓图,通道";
+DataManager_UnbypassCmd         = "请求解除旁路,";
+DataManager_BypassCmd           = "请求旁路,";
+DataManager_ChannelCmd          = ".通道";
+
+DataManager_AlarmTask           = "收到出警任务";
+DataManager_RepairTask          = "收到维修任务";
+
+DataManager_NetWorkErr          = "网络连接异常，请检查网络";
+
+DataManager_AlertTitle          = "版本更新";
+DataManager_AlertOK             = "立即更新";
+DataManager_AlertCancel         = "以后再说";
+DataManager_AlertUpdate         = "发现一个新版本，立即去更新吧！";
+
+DataManager_AlarmTaskEmpty      = "获取出警任务列表为空";
+DataManager_AlarmTaskErr        = "获取出警任务列表出错";
+DataManager_AlarmCaseEmpty      = "获取出警案件信息为空";
+DataManager_AlarmCaseErr        = "获取出警案件信息出错";
+
+DataManager_RepairTaskEmpty     = "获取出警任务列表为空";
+DataManager_RepairTaskErr       = "获取出警任务列表出错";
+DataManager_RepairCaseEmpty     = "获取出警案件信息为空";
+DataManager_RepairCaseErr       = "获取出警案件信息出错";
+
+DataManager_AlarmQueryErr       = "没有查询到相应的报警记录";
+
+DataManager_LocationErr         = "定位服务当前可能尚未打开，请设置打开！";
+
+DataManager_PasswordErr         = "密码验证错误超限，将清空密码";
+DataManager_PassAlertTitle      = "手势密码错误";
+DataManager_PassAlertOK         = "确定";
+DataManager_PassAlertCancel     = "退出系统";
+DataManager_PassAlertMessage    = "请输入认证密码";
+
+
+/* CWThings4Interface */
+ThingsInterface_ConnectErr      = "连接服务器失败，请检查原因";
+ThingsInterface_GetProfileErr   = "获取配置失败，错误代码为";
+ThingsInterface_SetProfileErr   = "推送设备TOKEN失败，代码为";
+ThingsInterface_MessageLastErr  = "获取消息失败，代码为";
+ThingsInterface_UpdatePassOK    = "修改用户密码成功";
+ThingsInterface_UpdatePassErr   = "修改用户密码失败";
+ThingsInterface_PassAlertTitle      = "修改密码";
+ThingsInterface_PassAlertOK         = "确定";
+ThingsInterface_PassAlertCancel     = "退出系统";
+ThingsInterface_PassAlertMessage    = "密码修改成功，退出系统并更新本地用户密码";
+ThingsInterface_GetServerInfoErr    = "获取服务器信息失败，错误代码为";
+ThingsInterface_GetReplayInfoErr    = "获取RELAY服务器信息失败，错误代码为";
+ThingsInterface_AlarmTaskListErr    = "获取出警任务失败";
+ThingsInterface_TaskHandleErr       = "任务处理失败";
+ThingsInterface_AlarmCaseGetErr     = "获取案件数据失败";
+ThingsInterface_TroubleTaskListErr  = "获取维修任务失败";
+ThingsInterface_CaseArriveErr       = "获取到达现场数据失败";
+ThingsInterface_CaseNodeErr         = "提交处理结果数据失败";
+ThingsInterface_RepairCaseGetErr    = "获取维修案件失败";
+ThingsInterface_TransferTaskOK      = "转单成功";
+ThingsInterface_TransferTaskErr     = "转单失败";
+ThingsInterface_TransferTaskErr1    = "案件已经关闭,不能转单";
+ThingsInterface_TransferTaskErr2    = "不支持的案件类型,不能转单";
+ThingsInterface_TransferTaskErr3    = "被指派的tid不存在, 不是用户, 或不属于与案件类型相关的角色,不能转单";
+ThingsInterface_TransferTaskErr4    = "请求发起者不是原案件负责人,不能转单";
+ThingsInterface_UserQueryErr        = "查询用户数据失败";
+ThingsInterface_ReportLocationOK    = "上报用户定位信息成功";
+ThingsInterface_ReportLocationErr   = "上报用户定位信息失败";
+ThingsInterface_UserAlarmQueryErr   = "查询用户报警信息失败";
+ThingsInterface_UserDataReportOK    = "提交用户信息成功";
+ThingsInterface_UserDataReportErr   = "提交用户信息失败";
+ThingsInterface_RepairReportOK      = "提交报修信息成功";
+ThingsInterface_RepairReportErr     = "提交报修信息失败";
+ThingsInterface_SendPictureErr      = "发送图片失败";
+ThingsInterface_AlarmUserNearbyErr  = "获取用户位置数据失败";
+ThingsInterface_RepairUserNearbyErr = "获取用户位置数据失败";
+ThingsInterface_UnknowErr           = "获取未知数据失败";
+ThingsInterface_EditPassword        = "修改密码";
+
+
+// Data Handle  end   ****************************************************************
+
+// Login  start *********************************************************************
+
+/* UserViewController */
+UserLogin_NavTitle          = "用户登录";
+UserLogin_LoginBtnTitle     = "登录";
+UserLogin_AddUserBtnTitle   = "添加";
+
+/* UserEditTableViewController */
+UserEdit_NavTitle           = "用户管理";
+UserEdit_AlertTitle           = "编辑用户";
+UserEdit_AlertOK              = "确定";
+UserEdit_AlertCancel          = "取消";
+
+UserEdit_AlertEditErr        = "对不起，最多保存15个用户资料";
+
+/* UserAddViewController */
+UserAdd_NavTitle            = "添加用户";
+UserAdd_SaveTitle           = "存储";
+UserAdd_InputUserName       = "请输入用户名";
+UserAdd_InputUserPassword   = "请输入用户密码";
+UserAdd_InputServerName     = "请输入服务器名称";
+UserAdd_InputServerIP       = "请输入服务器IP";
+UserAdd_InputServerPort     = "请输入服务器端口号";
+UserAdd_AlertTitle           = "修改密码";
+UserAdd_AlertOK              = "解除";
+UserAdd_AlertCancel          = "取消";
+UserAdd_AlertEditErr        = "对不起，你已经修改了密码，是否解除用户绑定！";
+
+/* LoginIndicatorViewController */
+UserLoginIndicator_NavTitle             = "正在连接...";
+UserLoginIndicator_NavConnectErrTitle   = "连接失败";
+UserLoginIndicator_NavConnectTitle      = "连接成功";
+UserLoginIndicator_NavLoginTitle        = "登录成功";
+UserLoginIndicator_CancelLoginTitle     = "取消登录";
+UserLoginIndicator_AlertTitle           = "登录";
+UserLoginIndicator_AlertOK              = "确定";
+UserLoginIndicator_AlertCancel          = "取消";
+
+UserLoginIndicator_AlertLoginErr        = "登录失败，请检查用户名或者密码！";
+UserLoginIndicator_AlertConnectErr      = "连接服务器失败！请检查服务信息！";
+UserLoginIndicator_AlertServerErr       = "连接服务器失败！请检查服务信息！";
+UserLoginIndicator_AlertSSHErr          = "获取服务器信息失败，可能是ID错误";
+
+// Login  end *********************************************************************
+
+// Report Repair start ************************************************************
+/* SubLBXScanViewController */
+SubLBXScan_CaptureTitle                 = "将取景框对准二维码即可自动扫描";
+SubLBXScan_AlertTitle                   = "提示";
+SubLBXScan_AlertMessage                 = "知道了";
+SubLVXScan_ScanErr                      = "识别失败";
+SubLBXScan_AlertScanTitle               = "扫码内容";
+SubLBXScan_OpenPhotoErr                 = "      请到设置->隐私中开启本程序相册权限     ";
+
+/* ScanResultViewController */
+ScanResult_Title                        = "码的类型";
+
+/* ReportRepairViewController */
+ReportRepair_NavCaption                 = "报修";
+ReportRepair_RightCaption               = "扫一扫";
+ReportRepair_AlertTitle                 = "报修";
+ReportRepair_AlertOK                    = "确定";
+ReportRepair_AlertCancel                = "取消";
+ReportRepair_AlertUserIDErr             = "对不起，请输入有效的用户编号";
+ReportRepair_ScanQCodeErr               = "对不起，这是不合法的二维码";
+ReportRepair_AlertComfirm               = "确认提交报修？";
+ReportRepair_CameraPemissionErr         = "对不起，没有摄像机权限";
+
+/* TYReportRepairView */
+ReportRepairView_UserIDCaption          = "用户编号";
+ReportRepairView_UserIDPlaceHolder      = "请填写用户编号或者扫一扫";
+ReportRepairView_UserNameCaption        = "用户名称";
+ReportRepairView_UserNamePlaceHolder    = "只在扫二维码时显示用户名称";
+ReportRepairView_UserTroubleCaption     = "故障现象";
+ReportRepairView_UserTroublePlaceHolder = "请输入不超过20个汉字的故障现象";
+ReportRepairView_UserNoteCaption        = "备注";
+ReportRepairView_UserNotePlaceHolder    = "请输入不超过50个汉字的备注";
+
+ReportRepairView_AlertTitle             = "报修";
+ReportRepairtView_AlertOK               = "确定";
+ReportRepairtView_AlertCancel           = "取消";
+ReportRepairtView_AlertUserTrouble      = "请输入故障现象";
+
+/* TYReportInputView */
+ReportInputView_UserTroublePlaceHolder  = "请输入不超过20个汉字的故障现象";
+ReportInputView_UserNotePlaceHolder     = "请输入不超过50个汉字的备注";
+// Report Repair end **************************************************************
+
+// Video Start ********************************************************************
+/* RecordViewController */
+
+RecordController_Today                  = "今天";
+RecordController_Yesterday              = "昨天";
+RecordController_BeforeYesterday        = "前天";
+RecordController_UserDefine             = "自定义";
+RecordController_FindRecordNotEnd       = "正在搜索录像，请稍后";
+RecordController_StartTimeTitle         = "开始时间";
+RecordController_EndTimeTitle           = "结束时间";
+RecordController_StartTime              = "请选择开始时间";
+RecordController_EndTime                = "请选择结束时间";
+RecordController_AlertActionOK          = "确定";
+RecordController_AlertActionCancel      = "取消";
+RecordController_RecordFileSize         = "文件大小";
+
+/* VideoPlayViewController */
+VideoController_IsFindingRecordFile     = "正在搜索录像文件,请稍候操作";
+VideoController_RealVideoTitle          = "实时视频";
+VideoController_RecordVideoTitle        = "历史视频";
+VideoController_Talk                    = "对讲";
+VideoController_Sound                   = "监听";
+VideoController_Capture                 = "拍照";
+VideoController_VideoResS               = "标清";
+VideoController_VideoResH               = "高清";
+
+VideoController_ChannelName             = "通道";
+
+VideoController_IsOpeningRealVideo      = "正连接实时视频内容，请稍后";
+VideoController_IsOpeningRecordVideo    = "正连接录像视频内容，请稍后";
+VideoController_ChannelListTitle        = "镜头列表";
+VideoController_RecordListTitle         = "录像列表";
+
+VideoController_ChangeResErr            = "切换分辨率失败，请稍候再试";
+
+
+// Video End **********************************************************************
+// Zone Start *********************************************************************
+/* JMZoneTableViewCell */
+ZoneCell_Bypass                         = "旁路";
+ZoneCell_nr                             = "未准备";
+ZoneCell_na                             = "未知";
+ZoneCell_normal                         = "正常";
+ZoneCell_alarm                          = "报警";
+
+/* ZoneDetailViewController */
+ZoneController_BypassTitle              = "旁路";
+ZoneController_UnBypassTitle            = "解除旁路";
+ZoneController_QueryStatus              = "刷新状态";
+
+ZoneController_AlertTitle               = "权限认证";
+ZoneController_AlertOK                  = "确定";
+ZoneController_AlertCancel              = "取消";
+ZoneController_AlertMessage             = "请输入认证密码";
+// Zone End ***********************************************************************
+
+// Status Start *******************************************************************
+/* StatusGridViewCell */
+GridCell_away                           = "布防";
+GridCell_awayDelay                      = "布防延时";
+GridCell_open                           = "撤防";
+GridCell_stay                           = "留守布防";
+GridCell_alarm                          = "报警";
+GridCell_notready                       = "未准备";
+GridCell_na                             = "未知";
+
+/* TYDeviceCollectionViewController */
+DeviceController_Title                  = "设备";
+DeviceController_Filter                 = "过滤";
+DeviceController_FilterAll              = "全部 ";
+DeviceController_FilterAway             = "布防 ";
+DeviceController_FilterOpen             = "撤防 ";
+DeviceController_FilterStay             = "留守布防 ";
+DeviceController_FilterAlarm            = "报警 ";
+DeviceController_FilterOnline           = "在线 ";
+DeviceController_FilterOffLine          = "离线 ";
+DeviceController_FilterFuzzy            = "模糊搜索 ";
+DeviceController_NoFilter               = "未选择过滤条件";
+
+DeviceController_FilterCaption          = "请输入搜索条件";
+DeviceController_FilterSelected         = "过滤条件选择";
+
+DeviceController_VideoDeviceCaption     = "视频设备";
+DeviceController_AlarmDeviceCaption     = "报警设备";
+DeviceController_OtherDeviceCaption     = "其它";
+
+DeviceController_AlertTitle             = "自定义过滤条件";
+DeviceController_AlertOK                = "确定";
+DeviceController_AlertCancel            = "取消";
+DeviceController_AlertMessage           = "请输入搜索条件";
+
+// Status End *********************************************************************
+
+// Query Start ********************************************************************
+/* TYQueryInputView */
+QueryInput_InstallDate                  = "安装日期";
+QueryInput_FinishDate                   = "管理费终止日期";
+QueryInput_EnterDate                    = "入网日期";
+QueryInput_SelectDate                   = "请选择日期";
+
+/* AlarmDataTableViewCell */
+AlarmDataCell_AlarmTime                 = "报警时间";
+AlarmDataCell_AlarmContent              = "报警详情";
+AlarmDataCell_AlarmZone                 = "防区号/使用者号";
+AlarmDataCell_AlarmTel                  = "来电号码";
+
+/* TYBaseMultiLineView */
+BaseMultiLine_ZoneNO                    = "防区号";
+BaseMultiLine_ZoneAddr                  = "防区位置";
+BaseMultiLine_TMode                     = "探头型号";
+BaseMultiLine_EnterDate                 = "入网日期";
+
+BaseMultiLine_ContactNO                 = "联系人序号";
+BaseMultiLine_Name                      = "姓名";
+BaseMultiLine_Tel                       = "电话";
+BaseMultiLine_Tel1                      = "电话1";
+BaseMultiLine_InputPlaceHolder          = "请填写资料";
+
+/* TYContactDataView */
+ContactDataView_ContactNO               = "联系人序号";
+ContactDataView_Name                    = "姓名";
+ContactDataView_Tel                     = "电话";
+ContactDataView_Tel1                    = "电话1";
+
+/* TYZoneDataView */
+ZoneDataView_ZoneNO                     = "防区号";
+ZoneDataView_ZoneAddr                   = "防区位置";
+ZoneDataView_TMode                      = "探头型号";
+ZoneDataView_EnterDate                  = "入网日期";
+
+/* UserDataTableViewCell */
+UserDataCell_UserID                     = "用户编号";
+UserDataCell_UserName                   = "用户名";
+UserDataCell_UserAddr                   = "地  址";
+
+/* TYUserBaseDataView */
+UserBaseDataView_UserID                 = "用户编号";
+UserBaseDataView_UserName               = "名称";
+UserBaseDataView_UserAddr               = "地址";
+UserBaseDataView_UserDuty               = "负责人";
+UserBaseDataView_UserDutyTel            = "负责人电话";
+UserBaseDataView_UserDutyTel2           = "负责人电话2";
+UserBaseDataView_UserTel                = "电话";
+UserBaseDataView_UserFax                = "传真";
+UserBaseDataView_UserArea               = "分局";
+UserBaseDataView_MainTel                = "主机电话";
+UserBaseDataView_MainType               = "主机类型";
+UserBaseDataView_InstallType            = "安装日期";
+UserBaseDataView_FinishDate             = "管理费终止日期";
+UserBaseDataView_InputPlaceHolder       = "请填写资料";
+
+/* TYUserDataView */
+UserDataView_AlertTitle                 = "用户资料";
+UserDataView_AlertOK                    = "确定";
+UserDataView_AlertCancel                = "取消";
+UserDataView_AlertMaxSection            = "最多只能自定义三个用户资料字段";
+UserDataView_AlertInputName             = "请输入自定义用户资料名称";
+UserDataView_AlertDeleteDefine          = "没有更多的自定义三个用户资料字段，不能删除";
+UserDataView_AlertDelete                = "删除自定义用户资料字段";
+UserDataView_AlertSelect                = "请选择需要修改的用户资料";
+
+UserDataView_BaseInfo                   = "基本资料";
+UserDataView_ZoneInfo                   = "防区资料";
+UserDataView_ContactInfo                = "联系人资料";
+
+UserDataView_Zone                       = "防区";
+UserDataView_Contact                    = "联系人";
+
+UserDataView_InputPlaceHolder           = "请填写资料";
+
+
+/* TYAlarmDataViewController */
+AlarmDataController_Today               = "今天";
+AlarmDataController_Yestoday            = "昨天";
+AlarmDataController_BeforeYestoday      = "前天";
+AlarmDataController_NavCaption          = "报警记录";
+
+/* UserDataTableViewController */
+UserDataController_UserInfo             = "用户资料";
+
+/* QueryViewController */
+QueryViewController_NavTitle            = "查询";
+QueryViewController_ScanQCode           = "扫一扫";
+QueryViewController_UserID              = "用户编号";
+QueryViewController_UserIDPlaceHolder   = "请填写有效的用户编号";
+QueryViewController_UserName            = "用户名";
+QueryViewController_UserNamePlaceHolder = "请填写模糊搜索的用户名";
+QueryViewController_UserAddr            = "地址";
+QueryViewController_UserAddrPlaceHolder = "请填写模糊搜索的地址";
+QueryViewController_Query               = "查询";
+
+QueryViewController_AlertTitle          = "查询";
+QueryViewController_AlertOK             = "确定";
+QueryViewController_AlertCancel         = "取消";
+QueryViewController_AlertMessage        = "对不起，请输入有效的用户编号";
+QueryViewController_AlertEmpty          = "对不起，查询条件不能全部为空";
+QueryViewController_QCodeErr            = "对不起，这是不合法的二维码";
+QueryViewController_CameraErr           = "对不起，没有摄像机权限";
+
+/* TYUserDataViewController */
+UserDataController_NavTitle             = "查询";
+UserDataController_LocationCollect      = "坐标采集";
+UserDataController_AlarmRecord          = "报警记录";
+UserDataController_Confirm              = "提交审核";
+UserDataController_Repair               = "故障报修";
+
+UserDataController_AlertTitle           = "用户位置坐标信息";
+UserDataController_ConfirmCollect       = "提交采集";
+UserDataController_AlertCancel          = "取消";
+UserDataController_AlertMessage         = "请选择";
+UserDataController_AlertLocation        = "纠正位置信息";
+
+UserDataController_RightErr             = "对不起，你没有修改用户资料的相关权限。";
+
+UserDataController_AlertTitleUser       = "用户信息";
+UserDataController_AlertOK              = "确定";
+UserDataController_AlertCancel          = "取消";
+UserDataController_AlertNotModify       = "没有检查到更改的用户信息，请确认";
+
+UserDataController_AlertUserInfo        = "用户资料";
+UserDataController_AlertConfirmMessage  = "确认提交用户信息审核？";
+
+UserDataController_RepairRightErr       = "对不起，你没有修改用户资料的相关权限。";
+
+// Query End **********************************************************************
+
+// Repair Start *******************************************************************
+/* RepairCaseView */
+RepairCaseView_AcceptTask               = "接受任务";
+RepairCaseView_TurnTask                 = "确认转单";
+RepairCaseView_RepairMan                = "维修人员：";
+RepairCaseView_AssignTime               = "指派时间：";
+RepairCaseView_InchargeTime             = "维修时间：";
+RepairCaseView_ArriveTime               = "到达时间：";
+RepairCaseView_CloseTime                = "结案时间：";
+RepairCaseView_CaseFinished             = "已维修";
+RepairCaseView_FinishTask               = "结束任务";
+RepairCaseView_ArriveAddr               = "到达现场";
+
+RepairCaseView_CapturePicture           = "*现场照片:";
+RepairCaseView_CloseCaseNote            = "*案件处理结果:";
+RepairCaseView_CaseNotePlaceHolder      = "请输入不超过30个汉字的处理结果";
+RepairCaseView_TurnCaseErr              = "对不起，未接受任务，不能转单";
+
+RepairCaseView_AlertTitle               = "维修";
+RepairCaseView_AlertOK                  = "确定";
+RepairCaseView_AlertCancel              = "取消";
+RepairCaseView_AlertMessage             = "确认进行此操作？";
+
+/* RepairTaskTableViewCell */
+RepairTaskCell_AcceptTask               = "接受任务";
+RepairTaskCell_TaskTurnTo               = "任务转移至";
+
+RepairTaskCell_AlertTitle               = "维修";
+RepairTaskCell_AlertOK                  = "确定";
+RepairTaskCell_AlertCancel              = "取消";
+RepairTaskCell_AlertMessage             = "确认接收维修任务？";
+
+/* RepairTaskViewController */
+RepairTaskController_NavTitle           = "维修任务";
+RepairTaskController_AllCaption         = "全部";
+RepairTaskController_CanAcceptCaption   = "待维修";
+RepairTaskController_AcceptedCaption    = "维修中";
+RepairTaskController_FinishedCaption    = "已维修";
+
+/* RepairDetailViewController */
+RepairDetailController_NavCaption       = "维修详情[编号:";
+RepairDetailController_CaseCaption      = "维修";
+RepairDetailController_CaseGroup        = "群组";
+RepairDetailController_CaseMap          = "地图";
+RepairDetailController_CaseVideo        = "视频";
+
+RepairDetailController_GroupMember      = "成员";
+
+
+// Repair End *********************************************************************
+
+// Alarm Start ********************************************************************
+/* AlarmCaseView */
+AlarmCaseView_AcceptTask               = "接受任务";
+AlarmCaseView_TurnTask                 = "确认转单";
+AlarmCaseView_AlarmMan                 = "接警人员：";
+AlarmCaseView_AssignTime               = "指派时间：";
+AlarmCaseView_InchargeTime             = "接警时间：";
+AlarmCaseView_ArriveTime               = "到达时间：";
+AlarmCaseView_CloseTime                = "结案时间：";
+AlarmCaseView_CaseFinished             = "已结案";
+AlarmCaseView_FinishTask               = "结束任务";
+AlarmCaseView_ArriveAddr               = "到达现场";
+
+AlarmCaseView_CapturePicture           = "*现场照片:";
+AlarmCaseView_CloseCaseNote            = "*案件处理结果:";
+AlarmCaseView_CaseNotePlaceHolder      = "请输入不超过30个汉字的处理结果";
+AlarmCaseView_TurnCaseErr              = "对不起，未接受任务，不能转单";
+
+AlarmCaseView_AlertTitle               = "出警";
+AlarmCaseView_AlertOK                  = "确定";
+AlarmCaseView_AlertCancel              = "取消";
+AlarmCaseView_AlertMessage             = "确认进行此操作？";
+
+/* AlarmTaskTableViewCell */
+AlarmTaskCell_AcceptTask                = "接受任务";
+AlarmTaskCell_TaskTurnTo                = "任务转移至";
+
+AlarmTaskCell_AlertTitle                = "出警";
+AlarmTaskCell_AlertOK                   = "确定";
+AlarmTaskCell_AlertCancel               = "取消";
+AlarmTaskCell_AlertMessage              = "确认接收出警任务？";
+
+/* AlarmTaskViewController */
+AlarmTaskController_NavTitle           = "出警任务";
+AlarmTaskController_AllCaption         = "全部";
+AlarmTaskController_CanAcceptCaption   = "待出警";
+AlarmTaskController_AcceptedCaption    = "已出警";
+AlarmTaskController_FinishedCaption    = "已结束";
+
+/* TaskDetailViewController */
+AlarmDetailController_NavCaption       = "出警详情[编号:";
+AlarmDetailController_CaseCaption      = "案件";
+AlarmDetailController_CaseGroup        = "群组";
+AlarmDetailController_CaseMap          = "地图";
+AlarmDetailController_CaseVideo        = "视频";
+
+AlarmDetailController_GroupMember      = "成员";
+
+/* TYGroupMemberViewController */
+GroupMemberController_GroupMember       = "群组成员";
+GroupMemberController_Online            = "[在线]";
+GroupMemberController_Offline           = "[离线]";
+
+/* SwitchPersonViewController */
+SwitchPerson_NavTitle                   = "联系人";
+
+SwitchPerson_Online                     = "[在线]";
+SwitchPerson_Offline                    = "[离线]";
+
+SwitchPerson_AlertTitle                = "出警";
+SwitchPerson_AlertOK                   = "确定";
+SwitchPerson_AlertCancel               = "取消";
+SwitchPerson_AlertMessage              = "确认进行此操作？";
+// Alarm End **********************************************************************
+
+// Toolbox Start ******************************************************************
+/* NetPingViewController */
+NetPingController_NavTitle              = "网络检查";
+NetPingController_HostAddrPlaceHolder   = "输入网络地址或者主机名称";
+NetPingController_CheckStatus           = "检测";
+NetPingController_PingTimeOut           = "网络超时";
+NetPingController_StopCheck             = "停止";
+
+/* ToolBoxViewController */
+ToolBoxController_NavTitle              = "工具箱";
+ToolBoxController_NetCheck              = "网络检查";
+ToolBoxController_VideoTool             = "视频工具";
+ToolBoxController_QueryTool             = "查询产品";
+ToolBoxController_ScanQCode             = "扫一扫";
+ToolBoxController_IsDevelop             = "正在开发中...";
+
+// Toolbox End ********************************************************************
+
+// LeftMenuViewController Start ***************************************************
+/* LeftMenuViewController */
+LeftMenuController_Config               = "设置";
+LeftMenuController_Login                = "登录";
+
+LeftMenuController_ToolBox              = "工具箱";
+LeftMenuController_Device               = "设备";
+LeftMenuController_Query                = "查询";
+LeftMenuController_Alarm                = "出警";
+LeftMenuController_ReportRepair         = "报修";
+LeftMenuController_Repair               = "维修";
+LeftMenuController_Contact              = "联系人";
+
+LeftMenuController_QueryErr             = "对不起，你没有查询用户资料的相关权限。";
+LeftMenuController_AlarmErr             = "对不起，你没有出警的相关权限。";
+LeftMenuController_RepairErr            = "对不起，你没有维修的相关权限。";
+
+
+// LeftMenuViewController End *****************************************************
+
+// Chat Start *********************************************************************
+/* VideoModeOperationMenu */
+OperationMenu_Translate                 = "转发";
+OperationMenu_Directory                 = "直连";
+OperationMenu_Password                  = "密码";
+
+OperationMenu_AlertTitle                = "密码";
+OperationMenu_AlertOK                   = "确定";
+OperationMenu_AlertCancel               = "取消";
+OperationMenu_AlertClearMessage         = "请按确定清空密码";
+OperationMenu_AlertAddMessage           = "请输入认证密码";
+OperationMenu_PwdPlaceHolder            = "请输入密码";
+OperationMenu_AddPassword               = "添加密码";
+OperationMenu_ClearPassword             = "清空密码";
+
+/* MessageBar */
+
+MessageBar_Message                      = "条新消息";
+
+/* TYChatStatusView */
+TYChatStatusView_away                   = "布防";
+TYChatStatusView_open                   = "撤防";
+TYChatStatusView_stay                   = "留守布防";
+TYChatStatusView_alarm                  = "报警";
+TYChatStatusView_unknow                 = "未知";
+TYChatStatusView_notReady               = "未准备";
+TYChatStatusView_alarm1                 = ",报警";
+TYChatStatusView_Offline                = "离线";
+TYCharStatusView_Online                 = "在线";
+
+/* SDChatTableViewController */
+ChatController_GroupMember              = "成员";
+ChatController_ChannelName              = "通道";
+ChatController_Zone                     = "防区";
+
+ChatController_AlertTitle               = "权限认证";
+ChatController_AlertOK                  = "确定";
+ChatController_AlertCancel              = "取消";
+ChatController_AlertClearMessage        = "请按确定清空密码";
+ChatController_AlertAddMessage          = "请输入认证密码";
+ChatController_PwdPlaceHolder           = "请输入密码";
+
+ChatController_RecordWanning            = "正搜索录像视频内容，请稍后";
+ChatController_RealWanning              = "正连接实时视频内容，请稍后";
+
+// Chat End ***********************************************************************
+
+// Contact Start ******************************************************************
+/* ContactPersonViewController */
+ContactPersonController_NavTitle        = "联系人";
+ContactPersonController_GroupMember     = "固定群组";
+
+ContactPersonController_Offline         = "离线";
+ContactPersonController_Online          = "在线";
+
+// Contact End ********************************************************************
+
+// Me Start ***********************************************************************
+/* VideoPlayModeTableViewController */
+VideoModeController_DirectMode          = "直连模式";
+VideoModeController_TransMode           = "转发模式";
+VideoModeController_P2PMode             = "P2P模式";
+
+/* SystemTableViewController */
+SystemController_Logout                 = "退出登录";
+SystemController_MyInfo                 = "我的资料";
+SystemController_SelectDefaultView      = "选择默认登录界面";
+SystemController_SelectVideoMode        = "选择视频访问方式";
+SYstemController_LockPassword           = "锁屏密码";
+
+SystemController_ModifyLockPassword     = "      修改锁屏密码";
+SystemController_CloseLocation          = "关闭定位";
+SystemController_SoundWanning           = "声音提醒";
+SystemController_Sound1                 = "      提示声音1";
+SystemController_Sound2                 = "      提示声音2";
+SystemController_Sound3                 = "      提示声音3";
+SystemController_BindApp                = "绑定手机";
+SystemController_SystemHelp             = "系统帮助";
+SystemController_AboutMe                = "关于警云APP";
+
+SystemController_AlertTitle             = "警云";
+SystemController_AlertOK                = "确定";
+SystemController_AlertCancel            = "取消";
+SystemController_AlertClearMessage      = "确认退出警云App?";
+
+/* TYUserInfoTableViewController */
+UserInfoController_NavTitle             = "我的资料";
+UserInfoController_UserName             = "用户名：";
+UserInfoController_PreLoginTime         = "上次登录时间：";
+UserInfoController_ModifyPassword       = "修改密码";
+
+UserInfoController_OldPassword          = "原始密码：";
+UserInfoController_OldPasswordHolder    = "请输入原来的密码";
+UserInfoController_NewPassword          = "新密码：";
+UserInfoController_NewPasswordHolder    = "请输入新的密码";
+UserInfoController_NewPassword2         = "确认新密码：";
+UserInfoController_NewPassword2Holder   = "请再次输入新的密码";
+
+UserInfoController_AlertTitle           = "修改用户密码";
+UserInfoController_AlertOK              = "确定";
+UserInfoController_AlertCancel          = "取消";
+UserInfoController_AlertModifyPwd       = "确认修改用户登录密码?";
+UserInfoController_AlertPwdIsEmpty      = "密码不能为空";
+UserInfoController_AlertPwdNotEqual     = "两次新密码不一致";
+UserInfoController_UserInfo             = "用户基本资料";
+
+/* TYAboutViewController */
+AboutController_APPName                 = "警云2.0";
+AboutController_AlarmCenter             = "深圳丛文安全报警中心";
+
+// Me End *************************************************************************

@@ -1,0 +1,620 @@
+{\rtf1\ansi\ansicpg936\cocoartf1348\cocoasubrtf170
+{\fonttbl\f0\fnil\fcharset134 STHeitiSC-Light;\f1\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red0\green116\blue0;\red170\green13\blue145;\red92\green38\blue153;
+\red63\green110\blue116;\red38\green71\blue75;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww24760\viewh14580\viewkind0
+\deftab529
+\pard\tx529\pardeftab529\pardirnatural
+
+\f0\fs22 \cf2 \CocoaLigature0 \'d2\'bb\'a1\'a2\'bb\'d8\'b5\'f7\'b6\'a8\'d2\'e5
+\f1 \cf0 \
+\pard\tx529\pardeftab529\pardirnatural
+\cf2 /**\
+ *  callback define\
+ */\cf0 \
+\pard\tx529\pardeftab529\pardirnatural
+\cf3 @protocol\cf0  CWThingsDelegate <\cf4 NSObject\cf0 >\
+\pard\tx529\pardeftab529\pardirnatural
+\cf2 /*  
+\f0 \cf2 \'cb\'b5\'c3\'f7\'a3\'ba\'c1\'ac\'bd\'d3\'bb\'d8\'b5\'f7
+\f1 \cf2 \
+    
+\f0 \cf2 \'b2\'ce\'ca\'fd\'a3\'ba
+\f1 \cf2 \
+    inConnected
+\f0 \cf2 \'a3\'a8
+\f1 \cf2 IN
+\f0 \cf2 \'a3\'a9\'a3\'ac
+\f1 \cf2 1 
+\f0 \cf2 \'b1\'ed\'ca\'be\'c1\'ac\'bd\'d3\'b3\'c9\'b9\'a6\'a3\'ac
+\f1 \cf2 2
+\f0 \cf2 \'b1\'ed\'ca\'be\'c1\'ac\'bd\'d3\'ca\'a7\'b0\'dc
+\f1 \cf2 \
+ */\cf0 \
+-(\cf3 void\cf0 ) on_things_connected:(\cf3 int\cf0 )inConnected;\
+\
+\cf2 /*  
+\f0 \cf2 \'cb\'b5\'c3\'f7\'a3\'ba\'d3\'c3\'bb\'a7\'c8\'cf\'d6\'a4\'bb\'d8\'b5\'f7
+\f1 \cf2 \
+    
+\f0 \cf2 \'b2\'ce\'ca\'fd\'a3\'ba
+\f1 \cf2 \
+    inConnected
+\f0 \cf2 \'a3\'a8
+\f1 \cf2 IN
+\f0 \cf2 \'a3\'a9\'a3\'ac
+\f1 \cf2 1 
+\f0 \cf2 \'b1\'ed\'ca\'be\'c8\'cf\'d6\'a4\'b3\'c9\'b9\'a6\'a3\'ac
+\f1 \cf2 1
+\f0 \cf2 \'b1\'ed\'ca\'be\'c8\'cf\'d6\'a4\'ca\'a7\'b0\'dc
+\f1 \cf2 \
+ */\cf0 \
+-(\cf3 void\cf0 ) on_things_authed:(\cf3 int\cf0 )inEventCode;\
+\
+\cf2 /*  
+\f0 \cf2 \'cb\'b5\'c3\'f7\'a3\'ba\'b1\'e4\'c1\'bf\'cd\'ac\'ca\'e5\'bd\'e1\'ca\'f8\'bb\'d8\'b5\'f7
+\f1 \cf2 \
+    
+\f0 \cf2 \'b2\'ce\'ca\'fd\'a3\'ba
+\f1 \cf2 \
+ \
+ */\cf0 \
+-(\cf3 void\cf0 ) on_things_sync_end;\
+\
+\cf2 /*  
+\f0 \cf2 \'cb\'b5\'c3\'f7\'a3\'ba
+\f1 \cf2 node
+\f0 \cf2 \'bd\'da\'b5\'e3\'d0\'e8\'d2\'aa\'b8\'fc\'d0\'c2\'bb\'d8\'b5\'f7
+\f1 \cf2 \
+    
+\f0 \cf2 \'b2\'ce\'ca\'fd\'a3\'ba
+\f1 \cf2 \
+ \
+ */\cf0 \
+-(\cf3 void\cf0 ) on_things_need_update;\
+\
+\cf2 /*  
+\f0 \cf2 \'cb\'b5\'c3\'f7\'a3\'ba\'cf\'fb\'cf\'a2\'bb\'d8\'b5\'f7\'bd\'d3\'bf\'da\'a3\'ac\'b0\'fc\'c0\'a8\'ca\'c2\'bc\'fe\'a1\'a2\'cf\'fb\'cf\'a2\'b5\'c8
+\f1 \cf2 \
+    
+\f0 \cf2 \'b2\'ce\'ca\'fd\'a3\'ba
+\f1 \cf2 \
+    from(IN):       
+\f0 \cf2 \'b1\'ed\'ca\'be\'c0\'b4\'d7\'d4\'c4\'c4\'b8\'f6\'bd\'da\'b5\'e3
+\f1 \cf2 \
+    to(IN):         
+\f0 \cf2 \'b1\'ed\'ca\'be\'b7\'a2\'cb\'cd\'b8\'f8\'cb\'ad
+\f1 \cf2 \
+    inReaders(IN):\
+    inSrc(IN)   \
+    inBody(IN):     
+\f0 \cf2 \'cf\'fb\'cf\'a2\'a1\'a2\'ca\'c2\'bc\'fe\'c4\'da\'c8\'dd\'a3\'ac\'be\'df\'cc\'e5\'bc\'fb\'cd\'a8\'d0\'c5\'d0\'ad\'d2\'e9
+\f1 \cf2 \
+    type(IN):       im/e
+\f0 \cf2 \'b5\'c8\'b5\'c8
+\f1 \cf2 \
+ */\cf0 \
+-(\cf3 void\cf0 ) on_things_post:(\cf3 char\cf0 *)from to:(\cf3 char\cf0 *)to readers:(\cf3 const\cf0  \cf3 char\cf0 *)inReaders Src:(\cf3 const\cf0  \cf3 char\cf0 *)inSrc Body:(\cf3 const\cf0  \cf3 char\cf0 *)inBody Type:(\cf3 const\cf0  \cf3 char\cf0 *)type;\
+\cf2 /*  
+\f0 \cf2 \'cb\'b5\'c3\'f7\'a3\'ba\'bd\'d3\'ca\'d5
+\f1 \cf2  request 
+\f0 \cf2 \'c3\'fc\'c1\'ee\'bb\'d8\'b5\'f7
+\f1 \cf2 \
+ 
+\f0 \cf2 \'b2\'ce\'ca\'fd\'a3\'ba
+\f1 \cf2 \
+ from(IN):       
+\f0 \cf2 \'b1\'ed\'ca\'be\'c0\'b4\'d7\'d4\'c4\'c4\'b8\'f6\'bd\'da\'b5\'e3
+\f1 \cf2 \
+ to(IN):         
+\f0 \cf2 \'b1\'ed\'ca\'be\'b7\'a2\'cb\'cd\'b8\'f8\'cb\'ad
+\f1 \cf2 \
+ req_id(IN):     
+\f0 \cf2 \'d3\'c3\'d3\'da\'c7\'f8\'b7\'d6
+\f1 \cf2 request
+\f0 \cf2 \'c7\'eb\'c7\'f3
+\f1 \cf2 \
+ url(INT):       request
+\f0 \cf2 \'c7\'eb\'c7\'f3\'c3\'fc\'c1\'ee
+\f1 \cf2 \
+ */\cf0 \
+-(\cf3 void\cf0 ) on_things_request:(\cf3 char\cf0 *)from to:(\cf3 char\cf0 *)to ID:(\cf3 const\cf0  \cf3 char\cf0 *)req_id URL:(\cf3 char\cf0 *)url;\
+\cf2 /*  
+\f0 \cf2 \'cb\'b5\'c3\'f7\'a3\'ba
+\f1 \cf2  REQUEST
+\f0 \cf2 \'c7\'eb\'c7\'f3\'cf\'ec\'d3\'a6\'bb\'d8\'b5\'f7
+\f1 \cf2 \
+ 
+\f0 \cf2 \'b2\'ce\'ca\'fd\'a3\'ba
+\f1 \cf2 \
+ from(IN):       
+\f0 \cf2 \'b1\'ed\'ca\'be\'c0\'b4\'d7\'d4\'c4\'c4\'b8\'f6\'bd\'da\'b5\'e3
+\f1 \cf2 \
+ inReqID(IN):    
+\f0 \cf2 \'b6\'d4\'d3\'a6
+\f1 \cf2  REQUEST
+\f0 \cf2 \'c7\'eb\'c7\'f3\'b5\'c4
+\f1 \cf2  id\
+ inStatus(IN):   200
+\f0 \cf2 \'b1\'ed\'ca\'be
+\f1 \cf2  OK
+\f0 \cf2 \'a3\'ac\'c6\'e4\'cb\'fb\'c8\'e7
+\f1 \cf2 400
+\f0 \cf2 \'a1\'a2
+\f1 \cf2 501
+\f0 \cf2 \'b5\'c8\'b1\'ed\'ca\'be\'ca\'a7\'b0\'dc
+\f1 \cf2 \
+ inHeader(IN):   \
+ inBody(IN):     
+\f0 \cf2 \'b1\'ed\'ca\'be
+\f1 \cf2  REQUEST 
+\f0 \cf2 \'c7\'eb\'c7\'f3\'b7\'b5\'bb\'d8\'b5\'c4\'c4\'da\'c8\'dd\'a3\'ac\'be\'df\'cc\'e5\'bc\'fb\'d0\'ad\'d2\'e9
+\f1 \cf2 \
+ */\cf0 \
+-(\cf3 void\cf0 ) on_things_response:(\cf3 const\cf0  \cf3 char\cf0 *)inReqID Status:(\cf3 int\cf0 )inStatus Header:(\cf3 char\cf0 *) inHeader Body:(\cf3 char\cf0 *)inBody;\
+\cf2 /*  
+\f0 \cf2 \'cb\'b5\'c3\'f7\'a3\'ba\'cd\'ac\'b2\'bd\'b1\'e4\'c1\'bf\'b8\'fc\'d0\'c2\'bb\'d8\'b5\'f7
+\f1 \cf2 \
+    
+\f0 \cf2 \'b2\'ce\'ca\'fd\'a3\'ba
+\f1 \cf2 \
+  tid(IN):      
+\f0 \cf2 \'c9\'e8\'b1\'b8\'b5\'c4
+\f1 \cf2  TID\
+   status(IN):  
+\f0 \cf2 \'d7\'b4\'cc\'ac\'a3\'ac\'ce\'b4\'ca\'b9\'d3\'c3
+\f1 \cf2 \
+ */\cf0 \
+-(\cf3 void\cf0 ) on_vars_change_callback:(\cf3 const\cf0  \cf3 char\cf0 *)tid status:(\cf3 const\cf0  \cf3 char\cf0 *)status;\
+\pard\tx529\pardeftab529\pardirnatural
+\cf3 @end\cf0 \
+\
+\
+
+\f0 \'b6\'fe\'a1\'a2\'bd\'d3\'bf\'da\'cb\'b5\'c3\'f7
+\f1 \
+\pard\tx529\pardeftab529\pardirnatural
+\cf2 /**\
+ *  SDK define\
+ */\cf0 \
+\pard\tx529\pardeftab529\pardirnatural
+\cf3 @interface\cf0  CWThingsSDK : \cf4 NSObject\cf0 \
+\{\
+    \
+\}\
+\
+\pard\tx529\pardeftab529\pardirnatural
+\cf2 /*  
+\f0 \cf2 \'cb\'b5\'c3\'f7\'a3\'ba\'c1\'ac\'bd\'d3\'b7\'fe\'ce\'f1\'c6\'f7
+\f1 \cf2 \
+    
+\f0 \cf2 \'b2\'ce\'ca\'fd\'a3\'ba
+\f1 \cf2 \
+        inConnectStr
+\f0 \cf2 \'a3\'ac\'c1\'ac\'bd\'d3\'b7\'fe\'ce\'f1\'c6\'f7\'b5\'c4\'c1\'ac\'bd\'d3\'b4\'ae\'a3\'ac\'b8\'f1\'ca\'bd\'c8\'e7\'a3\'ba
+\f1 \cf2 XXX.XXX.XXX.XXX:XXXX
+\f0 \cf2 \'bb\'f2\'d5\'df
+\f1 \cf2  
+\f0 \cf2 \'d3\'f2\'c3\'fb
+\f1 \cf2 :
+\f0 \cf2 \'b6\'cb\'bf\'da
+\f1 \cf2 \
+    
+\f0 \cf2 \'b7\'b5\'bb\'d8\'d6\'b5\'a3\'ba
+\f1 \cf2 \
+        YES
+\f0 \cf2 \'b1\'ed\'ca\'be\'c9\'e8\'d6\'c3\'b3\'c9\'b9\'a6\'a3\'ac
+\f1 \cf2  NO 
+\f0 \cf2 \'b1\'ed\'ca\'be\'c9\'e8\'d6\'c3\'ca\'a7\'b0\'dc\'a3\'ac\'be\'df\'cc\'e5\'ca\'c7\'b7\'f1\'c1\'ac\'bd\'d3\'b3\'c9\'b9\'a6\'d2\'aa\'bf\'b4\'bb\'d8\'b5\'f7
+\f1 \cf2 \
+ */\cf0 \
++(\cf3 BOOL\cf0 ) connect_to:(\cf3 const\cf0  \cf3 char\cf0  *)inConnectStr;\
+\
+\cf2 /*  
+\f0 \cf2 \'cb\'b5\'c3\'f7\'a3\'ba\'c9\'e8\'d6\'c3\'b5\'c7\'c2\'bc\'b5\'c4\'d3\'c3\'bb\'a7\'c3\'fb\'a1\'a2\'c3\'dc\'c2\'eb
+\f1 \cf2 \
+    
+\f0 \cf2 \'b2\'ce\'ca\'fd\'a3\'ba
+\f1 \cf2 \
+        inUserName
+\f0 \cf2 \'a3\'ac\'d3\'c3\'bb\'a7\'c3\'fb
+\f1 \cf2 \
+        inUserPwd,
+\f0 \cf2 \'c3\'dc\'c2\'eb
+\f1 \cf2 \
+    
+\f0 \cf2 \'b7\'b5\'bb\'d8\'d6\'b5\'a3\'ba
+\f1 \cf2 \
+        YES
+\f0 \cf2 \'b1\'ed\'ca\'be\'c9\'e8\'d6\'c3\'b3\'c9\'b9\'a6\'a3\'ac
+\f1 \cf2  NO 
+\f0 \cf2 \'b1\'ed\'ca\'be\'c9\'e8\'d6\'c3\'ca\'a7\'b0\'dc\'a3\'ac\'be\'df\'cc\'e5\'ca\'c7\'b7\'f1\'c8\'cf\'d6\'a4\'b3\'c9\'b9\'a6\'d2\'aa\'bf\'b4\'bb\'d8\'b5\'f7
+\f1 \cf2 \
+ */\cf0 \
++(\cf3 BOOL\cf0 ) user_login:(\cf4 NSString\cf0  *)inUserName pass:(\cf4 NSString\cf0 *)inUserPwd;\
+\cf2 \
+/*  
+\f0 \cf2 \'cb\'b5\'c3\'f7\'a3\'ba\'c9\'e8\'d6\'c3\'bb\'d8\'b5\'f7\'b4\'fa\'c0\'ed
+\f1 \cf2 \
+    
+\f0 \cf2 \'b2\'ce\'ca\'fd\'a3\'ba
+\f1 \cf2 \
+        delegate,
+\f0 \cf2 \'b4\'fa\'c0\'ed\'c0\'e0
+\f1 \cf2 \
+    
+\f0 \cf2 \'b7\'b5\'bb\'d8\'d6\'b5\'a3\'ba
+\f1 \cf2 \
+ \
+ */\cf0 \
++(\cf3 void\cf0 ) set_delegate:(\cf3 id\cf0 )delegate;\
+\cf2 \
+/*  
+\f0 \cf2 \'cb\'b5\'c3\'f7\'a3\'ba\'b6\'cf\'bf\'aa\'c1\'ac\'bd\'d3
+\f1 \cf2 \
+    
+\f0 \cf2 \'b2\'ce\'ca\'fd\'a3\'ba
+\f1 \cf2 \
+ \
+    
+\f0 \cf2 \'b7\'b5\'bb\'d8\'d6\'b5\'a3\'ba
+\f1 \cf2 \
+        YES 
+\f0 \cf2 \'b1\'ed\'ca\'be\'b6\'cf\'bf\'aa\'c1\'ac\'bd\'d3\'b3\'c9\'b9\'a6\'a3\'ac
+\f1 \cf2 NO 
+\f0 \cf2 \'b1\'ed\'ca\'be\'b6\'cf\'bf\'aa\'c1\'ac\'bd\'d3\'ca\'a7\'b0\'dc
+\f1 \cf2 \
+ */\cf0 \
++(\cf3 BOOL\cf0 ) disconnect;\
+\cf2 \
+/*  
+\f0 \cf2 \'cb\'b5\'c3\'f7\'a3\'ba
+\f1 \cf2 PUSH
+\f0 \cf2 \'c7\'eb\'c7\'f3
+\f1 \cf2 \
+    
+\f0 \cf2 \'b2\'ce\'ca\'fd\'a3\'ba
+\f1 \cf2 \
+        inMsg,
+\f0 \cf2 \'b1\'ed\'ca\'be
+\f1 \cf2  push
+\f0 \cf2 \'c4\'da\'c8\'dd
+\f1 \cf2 \
+        inMsgLen
+\f0 \cf2 \'a3\'ac\'b1\'ed\'ca\'be
+\f1 \cf2  push 
+\f0 \cf2 \'c4\'da\'c8\'dd\'b3\'a4\'b6\'c8
+\f1 \cf2 \
+        inMsgType
+\f0 \cf2 \'a3\'ac\'b1\'ed\'ca\'be\'c0\'e0\'d0\'cd\'a3\'ac
+\f1 \cf2 e 
+\f0 \cf2 \'b1\'ed\'ca\'be\'ca\'c2\'bc\'fe\'a3\'ac
+\f1 \cf2 im 
+\f0 \cf2 \'b1\'ed\'ca\'be\'cf\'fb\'cf\'a2
+\f1 \cf2 \
+    
+\f0 \cf2 \'b7\'b5\'bb\'d8\'d6\'b5\'a3\'ba
+\f1 \cf2 \
+    YES 
+\f0 \cf2 \'b1\'ed\'ca\'be\'bc\'d3\'c8\'eb\'b6\'d3\'c1\'d0\'b3\'c9\'b9\'a6\'a3\'ac
+\f1 \cf2 NO 
+\f0 \cf2 \'b1\'ed\'ca\'be\'bc\'d3\'c8\'eb
+\f1 \cf2  PUSH 
+\f0 \cf2 \'b6\'d3\'c1\'d0\'ca\'a7\'b0\'dc
+\f1 \cf2 \
+ */\cf0 \
++(\cf3 BOOL\cf0 ) push_msg:(\cf3 const\cf0  \cf3 char\cf0 *)inMsg MsgLen:(\cf3 int\cf0 )inMsgLen MsgType:(\cf3 const\cf0  \cf3 char\cf0 *)inMsgType;\
+\cf2 \
+/*  
+\f0 \cf2 \'cb\'b5\'c3\'f7\'a3\'ba
+\f1 \cf2 REQUEST 
+\f0 \cf2 \'c7\'eb\'c7\'f3
+\f1 \cf2 \
+    
+\f0 \cf2 \'b2\'ce\'ca\'fd\'a3\'ba
+\f1 \cf2 \
+        tid,
+\f0 \cf2 \'c9\'e8\'b1\'b8\'bb\'f2\'d5\'df\'d3\'c3\'bb\'a7
+\f1 \cf2  TID,
+\f0 \cf2 \'b8\'f9\'bd\'da\'b5\'e3\'d3\'c3
+\f1 \cf2 .
+\f0 \cf2 \'b1\'ed\'ca\'be
+\f1 \cf2 \
+        inReqID,REQUEST ID\
+        inURL
+\f0 \cf2 \'a3\'ac\'b1\'ed\'ca\'be
+\f1 \cf2  REQUEST 
+\f0 \cf2 \'c4\'da\'c8\'dd
+\f1 \cf2 \
+        inUrlLen,
+\f0 \cf2 \'b1\'ed\'ca\'be\'c4\'da\'c8\'dd\'b3\'a4\'b6\'c8
+\f1 \cf2 \
+    
+\f0 \cf2 \'b7\'b5\'bb\'d8\'d6\'b5\'a3\'ba
+\f1 \cf2 \
+        YES 
+\f0 \cf2 \'b1\'ed\'ca\'be\'bc\'d3\'c8\'eb\'b6\'d3\'c1\'d0\'b3\'c9\'b9\'a6\'a3\'ac
+\f1 \cf2 NO 
+\f0 \cf2 \'b1\'ed\'ca\'be\'bc\'d3\'c8\'eb
+\f1 \cf2  PUSH 
+\f0 \cf2 \'b6\'d3\'c1\'d0\'ca\'a7\'b0\'dc
+\f1 \cf2 \
+ */\cf0 \
++(\cf3 BOOL\cf0 ) request:(\cf3 const\cf0  \cf3 char\cf0  *)tid ReqID:(\cf3 const\cf0  \cf3 char\cf0 *)inReqID Url:(\cf3 const\cf0  \cf3 char\cf0 *)inURL UrlLen:(\cf3 int\cf0 )inUrlLen;\
+\cf2 \
+/*  
+\f0 \cf2 \'cb\'b5\'c3\'f7\'a3\'ba
+\f1 \cf2 REQUEST 
+\f0 \cf2 \'c7\'eb\'c7\'f3\'cf\'ec\'d3\'a6
+\f1 \cf2 \
+    
+\f0 \cf2 \'b2\'ce\'ca\'fd\'a3\'ba
+\f1 \cf2 \
+    inSrc\
+    inReqID,REQUEST ID\
+    inStatus
+\f0 \cf2 \'a3\'ac
+\f1 \cf2 200
+\f0 \cf2 \'b1\'ed\'ca\'be\'b3\'c9\'b9\'a6\'a3\'ac
+\f1 \cf2 400
+\f0 \cf2 \'b1\'ed\'ca\'be\'b3\'ac\'ca\'b1
+\f1 \cf2 \
+    inHeader\
+    inBody,
+\f0 \cf2 \'b1\'ed\'ca\'be\'c4\'da\'c8\'dd
+\f1 \cf2 ,inStatus 
+\f0 \cf2 \'ce\'aa
+\f1 \cf2 200
+\f0 \cf2 \'ca\'b1\'b1\'ed\'ca\'be\'be\'df\'cc\'e5\'c4\'da\'c8\'dd\'a3\'ac\'c6\'e4\'cb\'fb\'ce\'aa
+\f1 \cf2  nil\
+ 
+\f0 \cf2 \'b7\'b5\'bb\'d8\'d6\'b5\'a3\'ba
+\f1 \cf2 \
+    YES 
+\f0 \cf2 \'b1\'ed\'ca\'be\'bc\'d3\'c8\'eb\'b6\'d3\'c1\'d0\'b3\'c9\'b9\'a6\'a3\'ac
+\f1 \cf2 NO 
+\f0 \cf2 \'b1\'ed\'ca\'be\'bc\'d3\'c8\'eb
+\f1 \cf2  PUSH 
+\f0 \cf2 \'b6\'d3\'c1\'d0\'ca\'a7\'b0\'dc
+\f1 \cf2 \
+ */\cf0 \
++(\cf3 BOOL\cf0 ) response:(\cf3 const\cf0  \cf3 char\cf0 *)inSrc ReqID:(\cf3 const\cf0  \cf3 char\cf0  *)inReqID Status:(\cf3 int\cf0 )inStatus Header:(\cf3 const\cf0  \cf3 char\cf0 *)inHeader Body:(\cf3 const\cf0  \cf3 char\cf0 *)inBody;\
+\cf2 \
+/*\
+ \
+    
+\f0 \cf2 \'c6\'fa\'d3\'c3
+\f1 \cf2 \
+ */\cf0 \
++(\cf3 BOOL\cf0 ) subscribe:(\cf3 const\cf0  \cf3 char\cf0  *)inReader Filter:(\cf3 const\cf0  \cf3 char\cf0  *)inFilter;\
+\cf2 \
+/*
+\f0 \cf2 \'be\'c9\'b0\'e6
+\f1 \cf2  things 
+\f0 \cf2 \'bf\'e2\'bd\'d3\'bf\'da
+\f1 \cf2 */\cf0 \
++(\cf3 void\cf0 ) init_var_with_tid:(\cf3 const\cf0  \cf3 char\cf0  *)tid;\
+\cf2 \
+/*  
+\f0 \cf2 \'cb\'b5\'c3\'f7\'a3\'ba\'bb\'f1\'c8\'a1\'b9\'d8\'c1\'aa\'bd\'da\'b5\'e3\'b5\'c4\'b1\'e4\'c1\'bf\'c4\'da\'c8\'dd
+\f1 \cf2 \
+    
+\f0 \cf2 \'b2\'ce\'ca\'fd\'a3\'ba
+\f1 \cf2 \
+        tid
+\f0 \cf2 \'a3\'ac\'bd\'da\'b5\'e3
+\f1 \cf2  TID\
+        path,
+\f0 \cf2 \'b1\'e4\'c1\'bf\'c2\'b7\'be\'b6
+\f1 \cf2 \
+        session
+\f0 \cf2 \'a3\'ac
+\f1 \cf2 YES
+\f0 \cf2 \'b1\'ed\'ca\'be
+\f1 \cf2 path
+\f0 \cf2 \'ca\'c7\'d4\'da
+\f1 \cf2 sessions
+\f0 \cf2 \'bd\'da\'b5\'e3\'cf\'c2\'b5\'c4\'c2\'b7\'be\'b6\'a3\'ac
+\f1 \cf2 NO 
+\f0 \cf2 \'b1\'ed\'ca\'be
+\f1 \cf2 path
+\f0 \cf2 \'ca\'c7\'d4\'da\'b7\'c7
+\f1 \cf2  sessions 
+\f0 \cf2 \'cf\'c2\'c2\'b7\'be\'b6
+\f1 \cf2 \
+    
+\f0 \cf2 \'b7\'b5\'bb\'d8\'d6\'b5\'a3\'ba
+\f1 \cf2 \
+        
+\f0 \cf2 \'b7\'b5\'bb\'d8\'b1\'e4\'c1\'bf\'c4\'da\'c8\'dd\'a3\'ac
+\f1 \cf2 NULL 
+\f0 \cf2 \'b1\'ed\'ca\'be\'ca\'a7\'b0\'dc
+\f1 \cf2 \
+ */\cf0 \
++(\cf3 char\cf0 *) get_var_with_path:(\cf3 const\cf0  \cf3 char\cf0  *)tid path:(\cf3 const\cf0  \cf3 char\cf0 *)path sessions:(\cf3 BOOL\cf0 )session;\
+\cf2 \
+/*  
+\f0 \cf2 \'cb\'b5\'c3\'f7\'a3\'ba\'bb\'f1\'c8\'a1\'b9\'d8\'c1\'aa\'bd\'da\'b5\'e3\'b5\'c4\'b1\'e4\'c1\'bf\'c4\'da\'c8\'dd\'a3\'ac\'c2\'b7\'be\'b6\'bf\'c9\'d2\'d4\'b1\'ed\'ca\'be\'ce\'aa
+\f1 \cf2  session
+\f0 \cf2 \'cf\'c2\'c3\'e6\'b5\'c4\'a3\'ba
+\f1 \cf2 ppath + num 
+\f0 \cf2 \'bd\'da\'b5\'e3
+\f1 \cf2  + bpath\
+    
+\f0 \cf2 \'b2\'ce\'ca\'fd\'a3\'ba
+\f1 \cf2 \
+    tid
+\f0 \cf2 \'a3\'ac\'bd\'da\'b5\'e3
+\f1 \cf2  TID\
+    ppath,
+\f0 \cf2 \'b5\'da\'d2\'bb\'b2\'bf\'b7\'d6\'b1\'e4\'c1\'bf\'c2\'b7\'be\'b6
+\f1 \cf2 \
+    num,
+\f0 \cf2 \'b1\'ed\'ca\'be\'b5\'da\'d2\'bb\'b2\'bf\'b7\'d6\'b1\'e4\'c1\'bf\'c2\'b7\'be\'b6\'cf\'c2\'b5\'c4\'b5\'da\'bc\'b8\'b8\'f6\'bd\'da\'b5\'e3
+\f1 \cf2 \
+    bpath,
+\f0 \cf2 \'b1\'ed\'ca\'be\'b5\'da
+\f1 \cf2  num
+\f0 \cf2 \'bd\'da\'b5\'e3\'cf\'c2\'b5\'c4\'c2\'b7\'be\'b6
+\f1 \cf2 \
+    
+\f0 \cf2 \'b7\'b5\'bb\'d8\'d6\'b5\'a3\'ba
+\f1 \cf2 \
+        
+\f0 \cf2 \'b7\'b5\'bb\'d8\'b1\'e4\'c1\'bf\'c4\'da\'c8\'dd\'a3\'ac
+\f1 \cf2 NULL 
+\f0 \cf2 \'b1\'ed\'ca\'be\'ca\'a7\'b0\'dc
+\f1 \cf2 \
+ */\cf0 \
++(\cf3 char\cf0 *) get_var_with_path_ex:(\cf3 const\cf0  \cf3 char\cf0  *)tid prepath:(\cf3 const\cf0  \cf3 char\cf0 *)ppath member:(\cf3 int\cf0 )num backpath:(\cf3 const\cf0  \cf3 char\cf0  *)bpath;\
+\cf2 \
+/*  
+\f0 \cf2 \'cb\'b5\'c3\'f7\'a3\'ba\'c9\'e8\'d6\'c3\'b9\'d8\'c1\'aa\'bd\'da\'b5\'e3\'b5\'c4\'b1\'e4\'c1\'bf\'c4\'da\'c8\'dd
+\f1 \cf2 \
+    
+\f0 \cf2 \'b2\'ce\'ca\'fd\'a3\'ba
+\f1 \cf2 \
+        tid
+\f0 \cf2 \'a3\'ac\'bd\'da\'b5\'e3
+\f1 \cf2  TID\
+        path,
+\f0 \cf2 \'b1\'e4\'c1\'bf\'c2\'b7\'be\'b6
+\f1 \cf2 \
+        session
+\f0 \cf2 \'a3\'ac\'b1\'ed\'ca\'be
+\f1 \cf2  path 
+\f0 \cf2 \'ca\'c7\'b7\'f1\'d4\'da
+\f1 \cf2  sessions 
+\f0 \cf2 \'bd\'da\'b5\'e3\'cf\'c2\'c3\'e6
+\f1 \cf2 \
+        value,
+\f0 \cf2 \'d0\'e8\'d2\'aa\'c9\'e8\'d6\'c3\'b5\'c4\'b1\'e4\'c1\'bf\'d6\'b5
+\f1 \cf2 \
+    
+\f0 \cf2 \'b7\'b5\'bb\'d8\'d6\'b5\'a3\'ba
+\f1 \cf2 \
+        
+\f0 \cf2 \'b7\'b5\'bb\'d8
+\f1 \cf2 YES 
+\f0 \cf2 \'b1\'ed\'ca\'be\'b3\'c9\'b9\'a6\'a3\'ac
+\f1 \cf2 NO
+\f0 \cf2 \'b1\'ed\'ca\'be\'ca\'a7\'b0\'dc
+\f1 \cf2 \
+ */\cf0 \
++(\cf3 BOOL\cf0 ) set_var_with_tid:(\cf3 const\cf0  \cf3 char\cf0  *)tid path:(\cf3 const\cf0  \cf3 char\cf0  *)path sessions:(\cf3 BOOL\cf0 )session value:(\cf3 const\cf0  \cf3 char\cf0 *)value;\
+\cf2 \
+/*  
+\f0 \cf2 \'cb\'b5\'c3\'f7\'a3\'ba\'bb\'f1\'c8\'a1\'b9\'d8\'c1\'aa\'bd\'da\'b5\'e3\'ca\'fd\'c1\'bf
+\f1 \cf2 \
+    
+\f0 \cf2 \'b2\'ce\'ca\'fd\'a3\'ba
+\f1 \cf2 \
+ \
+    
+\f0 \cf2 \'b7\'b5\'bb\'d8\'d6\'b5\'a3\'ba
+\f1 \cf2 \
+        
+\f0 \cf2 \'b7\'b5\'bb\'d8\'b9\'d8\'c1\'aa\'b5\'c4\'bd\'da\'b5\'e3\'ca\'fd\'c1\'bf
+\f1 \cf2 \
+ */\cf0 \
++(\cf3 int\cf0 )get_sync_with_things;\
+\cf2 \
+/*  
+\f0 \cf2 \'cb\'b5\'c3\'f7\'a3\'ba\'bb\'f1\'c8\'a1\'b9\'d8\'c1\'aa\'bd\'da\'b5\'e3\'c4\'b3\'c2\'b7\'be\'b6\'b5\'c4\'b1\'e4\'c1\'bf\'ca\'fd\'c1\'bf
+\f1 \cf2 \
+    
+\f0 \cf2 \'b2\'ce\'ca\'fd\'a3\'ba
+\f1 \cf2 \
+        tid
+\f0 \cf2 \'a3\'ac\'bd\'da\'b5\'e3
+\f1 \cf2  TID\
+        path
+\f0 \cf2 \'a3\'ac\'c2\'b7\'be\'b6
+\f1 \cf2 \
+    
+\f0 \cf2 \'b7\'b5\'bb\'d8\'d6\'b5\'a3\'ba
+\f1 \cf2 \
+        
+\f0 \cf2 \'b7\'b5\'bb\'d8\'b9\'d8\'c1\'aa\'b5\'c4\'bd\'da\'b5\'e3\'b5\'c4
+\f1 \cf2  path 
+\f0 \cf2 \'c2\'b7\'be\'b6\'cf\'c2\'b5\'c4\'b1\'e4\'c1\'bf\'ca\'fd\'c1\'bf
+\f1 \cf2 \
+ */\cf0 \
++(\cf3 int\cf0 )get_var_nodes_with_tid:(\cf3 const\cf0  \cf3 char\cf0  *)tid path:(\cf3 const\cf0  \cf3 char\cf0  *)path;\
+\cf2 \
+/*  
+\f0 \cf2 \'cb\'b5\'c3\'f7\'a3\'ba\'bb\'f1\'c8\'a1\'bd\'da\'b5\'e3\'b5\'c4
+\f1 \cf2  TID\
+    
+\f0 \cf2 \'b2\'ce\'ca\'fd\'a3\'ba
+\f1 \cf2 \
+        member,
+\f0 \cf2 \'b5\'da\'bc\'b8\'b8\'f6\'b9\'d8\'c1\'aa\'bd\'da\'b5\'e3
+\f1 \cf2 \
+    
+\f0 \cf2 \'b7\'b5\'bb\'d8\'d6\'b5\'a3\'ba
+\f1 \cf2 \
+        
+\f0 \cf2 \'b7\'b5\'bb\'d8\'b9\'d8\'c1\'aa\'bd\'da\'b5\'e3
+\f1 \cf2  TID\
+ */\cf0 \
++(\cf3 char\cf0 *)get_var_with_thing:(\cf3 int\cf0 )member;\
+\cf2 \
+/*  
+\f0 \cf2 \'cb\'b5\'c3\'f7\'a3\'ba\'bb\'f1\'c8\'a1\'b5\'b1\'c7\'b0
+\f1 \cf2 SOCKET
+\f0 \cf2 \'d7\'b4\'cc\'ac
+\f1 \cf2 \
+    
+\f0 \cf2 \'b2\'ce\'ca\'fd\'a3\'ba
+\f1 \cf2 \
+ \
+    
+\f0 \cf2 \'b7\'b5\'bb\'d8\'d6\'b5\'a3\'ba
+\f1 \cf2 \
+        
+\f0 \cf2 \'b7\'b5\'bb\'d8\'b5\'b1\'c7\'b0
+\f1 \cf2  SOCKET 
+\f0 \cf2 \'d7\'b4\'cc\'ac\'a3\'ac\'be\'df\'cc\'e5\'b2\'ce\'d5\'d5
+\f1 \cf2 SOCKET_STATE\
+ */\cf0 \
++(\cf3 int\cf0 ) get_state;\
+\cf2 \
+/*  
+\f0 \cf2 \'cb\'b5\'c3\'f7\'a3\'ba\'bb\'f1\'c8\'a1\'b5\'b1\'c7\'b0\'d3\'c3\'bb\'a7\'b5\'c4
+\f1 \cf2  session id\
+    
+\f0 \cf2 \'b2\'ce\'ca\'fd\'a3\'ba
+\f1 \cf2 \
+ \
+    
+\f0 \cf2 \'b7\'b5\'bb\'d8\'d6\'b5\'a3\'ba
+\f1 \cf2 \
+        
+\f0 \cf2 \'b7\'b5\'bb\'d8\'b5\'b1\'c7\'b0\'d3\'c3\'bb\'a7\'b5\'c4
+\f1 \cf2  session id\
+ */\cf0 \
++(\cf3 char\cf0 *)get_things_sid;\
+\cf2 \
+/*
+\f0 \cf2 \'c6\'fa\'d3\'c3
+\f1 \cf2 */\cf0 \
++(\cf3 void\cf0 ) cw_loop;\
+\pard\tx529\pardeftab529\pardirnatural
+\cf3 @end\cf0 \
+\
+
+\f0 \'c8\'fd\'a3\'ac\'ca\'b9\'d3\'c3\'ca\'be\'c0\'fd
+\f1 \
+\
+[\cf5 CWThingsSDK\cf0  \cf6 set_delegate\cf0 :\cf3 self\cf0 ];\
+[\cf5 CWThingsSDK\cf0  \cf6 user_login\cf0 :
+\f0 \'a1\'b1admin\'a1\'b1
+\f1  \cf6 pass\cf0 :\'94admin\'94];\
+[CWThingsSDK connect_to:\'94c1.jnode.cc:8008\'94];\
+\
+[\cf5 CWThingsSDK\cf0  \cf6 push_msg\cf0 :\'94test\'94 \cf6 MsgLen\cf0 :5 \cf6 MsgType\cf0 :\'94im\'94];\
+[\cf5 CWThingsSDK\cf0  \cf6 request\cf0 :\'94TEST-DD-DDD-008\'94  \cf6 ReqID\cf0 :\'94001\'94 \cf6 Url\cf0 :\'94/get_server_info\'94 \cf6 UrlLen\cf0 :17];\
+\
+[\cf5 CWThingsSDK\cf0  \cf6 disconnect\cf0 ];\
+}

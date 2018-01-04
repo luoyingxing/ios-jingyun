@@ -1,0 +1,39 @@
+//
+//  DefineLocalPCH.pch
+//  ios-jingyun-test
+//
+//  Created by conwin on 2017/12/15.
+//  Copyright © 2017年 conwin. All rights reserved.
+//
+
+#ifndef DefineLocalPCH_pch
+#define DefineLocalPCH_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iOS SDK 3.0 and later."
+#endif
+
+#define INTERFACE_IS_IPAD ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import "PPRevealSideViewController.h"
+
+#define REVEAL_SIDE_WIDTH CGRectGetWidth([UIScreen mainScreen].bounds)/3
+
+#define SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
+#define SCREEN_HEIGHT ([[UIScreen mainScreen] bounds].size.height)
+
+//#define SHOW_NO_RIGHT_ITEM 1
+#define USER_REPORT_REPAIR 1
+
+#define NO_USER_PUSH_NOTI 1
+
+#endif /* DefineLocalPCH_pch */
