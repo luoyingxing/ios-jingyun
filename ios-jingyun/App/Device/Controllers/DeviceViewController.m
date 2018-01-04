@@ -236,182 +236,95 @@
     for (int i = 0; i < count ; i++) {
         //caption--name  partID--1002 tid
         DeviceStatusModel *model = [[CWDataManager sharedInstance] ThingsMsgObjectAtIndex:i];
-        
-        //先过滤设备类型
-        char *type = [[CWThings4Interface sharedInstance] get_var_with_path:[model.tid UTF8String] path:"type" sessions:NO];
-        NSString* deviceType = [[NSString alloc] initWithUTF8String:type];
-        if (![deviceType isEqualToString:@"device"]) {
-            continue;
-        }
-        model.deviceType = deviceType;
-        
-        //再过滤tab类型（全部、报警、视频、其他）currentFilterIndex
-        if (currentFilterIndex == 1 && (![model.partID isEqualToString:@"1000"] && ![model.partID isEqualToString:@"1001"] && ![model.partID isEqualToString:@"1002"])) {
-            continue;
-        }else if (currentFilterIndex == 2 && (![model.partID isEqualToString:@"2000"])){
-            continue;
-        }else if (currentFilterIndex == 3 && ([model.partID isEqualToString:@"1000"] || [model.partID isEqualToString:@"1001"] || [model.partID isEqualToString:@"1002"] || [model.partID isEqualToString:@"2000"])){
-            continue;
-        }
-       
-        if (model) {
-            //名称-即标题
-            char *name = [[CWThings4Interface sharedInstance] get_var_with_path:[model.tid UTF8String] path:"name" sessions:NO];
-            if (name) {
-                NSString *ns_name = [NSString stringWithUTF8String:name];
-                model.caption = ns_name;
+         if (model) {
+            //先过滤设备类型
+            char *type = [[CWThings4Interface sharedInstance] get_var_with_path:[model.tid UTF8String] path:"type" sessions:NO];
+            NSString* deviceType = [[NSString alloc] initWithUTF8String:type];
+            if (![deviceType isEqualToString:@"device"]) {
+                continue;
             }
-            else {
-                model.caption = @"";
-            }
+            model.deviceType = deviceType;
             
-            //设备类型
-            if ([model.tid hasPrefix:@"LC"]) {
-                model.isLeChangeDevice = YES;
-            }else if ([model.tid hasPrefix:@"HM"]){
-                model.isHuaMaiDevice = YES;
-            }else if ([model.tid hasPrefix:@"EZ"]){
-                model.isEZDevice = YES;
+            //再过滤tab类型（全部、报警、视频、其他）currentFilterIndex
+            if (currentFilterIndex == 1 && (![model.partID isEqualToString:@"1000"] && ![model.partID isEqualToString:@"1001"] && ![model.partID isEqualToString:@"1002"])) {
+                continue;
+            }else if (currentFilterIndex == 2 && (![model.partID isEqualToString:@"2000"])){
+                continue;
+            }else if (currentFilterIndex == 3 && ([model.partID isEqualToString:@"1000"] || [model.partID isEqualToString:@"1001"] || [model.partID isEqualToString:@"1002"] || [model.partID isEqualToString:@"2000"])){
+                continue;
             }
-            
-            //时间
-            if ([model.partID isEqualToString:@"2000"]) {
-                char* d_t = [[CWThings4Interface sharedInstance] get_var_with_path_ex:[model.tid UTF8String] prepath:"areas" member:0 backpath:"t_stat"];
-                if (d_t) {
-                    NSString* dataTimeString = [NSString stringWithUTF8String:d_t];
-                    model.dateTime = dataTimeString;
-                    
-                    NSArray *array = [dataTimeString componentsSeparatedByString:@" "]; //分隔符逗号
-                    if (array.count > 1) {
-                        model.date = [array objectAtIndex:0];
-                        model.time = [array objectAtIndex:1];
-                    }
+           
+            if (model) {
+                //名称-即标题
+                char *name = [[CWThings4Interface sharedInstance] get_var_with_path:[model.tid UTF8String] path:"name" sessions:NO];
+                if (name) {
+                    NSString *ns_name = [NSString stringWithUTF8String:name];
+                    model.caption = ns_name;
                 }
-            }else{
-                char* d_t;
-                if ([model.partID isEqualToString:@"1100"] || [model.partID isEqualToString:@"1101"] || [model.partID isEqualToString:@"1104"]) {
-                    d_t = [[CWThings4Interface sharedInstance] get_var_with_path:[model.tid UTF8String] path:"pnl.r.t" sessions:YES];
-                }else{
-                    d_t = [[CWThings4Interface sharedInstance] get_var_with_path:[model.tid UTF8String] path:"pnl.s.t" sessions:YES];
+                else {
+                    model.caption = @"";
                 }
                 
-                if (d_t) {
-                    NSString* dataTimeString = [NSString stringWithUTF8String:d_t];
-                    model.dateTime = dataTimeString;
-                    
-                    NSArray *array = [dataTimeString componentsSeparatedByString:@" "]; //分隔符逗号
-                    if (array.count > 1) {
-                        model.date = [array objectAtIndex:0];
-                        model.time = [array objectAtIndex:1];
-                    }
+                //设备类型
+                if ([model.tid hasPrefix:@"LC"]) {
+                    model.isLeChangeDevice = YES;
+                }else if ([model.tid hasPrefix:@"HM"]){
+                    model.isHuaMaiDevice = YES;
+                }else if ([model.tid hasPrefix:@"EZ"]){
+                    model.isEZDevice = YES;
                 }
-            }
-            
-            //设备状态
-            char *device_status;
-            if ([model.partID isEqualToString:@"2000"]) {
-                device_status= [[CWThings4Interface sharedInstance] get_var_with_path_ex:[model.tid UTF8String] prepath:"areas" member:0 backpath:"stat"];
-            }else{
-                if ([model.partID isEqualToString:@"1100"] || [model.partID isEqualToString:@"1101"] || [model.partID isEqualToString:@"1104"]) {
-                    device_status = [[CWThings4Interface sharedInstance] get_var_with_path:[model.tid UTF8String] path:"pnl.r.s" sessions:YES];
-                }else{
-                    device_status = [[CWThings4Interface sharedInstance] get_var_with_path:[model.tid UTF8String] path:"pnl.s.s" sessions:YES];
-                }
-            }
-            
-            NSString* deviceStatusString;
-            if (device_status) {
-                deviceStatusString = [NSString stringWithUTF8String:device_status];
-            }
-            //防区状态
-            BOOL isZoneAlarm = NO;
-            char* zone_status = [[CWThings4Interface sharedInstance] get_var_with_path:[model.tid UTF8String] path:"zones" sessions:YES];
-            if (zone_status) {
-                NSString* zoneStatusString = [NSString stringWithUTF8String:zone_status];
-                NSData *jsonData = [zoneStatusString dataUsingEncoding:NSUTF8StringEncoding];
-                NSDictionary *zoneDit = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil];
                 
-                for (NSString *key in zoneDit) {
-                    NSString* stat = [zoneDit[key] objectForKey:@"stat"];
-                    if ([stat isEqualToString:@"alarm"]) {
-                        isZoneAlarm = YES;
-                        break;
+                //时间
+                if ([model.partID isEqualToString:@"2000"]) {
+                    char* d_t = [[CWThings4Interface sharedInstance] get_var_with_path_ex:[model.tid UTF8String] prepath:"areas" member:0 backpath:"t_stat"];
+                    if (d_t) {
+                        NSString* dataTimeString = [NSString stringWithUTF8String:d_t];
+                        model.dateTime = dataTimeString;
+                        
+                        NSArray *array = [dataTimeString componentsSeparatedByString:@" "]; //分隔符逗号
+                        if (array.count > 1) {
+                            model.date = [array objectAtIndex:0];
+                            model.time = [array objectAtIndex:1];
+                        }
+                    }
+                }else{
+                    char* d_t;
+                    if ([model.partID isEqualToString:@"1100"] || [model.partID isEqualToString:@"1101"] || [model.partID isEqualToString:@"1104"]) {
+                        d_t = [[CWThings4Interface sharedInstance] get_var_with_path:[model.tid UTF8String] path:"pnl.r.t" sessions:YES];
+                    }else{
+                        d_t = [[CWThings4Interface sharedInstance] get_var_with_path:[model.tid UTF8String] path:"pnl.s.t" sessions:YES];
+                    }
+                    
+                    if (d_t) {
+                        NSString* dataTimeString = [NSString stringWithUTF8String:d_t];
+                        model.dateTime = dataTimeString;
+                        
+                        NSArray *array = [dataTimeString componentsSeparatedByString:@" "]; //分隔符逗号
+                        if (array.count > 1) {
+                            model.date = [array objectAtIndex:0];
+                            model.time = [array objectAtIndex:1];
+                        }
                     }
                 }
-            }
-            //设备在线状态
-            BOOL isOnline = NO;
-            char *online = [[CWThings4Interface sharedInstance] get_var_with_path:[model.tid UTF8String] path:"online" sessions:NO];
-            if (online && strcmp(online, "true") == 0) {
-                isOnline = YES;
-            }
-            
-            //public static final int OFF_LINE = 9;
-            //public static final int SAFETY = 10;
-            //public static final int SAFETY_ALARM = 11;
-            //public static final int OPEN = 12;
-            //public static final int OPEN_ALARM = 13;
-            //public static final int STAY = 14;
-            //public static final int STAY_ALARM = 15;
-            //public static final int UNREADY = 16;
-            //public static final int UNREADY_ALARM = 17;
-            //public static final int UNKNOWN = 18;
-            //public static final int UNKNOWN_ALARM = 19;
-            //statusNumber用来记录设备的状态，当时ui的要求不会直接使用，但在此说明
-            int statusNumber = 10;
-            if (!isOnline || ![model.deviceType isEqualToString:@"device"]) {
-                statusNumber = 9;
-            }else if (deviceStatusString == nil || deviceStatusString.length == 0) {
-                statusNumber = 18;
-            }else{
-                if ([deviceStatusString isEqualToString:@"open"]) {
-                    if (isZoneAlarm) {
-                        statusNumber = 13;
-                        model.isDeviceOpen = YES;
+                
+                //设备状态
+                char *device_status;
+                if ([model.partID isEqualToString:@"2000"]) {
+                    device_status= [[CWThings4Interface sharedInstance] get_var_with_path_ex:[model.tid UTF8String] prepath:"areas" member:0 backpath:"stat"];
+                }else{
+                    if ([model.partID isEqualToString:@"1100"] || [model.partID isEqualToString:@"1101"] || [model.partID isEqualToString:@"1104"]) {
+                        device_status = [[CWThings4Interface sharedInstance] get_var_with_path:[model.tid UTF8String] path:"pnl.r.s" sessions:YES];
                     }else{
-                        statusNumber = 12;
-                        model.isDeviceOpen = YES;
-                    }
-                }else if([deviceStatusString isEqualToString:@"away"] || [deviceStatusString isEqualToString:@"away delay"] || [deviceStatusString isEqualToString:@"away entery delay"]){
-                    if (isZoneAlarm) {
-                        statusNumber = 11;
-                    }else{
-                        statusNumber = 10;
-                    }
-                }else if([deviceStatusString isEqualToString:@"stay"] || [deviceStatusString isEqualToString:@"stay delay"] || [deviceStatusString isEqualToString:@"stay entery delay"]){
-                    if (isZoneAlarm) {
-                        statusNumber = 15;
-                        model.isDeviceOpen = YES;
-                    }else{
-                        statusNumber = 14;
-                    }
-                }else if([deviceStatusString isEqualToString:@"nr"]){
-                    if (isZoneAlarm) {
-                        statusNumber = 17;
-                        model.isDeviceOpen = YES;
-                    }else{
-                        statusNumber = 16;
-                    }
-                }else if([deviceStatusString isEqualToString:@"na"]){
-                    if (isZoneAlarm) {
-                        statusNumber = 19;
-                        model.isDeviceOpen = YES;
-                    }else{
-                        statusNumber = 18;
+                        device_status = [[CWThings4Interface sharedInstance] get_var_with_path:[model.tid UTF8String] path:"pnl.s.s" sessions:YES];
                     }
                 }
-            }
-
-            //标签 -- 防区状态
-            NSMutableArray* tagArray = [[NSMutableArray alloc] init];
-            BOOL isByPass = NO;
-            BOOL isAlarm = NO;
-            BOOL isAway = NO;
-            BOOL isOpen = NO;
-            BOOL isUnknown = NO;
-            BOOL isNoReady = NO;
-            
-            if (model.partID != nil && [model.partID isEqualToString:@"2000"]) {
+                
+                NSString* deviceStatusString;
+                if (device_status) {
+                    deviceStatusString = [NSString stringWithUTF8String:device_status];
+                }
+                //防区状态
+                BOOL isZoneAlarm = NO;
                 char* zone_status = [[CWThings4Interface sharedInstance] get_var_with_path:[model.tid UTF8String] path:"zones" sessions:YES];
                 if (zone_status) {
                     NSString* zoneStatusString = [NSString stringWithUTF8String:zone_status];
@@ -420,167 +333,255 @@
                     
                     for (NSString *key in zoneDit) {
                         NSString* stat = [zoneDit[key] objectForKey:@"stat"];
-                        if ([stat isEqualToString:@"bypass"]) {
-                            isByPass = YES;
-                            continue;
-                        }else if ([stat isEqualToString:@"alarm"]) {
-                            isAlarm = YES;
-                            continue;
-                        }else if ([stat isEqualToString:@"away"]) {
-                            isAway = YES;
-                            continue;
-                        }else if ([stat isEqualToString:@"open"]) {
-                            isOpen = YES;
-                            continue;
-                        }else if ([stat isEqualToString:@"na"]) {
-                            isUnknown = YES;
-                            continue;
-                        }else if ([stat isEqualToString:@"nr"]) {
-                            isNoReady = YES;
-                            continue;
+                        if ([stat isEqualToString:@"alarm"]) {
+                            isZoneAlarm = YES;
+                            break;
                         }
                     }
                 }
-            }else{
-                char* zone_status = [[CWThings4Interface sharedInstance] get_var_with_path:[model.tid UTF8String] path:"z" sessions:YES];
-                if (zone_status) {
-                    NSString* zoneStatusString = [NSString stringWithUTF8String:zone_status];
-                    NSData *jsonData = [zoneStatusString dataUsingEncoding:NSUTF8StringEncoding];
-                    NSDictionary *zoneDit = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil];
-                    
-                    for (NSString *key in zoneDit) {
-                        NSString* stat = [zoneDit[key] objectForKey:@"s"];
-                        if ([stat isEqualToString:@"bypass"]) {
-                            isByPass = YES;
-                            continue;
-                        }else if ([stat isEqualToString:@"alarm"]) {
-                            isAlarm = YES;
-                            continue;
-                        }else if ([stat isEqualToString:@"away"]) {
-                            isAway = YES;
-                            continue;
-                        }else if ([stat isEqualToString:@"open"]) {
-                            isOpen = YES;
-                            continue;
-                        }else if ([stat isEqualToString:@"na"]) {
-                            isUnknown = YES;
-                            continue;
-                        }else if ([stat isEqualToString:@"nr"]) {
-                            isNoReady = YES;
-                            continue;
+                //设备在线状态
+                BOOL isOnline = NO;
+                char *online = [[CWThings4Interface sharedInstance] get_var_with_path:[model.tid UTF8String] path:"online" sessions:NO];
+                if (online && strcmp(online, "true") == 0) {
+                    isOnline = YES;
+                }
+                
+                //public static final int OFF_LINE = 9;
+                //public static final int SAFETY = 10;
+                //public static final int SAFETY_ALARM = 11;
+                //public static final int OPEN = 12;
+                //public static final int OPEN_ALARM = 13;
+                //public static final int STAY = 14;
+                //public static final int STAY_ALARM = 15;
+                //public static final int UNREADY = 16;
+                //public static final int UNREADY_ALARM = 17;
+                //public static final int UNKNOWN = 18;
+                //public static final int UNKNOWN_ALARM = 19;
+                //statusNumber用来记录设备的状态，当时ui的要求不会直接使用，但在此说明
+                int statusNumber = 10;
+                if (!isOnline || ![model.deviceType isEqualToString:@"device"]) {
+                    statusNumber = 9;
+                }else if (deviceStatusString == nil || deviceStatusString.length == 0) {
+                    statusNumber = 18;
+                }else{
+                    if ([deviceStatusString isEqualToString:@"open"]) {
+                        if (isZoneAlarm) {
+                            statusNumber = 13;
+                            model.isDeviceOpen = YES;
+                        }else{
+                            statusNumber = 12;
+                            model.isDeviceOpen = YES;
+                        }
+                    }else if([deviceStatusString isEqualToString:@"away"] || [deviceStatusString isEqualToString:@"away delay"] || [deviceStatusString isEqualToString:@"away entery delay"]){
+                        if (isZoneAlarm) {
+                            statusNumber = 11;
+                        }else{
+                            statusNumber = 10;
+                        }
+                    }else if([deviceStatusString isEqualToString:@"stay"] || [deviceStatusString isEqualToString:@"stay delay"] || [deviceStatusString isEqualToString:@"stay entery delay"]){
+                        if (isZoneAlarm) {
+                            statusNumber = 15;
+                            model.isDeviceOpen = YES;
+                        }else{
+                            statusNumber = 14;
+                        }
+                    }else if([deviceStatusString isEqualToString:@"nr"]){
+                        if (isZoneAlarm) {
+                            statusNumber = 17;
+                            model.isDeviceOpen = YES;
+                        }else{
+                            statusNumber = 16;
+                        }
+                    }else if([deviceStatusString isEqualToString:@"na"]){
+                        if (isZoneAlarm) {
+                            statusNumber = 19;
+                            model.isDeviceOpen = YES;
+                        }else{
+                            statusNumber = 18;
                         }
                     }
                 }
-            }
-            
-            
-            if (isByPass) {
-                NSMutableDictionary* dit = [[NSMutableDictionary alloc] init];
-                [dit setObject:@"#ff9801" forKey:@"bgColor"];
-                [dit setObject:@"旁路" forKey:@"name"];
-                [tagArray addObject:dit];
-            }
-            
-            if (isAlarm) {
-                NSMutableDictionary* dit = [[NSMutableDictionary alloc] init];
-                [dit setObject:@"#ff5555" forKey:@"bgColor"];
-                [dit setObject:@"报警" forKey:@"name"];
-                [tagArray addObject:dit];
-            }
-            
-            if (isNoReady) {
-                NSMutableDictionary* dit = [[NSMutableDictionary alloc] init];
-                [dit setObject:@"#a8a8a8" forKey:@"bgColor"];
-                [dit setObject:@"未准备" forKey:@"name"];
-                [tagArray addObject:dit];
-            }
-            
-            if (tagArray.count == 0) {
-                NSMutableDictionary* dit = [[NSMutableDictionary alloc] init];
-                [dit setObject:@"#00bec8" forKey:@"bgColor"];
-                [dit setObject:@"正常" forKey:@"name"];
-                [tagArray addObject:dit];
-            }
-            
-            //标签 -- 全局状态
-            NSString* connected = @"-1";
-            if([model.partID isEqualToString:@"1000"] || [model.partID isEqualToString:@"1001"] || [model.partID isEqualToString:@"1002"]){
-                char* deviceConnectStr = [[CWThings4Interface sharedInstance] get_var_with_path:[model.tid UTF8String] path:"pnl.s.net.connected" sessions:YES];
-                if (deviceConnectStr) {
-                    connected = [NSString stringWithUTF8String:deviceConnectStr];
-                }
-            }else{
-                connected = isOnline ? @"1" : @"0";
-            }
-            model.globalSatus = connected;
 
-            if ([connected isEqualToString:@"0"]) {
-                NSMutableDictionary* dit = [[NSMutableDictionary alloc] init];
-                [dit setObject:@"#a8a8a8" forKey:@"bgColor"];
-                [dit setObject:@"离线" forKey:@"name"];
-                [tagArray insertObject:dit atIndex:0];
-            }else if ([connected isEqualToString:@"1"]) {
-                NSMutableDictionary* dit = [[NSMutableDictionary alloc] init];
-                [dit setObject:@"#3ec0fe" forKey:@"bgColor"];
-                [dit setObject:@"在线" forKey:@"name"];
-                [tagArray insertObject:dit atIndex:0];
-            }else {
-                NSMutableDictionary* dit = [[NSMutableDictionary alloc] init];
-                [dit setObject:@"#a8a8a8" forKey:@"bgColor"];
-                [dit setObject:@"未知" forKey:@"name"];
-                [tagArray insertObject:dit atIndex:0];
-            }
-            
-            //因为是有显示缩略图，所以增加一个是否布撤防的标签
-            if (currentFilterIndex == 2) {
-                if(model.isDeviceOpen){
-                    NSMutableDictionary* dit = [[NSMutableDictionary alloc] init];
-                    [dit setObject:@"#d1d100" forKey:@"bgColor"];
-                    [dit setObject:@"撤防" forKey:@"name"];
-                    [tagArray insertObject:dit atIndex:1];
-                }else{
-                    NSMutableDictionary* dit = [[NSMutableDictionary alloc] init];
-                    [dit setObject:@"#3cc25c" forKey:@"bgColor"];
-                    [dit setObject:@"布防" forKey:@"name"];
-                    [tagArray insertObject:dit atIndex:1];
-                }
-            }
-            
-            model.tagArray = tagArray;
-        
-//            char *unReadCount = [[CWThings4Interface sharedInstance] get_var_with_path:[model.tid UTF8String] path:"name" sessions:NO];
-//            if (unReadCount) {
-//                NSString *ns_name = [NSString stringWithUTF8String:name];
-//
-//                model.unread_count = ns_name;
-//            }
-//            else {
-//                model.unread_count = 0;
-//            }
-        
-            //以上是通过帅选出的符合，接下来还需要进一步过略条件
-            if (isFilterAll) {
-                [self.deviceArray addObject:model];
-            }else{
-                if (filterKey == nil || filterKey.length == 0) {
-                    if ((isFilterAway && deviceStatusString != nil && [deviceStatusString isEqualToString:@"away"]) ||
-                        (isFilterOPen && deviceStatusString != nil && [deviceStatusString isEqualToString:@"open"]) ||
-                        (isFilterAlarm && ((deviceStatusString != nil && [deviceStatusString isEqualToString:@"alarm"]) || isAlarm )) ||
-                        (isFilterOnline && [connected isEqualToString:@"1"]) ||
-                        (isFilterOffline && [connected isEqualToString:@"0"])) {
-                        [self.deviceArray addObject:model];
+                //标签 -- 防区状态
+                NSMutableArray* tagArray = [[NSMutableArray alloc] init];
+                BOOL isByPass = NO;
+                BOOL isAlarm = NO;
+                BOOL isAway = NO;
+                BOOL isOpen = NO;
+                BOOL isUnknown = NO;
+                BOOL isNoReady = NO;
+                
+                if (model.partID != nil && [model.partID isEqualToString:@"2000"]) {
+                    char* zone_status = [[CWThings4Interface sharedInstance] get_var_with_path:[model.tid UTF8String] path:"zones" sessions:YES];
+                    if (zone_status) {
+                        NSString* zoneStatusString = [NSString stringWithUTF8String:zone_status];
+                        NSData *jsonData = [zoneStatusString dataUsingEncoding:NSUTF8StringEncoding];
+                        NSDictionary *zoneDit = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil];
+                        
+                        for (NSString *key in zoneDit) {
+                            NSString* stat = [zoneDit[key] objectForKey:@"stat"];
+                            if ([stat isEqualToString:@"bypass"]) {
+                                isByPass = YES;
+                                continue;
+                            }else if ([stat isEqualToString:@"alarm"]) {
+                                isAlarm = YES;
+                                continue;
+                            }else if ([stat isEqualToString:@"away"]) {
+                                isAway = YES;
+                                continue;
+                            }else if ([stat isEqualToString:@"open"]) {
+                                isOpen = YES;
+                                continue;
+                            }else if ([stat isEqualToString:@"na"]) {
+                                isUnknown = YES;
+                                continue;
+                            }else if ([stat isEqualToString:@"nr"]) {
+                                isNoReady = YES;
+                                continue;
+                            }
+                        }
                     }
                 }else{
-                    if ([model.caption containsString:filterKey]) {
-                        [self.deviceArray addObject:model];
+                    char* zone_status = [[CWThings4Interface sharedInstance] get_var_with_path:[model.tid UTF8String] path:"z" sessions:YES];
+                    if (zone_status) {
+                        NSString* zoneStatusString = [NSString stringWithUTF8String:zone_status];
+                        NSData *jsonData = [zoneStatusString dataUsingEncoding:NSUTF8StringEncoding];
+                        NSDictionary *zoneDit = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil];
+                        
+                        for (NSString *key in zoneDit) {
+                            NSString* stat = [zoneDit[key] objectForKey:@"s"];
+                            if ([stat isEqualToString:@"bypass"]) {
+                                isByPass = YES;
+                                continue;
+                            }else if ([stat isEqualToString:@"alarm"]) {
+                                isAlarm = YES;
+                                continue;
+                            }else if ([stat isEqualToString:@"away"]) {
+                                isAway = YES;
+                                continue;
+                            }else if ([stat isEqualToString:@"open"]) {
+                                isOpen = YES;
+                                continue;
+                            }else if ([stat isEqualToString:@"na"]) {
+                                isUnknown = YES;
+                                continue;
+                            }else if ([stat isEqualToString:@"nr"]) {
+                                isNoReady = YES;
+                                continue;
+                            }
+                        }
                     }
                 }
-            }
+                
+                
+                if (isByPass) {
+                    NSMutableDictionary* dit = [[NSMutableDictionary alloc] init];
+                    [dit setObject:@"#ff9801" forKey:@"bgColor"];
+                    [dit setObject:@"旁路" forKey:@"name"];
+                    [tagArray addObject:dit];
+                }
+                
+                if (isAlarm) {
+                    NSMutableDictionary* dit = [[NSMutableDictionary alloc] init];
+                    [dit setObject:@"#ff5555" forKey:@"bgColor"];
+                    [dit setObject:@"报警" forKey:@"name"];
+                    [tagArray addObject:dit];
+                }
+                
+                if (isNoReady) {
+                    NSMutableDictionary* dit = [[NSMutableDictionary alloc] init];
+                    [dit setObject:@"#a8a8a8" forKey:@"bgColor"];
+                    [dit setObject:@"未准备" forKey:@"name"];
+                    [tagArray addObject:dit];
+                }
+                
+                if (tagArray.count == 0) {
+                    NSMutableDictionary* dit = [[NSMutableDictionary alloc] init];
+                    [dit setObject:@"#00bec8" forKey:@"bgColor"];
+                    [dit setObject:@"正常" forKey:@"name"];
+                    [tagArray addObject:dit];
+                }
+                
+                //标签 -- 全局状态
+                NSString* connected = @"-1";
+                if([model.partID isEqualToString:@"1000"] || [model.partID isEqualToString:@"1001"] || [model.partID isEqualToString:@"1002"]){
+                    char* deviceConnectStr = [[CWThings4Interface sharedInstance] get_var_with_path:[model.tid UTF8String] path:"pnl.s.net.connected" sessions:YES];
+                    if (deviceConnectStr) {
+                        connected = [NSString stringWithUTF8String:deviceConnectStr];
+                    }
+                }else{
+                    connected = isOnline ? @"1" : @"0";
+                }
+                model.globalSatus = connected;
+
+                if ([connected isEqualToString:@"0"]) {
+                    NSMutableDictionary* dit = [[NSMutableDictionary alloc] init];
+                    [dit setObject:@"#a8a8a8" forKey:@"bgColor"];
+                    [dit setObject:@"离线" forKey:@"name"];
+                    [tagArray insertObject:dit atIndex:0];
+                }else if ([connected isEqualToString:@"1"]) {
+                    NSMutableDictionary* dit = [[NSMutableDictionary alloc] init];
+                    [dit setObject:@"#3ec0fe" forKey:@"bgColor"];
+                    [dit setObject:@"在线" forKey:@"name"];
+                    [tagArray insertObject:dit atIndex:0];
+                }else {
+                    NSMutableDictionary* dit = [[NSMutableDictionary alloc] init];
+                    [dit setObject:@"#a8a8a8" forKey:@"bgColor"];
+                    [dit setObject:@"未知" forKey:@"name"];
+                    [tagArray insertObject:dit atIndex:0];
+                }
+                
+                //因为是有显示缩略图，所以增加一个是否布撤防的标签
+                if (currentFilterIndex == 2) {
+                    if(model.isDeviceOpen){
+                        NSMutableDictionary* dit = [[NSMutableDictionary alloc] init];
+                        [dit setObject:@"#d1d100" forKey:@"bgColor"];
+                        [dit setObject:@"撤防" forKey:@"name"];
+                        [tagArray insertObject:dit atIndex:1];
+                    }else{
+                        NSMutableDictionary* dit = [[NSMutableDictionary alloc] init];
+                        [dit setObject:@"#3cc25c" forKey:@"bgColor"];
+                        [dit setObject:@"布防" forKey:@"name"];
+                        [tagArray insertObject:dit atIndex:1];
+                    }
+                }
+                
+                model.tagArray = tagArray;
             
-            if (deviceStatusString != nil && [deviceStatusString isEqualToString:@"open"]) {
-                openDeviceCount++;
+    //            char *unReadCount = [[CWThings4Interface sharedInstance] get_var_with_path:[model.tid UTF8String] path:"name" sessions:NO];
+    //            if (unReadCount) {
+    //                NSString *ns_name = [NSString stringWithUTF8String:name];
+    //
+    //                model.unread_count = ns_name;
+    //            }
+    //            else {
+    //                model.unread_count = 0;
+    //            }
+            
+                //以上是通过帅选出的符合，接下来还需要进一步过略条件
+                if (isFilterAll) {
+                    [self.deviceArray addObject:model];
+                }else{
+                    if (filterKey == nil || filterKey.length == 0) {
+                        if ((isFilterAway && deviceStatusString != nil && [deviceStatusString isEqualToString:@"away"]) ||
+                            (isFilterOPen && deviceStatusString != nil && [deviceStatusString isEqualToString:@"open"]) ||
+                            (isFilterAlarm && ((deviceStatusString != nil && [deviceStatusString isEqualToString:@"alarm"]) || isAlarm )) ||
+                            (isFilterOnline && [connected isEqualToString:@"1"]) ||
+                            (isFilterOffline && [connected isEqualToString:@"0"])) {
+                            [self.deviceArray addObject:model];
+                        }
+                    }else{
+                        if ([model.caption containsString:filterKey]) {
+                            [self.deviceArray addObject:model];
+                        }
+                    }
+                }
+                
+                if (deviceStatusString != nil && [deviceStatusString isEqualToString:@"open"]) {
+                    openDeviceCount++;
+                }
             }
-        }
+         }
     }
     
     //显示一些标签信息

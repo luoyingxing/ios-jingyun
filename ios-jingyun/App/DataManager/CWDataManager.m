@@ -36,7 +36,7 @@
 
 #define MY_APP_URL @"http://itunes.apple.com/lookup?id=940312644"
 
-static NSString *DownloadURLString = @"http://localhost/bigImage.png";
+static NSString *DownloadURLString = @"http://localhost/app_logo.png";
 
 @interface CWDataManager() <AVAudioPlayerDelegate>
 
@@ -845,6 +845,7 @@ static CWDataManager *sharedInstance = nil;
             deviceModel.videoPlayMode = 0;
             deviceModel.tid = things_id;
             NSInteger unread_count_last = [self getUnreadEevent4Things:things_id];
+            NSLog(@"CWDataManager cwPostThingsList -----> TID:  %@  unreadCount:  %lu", things_id, unread_count_last);
             deviceModel.unread_count = unread_count_last;
             [tmp_followed_things addObject:deviceModel];
         }

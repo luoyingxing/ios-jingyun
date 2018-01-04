@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "AccountViewController.h"
 #import "curl.h"
+#import "CWDataManager.h"
 
 #define UIColorFromRGB(rgbValue) [UIColor \
 colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
@@ -51,11 +52,16 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    
+    [[CWDataManager sharedInstance] reportNotHandleEvent:NO];
+    [[CWDataManager sharedInstance] turnToRunningBackground:YES];
 }
 
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+    [[CWDataManager sharedInstance] turnToRunningBackground:NO];
+    [[CWDataManager sharedInstance] showGestureLockViewController];
 }
 
 
@@ -114,6 +120,28 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
         NSLog(@"Unresolved error %@, %@", error, error.userInfo);
         abort();
     }
+}
+
+#pragma mark - push
+//获取DeviceToken成功
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)pToken{
+    NSLog(@"---Token--%@", pToken);
+    NSString *pushToken = [[[[pToken description] stringByReplacingOccurrencesOfString:@"<" withString:@""] stringByReplacingOccurrencesOfString:@">" withString:@""] stringByReplacingOccurrencesOfString:@" " withString:@""] ;
+    NSLog(@"---Token--%@", pushToken);
+    [[CWDataManager sharedInstance] setDeviceToken:pushToken];
+}
+
+//注册消息推送失败
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error{
+    
+    NSLog(@"Regist fail%@",error);
+}
+
+//处理收到的消息推送
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+    NSLog(@"Receive remote notification : %@",userInfo);
+    //[[CWDataManager sharedInstance] showToast:@"网络连接异常，请检查网络" withTID:@"" withType:1];
 }
 
 @end
