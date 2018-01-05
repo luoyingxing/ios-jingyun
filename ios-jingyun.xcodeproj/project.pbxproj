@@ -58,6 +58,7 @@
 		669541661FE3B43D000D4638 /* DeviceStatusModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 669541571FE3B43C000D4638 /* DeviceStatusModel.m */; };
 		669541671FE3B43D000D4638 /* TYToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = 669541581FE3B43C000D4638 /* TYToastView.m */; };
 		66A60D4C1FFF66D1006C9261 /* DeviceDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A60D4B1FFF66D1006C9261 /* DeviceDetailViewController.m */; };
+		66A60D4F1FFF73EA006C9261 /* DeviceMessageLocalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A60D4E1FFF73EA006C9261 /* DeviceMessageLocalCell.m */; };
 		66C8230A1FE8A11F00213A59 /* libCWThingsSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66C823091FE8A11F00213A59 /* libCWThingsSDK.a */; };
 		66C8230D1FE8AA9500213A59 /* CWThingsInterface.mm in Sources */ = {isa = PBXBuildFile; fileRef = 66C8230C1FE8AA9500213A59 /* CWThingsInterface.mm */; };
 		66C8236A1FE8BF7800213A59 /* IOS.pfx in Resources */ = {isa = PBXBuildFile; fileRef = 66C823661FE8BF7800213A59 /* IOS.pfx */; };
@@ -295,6 +296,8 @@
 		669541581FE3B43C000D4638 /* TYToastView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYToastView.m; sourceTree = "<group>"; };
 		66A60D4A1FFF66D1006C9261 /* DeviceDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceDetailViewController.h; sourceTree = "<group>"; };
 		66A60D4B1FFF66D1006C9261 /* DeviceDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceDetailViewController.m; sourceTree = "<group>"; };
+		66A60D4D1FFF73EA006C9261 /* DeviceMessageLocalCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceMessageLocalCell.h; sourceTree = "<group>"; };
+		66A60D4E1FFF73EA006C9261 /* DeviceMessageLocalCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceMessageLocalCell.m; sourceTree = "<group>"; };
 		66C823091FE8A11F00213A59 /* libCWThingsSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libCWThingsSDK.a; path = "../../data/object-c/library/libCWThingsSDK.a"; sourceTree = "<group>"; };
 		66C8230B1FE8A92900213A59 /* CWThingsSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWThingsSDK.h; sourceTree = "<group>"; };
 		66C8230C1FE8AA9500213A59 /* CWThingsInterface.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CWThingsInterface.mm; sourceTree = "<group>"; };
@@ -1042,6 +1045,8 @@
 				66E1B45E1FF4D46000531857 /* DeviceDefaultCell.m */,
 				66E1B4621FF4D52100531857 /* DeviceImageCell.h */,
 				66E1B4631FF4D52100531857 /* DeviceImageCell.m */,
+				66A60D4D1FFF73EA006C9261 /* DeviceMessageLocalCell.h */,
+				66A60D4E1FFF73EA006C9261 /* DeviceMessageLocalCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1386,6 +1391,7 @@
 				66D443191FEA23B300D89F5E /* UIView+WebCacheOperation.m in Sources */,
 				6695415D1FE3B43C000D4638 /* AlarmUserLocation.m in Sources */,
 				66D443141FEA23B300D89F5E /* SDWebImageDownloader.m in Sources */,
+				66A60D4F1FFF73EA006C9261 /* DeviceMessageLocalCell.m in Sources */,
 				66DFF1921FEBB10E009086C5 /* HomeViewController.m in Sources */,
 				66E1B4601FF4D46000531857 /* DeviceDefaultCell.m in Sources */,
 				66D442E71FEA220100D89F5E /* TAAnimatedDotView.m in Sources */,

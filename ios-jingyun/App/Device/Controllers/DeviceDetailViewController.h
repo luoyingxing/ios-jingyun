@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DeviceStatusModel.h"
 
 @interface DeviceDetailViewController : UIViewController
+
+@property (strong, nonatomic) DeviceStatusModel* deviceStatusModel;
 
 @end

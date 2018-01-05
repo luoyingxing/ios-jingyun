@@ -10,4 +10,8 @@
 
 @interface DeviceMessageLocalCell : UITableViewCell
 
+@property (strong, nonatomic) UILabel *contentLabel;
+
++ (CGFloat) getCellHeight;
+
 @end

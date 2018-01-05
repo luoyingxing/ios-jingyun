@@ -19,6 +19,7 @@
 #import "DeviceDefaultCell.h"
 #import "DeviceImageCell.h"
 #import "DeviceStatusModel.h"
+#import "DeviceDetailViewController.h"
 
 #define CellIdentifierForDefault @"CellIdentifierForDefault"
 #define CellIdentifierForImage @"CellIdentifierForImage"
@@ -829,7 +830,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NSLog(@"click item %li", indexPath.row);
     
-    
+    DeviceDetailViewController *controller = [[DeviceDetailViewController alloc] init];
+    controller.deviceStatusModel = [_deviceArray objectAtIndex:indexPath.row];
+    [self presentViewController:controller animated:TRUE completion:nil];
 }
 
 - (NSDictionary *) dictionaryWithJsonString:(NSString *)jsonString {
