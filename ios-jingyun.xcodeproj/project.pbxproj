@@ -164,6 +164,10 @@
 		66E1B7FD1FF22DCA0070B2C2 /* SettingCheckedViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 66E1B7FB1FF22DCA0070B2C2 /* SettingCheckedViewCell.m */; };
 		66E1B7FE1FF22DCA0070B2C2 /* SettingCheckedViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66E1B7FC1FF22DCA0070B2C2 /* SettingCheckedViewCell.xib */; };
 		66E1B8001FF23D140070B2C2 /* icon_loading_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 66E1B7FF1FF23D140070B2C2 /* icon_loading_logo.png */; };
+		66EBD8A120036E0E0015DBFB /* icon_device_detail_status.png in Resources */ = {isa = PBXBuildFile; fileRef = 66EBD89F20036E0D0015DBFB /* icon_device_detail_status.png */; };
+		66EBD8A220036E0E0015DBFB /* bg_device_detail_zone.png in Resources */ = {isa = PBXBuildFile; fileRef = 66EBD8A020036E0D0015DBFB /* bg_device_detail_zone.png */; };
+		66EBD8A62003744F0015DBFB /* ZoneViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 66EBD8A42003744F0015DBFB /* ZoneViewCell.m */; };
+		66EBD8A72003744F0015DBFB /* ZoneViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66EBD8A52003744F0015DBFB /* ZoneViewCell.xib */; };
 		66EFDBEC1FF338DD00AF54A4 /* SettingItemList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 66EFDBEB1FF338DD00AF54A4 /* SettingItemList.plist */; };
 		66EFDBEF1FF3729900AF54A4 /* SettingItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 66EFDBED1FF3729900AF54A4 /* SettingItem.m */; };
 		66F038311FF0DAB400884FC1 /* MultiViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 66F038301FF0DAB400884FC1 /* MultiViewCell.m */; };
@@ -439,6 +443,11 @@
 		66E1B7FB1FF22DCA0070B2C2 /* SettingCheckedViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingCheckedViewCell.m; sourceTree = "<group>"; };
 		66E1B7FC1FF22DCA0070B2C2 /* SettingCheckedViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingCheckedViewCell.xib; sourceTree = "<group>"; };
 		66E1B7FF1FF23D140070B2C2 /* icon_loading_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_loading_logo.png; sourceTree = "<group>"; };
+		66EBD89F20036E0D0015DBFB /* icon_device_detail_status.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_device_detail_status.png; sourceTree = "<group>"; };
+		66EBD8A020036E0D0015DBFB /* bg_device_detail_zone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_device_detail_zone.png; sourceTree = "<group>"; };
+		66EBD8A32003744F0015DBFB /* ZoneViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZoneViewCell.h; sourceTree = "<group>"; };
+		66EBD8A42003744F0015DBFB /* ZoneViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZoneViewCell.m; sourceTree = "<group>"; };
+		66EBD8A52003744F0015DBFB /* ZoneViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ZoneViewCell.xib; sourceTree = "<group>"; };
 		66EFDBEB1FF338DD00AF54A4 /* SettingItemList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = SettingItemList.plist; sourceTree = "<group>"; };
 		66EFDBED1FF3729900AF54A4 /* SettingItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingItem.m; sourceTree = "<group>"; };
 		66EFDBEE1FF3729900AF54A4 /* SettingItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingItem.h; sourceTree = "<group>"; };
@@ -688,6 +697,8 @@
 		660F561B1FDE826700788D6C /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				66EBD8A020036E0D0015DBFB /* bg_device_detail_zone.png */,
+				66EBD89F20036E0D0015DBFB /* icon_device_detail_status.png */,
 				66F835BC1FFCE3AA008829E6 /* ic_cw_logo.png */,
 				66F835B91FFCE3A9008829E6 /* ic_ez_logo.png */,
 				66F835BB1FFCE3A9008829E6 /* ic_hm_logo.png */,
@@ -1047,6 +1058,9 @@
 				66E1B4631FF4D52100531857 /* DeviceImageCell.m */,
 				66A60D4D1FFF73EA006C9261 /* DeviceMessageLocalCell.h */,
 				66A60D4E1FFF73EA006C9261 /* DeviceMessageLocalCell.m */,
+				66EBD8A32003744F0015DBFB /* ZoneViewCell.h */,
+				66EBD8A42003744F0015DBFB /* ZoneViewCell.m */,
+				66EBD8A52003744F0015DBFB /* ZoneViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1279,6 +1293,7 @@
 				66F835BF1FFCE3AA008829E6 /* ic_hm_logo.png in Resources */,
 				66F835BE1FFCE3AA008829E6 /* ic_lc_logo.png in Resources */,
 				66D442C01FEA05CE00D89F5E /* tab_icon_device_selected.png in Resources */,
+				66EBD8A72003744F0015DBFB /* ZoneViewCell.xib in Resources */,
 				66F038441FF0FD3E00884FC1 /* app_logo_40.png in Resources */,
 				66C8236A1FE8BF7800213A59 /* IOS.pfx in Resources */,
 				66D442C11FEA05CE00D89F5E /* tab_icon_home_selected.png in Resources */,
@@ -1294,6 +1309,7 @@
 				66D442C51FEA05CE00D89F5E /* tab_icon_more_normal.png in Resources */,
 				66D4431E1FEA390D00D89F5E /* img_slide_default.gif in Resources */,
 				66D442C41FEA05CE00D89F5E /* tab_icon_personal_normal.png in Resources */,
+				66EBD8A120036E0E0015DBFB /* icon_device_detail_status.png in Resources */,
 				66E1B46A1FF4EBD700531857 /* icon_device_alarm.png in Resources */,
 				66F835BD1FFCE3AA008829E6 /* ic_ez_logo.png in Resources */,
 				6695412E1FE3B1F4000D4638 /* Localizable.strings in Resources */,
@@ -1308,6 +1324,7 @@
 				66F038481FF0FD3E00884FC1 /* app_logo_120.png in Resources */,
 				66C8236C1FE8BF7800213A59 /* IOS.key in Resources */,
 				66DFF17C1FEB4CF4009086C5 /* img_home_polic.png in Resources */,
+				66EBD8A220036E0E0015DBFB /* bg_device_detail_zone.png in Resources */,
 				66127EB61FE7AA7200D56869 /* 接口说明.rtf in Resources */,
 				66D442CB1FEA0AE900D89F5E /* icon_back_white.png in Resources */,
 				66EFDBEC1FF338DD00AF54A4 /* SettingItemList.plist in Resources */,
@@ -1351,6 +1368,7 @@
 				660F560A1FDE631300788D6C /* main.m in Sources */,
 				66D442DB1FEA21E200D89F5E /* UIView+SDExtension.m in Sources */,
 				660F56231FDE9BF500788D6C /* CWColorUtils.m in Sources */,
+				66EBD8A62003744F0015DBFB /* ZoneViewCell.m in Sources */,
 				66F0383D1FF0F5A900884FC1 /* TextViewCell.m in Sources */,
 				66D442A41FE9FC9F00D89F5E /* MainTabBarController.m in Sources */,
 				66F282F41FDF6F1A00719AB2 /* AccountCell.m in Sources */,
