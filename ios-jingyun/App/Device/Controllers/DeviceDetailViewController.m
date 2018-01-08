@@ -13,11 +13,14 @@
 #import "CWThings4Interface.h"
 #import "DeviceStatusModel.h"
 #import "DeviceMessageLocalCell.h"
+#import "ZoneViewCell.h"
+
+#define CellIdentifierZone @"CellIdentifierZone"
 
 #define CellIdentifierLocal @"CellIdentifierLocal"
 #define CellIdentifierServer @"CellIdentifierServer"
 
-@interface DeviceDetailViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface DeviceDetailViewController ()<UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource>
 
 //保存数据列表
 @property (nonatomic,strong) NSMutableArray* deviceArray;
@@ -31,6 +34,10 @@
     UILabel* titleLabel;
     UILabel* subtitleLabel;
     UILabel* zoneLabel;
+    
+    UIImageView* statusImageView;
+    UILabel* statusLabel;
+    UICollectionView* collectionView;
     
     CGFloat screenHeight;
     CGFloat screenWidth;
@@ -48,6 +55,7 @@
 
     [self addToolbarView];
     [self addTopView];
+    [self addGridView];
     [self initTableView];
 }
 
@@ -62,6 +70,7 @@
 
 - (void) addToolbarView{
     CGFloat toolbarHeight = 20 + 44;
+    childViewsY += toolbarHeight;
     
     UIView* toolbarView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, toolbarHeight)];
     toolbarView.backgroundColor = [CWColorUtils getThemeColor];
@@ -109,58 +118,63 @@
 }
 
 - (void) addTopView{
-    CGFloat topHeight = 20 + 44 + 44 + 18;
+    CGFloat topHeight = 80 + 2;
+    CGFloat topY = 20 + 44 + 2;
+    childViewsY += topHeight;
     
-//    UIView* bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, topHeight)];
-//    bgView.backgroundColor = [CWColorUtils getThemeColor];
-//    [self.view addSubview:bgView];
-//
-//    UIImageView* imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_white_logo"]];
-//    imageView.frame = CGRectMake(10, 27, 30, 30);
-//    imageView.contentMode =  UIViewContentModeScaleAspectFit;
-//    imageView.clipsToBounds  = YES;
-//    [self.view addSubview:imageView];
-//
-//    UILabel* titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(40, 22, screenWidth - 80, 20)];
-//    titleLabel.textColor = [UIColor whiteColor];
-//    titleLabel.textAlignment = NSTextAlignmentCenter;
-//    titleLabel.text = @"设备";
-//    titleLabel.font = [UIFont systemFontOfSize:16];
-//    [self.view addSubview:titleLabel];
-//
-//    subtitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(40, 42, screenWidth - 80, 20)];
-//    subtitleLabel.textColor = [UIColor whiteColor];
-//    subtitleLabel.textAlignment = NSTextAlignmentCenter;
-//    subtitleLabel.numberOfLines = 1;
-//    subtitleLabel.text = @"全部 | 0";
-//    subtitleLabel.font = [UIFont systemFontOfSize:15];
-//    [self.view addSubview:subtitleLabel];
+    UIImageView* statusBgImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_device_detail_status.png"]];
+    statusBgImageView.frame = CGRectMake(8, topY, 80 , 80);
+    statusBgImageView.contentMode =  UIViewContentModeScaleToFill;
+    statusBgImageView.clipsToBounds  = YES;
+    [self.view addSubview:statusBgImageView];
     
-//    filterLabel = [[UILabel alloc] initWithFrame:CGRectMake(screenWidth - 64, 20, 50, 44)];
-//    filterLabel.textColor = [UIColor whiteColor];
-//    filterLabel.textAlignment = NSTextAlignmentRight;
-//    filterLabel.text = @"过滤";
-//    filterLabel.font = [UIFont systemFontOfSize:17];
-//    UITapGestureRecognizer *onclickListener = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(filterOnclickListener)];
-//    [filterLabel addGestureRecognizer:onclickListener];
-//    filterLabel.userInteractionEnabled = YES;
-//    [self.view addSubview:filterLabel];
+    UIImageView* zoneBgImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg_device_detail_zone.png"]];
+    zoneBgImageView.frame = CGRectMake(8 + 80, topY, screenWidth - 8 - 8 - 80, 80);
+    zoneBgImageView.contentMode =  UIViewContentModeScaleToFill;
+    zoneBgImageView.clipsToBounds  = YES;
+    [self.view addSubview:zoneBgImageView];
     
-    CGFloat fliterWidth = (screenWidth - 16) /4;
+    statusImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_device_safety.png"]];
+    statusImageView.frame = CGRectMake(8 + 20, topY + 10, 40 , 40);
+    statusImageView.contentMode =  UIViewContentModeScaleToFill;
+    statusImageView.clipsToBounds  = YES;
+    [self.view addSubview:statusImageView];
     
+    statusLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, topY + 50, 80 , 30)];
+    statusLabel.textColor = [UIColor whiteColor];
+    statusLabel.textAlignment = NSTextAlignmentCenter;
+    statusLabel.text = @"布防";
+    statusLabel.font = [UIFont systemFontOfSize:16];
+    [self.view addSubview:statusLabel];
+  
+}
+
+- (void) addGridView{
+    CGFloat topY = 20 + 44 + 2;
     
+    UICollectionViewFlowLayout* layout = [[UICollectionViewFlowLayout alloc] init];
+    //设置每个单元格的尺寸
+    layout.itemSize = CGSizeMake((screenWidth - 16 - 80 - 4) / 4, 26);
+    //设置整个CollectionView的内边距
+    layout.sectionInset = UIEdgeInsetsMake(0, 2, 0, 2);
     
-//    tipLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 108, screenWidth, 18)];
-//    tipLabel.backgroundColor = [UIColor whiteColor];
-//    tipLabel.font = [UIFont fontWithName:@"Helvetica" size:15];
-//    tipLabel.textColor = [UIColor grayColor];
-//    tipLabel.textAlignment = NSTextAlignmentCenter;
-//    tipLabel.text = @"全部0/撤防0";
-//    [self.view addSubview:tipLabel];
+    //设置单元格之间的间距
+    layout.minimumInteritemSpacing = 0;
+
+    collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(8 + 80, topY, screenWidth - 8 - 8 - 80, 80) collectionViewLayout:layout];
+    //设置可重用单元格标识与单元格类型
+//    [collectionView registerNib:[ZoneViewCell class]  forCellWithReuseIdentifier:CellIdentifierZone];
+    [collectionView registerNib:[UINib nibWithNibName:@"ZoneViewCell" bundle:nil] forCellWithReuseIdentifier:CellIdentifierZone];
+    
+    collectionView.backgroundColor = [UIColor whiteColor];
+    collectionView.delegate = self;
+    collectionView.dataSource = self;
+    
+    [self.view addSubview:collectionView];
 }
 
 - (void) initTableView{
-    tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 126, screenWidth, screenHeight - 126) style:UITableViewStylePlain];
+    tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, childViewsY, screenWidth, screenHeight - childViewsY) style:UITableViewStylePlain];
     tableView.delegate = self;
     tableView.dataSource = self;
     //分割线颜色
@@ -187,6 +201,25 @@
     
     
     [tableView reloadData];
+}
+
+#pragma mark - UICollectionViewDelegate
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    return 17;
+}
+
+#pragma mark - UICollectionViewDelegate
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    ZoneViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifierZone forIndexPath:indexPath];
+    
+    
+    return cell;
+}
+
+#pragma mark - UICollectionViewDelegate
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"select indexPath.row : %lu", indexPath.row);
+    
 }
 
 #pragma mark --UITableViewDataSource 协议方法
