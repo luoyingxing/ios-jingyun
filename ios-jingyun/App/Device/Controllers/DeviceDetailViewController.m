@@ -55,7 +55,7 @@
 
     [self addToolbarView];
     [self addTopView];
-    [self addGridView];
+    [self addCollectionView];
     [self initTableView];
 }
 
@@ -88,13 +88,6 @@
     titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 22, screenWidth - 100, 22)];
     titleLabel.textColor = [UIColor whiteColor];
     titleLabel.textAlignment = NSTextAlignmentCenter;
-    if (_deviceStatusModel) {
-        if (_deviceStatusModel.caption != nil) {
-            titleLabel.text = _deviceStatusModel.caption;
-        }else{
-            titleLabel.text = @"设备";
-        }
-    }
     titleLabel.font = [UIFont systemFontOfSize:15];
     [self.view addSubview:titleLabel];
     
@@ -146,27 +139,26 @@
     statusLabel.text = @"布防";
     statusLabel.font = [UIFont systemFontOfSize:16];
     [self.view addSubview:statusLabel];
-  
 }
 
-- (void) addGridView{
-    CGFloat topY = 20 + 44 + 2;
+- (void) addCollectionView{
+    CGFloat topY = 20 + 44 + 2 + 6;
     
     UICollectionViewFlowLayout* layout = [[UICollectionViewFlowLayout alloc] init];
     //设置每个单元格的尺寸
-    layout.itemSize = CGSizeMake((screenWidth - 16 - 80 - 4) / 4, 26);
+    layout.itemSize = CGSizeMake((screenWidth - 16 - 80 - 4) / 4, 22);
     //设置整个CollectionView的内边距
-    layout.sectionInset = UIEdgeInsetsMake(0, 2, 0, 2);
-    
+    layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
+
     //设置单元格之间的间距
     layout.minimumInteritemSpacing = 0;
 
-    collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(8 + 80, topY, screenWidth - 8 - 8 - 80, 80) collectionViewLayout:layout];
+    collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(8 + 80, topY, screenWidth - 8 - 8 - 80, 80 - 6) collectionViewLayout:layout];
     //设置可重用单元格标识与单元格类型
 //    [collectionView registerNib:[ZoneViewCell class]  forCellWithReuseIdentifier:CellIdentifierZone];
     [collectionView registerNib:[UINib nibWithNibName:@"ZoneViewCell" bundle:nil] forCellWithReuseIdentifier:CellIdentifierZone];
     
-    collectionView.backgroundColor = [UIColor whiteColor];
+    collectionView.backgroundColor = [CWColorUtils colorWithHexString:@"#ffffff" alpha:0.0f];
     collectionView.delegate = self;
     collectionView.dataSource = self;
     
@@ -191,11 +183,39 @@
 
 - (void) viewWillAppear:(BOOL)animated{
     [self loadDeviceData];
+    [self loadZoneData];
 }
 
-//- (void)tableView:(UITableView *)tableView willDisplayFooterView:(UIView *)view forSection:(NSInteger)section {
-//    view.tintColor = [UIColor whiteColor];
-//}
+//加载防区等信息
+- (void) loadZoneData{
+    if (_deviceStatusModel) {
+        if (_deviceStatusModel.caption != nil) {
+            titleLabel.text = _deviceStatusModel.caption;
+        }else{
+            titleLabel.text = @"设备";
+        }
+        
+        if(_deviceStatusModel.isDeviceOpen){
+            statusLabel.text = @"撤防";
+            statusImageView.image = [UIImage imageNamed:@"icon_device_alarm.png"];
+        }else{
+            statusLabel.text = @"布防";
+            statusImageView.image = [UIImage imageNamed:@"icon_device_safety.png"];
+        }
+        
+        if ([_deviceStatusModel.globalSatus isEqualToString:@"0"]) {
+            subtitleLabel.text = @"设备状态：断开";
+        }else if ([_deviceStatusModel.globalSatus isEqualToString:@"1"]) {
+            subtitleLabel.text = @"设备状态：连接";
+        }else {
+           subtitleLabel.text = @"设备状态：未知";
+        }
+        
+        
+    }
+    
+    [collectionView reloadData];
+}
 
 - (void) loadDeviceData{
     
@@ -205,7 +225,7 @@
 
 #pragma mark - UICollectionViewDelegate
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 17;
+    return 7;
 }
 
 #pragma mark - UICollectionViewDelegate
