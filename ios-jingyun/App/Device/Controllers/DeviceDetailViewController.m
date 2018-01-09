@@ -182,6 +182,8 @@
 }
 
 - (void) viewWillAppear:(BOOL)animated{
+    _deviceStatusModel.unread_count = 0;
+    [[CWDataManager sharedInstance] saveUnreadEvent4Things:_deviceStatusModel.tid value:0];
     [self loadDeviceData];
     [self loadZoneData];
 }
