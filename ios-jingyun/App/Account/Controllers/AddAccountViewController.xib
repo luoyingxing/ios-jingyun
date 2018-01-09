@@ -28,58 +28,58 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="用户名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y3j-Kc-8bt">
-                    <rect key="frame" x="14" y="50" width="347" height="30"/>
+                    <rect key="frame" x="14" y="100" width="347" height="30"/>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="E1s-L7-xDj">
-                    <rect key="frame" x="14" y="94" width="347" height="30"/>
+                    <rect key="frame" x="14" y="144" width="347" height="30"/>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="服务器名称" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7ed-Ha-Cg1">
-                    <rect key="frame" x="14" y="138" width="347" height="30"/>
+                    <rect key="frame" x="14" y="188" width="347" height="30"/>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="服务器地址" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yYH-Q5-nEg">
-                    <rect key="frame" x="14" y="182" width="347" height="30"/>
+                    <rect key="frame" x="14" y="232" width="347" height="30"/>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="端口" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JzL-Dk-glQ">
-                    <rect key="frame" x="14" y="226" width="347" height="30"/>
+                    <rect key="frame" x="14" y="276" width="347" height="30"/>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="绑定SIM卡" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mcx-K9-OKr">
-                    <rect key="frame" x="14" y="270" width="347" height="31"/>
+                    <rect key="frame" x="14" y="320" width="347" height="31"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.43177690780909245" green="0.42881842380622176" blue="0.43601284898477155" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="QO9-HV-C1A">
-                    <rect key="frame" x="312" y="270" width="51" height="31"/>
+                    <rect key="frame" x="312" y="320" width="51" height="31"/>
                 </switch>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="使用域名登陆" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jep-EZ-fxH">
-                    <rect key="frame" x="14" y="315" width="104" height="21"/>
+                    <rect key="frame" x="14" y="365" width="104" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.40848449119788427" green="0.42263536301660248" blue="0.42724857233502533" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="gao-9p-I6v">
-                    <rect key="frame" x="312" y="310" width="51" height="31"/>
+                    <rect key="frame" x="312" y="360" width="51" height="31"/>
                     <connections>
                         <action selector="domainLoginClick:" destination="-1" eventType="valueChanged" id="I5X-k3-2vA"/>
                     </connections>
                 </switch>
                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X1g-j4-vnu">
-                    <rect key="frame" x="14" y="342" width="347" height="40"/>
+                    <rect key="frame" x="12" y="493" width="347" height="40"/>
                     <color key="backgroundColor" red="0.26432953038022766" green="0.81846157158168298" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal" title="确定"/>
@@ -113,7 +113,7 @@
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="X1g-j4-vnu" secondAttribute="trailing" constant="14" id="gpt-Pk-Nlh"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="QO9-HV-C1A" secondAttribute="trailing" constant="14" id="hW4-LW-n3m"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="mcx-K9-OKr" secondAttribute="trailing" constant="14" id="kHP-h4-Kgn"/>
-                <constraint firstItem="Y3j-Kc-8bt" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="30" id="nsX-aZ-0o2"/>
+                <constraint firstItem="Y3j-Kc-8bt" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="80" id="nsX-aZ-0o2"/>
                 <constraint firstItem="QO9-HV-C1A" firstAttribute="top" secondItem="JzL-Dk-glQ" secondAttribute="bottom" constant="14" id="rA6-jq-Oew"/>
                 <constraint firstItem="JzL-Dk-glQ" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="14" id="sEj-2Z-ujw"/>
                 <constraint firstItem="yYH-Q5-nEg" firstAttribute="top" secondItem="7ed-Ha-Cg1" secondAttribute="bottom" constant="14" id="tGB-sh-Vez"/>

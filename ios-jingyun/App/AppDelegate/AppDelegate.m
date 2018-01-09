@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "AccountViewController.h"
-#import "curl.h"
+//#import "curl.h"
 #import "CWDataManager.h"
 
 #define UIColorFromRGB(rgbValue) [UIColor \
@@ -27,7 +27,7 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
     // Override point for customization after application launch.
    
     [self setContentVC];
-    curl_global_init(0L);
+//    curl_global_init(0L);
     
     return YES;
 }

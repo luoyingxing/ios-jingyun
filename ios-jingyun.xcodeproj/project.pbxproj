@@ -14,8 +14,6 @@
 		660F56171FDE803400788D6C /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 660F56161FDE803400788D6C /* AccountViewController.m */; };
 		660F561F1FDE83D300788D6C /* app_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 660F561E1FDE83D300788D6C /* app_logo.png */; };
 		660F56231FDE9BF500788D6C /* CWColorUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 660F56221FDE9BF500788D6C /* CWColorUtils.m */; };
-		66127E8F1FE7A38B00D56869 /* libCommonUtilitiesLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66127E8D1FE7A38B00D56869 /* libCommonUtilitiesLib.a */; };
-		66127EB61FE7AA7200D56869 /* 接口说明.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 66127E971FE7AA6E00D56869 /* 接口说明.rtf */; };
 		66127ED51FE7AAEB00D56869 /* CWAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 66127EC51FE7AAEA00D56869 /* CWAction.m */; };
 		66127ED61FE7AAEB00D56869 /* CWThings4Interface.m in Sources */ = {isa = PBXBuildFile; fileRef = 66127EC71FE7AAEA00D56869 /* CWThings4Interface.m */; };
 		66127ED71FE7AAEB00D56869 /* CWVideoChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 66127ECA1FE7AAEA00D56869 /* CWVideoChannel.m */; };
@@ -24,22 +22,6 @@
 		66127EDA1FE7AAEB00D56869 /* CWDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 66127ECF1FE7AAEA00D56869 /* CWDataManager.m */; };
 		66127EDB1FE7AAEB00D56869 /* CWService.m in Sources */ = {isa = PBXBuildFile; fileRef = 66127ED21FE7AAEB00D56869 /* CWService.m */; };
 		66127EDC1FE7AAEB00D56869 /* CWZoneObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 66127ED41FE7AAEB00D56869 /* CWZoneObject.m */; };
-		66127EE91FE7AF9F00D56869 /* libPPHelpMe.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66127EDD1FE7AF9F00D56869 /* libPPHelpMe.a */; };
-		66127EEA1FE7AF9F00D56869 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66127EDE1FE7AF9F00D56869 /* libPods.a */; };
-		66127EEB1FE7AF9F00D56869 /* libMasonry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66127EDF1FE7AF9F00D56869 /* libMasonry.a */; };
-		66127EEC1FE7AF9F00D56869 /* libLBXAlertAction.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66127EE01FE7AF9F00D56869 /* libLBXAlertAction.a */; };
-		66127EED1FE7AF9F00D56869 /* libTLIndexPathTools.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66127EE11FE7AF9F00D56869 /* libTLIndexPathTools.a */; };
-		66127EEE1FE7AF9F00D56869 /* libTYXOREncode.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66127EE21FE7AF9F00D56869 /* libTYXOREncode.a */; };
-		66127EEF1FE7AF9F00D56869 /* libVCollectionViewGridLayout.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66127EE31FE7AF9F00D56869 /* libVCollectionViewGridLayout.a */; };
-		66127EF01FE7AF9F00D56869 /* libMMTweenAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66127EE41FE7AF9F00D56869 /* libMMTweenAnimation.a */; };
-		66127EF11FE7AF9F00D56869 /* libZYCornerRadius.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66127EE51FE7AF9F00D56869 /* libZYCornerRadius.a */; };
-		66127EF21FE7AF9F00D56869 /* libTZImagePickerController.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66127EE61FE7AF9F00D56869 /* libTZImagePickerController.a */; };
-		66127EF31FE7AF9F00D56869 /* libZXingObjC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66127EE71FE7AF9F00D56869 /* libZXingObjC.a */; };
-		66127EF41FE7AFA000D56869 /* libpop.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66127EE81FE7AF9F00D56869 /* libpop.a */; };
-		66127EFD1FE7B02B00D56869 /* libnghttp2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66127EF61FE7B02A00D56869 /* libnghttp2.a */; };
-		66127F001FE7B02C00D56869 /* libcrypto_iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66127EF91FE7B02B00D56869 /* libcrypto_iOS.a */; };
-		66127F021FE7B02C00D56869 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66127EFB1FE7B02B00D56869 /* libcrypto.a */; };
-		66127F1A1FE7B34B00D56869 /* libz.1.1.3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 66127F191FE7B34B00D56869 /* libz.1.1.3.tbd */; };
 		6695412E1FE3B1F4000D4638 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6695412D1FE3B1F4000D4638 /* Localizable.strings */; };
 		669541381FE3B2F9000D4638 /* LoginUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 669541331FE3B2F9000D4638 /* LoginUserInfo.m */; };
 		669541591FE3B43C000D4638 /* RepairUserLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6695413B1FE3B439000D4638 /* RepairUserLocation.m */; };
@@ -59,47 +41,6 @@
 		669541671FE3B43D000D4638 /* TYToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = 669541581FE3B43C000D4638 /* TYToastView.m */; };
 		66A60D4C1FFF66D1006C9261 /* DeviceDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A60D4B1FFF66D1006C9261 /* DeviceDetailViewController.m */; };
 		66A60D4F1FFF73EA006C9261 /* DeviceMessageLocalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A60D4E1FFF73EA006C9261 /* DeviceMessageLocalCell.m */; };
-		66C8230A1FE8A11F00213A59 /* libCWThingsSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66C823091FE8A11F00213A59 /* libCWThingsSDK.a */; };
-		66C8230D1FE8AA9500213A59 /* CWThingsInterface.mm in Sources */ = {isa = PBXBuildFile; fileRef = 66C8230C1FE8AA9500213A59 /* CWThingsInterface.mm */; };
-		66C8236A1FE8BF7800213A59 /* IOS.pfx in Resources */ = {isa = PBXBuildFile; fileRef = 66C823661FE8BF7800213A59 /* IOS.pfx */; };
-		66C8236B1FE8BF7800213A59 /* IOS.crt in Resources */ = {isa = PBXBuildFile; fileRef = 66C823671FE8BF7800213A59 /* IOS.crt */; };
-		66C8236C1FE8BF7800213A59 /* IOS.key in Resources */ = {isa = PBXBuildFile; fileRef = 66C823681FE8BF7800213A59 /* IOS.key */; };
-		66C8236D1FE8BF7800213A59 /* jingyun.root.pem in Resources */ = {isa = PBXBuildFile; fileRef = 66C823691FE8BF7800213A59 /* jingyun.root.pem */; };
-		66D442591FE9F72700D89F5E /* libcurl_iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66127EF51FE7B02A00D56869 /* libcurl_iOS.a */; };
-		66D4425A1FE9F72700D89F5E /* libcurl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66127EF81FE7B02B00D56869 /* libcurl.a */; };
-		66D4425B1FE9F72700D89F5E /* libssl_iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66127EF71FE7B02A00D56869 /* libssl_iOS.a */; };
-		66D4425C1FE9F72700D89F5E /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66127EFA1FE7B02B00D56869 /* libssl.a */; };
-		66D4425E1FE9F7CE00D89F5E /* libNetFramework.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66D4425D1FE9F7CE00D89F5E /* libNetFramework.a */; };
-		66D4427C1FE9FAAA00D89F5E /* libamrdec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66D4425F1FE9FAA300D89F5E /* libamrdec.a */; };
-		66D4427D1FE9FAAA00D89F5E /* libStream.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66D442601FE9FAA300D89F5E /* libStream.a */; };
-		66D4427E1FE9FAAA00D89F5E /* libmpeg4dec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66D442611FE9FAA400D89F5E /* libmpeg4dec.a */; };
-		66D4427F1FE9FAAA00D89F5E /* libStreamSvr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66D442621FE9FAA400D89F5E /* libStreamSvr.a */; };
-		66D442801FE9FAAA00D89F5E /* libTinyXML.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66D442631FE9FAA500D89F5E /* libTinyXML.a */; };
-		66D442811FE9FAAA00D89F5E /* libTouProxy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66D442641FE9FAA500D89F5E /* libTouProxy.a */; };
-		66D442821FE9FAAA00D89F5E /* libdvr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66D442651FE9FAA500D89F5E /* libdvr.a */; };
-		66D442831FE9FAAA00D89F5E /* libh264dec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66D442661FE9FAA500D89F5E /* libh264dec.a */; };
-		66D442841FE9FAAA00D89F5E /* libInfra.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66D442671FE9FAA600D89F5E /* libInfra.a */; };
-		66D442851FE9FAAA00D89F5E /* libh264parser.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66D442681FE9FAA600D89F5E /* libh264parser.a */; };
-		66D442861FE9FAAA00D89F5E /* libiosrender.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66D442691FE9FAA600D89F5E /* libiosrender.a */; };
-		66D442871FE9FAAA00D89F5E /* libg711.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66D4426A1FE9FAA600D89F5E /* libg711.a */; };
-		66D442881FE9FAAA00D89F5E /* libmp3dec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66D4426B1FE9FAA600D89F5E /* libmp3dec.a */; };
-		66D442891FE9FAAA00D89F5E /* libhevcdec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66D4426C1FE9FAA700D89F5E /* libhevcdec.a */; };
-		66D4428A1FE9FAAA00D89F5E /* libnetsdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66D4426D1FE9FAA700D89F5E /* libnetsdk.a */; };
-		66D4428B1FE9FAAA00D89F5E /* libaacdec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66D4426E1FE9FAA700D89F5E /* libaacdec.a */; };
-		66D4428C1FE9FAAA00D89F5E /* libStreamPackage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66D4426F1FE9FAA700D89F5E /* libStreamPackage.a */; };
-		66D4428D1FE9FAAA00D89F5E /* libplay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66D442701FE9FAA700D89F5E /* libplay.a */; };
-		66D4428E1FE9FAAA00D89F5E /* libpostprocess.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66D442711FE9FAA800D89F5E /* libpostprocess.a */; };
-		66D4428F1FE9FAAA00D89F5E /* libStreamParser.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66D442721FE9FAA800D89F5E /* libStreamParser.a */; };
-		66D442901FE9FAAA00D89F5E /* libg723dec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66D442731FE9FAA800D89F5E /* libg723dec.a */; };
-		66D442911FE9FAAA00D89F5E /* libmp2dec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66D442741FE9FAA800D89F5E /* libmp2dec.a */; };
-		66D442921FE9FAAA00D89F5E /* libmjpegdec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66D442751FE9FAA800D89F5E /* libmjpegdec.a */; };
-		66D442931FE9FAAA00D89F5E /* libsvacdec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66D442761FE9FAA900D89F5E /* libsvacdec.a */; };
-		66D442941FE9FAAA00D89F5E /* libhevcparser.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66D442771FE9FAA900D89F5E /* libhevcparser.a */; };
-		66D442951FE9FAAA00D89F5E /* libavnetsdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66D442781FE9FAA900D89F5E /* libavnetsdk.a */; };
-		66D442961FE9FAAA00D89F5E /* libconfigsdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66D442791FE9FAA900D89F5E /* libconfigsdk.a */; };
-		66D442971FE9FAAA00D89F5E /* liboggdec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66D4427A1FE9FAA900D89F5E /* liboggdec.a */; };
-		66D442981FE9FAAA00D89F5E /* libadpcmdec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66D4427B1FE9FAAA00D89F5E /* libadpcmdec.a */; };
-		66D4429A1FE9FAC900D89F5E /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 66D442991FE9FAC900D89F5E /* libstdc++.6.0.9.tbd */; };
 		66D442A41FE9FC9F00D89F5E /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D442A31FE9FC9F00D89F5E /* MainTabBarController.m */; };
 		66D442AC1FE9FEAF00D89F5E /* DeviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D442AB1FE9FEAF00D89F5E /* DeviceViewController.m */; };
 		66D442B11FE9FEDA00D89F5E /* PersonalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D442B01FE9FEDA00D89F5E /* PersonalViewController.m */; };
@@ -168,6 +109,30 @@
 		66EBD8A220036E0E0015DBFB /* bg_device_detail_zone.png in Resources */ = {isa = PBXBuildFile; fileRef = 66EBD8A020036E0D0015DBFB /* bg_device_detail_zone.png */; };
 		66EBD8A62003744F0015DBFB /* ZoneViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 66EBD8A42003744F0015DBFB /* ZoneViewCell.m */; };
 		66EBD8A72003744F0015DBFB /* ZoneViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66EBD8A52003744F0015DBFB /* ZoneViewCell.xib */; };
+		66EC461620046623008F9AB6 /* CWThingsSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 66EC461520046623008F9AB6 /* CWThingsSDK.m */; };
+		66EC461720046623008F9AB6 /* CWThingsSDK.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 66EC461420046623008F9AB6 /* CWThingsSDK.h */; };
+		66EC463B20046654008F9AB6 /* tutils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 66EC461D2004663F008F9AB6 /* tutils.cpp */; };
+		66EC463C20046654008F9AB6 /* base64.c in Sources */ = {isa = PBXBuildFile; fileRef = 66EC461E2004663F008F9AB6 /* base64.c */; };
+		66EC463D20046654008F9AB6 /* tparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 66EC461F20046640008F9AB6 /* tparser.cpp */; };
+		66EC463E20046654008F9AB6 /* CWDataMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 66EC462020046641008F9AB6 /* CWDataMgr.m */; };
+		66EC463F20046654008F9AB6 /* CWRequestContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 66EC462720046646008F9AB6 /* CWRequestContext.cpp */; };
+		66EC464020046654008F9AB6 /* tenv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 66EC462C2004664A008F9AB6 /* tenv.cpp */; };
+		66EC464120046654008F9AB6 /* things.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 66EC462E2004664B008F9AB6 /* things.cpp */; };
+		66EC464220046654008F9AB6 /* CWThingsInterface.mm in Sources */ = {isa = PBXBuildFile; fileRef = 66EC462F2004664C008F9AB6 /* CWThingsInterface.mm */; };
+		66EC464320046654008F9AB6 /* tobject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 66EC46322004664E008F9AB6 /* tobject.cpp */; };
+		66EC464420046654008F9AB6 /* connection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 66EC46332004664F008F9AB6 /* connection.cpp */; };
+		66EC464520046654008F9AB6 /* cwlib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 66EC463420046650008F9AB6 /* cwlib.cpp */; };
+		66EC464620046654008F9AB6 /* texpr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 66EC463520046651008F9AB6 /* texpr.cpp */; };
+		66EC464720046654008F9AB6 /* tvarex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 66EC463720046652008F9AB6 /* tvarex.cpp */; };
+		66EC464820046654008F9AB6 /* vsync.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 66EC463820046653008F9AB6 /* vsync.cpp */; };
+		66EC464920046654008F9AB6 /* conn_linux_socket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 66EC463920046653008F9AB6 /* conn_linux_socket.cpp */; };
+		66EC489020049B0D008F9AB6 /* libCWThingsSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66EC461220046622008F9AB6 /* libCWThingsSDK.a */; };
+		66EC489A20049CE1008F9AB6 /* libc++.1.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 669540731FE3AD7D000D4638 /* libc++.1.tbd */; };
+		66EC489B20049CE1008F9AB6 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6695407A1FE3ADB4000D4638 /* libc++.tbd */; };
+		66EC489C20049CE1008F9AB6 /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 66D442991FE9FAC900D89F5E /* libstdc++.6.0.9.tbd */; };
+		66EC489D20049CE1008F9AB6 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 669540721FE3AD6C000D4638 /* libstdc++.tbd */; };
+		66EC48A020049CE1008F9AB6 /* libstdc++.6.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 66EC489E20049CE1008F9AB6 /* libstdc++.6.tbd */; };
+		66EC48A120049CE1008F9AB6 /* libc++abi.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 66EC489F20049CE1008F9AB6 /* libc++abi.tbd */; };
 		66EFDBEC1FF338DD00AF54A4 /* SettingItemList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 66EFDBEB1FF338DD00AF54A4 /* SettingItemList.plist */; };
 		66EFDBEF1FF3729900AF54A4 /* SettingItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 66EFDBED1FF3729900AF54A4 /* SettingItem.m */; };
 		66F038311FF0DAB400884FC1 /* MultiViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 66F038301FF0DAB400884FC1 /* MultiViewCell.m */; };
@@ -196,6 +161,20 @@
 		66FF01F91FF1041C005BE42C /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66FF01F81FF1041C005BE42C /* WebViewController.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		66EC461020046622008F9AB6 /* Copy Files */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				66EC461720046623008F9AB6 /* CWThingsSDK.h in Copy Files */,
+			);
+			name = "Copy Files";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		660F55F41FDE631300788D6C /* ios-jingyun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-jingyun.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		660F55F71FDE631300788D6C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -209,8 +188,6 @@
 		660F561E1FDE83D300788D6C /* app_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = app_logo.png; path = "../../../../../../image/mipmap-xxhdpi/app_logo.png"; sourceTree = "<group>"; };
 		660F56211FDE9BF500788D6C /* CWColorUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CWColorUtils.h; sourceTree = "<group>"; };
 		660F56221FDE9BF500788D6C /* CWColorUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CWColorUtils.m; sourceTree = "<group>"; };
-		66127E8D1FE7A38B00D56869 /* libCommonUtilitiesLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libCommonUtilitiesLib.a; path = "../../data/object-c/library/libCommonUtilitiesLib.a"; sourceTree = "<group>"; };
-		66127E971FE7AA6E00D56869 /* 接口说明.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = "接口说明.rtf"; sourceTree = "<group>"; };
 		66127EC41FE7AAE900D56869 /* CWAccessPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWAccessPoint.h; sourceTree = "<group>"; };
 		66127EC51FE7AAEA00D56869 /* CWAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWAction.m; sourceTree = "<group>"; };
 		66127EC61FE7AAEA00D56869 /* CWProtocalDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWProtocalDefine.h; sourceTree = "<group>"; };
@@ -228,25 +205,6 @@
 		66127ED21FE7AAEB00D56869 /* CWService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWService.m; sourceTree = "<group>"; };
 		66127ED31FE7AAEB00D56869 /* CWService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWService.h; sourceTree = "<group>"; };
 		66127ED41FE7AAEB00D56869 /* CWZoneObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWZoneObject.m; sourceTree = "<group>"; };
-		66127EDD1FE7AF9F00D56869 /* libPPHelpMe.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPPHelpMe.a; path = "../../data/object-c/library/libPPHelpMe.a"; sourceTree = "<group>"; };
-		66127EDE1FE7AF9F00D56869 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "../../data/object-c/library/libPods.a"; sourceTree = "<group>"; };
-		66127EDF1FE7AF9F00D56869 /* libMasonry.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMasonry.a; path = "../../data/object-c/library/libMasonry.a"; sourceTree = "<group>"; };
-		66127EE01FE7AF9F00D56869 /* libLBXAlertAction.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libLBXAlertAction.a; path = "../../data/object-c/library/libLBXAlertAction.a"; sourceTree = "<group>"; };
-		66127EE11FE7AF9F00D56869 /* libTLIndexPathTools.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libTLIndexPathTools.a; path = "../../data/object-c/library/libTLIndexPathTools.a"; sourceTree = "<group>"; };
-		66127EE21FE7AF9F00D56869 /* libTYXOREncode.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libTYXOREncode.a; path = "../../data/object-c/library/libTYXOREncode.a"; sourceTree = "<group>"; };
-		66127EE31FE7AF9F00D56869 /* libVCollectionViewGridLayout.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libVCollectionViewGridLayout.a; path = "../../data/object-c/library/libVCollectionViewGridLayout.a"; sourceTree = "<group>"; };
-		66127EE41FE7AF9F00D56869 /* libMMTweenAnimation.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMMTweenAnimation.a; path = "../../data/object-c/library/libMMTweenAnimation.a"; sourceTree = "<group>"; };
-		66127EE51FE7AF9F00D56869 /* libZYCornerRadius.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libZYCornerRadius.a; path = "../../data/object-c/library/libZYCornerRadius.a"; sourceTree = "<group>"; };
-		66127EE61FE7AF9F00D56869 /* libTZImagePickerController.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libTZImagePickerController.a; path = "../../data/object-c/library/libTZImagePickerController.a"; sourceTree = "<group>"; };
-		66127EE71FE7AF9F00D56869 /* libZXingObjC.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libZXingObjC.a; path = "../../data/object-c/library/libZXingObjC.a"; sourceTree = "<group>"; };
-		66127EE81FE7AF9F00D56869 /* libpop.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpop.a; path = "../../data/object-c/library/libpop.a"; sourceTree = "<group>"; };
-		66127EF51FE7B02A00D56869 /* libcurl_iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl_iOS.a; path = "../../data/object-c/library/libcurl_iOS.a"; sourceTree = "<group>"; };
-		66127EF61FE7B02A00D56869 /* libnghttp2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libnghttp2.a; path = "../../data/object-c/library/libnghttp2.a"; sourceTree = "<group>"; };
-		66127EF71FE7B02A00D56869 /* libssl_iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl_iOS.a; path = "../../data/object-c/library/libssl_iOS.a"; sourceTree = "<group>"; };
-		66127EF81FE7B02B00D56869 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = "../../data/object-c/library/libcurl.a"; sourceTree = "<group>"; };
-		66127EF91FE7B02B00D56869 /* libcrypto_iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto_iOS.a; path = "../../data/object-c/library/libcrypto_iOS.a"; sourceTree = "<group>"; };
-		66127EFA1FE7B02B00D56869 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = "../../data/object-c/library/libssl.a"; sourceTree = "<group>"; };
-		66127EFB1FE7B02B00D56869 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = "../../data/object-c/library/libcrypto.a"; sourceTree = "<group>"; };
 		66127F191FE7B34B00D56869 /* libz.1.1.3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.1.3.tbd; path = usr/lib/libz.1.1.3.tbd; sourceTree = SDKROOT; };
 		6695406B1FE3AD23000D4638 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		6695406C1FE3AD2E000D4638 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -302,44 +260,6 @@
 		66A60D4B1FFF66D1006C9261 /* DeviceDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceDetailViewController.m; sourceTree = "<group>"; };
 		66A60D4D1FFF73EA006C9261 /* DeviceMessageLocalCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceMessageLocalCell.h; sourceTree = "<group>"; };
 		66A60D4E1FFF73EA006C9261 /* DeviceMessageLocalCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceMessageLocalCell.m; sourceTree = "<group>"; };
-		66C823091FE8A11F00213A59 /* libCWThingsSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libCWThingsSDK.a; path = "../../data/object-c/library/libCWThingsSDK.a"; sourceTree = "<group>"; };
-		66C8230B1FE8A92900213A59 /* CWThingsSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWThingsSDK.h; sourceTree = "<group>"; };
-		66C8230C1FE8AA9500213A59 /* CWThingsInterface.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CWThingsInterface.mm; sourceTree = "<group>"; };
-		66C823181FE8BE8000213A59 /* curl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = curl.h; sourceTree = "<group>"; };
-		66C823661FE8BF7800213A59 /* IOS.pfx */ = {isa = PBXFileReference; lastKnownFileType = file; path = IOS.pfx; sourceTree = "<group>"; };
-		66C823671FE8BF7800213A59 /* IOS.crt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = IOS.crt; sourceTree = "<group>"; };
-		66C823681FE8BF7800213A59 /* IOS.key */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = IOS.key; sourceTree = "<group>"; };
-		66C823691FE8BF7800213A59 /* jingyun.root.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = jingyun.root.pem; sourceTree = "<group>"; };
-		66D4425D1FE9F7CE00D89F5E /* libNetFramework.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libNetFramework.a; path = "../../data/object-c/library/libNetFramework.a"; sourceTree = "<group>"; };
-		66D4425F1FE9FAA300D89F5E /* libamrdec.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libamrdec.a; path = "../../data/object-c/library/libamrdec.a"; sourceTree = "<group>"; };
-		66D442601FE9FAA300D89F5E /* libStream.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libStream.a; path = "../../data/object-c/library/libStream.a"; sourceTree = "<group>"; };
-		66D442611FE9FAA400D89F5E /* libmpeg4dec.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmpeg4dec.a; path = "../../data/object-c/library/libmpeg4dec.a"; sourceTree = "<group>"; };
-		66D442621FE9FAA400D89F5E /* libStreamSvr.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libStreamSvr.a; path = "../../data/object-c/library/libStreamSvr.a"; sourceTree = "<group>"; };
-		66D442631FE9FAA500D89F5E /* libTinyXML.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libTinyXML.a; path = "../../data/object-c/library/libTinyXML.a"; sourceTree = "<group>"; };
-		66D442641FE9FAA500D89F5E /* libTouProxy.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libTouProxy.a; path = "../../data/object-c/library/libTouProxy.a"; sourceTree = "<group>"; };
-		66D442651FE9FAA500D89F5E /* libdvr.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libdvr.a; path = "../../data/object-c/library/libdvr.a"; sourceTree = "<group>"; };
-		66D442661FE9FAA500D89F5E /* libh264dec.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libh264dec.a; path = "../../data/object-c/library/libh264dec.a"; sourceTree = "<group>"; };
-		66D442671FE9FAA600D89F5E /* libInfra.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libInfra.a; path = "../../data/object-c/library/libInfra.a"; sourceTree = "<group>"; };
-		66D442681FE9FAA600D89F5E /* libh264parser.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libh264parser.a; path = "../../data/object-c/library/libh264parser.a"; sourceTree = "<group>"; };
-		66D442691FE9FAA600D89F5E /* libiosrender.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libiosrender.a; path = "../../data/object-c/library/libiosrender.a"; sourceTree = "<group>"; };
-		66D4426A1FE9FAA600D89F5E /* libg711.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libg711.a; path = "../../data/object-c/library/libg711.a"; sourceTree = "<group>"; };
-		66D4426B1FE9FAA600D89F5E /* libmp3dec.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmp3dec.a; path = "../../data/object-c/library/libmp3dec.a"; sourceTree = "<group>"; };
-		66D4426C1FE9FAA700D89F5E /* libhevcdec.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libhevcdec.a; path = "../../data/object-c/library/libhevcdec.a"; sourceTree = "<group>"; };
-		66D4426D1FE9FAA700D89F5E /* libnetsdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libnetsdk.a; path = "../../data/object-c/library/libnetsdk.a"; sourceTree = "<group>"; };
-		66D4426E1FE9FAA700D89F5E /* libaacdec.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libaacdec.a; path = "../../data/object-c/library/libaacdec.a"; sourceTree = "<group>"; };
-		66D4426F1FE9FAA700D89F5E /* libStreamPackage.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libStreamPackage.a; path = "../../data/object-c/library/libStreamPackage.a"; sourceTree = "<group>"; };
-		66D442701FE9FAA700D89F5E /* libplay.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libplay.a; path = "../../data/object-c/library/libplay.a"; sourceTree = "<group>"; };
-		66D442711FE9FAA800D89F5E /* libpostprocess.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpostprocess.a; path = "../../data/object-c/library/libpostprocess.a"; sourceTree = "<group>"; };
-		66D442721FE9FAA800D89F5E /* libStreamParser.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libStreamParser.a; path = "../../data/object-c/library/libStreamParser.a"; sourceTree = "<group>"; };
-		66D442731FE9FAA800D89F5E /* libg723dec.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libg723dec.a; path = "../../data/object-c/library/libg723dec.a"; sourceTree = "<group>"; };
-		66D442741FE9FAA800D89F5E /* libmp2dec.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmp2dec.a; path = "../../data/object-c/library/libmp2dec.a"; sourceTree = "<group>"; };
-		66D442751FE9FAA800D89F5E /* libmjpegdec.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmjpegdec.a; path = "../../data/object-c/library/libmjpegdec.a"; sourceTree = "<group>"; };
-		66D442761FE9FAA900D89F5E /* libsvacdec.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libsvacdec.a; path = "../../data/object-c/library/libsvacdec.a"; sourceTree = "<group>"; };
-		66D442771FE9FAA900D89F5E /* libhevcparser.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libhevcparser.a; path = "../../data/object-c/library/libhevcparser.a"; sourceTree = "<group>"; };
-		66D442781FE9FAA900D89F5E /* libavnetsdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libavnetsdk.a; path = "../../data/object-c/library/libavnetsdk.a"; sourceTree = "<group>"; };
-		66D442791FE9FAA900D89F5E /* libconfigsdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libconfigsdk.a; path = "../../data/object-c/library/libconfigsdk.a"; sourceTree = "<group>"; };
-		66D4427A1FE9FAA900D89F5E /* liboggdec.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = liboggdec.a; path = "../../data/object-c/library/liboggdec.a"; sourceTree = "<group>"; };
-		66D4427B1FE9FAAA00D89F5E /* libadpcmdec.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libadpcmdec.a; path = "../../data/object-c/library/libadpcmdec.a"; sourceTree = "<group>"; };
 		66D442991FE9FAC900D89F5E /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
 		66D442A21FE9FC9F00D89F5E /* MainTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainTabBarController.h; sourceTree = "<group>"; };
 		66D442A31FE9FC9F00D89F5E /* MainTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainTabBarController.m; sourceTree = "<group>"; };
@@ -448,6 +368,43 @@
 		66EBD8A32003744F0015DBFB /* ZoneViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZoneViewCell.h; sourceTree = "<group>"; };
 		66EBD8A42003744F0015DBFB /* ZoneViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZoneViewCell.m; sourceTree = "<group>"; };
 		66EBD8A52003744F0015DBFB /* ZoneViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ZoneViewCell.xib; sourceTree = "<group>"; };
+		66EC461220046622008F9AB6 /* libCWThingsSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCWThingsSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		66EC461420046623008F9AB6 /* CWThingsSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CWThingsSDK.h; sourceTree = "<group>"; };
+		66EC461520046623008F9AB6 /* CWThingsSDK.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CWThingsSDK.m; sourceTree = "<group>"; };
+		66EC461B2004663D008F9AB6 /* CWDataMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWDataMgr.h; sourceTree = "<group>"; };
+		66EC461C2004663E008F9AB6 /* tenv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tenv.h; sourceTree = "<group>"; };
+		66EC461D2004663F008F9AB6 /* tutils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tutils.cpp; sourceTree = "<group>"; };
+		66EC461E2004663F008F9AB6 /* base64.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = base64.c; sourceTree = "<group>"; };
+		66EC461F20046640008F9AB6 /* tparser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tparser.cpp; sourceTree = "<group>"; };
+		66EC462020046641008F9AB6 /* CWDataMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWDataMgr.m; sourceTree = "<group>"; };
+		66EC462120046642008F9AB6 /* CWThingsSDK-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CWThingsSDK-Prefix.pch"; sourceTree = "<group>"; };
+		66EC462220046642008F9AB6 /* CWThingsInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWThingsInterface.h; sourceTree = "<group>"; };
+		66EC462320046643008F9AB6 /* cwlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cwlib.h; sourceTree = "<group>"; };
+		66EC462420046644008F9AB6 /* things.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = things.h; sourceTree = "<group>"; };
+		66EC462520046645008F9AB6 /* connection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = connection.h; sourceTree = "<group>"; };
+		66EC462620046645008F9AB6 /* tvarex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tvarex.h; sourceTree = "<group>"; };
+		66EC462720046646008F9AB6 /* CWRequestContext.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CWRequestContext.cpp; sourceTree = "<group>"; };
+		66EC462820046647008F9AB6 /* tobject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tobject.h; sourceTree = "<group>"; };
+		66EC462920046648008F9AB6 /* common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
+		66EC462A20046648008F9AB6 /* conn_linux_socket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = conn_linux_socket.h; sourceTree = "<group>"; };
+		66EC462B20046649008F9AB6 /* texpr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = texpr.h; sourceTree = "<group>"; };
+		66EC462C2004664A008F9AB6 /* tenv.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tenv.cpp; sourceTree = "<group>"; };
+		66EC462D2004664B008F9AB6 /* base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = base64.h; sourceTree = "<group>"; };
+		66EC462E2004664B008F9AB6 /* things.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = things.cpp; sourceTree = "<group>"; };
+		66EC462F2004664C008F9AB6 /* CWThingsInterface.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CWThingsInterface.mm; sourceTree = "<group>"; };
+		66EC46302004664D008F9AB6 /* tutils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tutils.h; sourceTree = "<group>"; };
+		66EC46312004664E008F9AB6 /* vsync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vsync.h; sourceTree = "<group>"; };
+		66EC46322004664E008F9AB6 /* tobject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tobject.cpp; sourceTree = "<group>"; };
+		66EC46332004664F008F9AB6 /* connection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = connection.cpp; sourceTree = "<group>"; };
+		66EC463420046650008F9AB6 /* cwlib.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cwlib.cpp; sourceTree = "<group>"; };
+		66EC463520046651008F9AB6 /* texpr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = texpr.cpp; sourceTree = "<group>"; };
+		66EC463620046651008F9AB6 /* tparser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tparser.h; sourceTree = "<group>"; };
+		66EC463720046652008F9AB6 /* tvarex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tvarex.cpp; sourceTree = "<group>"; };
+		66EC463820046653008F9AB6 /* vsync.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = vsync.cpp; sourceTree = "<group>"; };
+		66EC463920046653008F9AB6 /* conn_linux_socket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = conn_linux_socket.cpp; sourceTree = "<group>"; };
+		66EC463A20046654008F9AB6 /* CWRequestContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWRequestContext.h; sourceTree = "<group>"; };
+		66EC489E20049CE1008F9AB6 /* libstdc++.6.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.tbd"; path = "usr/lib/libstdc++.6.tbd"; sourceTree = SDKROOT; };
+		66EC489F20049CE1008F9AB6 /* libc++abi.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++abi.tbd"; path = "usr/lib/libc++abi.tbd"; sourceTree = SDKROOT; };
 		66EFDBEB1FF338DD00AF54A4 /* SettingItemList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = SettingItemList.plist; sourceTree = "<group>"; };
 		66EFDBED1FF3729900AF54A4 /* SettingItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingItem.m; sourceTree = "<group>"; };
 		66EFDBEE1FF3729900AF54A4 /* SettingItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingItem.h; sourceTree = "<group>"; };
@@ -495,59 +452,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				66D4427C1FE9FAAA00D89F5E /* libamrdec.a in Frameworks */,
-				66D4427D1FE9FAAA00D89F5E /* libStream.a in Frameworks */,
-				66D4427E1FE9FAAA00D89F5E /* libmpeg4dec.a in Frameworks */,
-				66D4427F1FE9FAAA00D89F5E /* libStreamSvr.a in Frameworks */,
-				66D442801FE9FAAA00D89F5E /* libTinyXML.a in Frameworks */,
-				66D442811FE9FAAA00D89F5E /* libTouProxy.a in Frameworks */,
-				66D442821FE9FAAA00D89F5E /* libdvr.a in Frameworks */,
-				66D4429A1FE9FAC900D89F5E /* libstdc++.6.0.9.tbd in Frameworks */,
-				66D442831FE9FAAA00D89F5E /* libh264dec.a in Frameworks */,
-				66D442841FE9FAAA00D89F5E /* libInfra.a in Frameworks */,
-				66D442851FE9FAAA00D89F5E /* libh264parser.a in Frameworks */,
-				66D442861FE9FAAA00D89F5E /* libiosrender.a in Frameworks */,
-				66D442871FE9FAAA00D89F5E /* libg711.a in Frameworks */,
-				66D442881FE9FAAA00D89F5E /* libmp3dec.a in Frameworks */,
-				66D442891FE9FAAA00D89F5E /* libhevcdec.a in Frameworks */,
-				66D4428A1FE9FAAA00D89F5E /* libnetsdk.a in Frameworks */,
-				66D4428B1FE9FAAA00D89F5E /* libaacdec.a in Frameworks */,
-				66D4428C1FE9FAAA00D89F5E /* libStreamPackage.a in Frameworks */,
-				66D4428D1FE9FAAA00D89F5E /* libplay.a in Frameworks */,
-				66D4428E1FE9FAAA00D89F5E /* libpostprocess.a in Frameworks */,
-				66D4428F1FE9FAAA00D89F5E /* libStreamParser.a in Frameworks */,
-				66D442901FE9FAAA00D89F5E /* libg723dec.a in Frameworks */,
-				66D442911FE9FAAA00D89F5E /* libmp2dec.a in Frameworks */,
-				66D442921FE9FAAA00D89F5E /* libmjpegdec.a in Frameworks */,
-				66D442931FE9FAAA00D89F5E /* libsvacdec.a in Frameworks */,
-				66D442941FE9FAAA00D89F5E /* libhevcparser.a in Frameworks */,
-				66D442951FE9FAAA00D89F5E /* libavnetsdk.a in Frameworks */,
-				66D442961FE9FAAA00D89F5E /* libconfigsdk.a in Frameworks */,
-				66D442971FE9FAAA00D89F5E /* liboggdec.a in Frameworks */,
-				66D442981FE9FAAA00D89F5E /* libadpcmdec.a in Frameworks */,
-				66127E8F1FE7A38B00D56869 /* libCommonUtilitiesLib.a in Frameworks */,
-				66127F001FE7B02C00D56869 /* libcrypto_iOS.a in Frameworks */,
-				66127F021FE7B02C00D56869 /* libcrypto.a in Frameworks */,
-				66D442591FE9F72700D89F5E /* libcurl_iOS.a in Frameworks */,
-				66D4425A1FE9F72700D89F5E /* libcurl.a in Frameworks */,
-				66C8230A1FE8A11F00213A59 /* libCWThingsSDK.a in Frameworks */,
-				66127EEC1FE7AF9F00D56869 /* libLBXAlertAction.a in Frameworks */,
-				66127EEB1FE7AF9F00D56869 /* libMasonry.a in Frameworks */,
-				66127EF01FE7AF9F00D56869 /* libMMTweenAnimation.a in Frameworks */,
-				66D4425E1FE9F7CE00D89F5E /* libNetFramework.a in Frameworks */,
-				66127EFD1FE7B02B00D56869 /* libnghttp2.a in Frameworks */,
-				66127EEA1FE7AF9F00D56869 /* libPods.a in Frameworks */,
-				66127EF41FE7AFA000D56869 /* libpop.a in Frameworks */,
-				66127EE91FE7AF9F00D56869 /* libPPHelpMe.a in Frameworks */,
-				66D4425B1FE9F72700D89F5E /* libssl_iOS.a in Frameworks */,
-				66D4425C1FE9F72700D89F5E /* libssl.a in Frameworks */,
-				66127EED1FE7AF9F00D56869 /* libTLIndexPathTools.a in Frameworks */,
-				66127EEE1FE7AF9F00D56869 /* libTYXOREncode.a in Frameworks */,
-				66127EF21FE7AF9F00D56869 /* libTZImagePickerController.a in Frameworks */,
-				66127EEF1FE7AF9F00D56869 /* libVCollectionViewGridLayout.a in Frameworks */,
-				66127EF31FE7AF9F00D56869 /* libZXingObjC.a in Frameworks */,
-				66127EF11FE7AF9F00D56869 /* libZYCornerRadius.a in Frameworks */,
-				66127F1A1FE7B34B00D56869 /* libz.1.1.3.tbd in Frameworks */,
+				66EC489A20049CE1008F9AB6 /* libc++.1.tbd in Frameworks */,
+				66EC48A120049CE1008F9AB6 /* libc++abi.tbd in Frameworks */,
+				66EC489B20049CE1008F9AB6 /* libc++.tbd in Frameworks */,
+				66EC48A020049CE1008F9AB6 /* libstdc++.6.tbd in Frameworks */,
+				66EC489C20049CE1008F9AB6 /* libstdc++.6.0.9.tbd in Frameworks */,
+				66EC489D20049CE1008F9AB6 /* libstdc++.tbd in Frameworks */,
+				66EC489020049B0D008F9AB6 /* libCWThingsSDK.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		66EC460F20046622008F9AB6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -558,6 +476,7 @@
 			isa = PBXGroup;
 			children = (
 				660F55F61FDE631300788D6C /* ios-jingyun */,
+				66EC461320046623008F9AB6 /* CWThingsSDK */,
 				660F55F51FDE631300788D6C /* Products */,
 				66F283511FDFDDC200719AB2 /* Frameworks */,
 			);
@@ -567,6 +486,7 @@
 			isa = PBXGroup;
 			children = (
 				660F55F41FDE631300788D6C /* ios-jingyun.app */,
+				66EC461220046622008F9AB6 /* libCWThingsSDK.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -574,8 +494,6 @@
 		660F55F61FDE631300788D6C /* ios-jingyun */ = {
 			isa = PBXGroup;
 			children = (
-				66C8230E1FE8BE2C00213A59 /* Curl */,
-				66127E0B1FE771FB00D56869 /* CWThingsSDK */,
 				660F56101FDE7FC200788D6C /* App */,
 				660F56031FDE631300788D6C /* Assets.xcassets */,
 				660F56051FDE631300788D6C /* LaunchScreen.storyboard */,
@@ -740,16 +658,6 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		66127E0B1FE771FB00D56869 /* CWThingsSDK */ = {
-			isa = PBXGroup;
-			children = (
-				66C8230C1FE8AA9500213A59 /* CWThingsInterface.mm */,
-				66C8230B1FE8A92900213A59 /* CWThingsSDK.h */,
-				66127E971FE7AA6E00D56869 /* 接口说明.rtf */,
-			);
-			path = CWThingsSDK;
-			sourceTree = "<group>";
-		};
 		6695412B1FE3B17A000D4638 /* Strings */ = {
 			isa = PBXGroup;
 			children = (
@@ -803,34 +711,6 @@
 				669541331FE3B2F9000D4638 /* LoginUserInfo.m */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		66C8230E1FE8BE2C00213A59 /* Curl */ = {
-			isa = PBXGroup;
-			children = (
-				66C823651FE8BF5F00213A59 /* source */,
-				66C8230F1FE8BE5200213A59 /* curl */,
-			);
-			path = Curl;
-			sourceTree = "<group>";
-		};
-		66C8230F1FE8BE5200213A59 /* curl */ = {
-			isa = PBXGroup;
-			children = (
-				66C823181FE8BE8000213A59 /* curl.h */,
-			);
-			path = curl;
-			sourceTree = "<group>";
-		};
-		66C823651FE8BF5F00213A59 /* source */ = {
-			isa = PBXGroup;
-			children = (
-				66C823671FE8BF7800213A59 /* IOS.crt */,
-				66C823681FE8BF7800213A59 /* IOS.key */,
-				66C823661FE8BF7800213A59 /* IOS.pfx */,
-				66C823691FE8BF7800213A59 /* jingyun.root.pem */,
-			);
-			path = source;
 			sourceTree = "<group>";
 		};
 		66D4429B1FE9FBB200D89F5E /* Controllers */ = {
@@ -1122,6 +1002,47 @@
 			path = DataManager;
 			sourceTree = "<group>";
 		};
+		66EC461320046623008F9AB6 /* CWThingsSDK */ = {
+			isa = PBXGroup;
+			children = (
+				66EC461E2004663F008F9AB6 /* base64.c */,
+				66EC462D2004664B008F9AB6 /* base64.h */,
+				66EC462920046648008F9AB6 /* common.h */,
+				66EC463920046653008F9AB6 /* conn_linux_socket.cpp */,
+				66EC462A20046648008F9AB6 /* conn_linux_socket.h */,
+				66EC46332004664F008F9AB6 /* connection.cpp */,
+				66EC462520046645008F9AB6 /* connection.h */,
+				66EC461B2004663D008F9AB6 /* CWDataMgr.h */,
+				66EC462020046641008F9AB6 /* CWDataMgr.m */,
+				66EC463420046650008F9AB6 /* cwlib.cpp */,
+				66EC462320046643008F9AB6 /* cwlib.h */,
+				66EC462720046646008F9AB6 /* CWRequestContext.cpp */,
+				66EC463A20046654008F9AB6 /* CWRequestContext.h */,
+				66EC462220046642008F9AB6 /* CWThingsInterface.h */,
+				66EC462F2004664C008F9AB6 /* CWThingsInterface.mm */,
+				66EC462120046642008F9AB6 /* CWThingsSDK-Prefix.pch */,
+				66EC462C2004664A008F9AB6 /* tenv.cpp */,
+				66EC461C2004663E008F9AB6 /* tenv.h */,
+				66EC463520046651008F9AB6 /* texpr.cpp */,
+				66EC462B20046649008F9AB6 /* texpr.h */,
+				66EC462E2004664B008F9AB6 /* things.cpp */,
+				66EC462420046644008F9AB6 /* things.h */,
+				66EC46322004664E008F9AB6 /* tobject.cpp */,
+				66EC462820046647008F9AB6 /* tobject.h */,
+				66EC461F20046640008F9AB6 /* tparser.cpp */,
+				66EC463620046651008F9AB6 /* tparser.h */,
+				66EC461D2004663F008F9AB6 /* tutils.cpp */,
+				66EC46302004664D008F9AB6 /* tutils.h */,
+				66EC463720046652008F9AB6 /* tvarex.cpp */,
+				66EC462620046645008F9AB6 /* tvarex.h */,
+				66EC463820046653008F9AB6 /* vsync.cpp */,
+				66EC46312004664E008F9AB6 /* vsync.h */,
+				66EC461420046623008F9AB6 /* CWThingsSDK.h */,
+				66EC461520046623008F9AB6 /* CWThingsSDK.m */,
+			);
+			path = CWThingsSDK;
+			sourceTree = "<group>";
+		};
 		66F282DF1FDF6A0100719AB2 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -1145,59 +1066,10 @@
 		66F283511FDFDDC200719AB2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				66EC489F20049CE1008F9AB6 /* libc++abi.tbd */,
+				66EC489E20049CE1008F9AB6 /* libstdc++.6.tbd */,
 				66D442991FE9FAC900D89F5E /* libstdc++.6.0.9.tbd */,
-				66D4426E1FE9FAA700D89F5E /* libaacdec.a */,
-				66D4427B1FE9FAAA00D89F5E /* libadpcmdec.a */,
-				66D4425F1FE9FAA300D89F5E /* libamrdec.a */,
-				66D442781FE9FAA900D89F5E /* libavnetsdk.a */,
-				66D442791FE9FAA900D89F5E /* libconfigsdk.a */,
-				66D442651FE9FAA500D89F5E /* libdvr.a */,
-				66D4426A1FE9FAA600D89F5E /* libg711.a */,
-				66D442731FE9FAA800D89F5E /* libg723dec.a */,
-				66D442661FE9FAA500D89F5E /* libh264dec.a */,
-				66D442681FE9FAA600D89F5E /* libh264parser.a */,
-				66D4426C1FE9FAA700D89F5E /* libhevcdec.a */,
-				66D442771FE9FAA900D89F5E /* libhevcparser.a */,
-				66D442671FE9FAA600D89F5E /* libInfra.a */,
-				66D442691FE9FAA600D89F5E /* libiosrender.a */,
-				66D442751FE9FAA800D89F5E /* libmjpegdec.a */,
-				66D442741FE9FAA800D89F5E /* libmp2dec.a */,
-				66D4426B1FE9FAA600D89F5E /* libmp3dec.a */,
-				66D442611FE9FAA400D89F5E /* libmpeg4dec.a */,
-				66D4426D1FE9FAA700D89F5E /* libnetsdk.a */,
-				66D4427A1FE9FAA900D89F5E /* liboggdec.a */,
-				66D442701FE9FAA700D89F5E /* libplay.a */,
-				66D442711FE9FAA800D89F5E /* libpostprocess.a */,
-				66D442601FE9FAA300D89F5E /* libStream.a */,
-				66D4426F1FE9FAA700D89F5E /* libStreamPackage.a */,
-				66D442721FE9FAA800D89F5E /* libStreamParser.a */,
-				66D442621FE9FAA400D89F5E /* libStreamSvr.a */,
-				66D442761FE9FAA900D89F5E /* libsvacdec.a */,
-				66D442631FE9FAA500D89F5E /* libTinyXML.a */,
-				66D442641FE9FAA500D89F5E /* libTouProxy.a */,
-				66D4425D1FE9F7CE00D89F5E /* libNetFramework.a */,
-				66C823091FE8A11F00213A59 /* libCWThingsSDK.a */,
 				66127F191FE7B34B00D56869 /* libz.1.1.3.tbd */,
-				66127EF91FE7B02B00D56869 /* libcrypto_iOS.a */,
-				66127EFB1FE7B02B00D56869 /* libcrypto.a */,
-				66127EF51FE7B02A00D56869 /* libcurl_iOS.a */,
-				66127EF81FE7B02B00D56869 /* libcurl.a */,
-				66127EF61FE7B02A00D56869 /* libnghttp2.a */,
-				66127EF71FE7B02A00D56869 /* libssl_iOS.a */,
-				66127EFA1FE7B02B00D56869 /* libssl.a */,
-				66127EE01FE7AF9F00D56869 /* libLBXAlertAction.a */,
-				66127EDF1FE7AF9F00D56869 /* libMasonry.a */,
-				66127EE41FE7AF9F00D56869 /* libMMTweenAnimation.a */,
-				66127EDE1FE7AF9F00D56869 /* libPods.a */,
-				66127EE81FE7AF9F00D56869 /* libpop.a */,
-				66127EDD1FE7AF9F00D56869 /* libPPHelpMe.a */,
-				66127EE11FE7AF9F00D56869 /* libTLIndexPathTools.a */,
-				66127EE21FE7AF9F00D56869 /* libTYXOREncode.a */,
-				66127EE61FE7AF9F00D56869 /* libTZImagePickerController.a */,
-				66127EE31FE7AF9F00D56869 /* libVCollectionViewGridLayout.a */,
-				66127EE71FE7AF9F00D56869 /* libZXingObjC.a */,
-				66127EE51FE7AF9F00D56869 /* libZYCornerRadius.a */,
-				66127E8D1FE7A38B00D56869 /* libCommonUtilitiesLib.a */,
 				6695407A1FE3ADB4000D4638 /* libc++.tbd */,
 				669540791FE3ADAC000D4638 /* libz.tbd */,
 				669540781FE3ADA3000D4638 /* Security.framework */,
@@ -1239,6 +1111,23 @@
 			productReference = 660F55F41FDE631300788D6C /* ios-jingyun.app */;
 			productType = "com.apple.product-type.application";
 		};
+		66EC461120046622008F9AB6 /* CWThingsSDK */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 66EC461820046623008F9AB6 /* Build configuration list for PBXNativeTarget "CWThingsSDK" */;
+			buildPhases = (
+				66EC460E20046622008F9AB6 /* Sources */,
+				66EC460F20046622008F9AB6 /* Frameworks */,
+				66EC461020046622008F9AB6 /* Copy Files */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CWThingsSDK;
+			productName = CWThingsSDK;
+			productReference = 66EC461220046622008F9AB6 /* libCWThingsSDK.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1251,6 +1140,10 @@
 					660F55F31FDE631300788D6C = {
 						CreatedOnToolsVersion = 9.1;
 						LastSwiftMigration = 0910;
+						ProvisioningStyle = Automatic;
+					};
+					66EC461120046622008F9AB6 = {
+						CreatedOnToolsVersion = 9.1;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -1269,6 +1162,7 @@
 			projectRoot = "";
 			targets = (
 				660F55F31FDE631300788D6C /* ios-jingyun */,
+				66EC461120046622008F9AB6 /* CWThingsSDK */,
 			);
 		};
 /* End PBXProject section */
@@ -1284,7 +1178,6 @@
 				66E1B7F91FF22A3F0070B2C2 /* icon_personal_list_right.png in Resources */,
 				66E1B7FE1FF22DCA0070B2C2 /* SettingCheckedViewCell.xib in Resources */,
 				66DFF17B1FEB4CF4009086C5 /* img_home_privilege.png in Resources */,
-				66C8236B1FE8BF7800213A59 /* IOS.crt in Resources */,
 				66E1B4691FF4EBD700531857 /* icon_device_safety.png in Resources */,
 				66F835C01FFCE3AA008829E6 /* ic_cw_logo.png in Resources */,
 				66DFF1841FEB93CC009086C5 /* img_home_video.png in Resources */,
@@ -1295,7 +1188,6 @@
 				66D442C01FEA05CE00D89F5E /* tab_icon_device_selected.png in Resources */,
 				66EBD8A72003744F0015DBFB /* ZoneViewCell.xib in Resources */,
 				66F038441FF0FD3E00884FC1 /* app_logo_40.png in Resources */,
-				66C8236A1FE8BF7800213A59 /* IOS.pfx in Resources */,
 				66D442C11FEA05CE00D89F5E /* tab_icon_home_selected.png in Resources */,
 				66F038471FF0FD3E00884FC1 /* app_logo_58.png in Resources */,
 				66E1B7F71FF229C60070B2C2 /* SettingTextViewCell.xib in Resources */,
@@ -1313,7 +1205,6 @@
 				66E1B46A1FF4EBD700531857 /* icon_device_alarm.png in Resources */,
 				66F835BD1FFCE3AA008829E6 /* ic_ez_logo.png in Resources */,
 				6695412E1FE3B1F4000D4638 /* Localizable.strings in Resources */,
-				66C8236D1FE8BF7800213A59 /* jingyun.root.pem in Resources */,
 				66DFF1871FEBA0C8009086C5 /* icon_home_recommend.png in Resources */,
 				66DFF1831FEB93CC009086C5 /* img_home_other.png in Resources */,
 				66D442C21FEA05CE00D89F5E /* tab_icon_home_normal.png in Resources */,
@@ -1322,10 +1213,8 @@
 				66D442C61FEA05CE00D89F5E /* tab_icon_personal_selected.png in Resources */,
 				66F282E41FDF6A4700719AB2 /* AddAccountViewController.xib in Resources */,
 				66F038481FF0FD3E00884FC1 /* app_logo_120.png in Resources */,
-				66C8236C1FE8BF7800213A59 /* IOS.key in Resources */,
 				66DFF17C1FEB4CF4009086C5 /* img_home_polic.png in Resources */,
 				66EBD8A220036E0E0015DBFB /* bg_device_detail_zone.png in Resources */,
-				66127EB61FE7AA7200D56869 /* 接口说明.rtf in Resources */,
 				66D442CB1FEA0AE900D89F5E /* icon_back_white.png in Resources */,
 				66EFDBEC1FF338DD00AF54A4 /* SettingItemList.plist in Resources */,
 				66DFF17D1FEB4CF4009086C5 /* img_home_payment.png in Resources */,
@@ -1400,7 +1289,6 @@
 				66D442B11FE9FEDA00D89F5E /* PersonalViewController.m in Sources */,
 				66F038371FF0E5E400884FC1 /* LeftViewCell.m in Sources */,
 				6695415C1FE3B43C000D4638 /* UserDataModel.m in Sources */,
-				66C8230D1FE8AA9500213A59 /* CWThingsInterface.mm in Sources */,
 				66D442B71FEA01CE00D89F5E /* UIImage+OriginUIImage.m in Sources */,
 				66127ED81FE7AAEB00D56869 /* CWPart.m in Sources */,
 				669541661FE3B43D000D4638 /* DeviceStatusModel.m in Sources */,
@@ -1425,6 +1313,29 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		66EC460E20046622008F9AB6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66EC464620046654008F9AB6 /* texpr.cpp in Sources */,
+				66EC464420046654008F9AB6 /* connection.cpp in Sources */,
+				66EC464120046654008F9AB6 /* things.cpp in Sources */,
+				66EC463B20046654008F9AB6 /* tutils.cpp in Sources */,
+				66EC464520046654008F9AB6 /* cwlib.cpp in Sources */,
+				66EC464720046654008F9AB6 /* tvarex.cpp in Sources */,
+				66EC463F20046654008F9AB6 /* CWRequestContext.cpp in Sources */,
+				66EC463D20046654008F9AB6 /* tparser.cpp in Sources */,
+				66EC464220046654008F9AB6 /* CWThingsInterface.mm in Sources */,
+				66EC464820046654008F9AB6 /* vsync.cpp in Sources */,
+				66EC464320046654008F9AB6 /* tobject.cpp in Sources */,
+				66EC464920046654008F9AB6 /* conn_linux_socket.cpp in Sources */,
+				66EC463E20046654008F9AB6 /* CWDataMgr.m in Sources */,
+				66EC464020046654008F9AB6 /* tenv.cpp in Sources */,
+				66EC463C20046654008F9AB6 /* base64.c in Sources */,
+				66EC461620046623008F9AB6 /* CWThingsSDK.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
@@ -1445,7 +1356,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -1487,7 +1398,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1500,7 +1411,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -1536,7 +1447,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -1547,19 +1458,23 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2H9UL4H6T4;
 				ENABLE_BITCODE = NO;
 				GCC_INPUT_FILETYPE = automatic;
-				HEADER_SEARCH_PATHS = "/Users/conwin/Documents/data/object-c/library";
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/ios-jingyun/Curl/lib";
 				INFOPLIST_FILE = "ios-jingyun/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "";
-				"LIBRARY_SEARCH_PATHS[arch=*]" = "/Users/conwin/Documents/data/object-c/library";
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/ios-jingyun/Curl/lib";
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
+				OTHER_LIBTOOLFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "con.conwin.ios-jingyun";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "ios-jingyun/App/Account/DAO/ios-jingyun-Bridging-Header.h";
@@ -1574,25 +1489,63 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2H9UL4H6T4;
 				ENABLE_BITCODE = NO;
 				GCC_INPUT_FILETYPE = automatic;
-				HEADER_SEARCH_PATHS = "/Users/conwin/Documents/data/object-c/library";
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/ios-jingyun/Curl/lib";
 				INFOPLIST_FILE = "ios-jingyun/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "";
-				"LIBRARY_SEARCH_PATHS[arch=*]" = "/Users/conwin/Documents/data/object-c/library";
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/ios-jingyun/Curl/lib";
 				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
+				OTHER_LIBTOOLFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "con.conwin.ios-jingyun";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "ios-jingyun/App/Account/DAO/ios-jingyun-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "arm64 armv7";
+			};
+			name = Release;
+		};
+		66EC461920046623008F9AB6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2H9UL4H6T4;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "arm64 armv7 armv7s";
+			};
+			name = Debug;
+		};
+		66EC461A20046623008F9AB6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2H9UL4H6T4;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "arm64 armv7 armv7s";
 			};
 			name = Release;
 		};
@@ -1613,6 +1566,15 @@
 			buildConfigurations = (
 				660F560E1FDE631300788D6C /* Debug */,
 				660F560F1FDE631300788D6C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		66EC461820046623008F9AB6 /* Build configuration list for PBXNativeTarget "CWThingsSDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				66EC461920046623008F9AB6 /* Debug */,
+				66EC461A20046623008F9AB6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

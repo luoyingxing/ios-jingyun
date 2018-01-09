@@ -15,13 +15,13 @@
 #import "CWThings4Interface.h"
 #include "CWDataManager.h"
 #import "MainTabBarController.h"
-#import "curl.h"
+//#import "curl.h"
 #import "MBProgressHUD.h"
 
 #define CellIdentifier @"CellIdentifier"
 
 @interface AccountViewController ()<NSURLSessionDataDelegate>{
-    CURL *_curl;
+//    CURL *_curl;
     NSInteger _get_server_info_index;
 }
 
@@ -210,36 +210,36 @@
 }
 
 - (void) callCurl{
-    _curl = curl_easy_init();
-    NSString *server_url = [[NSString alloc] initWithFormat:@"https://api.jingyun.cn/opid2host?opid=%@", userInfo.serverAddress];
-    curl_easy_setopt(_curl, CURLOPT_URL, [server_url UTF8String]);
-    NSString *certPath = [[NSBundle mainBundle] pathForResource:@"IOS" ofType:@"pfx"];
-    curl_easy_setopt(_curl, CURLOPT_SSL_VERIFYPEER, 0L);
-    curl_easy_setopt(_curl, CURLOPT_SSLCERT, [certPath UTF8String]);
-    curl_easy_setopt(_curl, CURLOPT_SSLCERTPASSWD, "123456");
-    curl_easy_setopt(_curl, CURLOPT_WRITEFUNCTION, responseCallback);
-    curl_easy_setopt(_curl, CURLOPT_WRITEDATA, self);
-    CURLcode errorCode = curl_easy_perform(_curl);
-    if (errorCode == CURLE_OK) {
-        
-        //CURLcode http_code = curl_easy_getinfo(_curl, CURLINFO_RESPONSE_CODE);
-        if (_get_server_info_index == 2) {
-            
-        }else {
-            UIAlertView * alertview = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"UserLoginIndicator_AlertTitle",@"") message:NSLocalizedString(@"UserLoginIndicator_AlertSSHErr",@"") delegate:self cancelButtonTitle:NSLocalizedString(@"UserLoginIndicator_AlertOK",@"") otherButtonTitles:nil, nil];
-            [alertview show];
-            
-            if (loop_timer)
-                [loop_timer invalidate];
-            
-//            if (_photoLoadingView) {
-//                [_photoLoadingView stopAnimating];
-//            }
-        }
-    }
-    else {
-        _get_server_info_index = 3;
-    }
+//    _curl = curl_easy_init();
+//    NSString *server_url = [[NSString alloc] initWithFormat:@"https://api.jingyun.cn/opid2host?opid=%@", userInfo.serverAddress];
+//    curl_easy_setopt(_curl, CURLOPT_URL, [server_url UTF8String]);
+//    NSString *certPath = [[NSBundle mainBundle] pathForResource:@"IOS" ofType:@"pfx"];
+//    curl_easy_setopt(_curl, CURLOPT_SSL_VERIFYPEER, 0L);
+//    curl_easy_setopt(_curl, CURLOPT_SSLCERT, [certPath UTF8String]);
+//    curl_easy_setopt(_curl, CURLOPT_SSLCERTPASSWD, "123456");
+//    curl_easy_setopt(_curl, CURLOPT_WRITEFUNCTION, responseCallback);
+//    curl_easy_setopt(_curl, CURLOPT_WRITEDATA, self);
+//    CURLcode errorCode = curl_easy_perform(_curl);
+//    if (errorCode == CURLE_OK) {
+//
+//        //CURLcode http_code = curl_easy_getinfo(_curl, CURLINFO_RESPONSE_CODE);
+//        if (_get_server_info_index == 2) {
+//
+//        }else {
+//            UIAlertView * alertview = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"UserLoginIndicator_AlertTitle",@"") message:NSLocalizedString(@"UserLoginIndicator_AlertSSHErr",@"") delegate:self cancelButtonTitle:NSLocalizedString(@"UserLoginIndicator_AlertOK",@"") otherButtonTitles:nil, nil];
+//            [alertview show];
+//
+//            if (loop_timer)
+//                [loop_timer invalidate];
+//
+////            if (_photoLoadingView) {
+////                [_photoLoadingView stopAnimating];
+////            }
+//        }
+//    }
+//    else {
+//        _get_server_info_index = 3;
+//    }
 }
 
  size_t responseCallback(char *ptr, size_t size, size_t nmemb, void *userdata){
