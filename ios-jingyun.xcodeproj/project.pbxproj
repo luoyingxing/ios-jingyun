@@ -35,7 +35,6 @@
 		669541611FE3B43D000D4638 /* DXAudioTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 6695414B1FE3B43B000D4638 /* DXAudioTool.m */; };
 		669541621FE3B43D000D4638 /* AlarmTaskCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6695414C1FE3B43B000D4638 /* AlarmTaskCellModel.m */; };
 		669541631FE3B43D000D4638 /* AlarmDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 669541521FE3B43C000D4638 /* AlarmDataModel.m */; };
-		669541641FE3B43D000D4638 /* SDChatModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 669541551FE3B43C000D4638 /* SDChatModel.m */; };
 		669541651FE3B43D000D4638 /* AlarmCaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 669541561FE3B43C000D4638 /* AlarmCaseModel.m */; };
 		669541661FE3B43D000D4638 /* DeviceStatusModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 669541571FE3B43C000D4638 /* DeviceStatusModel.m */; };
 		669541671FE3B43D000D4638 /* TYToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = 669541581FE3B43C000D4638 /* TYToastView.m */; };
@@ -133,6 +132,8 @@
 		66EC489D20049CE1008F9AB6 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 669540721FE3AD6C000D4638 /* libstdc++.tbd */; };
 		66EC48A020049CE1008F9AB6 /* libstdc++.6.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 66EC489E20049CE1008F9AB6 /* libstdc++.6.tbd */; };
 		66EC48A120049CE1008F9AB6 /* libc++abi.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 66EC489F20049CE1008F9AB6 /* libc++abi.tbd */; };
+		66EC49072004BF51008F9AB6 /* DeviceMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 66EC49062004BF51008F9AB6 /* DeviceMessageModel.m */; };
+		66EC490A2004C882008F9AB6 /* DeviceMessageServerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 66EC49092004C882008F9AB6 /* DeviceMessageServerCell.m */; };
 		66EFDBEC1FF338DD00AF54A4 /* SettingItemList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 66EFDBEB1FF338DD00AF54A4 /* SettingItemList.plist */; };
 		66EFDBEF1FF3729900AF54A4 /* SettingItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 66EFDBED1FF3729900AF54A4 /* SettingItem.m */; };
 		66F038311FF0DAB400884FC1 /* MultiViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 66F038301FF0DAB400884FC1 /* MultiViewCell.m */; };
@@ -231,7 +232,6 @@
 		6695413D1FE3B43A000D4638 /* NSString+NCAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+NCAddition.m"; sourceTree = "<group>"; };
 		6695413E1FE3B43A000D4638 /* UserDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDataModel.h; sourceTree = "<group>"; };
 		6695413F1FE3B43A000D4638 /* RepairUserLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepairUserLocation.h; sourceTree = "<group>"; };
-		669541401FE3B43A000D4638 /* SDChatModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDChatModel.h; sourceTree = "<group>"; };
 		669541411FE3B43A000D4638 /* AlarmCaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmCaseModel.h; sourceTree = "<group>"; };
 		669541421FE3B43A000D4638 /* UserDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDataModel.m; sourceTree = "<group>"; };
 		669541431FE3B43A000D4638 /* AlarmUserLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmUserLocation.m; sourceTree = "<group>"; };
@@ -252,7 +252,6 @@
 		669541521FE3B43C000D4638 /* AlarmDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmDataModel.m; sourceTree = "<group>"; };
 		669541531FE3B43C000D4638 /* ZoneDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoneDataModel.h; sourceTree = "<group>"; };
 		669541541FE3B43C000D4638 /* ContactDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactDataModel.h; sourceTree = "<group>"; };
-		669541551FE3B43C000D4638 /* SDChatModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDChatModel.m; sourceTree = "<group>"; };
 		669541561FE3B43C000D4638 /* AlarmCaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmCaseModel.m; sourceTree = "<group>"; };
 		669541571FE3B43C000D4638 /* DeviceStatusModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceStatusModel.m; sourceTree = "<group>"; };
 		669541581FE3B43C000D4638 /* TYToastView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYToastView.m; sourceTree = "<group>"; };
@@ -405,6 +404,10 @@
 		66EC463A20046654008F9AB6 /* CWRequestContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWRequestContext.h; sourceTree = "<group>"; };
 		66EC489E20049CE1008F9AB6 /* libstdc++.6.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.tbd"; path = "usr/lib/libstdc++.6.tbd"; sourceTree = SDKROOT; };
 		66EC489F20049CE1008F9AB6 /* libc++abi.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++abi.tbd"; path = "usr/lib/libc++abi.tbd"; sourceTree = SDKROOT; };
+		66EC49052004BF51008F9AB6 /* DeviceMessageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceMessageModel.h; sourceTree = "<group>"; };
+		66EC49062004BF51008F9AB6 /* DeviceMessageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceMessageModel.m; sourceTree = "<group>"; };
+		66EC49082004C882008F9AB6 /* DeviceMessageServerCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceMessageServerCell.h; sourceTree = "<group>"; };
+		66EC49092004C882008F9AB6 /* DeviceMessageServerCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceMessageServerCell.m; sourceTree = "<group>"; };
 		66EFDBEB1FF338DD00AF54A4 /* SettingItemList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = SettingItemList.plist; sourceTree = "<group>"; };
 		66EFDBED1FF3729900AF54A4 /* SettingItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingItem.m; sourceTree = "<group>"; };
 		66EFDBEE1FF3729900AF54A4 /* SettingItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingItem.h; sourceTree = "<group>"; };
@@ -699,8 +702,6 @@
 				6695413D1FE3B43A000D4638 /* NSString+NCAddition.m */,
 				6695413F1FE3B43A000D4638 /* RepairUserLocation.h */,
 				6695413B1FE3B439000D4638 /* RepairUserLocation.m */,
-				669541401FE3B43A000D4638 /* SDChatModel.h */,
-				669541551FE3B43C000D4638 /* SDChatModel.m */,
 				669541511FE3B43B000D4638 /* TYToastView.h */,
 				669541581FE3B43C000D4638 /* TYToastView.m */,
 				6695413E1FE3B43A000D4638 /* UserDataModel.h */,
@@ -788,6 +789,7 @@
 		66D442A81FE9FE8E00D89F5E /* Device */ = {
 			isa = PBXGroup;
 			children = (
+				66EC49042004BF18008F9AB6 /* Models */,
 				66E1B45C1FF4D43800531857 /* Views */,
 				66D442A91FE9FE9600D89F5E /* Controllers */,
 			);
@@ -941,6 +943,8 @@
 				66EBD8A32003744F0015DBFB /* ZoneViewCell.h */,
 				66EBD8A42003744F0015DBFB /* ZoneViewCell.m */,
 				66EBD8A52003744F0015DBFB /* ZoneViewCell.xib */,
+				66EC49082004C882008F9AB6 /* DeviceMessageServerCell.h */,
+				66EC49092004C882008F9AB6 /* DeviceMessageServerCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1041,6 +1045,15 @@
 				66EC461520046623008F9AB6 /* CWThingsSDK.m */,
 			);
 			path = CWThingsSDK;
+			sourceTree = "<group>";
+		};
+		66EC49042004BF18008F9AB6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				66EC49052004BF51008F9AB6 /* DeviceMessageModel.h */,
+				66EC49062004BF51008F9AB6 /* DeviceMessageModel.m */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		66F282DF1FDF6A0100719AB2 /* Home */ = {
@@ -1246,6 +1259,7 @@
 				66F100731FE0D0DD004CFA52 /* AccountViewCell.m in Sources */,
 				66D442E51FEA220100D89F5E /* TAAbstractDotView.m in Sources */,
 				66D442DA1FEA21E200D89F5E /* SDCycleScrollView.m in Sources */,
+				66EC490A2004C882008F9AB6 /* DeviceMessageServerCell.m in Sources */,
 				669541631FE3B43D000D4638 /* AlarmDataModel.m in Sources */,
 				66D442D91FEA21E200D89F5E /* SDCollectionViewCell.m in Sources */,
 				66E1B7E81FF1EAD60070B2C2 /* NSObject+BAProgressHUD.m in Sources */,
@@ -1292,12 +1306,12 @@
 				66D442B71FEA01CE00D89F5E /* UIImage+OriginUIImage.m in Sources */,
 				66127ED81FE7AAEB00D56869 /* CWPart.m in Sources */,
 				669541661FE3B43D000D4638 /* DeviceStatusModel.m in Sources */,
-				669541641FE3B43D000D4638 /* SDChatModel.m in Sources */,
 				669541381FE3B2F9000D4638 /* LoginUserInfo.m in Sources */,
 				66D443191FEA23B300D89F5E /* UIView+WebCacheOperation.m in Sources */,
 				6695415D1FE3B43C000D4638 /* AlarmUserLocation.m in Sources */,
 				66D443141FEA23B300D89F5E /* SDWebImageDownloader.m in Sources */,
 				66A60D4F1FFF73EA006C9261 /* DeviceMessageLocalCell.m in Sources */,
+				66EC49072004BF51008F9AB6 /* DeviceMessageModel.m in Sources */,
 				66DFF1921FEBB10E009086C5 /* HomeViewController.m in Sources */,
 				66E1B4601FF4D46000531857 /* DeviceDefaultCell.m in Sources */,
 				66D442E71FEA220100D89F5E /* TAAnimatedDotView.m in Sources */,

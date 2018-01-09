@@ -1,22 +1,24 @@
 //
-//  SDChatModel.h
-//  TYeung
+//  DeviceMessageModel.h
+//  ios-jingyun
 //
-//  Created by yeung on 16/5/10.
-//  Copyright © 2016年 conwin. All rights reserved.
+//  Created by conwin on 2018/1/9.
+//  Copyright © 2018年 conwin. All rights reserved.
 //
+
+#import <Foundation/Foundation.h>
 
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 
 typedef enum : NSUInteger {
-    SDMessageTypeSendToOthers,
-    SDMessageTypeSendToMe
-} SDMessageType;
+    MessageTypeForServer,
+    MessageTypeForLOCAL
+} DeviceMessageType;
 
-@interface SDChatModel : NSObject
+@interface DeviceMessageModel : NSObject
 
-@property (nonatomic, assign) SDMessageType messageType;
+@property (nonatomic, assign) DeviceMessageType messageType;
 
 @property (nonatomic, copy) NSString *text;
 @property (nonatomic, copy) NSString *dateTime;

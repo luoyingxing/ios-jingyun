@@ -29,6 +29,9 @@
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="SEy-5g-ep8"/>
+            <connections>
+                <outlet property="contentLabel" destination="w09-3Y-il6" id="vYS-gQ-1Ln"/>
+            </connections>
         </collectionViewCell>
     </objects>
 </document>

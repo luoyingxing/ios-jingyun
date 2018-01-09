@@ -14,16 +14,24 @@
 #import "DeviceStatusModel.h"
 #import "DeviceMessageLocalCell.h"
 #import "ZoneViewCell.h"
+#import "DeviceMessageModel.h"
+#import "DeviceMessageServerCell.h"
 
 #define CellIdentifierZone @"CellIdentifierZone"
 
 #define CellIdentifierLocal @"CellIdentifierLocal"
 #define CellIdentifierServer @"CellIdentifierServer"
 
-@interface DeviceDetailViewController ()<UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource>
+@interface DeviceDetailViewController ()<UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource>{
+    
+    NSTimer *message_update_timer;
+    
+}
 
 //保存数据列表
 @property (nonatomic,strong) NSMutableArray* deviceArray;
+
+@property (nonatomic, assign) NSInteger preMessageCount;
 
 
 @end
@@ -173,19 +181,48 @@
     tableView.separatorColor = [UIColor whiteColor];
     tableView.backgroundColor = [UIColor whiteColor];
     
-    //纯文字选择项
+    //本地模式（自己）
     [tableView registerClass:[DeviceMessageLocalCell class] forCellReuseIdentifier:CellIdentifierLocal];
-    //选择框样式
-    //    [tableView registerClass:[DeviceImageCell class] forCellReuseIdentifier:CellIdentifierForImage];
+    //服务器返回模式（接受到的消息）
+    [tableView registerClass:[DeviceMessageServerCell class] forCellReuseIdentifier:CellIdentifierServer];
     
     [self.view addSubview:tableView];
 }
 
-- (void) viewWillAppear:(BOOL)animated{
+- (void)viewDidAppear:(BOOL)animated{
+    if (message_update_timer == nil) {
+        float palFrame = 1.0;
+        message_update_timer = [NSTimer scheduledTimerWithTimeInterval:palFrame target:self selector:@selector(message_update_func) userInfo:nil repeats:YES];
+    }
+    
+    
+    _deviceStatusModel.unread_count = 0;
+    [self loadDeviceData:NO];
+    [self loadZoneData];
+    
+    
+//    rcTable = self.tableView.frame;
+//    [_chat_bar setSuperViewHeight:[UIScreen mainScreen].bounds.size.height];
+    
+//    _isUnDidLoadController = YES;
+}
+
+- (void) viewWillDisappear:(BOOL)animated{
+    
+    if (message_update_timer) {
+        [message_update_timer invalidate];
+        message_update_timer = nil;
+    }
+    
     _deviceStatusModel.unread_count = 0;
     [[CWDataManager sharedInstance] saveUnreadEvent4Things:_deviceStatusModel.tid value:0];
-    [self loadDeviceData];
-    [self loadZoneData];
+    
+//    if (_isUnDidLoadController == YES) {
+//        [[DHVideoDeviceHelper sharedInstance] DisconnectDevice];
+//    }
+//    else {
+    
+//    }
 }
 
 //加载防区等信息
@@ -219,10 +256,49 @@
     [collectionView reloadData];
 }
 
-- (void) loadDeviceData{
+/*
+ * 加载消息数据
+ */
+- (void) loadDeviceData:(BOOL)more{
+    char cmd[128] = {0};
+    if ([self.dataArray count]) {
+        DeviceMessageModel *chat_model = [self.dataArray objectAtIndex:0];
+        if (chat_model && more) {
+            if ([[CWDataManager sharedInstance] isOldSystemVersion]) {
+                sprintf(cmd, "/get_msg_of?tid=%s&mode=before&mid=%ld&cnt=%d", [_deviceStatusModel.tid UTF8String], (long)chat_model.mid, 15);
+            }else {
+                sprintf(cmd, "/message/last?of=%s&limit=%d&dir=before&mid=%ld", [_deviceStatusModel.tid UTF8String], 30, (long)chat_model.mid);
+            }
+        }
+    }
+    else {
+        NSMutableArray *messageArray = [[CWDataManager sharedInstance] getChatMessageArray4Tid:_deviceStatusModel.tid];
+        if (messageArray == nil || [messageArray count] == 0) {
+            if ([[CWDataManager sharedInstance] isOldSystemVersion]) {
+                sprintf(cmd, "/get_msg_of?tid=%s&mode=%s&cnt=%ld", [_deviceStatusModel.tid UTF8String], "last", (long)30);
+            }else {
+                sprintf(cmd, "/message/last?of=%s&limit=%d", [_deviceStatusModel.tid UTF8String], 30);
+            }
+        }else {
+            self.dataArray = messageArray;
+        }
+    }
     
-    
-    [tableView reloadData];
+    if (strlen(cmd) > 0) {
+        [[CWThings4Interface sharedInstance] request:"." URL:cmd UrlLen:(int)strlen(cmd) ReqID:"messageLast"];
+    }
+    else {
+        [tableView reloadData];
+//        [_myRefreshView endRefreshing];
+        
+        if ([self.dataArray count] > 5) {
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:([self.dataArray count] - 1) inSection:0];
+            if (indexPath != nil) {
+                [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+            }
+            _preMessageCount = [self.dataArray count];
+        }
+    }
 }
 
 #pragma mark - UICollectionViewDelegate
@@ -246,15 +322,16 @@
 
 #pragma mark --UITableViewDataSource 协议方法
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-//    return [self.deviceArray count];
-    return 10;
+    return self.dataArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     NSUInteger index = [indexPath row];
     
-//    if (currentFilterIndex == 2) {
-        //image mode
+    DeviceMessageModel* messageModel = [self.dataArray objectAtIndex:index];
+    
+    if (messageModel.messageType == MessageTypeForLOCAL) {
+        //自己发出的消息
         DeviceMessageLocalCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifierLocal forIndexPath:indexPath];
         if (cell == nil) {
             cell = [[DeviceMessageLocalCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifierLocal];
@@ -262,36 +339,39 @@
         cell.accessoryType = UITableViewCellAccessoryNone;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
-        
+        cell.contentLabel.text = messageModel.text;
+    
         return cell;
         
-//    }else{
-        //default mode
-        
-//        DeviceMessageLocalCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifierForDefault forIndexPath:indexPath];
-//        if (cell == nil) {
-//            cell = [[DeviceDefaultCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifierForDefault];
-//        }
-//
-//        cell.accessoryType = UITableViewCellAccessoryNone;
-//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//
-//
-//
-//        return cell;
-//    }
+    }else{
+        //接收的消息
+        DeviceMessageServerCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifierServer forIndexPath:indexPath];
+        if (cell == nil) {
+            cell = [[DeviceMessageServerCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifierServer];
+        }
+
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
+        cell.contentLabel.text = messageModel.text;
+
+        return cell;
+    }
     
     return nil;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    if (currentFilterIndex == 2) {
-        return [DeviceMessageLocalCell getCellHeight];
-//    }else{
-//        return [DeviceDefaultCell getCellHeight];
-//    }
+    NSUInteger index = [indexPath row];
+    DeviceMessageModel* messageModel = [self.dataArray objectAtIndex:index];
     
-    return 100;
+    if (messageModel.messageType == MessageTypeForLOCAL) {
+        return [DeviceMessageLocalCell getCellHeight];
+    }else{
+        return [DeviceMessageServerCell getCellHeight];
+    }
+    
+    return 30;
 }
 
 - (void) filterOnclickListener{
@@ -332,6 +412,35 @@
 
 - (void) zoneOnclickListener{
     NSLog(@"zoneOnclickListener");
+}
+
+- (NSMutableArray *) dataArray{
+    if (!_dataArray) {
+        _dataArray = [NSMutableArray new];
+    }
+    return _dataArray;
+}
+
+- (void) message_update_func{
+    if ([CWDataManager sharedInstance]->chat_message_update == YES) {
+        //load message data
+        self.dataArray = [[CWDataManager sharedInstance] getChatMessageArray4Tid:_deviceStatusModel.tid];
+        [tableView reloadData];
+//        [_myRefreshView endRefreshing];
+        
+        NSInteger messageCountInteger = [self.dataArray count] - _preMessageCount;
+        if (messageCountInteger) {
+//            [_message_bar ShowMessageCount:messageCountInteger];
+        }
+        
+        [CWDataManager sharedInstance]->chat_message_update = NO;
+        /*if ([self.dataArray count] > 5) {
+         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:([self.dataArray count] - 1) inSection:0];
+         [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+         }*/
+    }
+    
+//    [_chatStatusView updateStatus];
 }
 
 @end

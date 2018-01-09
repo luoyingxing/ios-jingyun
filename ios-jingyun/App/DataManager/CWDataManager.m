@@ -12,7 +12,7 @@
 #import "CWVideoChannel.h"
 #import "CWPart.h"
 #import "CWAction.h"
-#import "SDChatModel.h"
+#import "DeviceMessageModel.h"
 #import "AlarmTaskCellModel.h"
 #import "AlarmCaseModel.h"
 #import "UserDataModel.h"
@@ -1721,7 +1721,7 @@ static CWDataManager *sharedInstance = nil;
                 NSString* event_type = [msg objectForKey:@"type"];
                 
                 NSString *things_tid;
-                SDChatModel *chat_model = [SDChatModel new];
+                DeviceMessageModel *chat_model = [DeviceMessageModel new];
                 chat_model.iconName = @"2.jpg";
                 chat_model.dateTime = [msg objectForKey:@"time"];
                 chat_model.iconName = @"xitong";
@@ -1768,13 +1768,13 @@ static CWDataManager *sharedInstance = nil;
                 
                 
                 if([my_tid isEqualToString:from_tid]){
-                    chat_model.messageType = SDMessageTypeSendToMe;
+                    chat_model.messageType = MessageTypeForLOCAL;
                     name = "我";
                     chat_model.bgImageName = @"chatto_bg_normal";
                 }
                 else if ([my_tid isEqualToString:to_tid]) {
                     chat_model.bgImageName = @"chatfrom_bg_normal";
-                    chat_model.messageType = SDMessageTypeSendToOthers;
+                    chat_model.messageType = MessageTypeForLOCAL;
                     //name = [[CWThings4Interface sharedInstance] get_var_with_path:[my_tid UTF8String] path:[name_path UTF8String] sessions:YES];
                     if ([format isEqualToString:@"task"]) {
                         name = [[CWThings4Interface sharedInstance] get_var_with_path:[things_tid UTF8String] path:[name_path UTF8String] sessions:YES];
@@ -1786,7 +1786,7 @@ static CWDataManager *sharedInstance = nil;
                 }
                 else {
                     chat_model.bgImageName = @"chatfrom_bg_normal";
-                    chat_model.messageType = SDMessageTypeSendToOthers;
+                    chat_model.messageType = MessageTypeForServer;
                     if ([format isEqualToString:@"task"]) {
                         name = [[CWThings4Interface sharedInstance] get_var_with_path:[things_tid UTF8String] path:[name_path UTF8String] sessions:YES];
                     }
@@ -1898,7 +1898,7 @@ static CWDataManager *sharedInstance = nil;
                     }
                     
                     range = [body rangeOfString:@"unbypass"];
-                    if (range.location != NSNotFound && chat_model.messageType == SDMessageTypeSendToMe) {
+                    if (range.location != NSNotFound && chat_model.messageType == MessageTypeForLOCAL) {
                         //content = @"解旁路";
                         chat_model.messageStatusType = 3;
                         NSRange pwd_index = [body rangeOfString:@","];
@@ -1916,7 +1916,7 @@ static CWDataManager *sharedInstance = nil;
                     }
                     else {
                         range = [body rangeOfString:@"bypass"];
-                        if (range.location != NSNotFound  && chat_model.messageType == SDMessageTypeSendToMe) {
+                        if (range.location != NSNotFound  && chat_model.messageType == MessageTypeForLOCAL) {
                             //content = @"旁路";
                             chat_model.messageStatusType = 4;
                             NSRange pwd_index = [body rangeOfString:@","];
@@ -2122,8 +2122,8 @@ static CWDataManager *sharedInstance = nil;
                 [event_message_array addObject:chat_model];
                 
                 [temp_array sortUsingComparator:^NSComparisonResult(id obj1,id obj2){
-                    SDChatModel *chat_obj_pre = (SDChatModel*)obj1;
-                    SDChatModel *chat_obj_next = (SDChatModel*)obj2;
+                    DeviceMessageModel *chat_obj_pre = (DeviceMessageModel*)obj1;
+                    DeviceMessageModel *chat_obj_next = (DeviceMessageModel*)obj2;
                     if (chat_obj_pre.mid > chat_obj_next.mid) {
                         return NSOrderedDescending;
                     }
@@ -2164,7 +2164,7 @@ static CWDataManager *sharedInstance = nil;
     NSLog(@"%@\r\n", json);
     NSArray *array = [json componentsSeparatedByString:@","];
     
-    SDChatModel *chat_model = [SDChatModel new];
+    DeviceMessageModel *chat_model = [DeviceMessageModel new];
     chat_model.mid = [[array objectAtIndex:0] integerValue];
     chat_model.dateTime = [array objectAtIndex:1];
     
@@ -2230,13 +2230,13 @@ static CWDataManager *sharedInstance = nil;
         }
         
         if ([my_tid isEqualToString:from_tid]) {
-            chat_model.messageType = SDMessageTypeSendToMe;
+            chat_model.messageType = MessageTypeForLOCAL;
             name = "我";
             chat_model.bgImageName = @"chatto_bg_normal";
         }
         else if ([my_tid isEqualToString:to_tid]) {
             chat_model.bgImageName = @"chatfrom_bg_normal";
-            chat_model.messageType = SDMessageTypeSendToOthers;
+            chat_model.messageType = MessageTypeForServer;
             if ([format isEqualToString:@"task"]) {
                 name = [[CWThings4Interface sharedInstance] get_var_with_path:[things_tid UTF8String] path:[name_path UTF8String] sessions:YES];
             }
@@ -2246,7 +2246,7 @@ static CWDataManager *sharedInstance = nil;
         }
         else {
             chat_model.bgImageName = @"chatfrom_bg_normal";
-            chat_model.messageType = SDMessageTypeSendToOthers;
+            chat_model.messageType = MessageTypeForServer;
             if ([format isEqualToString:@"task"]) {
                 name = [[CWThings4Interface sharedInstance] get_var_with_path:[things_tid UTF8String] path:[name_path UTF8String] sessions:YES];
             }
@@ -2277,18 +2277,18 @@ static CWDataManager *sharedInstance = nil;
             NSString *content = [json substringFromIndex:(contentIndex.location + contentIndex.length + 1)];
             NSRange range;
             range = [content rangeOfString:@"open"];
-            if (range.location != NSNotFound && chat_model.messageType == SDMessageTypeSendToMe) {
+            if (range.location != NSNotFound && chat_model.messageType == MessageTypeForLOCAL) {
                 content = NSLocalizedString(@"DataManager_OpenRequest", @"");
                 chat_model.messageStatusType = 1;
             }
             range = [content rangeOfString:@"away"];
-            if (range.location != NSNotFound  && chat_model.messageType == SDMessageTypeSendToMe) {
+            if (range.location != NSNotFound  && chat_model.messageType == MessageTypeForLOCAL) {
                 content = NSLocalizedString(@"DataManager_AwayRequest", @"");
                 chat_model.messageStatusType = 2;
             }
             
             range = [content rangeOfString:@"setpwd"];
-            if (range.location != NSNotFound  && chat_model.messageType == SDMessageTypeSendToMe) {
+            if (range.location != NSNotFound  && chat_model.messageType == MessageTypeForLOCAL) {
                 content = NSLocalizedString(@"DataManager_SetPassword", @"");
                 show_event = NO;
                 
@@ -2309,7 +2309,7 @@ static CWDataManager *sharedInstance = nil;
             }*/
             
             range = [content rangeOfString:@"unbypass"];
-            if (range.location != NSNotFound  && chat_model.messageType == SDMessageTypeSendToMe) {
+            if (range.location != NSNotFound  && chat_model.messageType == MessageTypeForLOCAL) {
                 //content = @"解旁路";
                 chat_model.messageStatusType = 3;
                 NSRange pwd_index = [content rangeOfString:@","];
@@ -2327,7 +2327,7 @@ static CWDataManager *sharedInstance = nil;
             else {
                 range = [content rangeOfString:@"bypass"];
                 chat_model.messageStatusType = 4;
-                if (range.location != NSNotFound && chat_model.messageType == SDMessageTypeSendToMe) {
+                if (range.location != NSNotFound && chat_model.messageType == MessageTypeForLOCAL) {
                     //content = @"旁路";
                     NSRange pwd_index = [content rangeOfString:@","];
                     NSString *sub_content = [content substringFromIndex:(pwd_index.location + pwd_index.length)];
@@ -2484,13 +2484,13 @@ static CWDataManager *sharedInstance = nil;
         }
         
         if ([my_tid isEqualToString:to_tid]) {
-            chat_model.messageType = SDMessageTypeSendToMe;
+            chat_model.messageType = MessageTypeForLOCAL;
             name = "我";
             chat_model.bgImageName = @"chatto_bg_normal";
         }
         else {
             chat_model.bgImageName = @"chatfrom_bg_normal";
-            chat_model.messageType = SDMessageTypeSendToOthers;
+            chat_model.messageType = MessageTypeForServer;
             if ([format isEqualToString:@"task"]) {
                 name = [[CWThings4Interface sharedInstance] get_var_with_path:[things_tid UTF8String] path:[name_path UTF8String] sessions:YES];
             }

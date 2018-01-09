@@ -11,6 +11,8 @@
 
 @interface DeviceDetailViewController : UIViewController
 
+@property (nonatomic, strong) NSMutableArray* dataArray;
+
 @property (strong, nonatomic) DeviceStatusModel* deviceStatusModel;
 
 @end

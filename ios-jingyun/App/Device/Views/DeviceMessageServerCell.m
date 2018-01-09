@@ -1,15 +1,15 @@
 //
-//  DeviceMessageLocalCell.m
+//  DeviceMessageServerCell.m
 //  ios-jingyun
 //
-//  Created by conwin on 2018/1/5.
+//  Created by conwin on 2018/1/9.
 //  Copyright © 2018年 conwin. All rights reserved.
 //
 
-#import "DeviceMessageLocalCell.h"
+#import "DeviceMessageServerCell.h"
 #import "CWColorUtils.h"
 
-@implementation DeviceMessageLocalCell
+@implementation DeviceMessageServerCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -27,12 +27,12 @@
     
     if (self) {
         CGFloat cellWidth = [UIScreen mainScreen].bounds.size.width;
-        CGFloat cellheight = [DeviceMessageLocalCell getCellHeight];
+        CGFloat cellheight = [DeviceMessageServerCell getCellHeight];
         
         
         _contentLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, cellWidth, cellheight)];
         _contentLabel.text = @"请求布防";
-        _contentLabel.textAlignment = NSTextAlignmentRight;
+        _contentLabel.textAlignment = NSTextAlignmentLeft;
         _contentLabel.font = [UIFont systemFontOfSize:17];
         _contentLabel.textColor = [CWColorUtils colorWithHexString:@"#666666"];
         [self addSubview:_contentLabel];
@@ -44,7 +44,8 @@
 }
 
 + (CGFloat) getCellHeight{
-    return 30;
+    return 100;
 }
+
 
 @end

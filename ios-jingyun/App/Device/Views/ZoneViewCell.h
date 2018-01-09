@@ -10,4 +10,6 @@
 
 @interface ZoneViewCell : UICollectionViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *contentLabel;
+
 @end
