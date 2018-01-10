@@ -80,6 +80,10 @@
 		66D4431C1FEA23B300D89F5E /* UIImage+GIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D4430B1FEA23B300D89F5E /* UIImage+GIF.m */; };
 		66D4431E1FEA390D00D89F5E /* img_slide_default.gif in Resources */ = {isa = PBXBuildFile; fileRef = 66D4431D1FEA390D00D89F5E /* img_slide_default.gif */; };
 		66D443201FEA3AAC00D89F5E /* img_empty_conwin.png in Resources */ = {isa = PBXBuildFile; fileRef = 66D4431F1FEA3AAC00D89F5E /* img_empty_conwin.png */; };
+		66D6F68D2005ABBF00179B40 /* icon_device_detail_avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = 66D6F68B2005ABBD00179B40 /* icon_device_detail_avatar.png */; };
+		66D6F68E2005ABBF00179B40 /* icon_device_detail_system.png in Resources */ = {isa = PBXBuildFile; fileRef = 66D6F68C2005ABBE00179B40 /* icon_device_detail_system.png */; };
+		66D6F6912006002400179B40 /* CWTextUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D6F6902006002400179B40 /* CWTextUtils.m */; };
+		66D6F6952006223F00179B40 /* UITextLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D6F6942006223F00179B40 /* UITextLabel.m */; };
 		66DFF1771FEB4944009086C5 /* icon_home_message_tip.png in Resources */ = {isa = PBXBuildFile; fileRef = 66DFF1761FEB4944009086C5 /* icon_home_message_tip.png */; };
 		66DFF17B1FEB4CF4009086C5 /* img_home_privilege.png in Resources */ = {isa = PBXBuildFile; fileRef = 66DFF1781FEB4CF4009086C5 /* img_home_privilege.png */; };
 		66DFF17C1FEB4CF4009086C5 /* img_home_polic.png in Resources */ = {isa = PBXBuildFile; fileRef = 66DFF1791FEB4CF4009086C5 /* img_home_polic.png */; };
@@ -330,6 +334,12 @@
 		66D4431D1FEA390D00D89F5E /* img_slide_default.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = img_slide_default.gif; sourceTree = "<group>"; };
 		66D4431F1FEA3AAC00D89F5E /* img_empty_conwin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_empty_conwin.png; sourceTree = "<group>"; };
 		66D443221FEA55EC00D89F5E /* ThingsResponseDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThingsResponseDelegate.h; sourceTree = "<group>"; };
+		66D6F68B2005ABBD00179B40 /* icon_device_detail_avatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_device_detail_avatar.png; sourceTree = "<group>"; };
+		66D6F68C2005ABBE00179B40 /* icon_device_detail_system.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_device_detail_system.png; sourceTree = "<group>"; };
+		66D6F68F2006002400179B40 /* CWTextUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CWTextUtils.h; sourceTree = "<group>"; };
+		66D6F6902006002400179B40 /* CWTextUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CWTextUtils.m; sourceTree = "<group>"; };
+		66D6F6932006223F00179B40 /* UITextLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UITextLabel.h; sourceTree = "<group>"; };
+		66D6F6942006223F00179B40 /* UITextLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UITextLabel.m; sourceTree = "<group>"; };
 		66DFF1761FEB4944009086C5 /* icon_home_message_tip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_home_message_tip.png; sourceTree = "<group>"; };
 		66DFF1781FEB4CF4009086C5 /* img_home_privilege.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_home_privilege.png; sourceTree = "<group>"; };
 		66DFF1791FEB4CF4009086C5 /* img_home_polic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_home_polic.png; sourceTree = "<group>"; };
@@ -595,6 +605,8 @@
 		660F561A1FDE825F00788D6C /* Icon */ = {
 			isa = PBXGroup;
 			children = (
+				66D6F68B2005ABBD00179B40 /* icon_device_detail_avatar.png */,
+				66D6F68C2005ABBE00179B40 /* icon_device_detail_system.png */,
 				66E1B4681FF4EBD700531857 /* icon_device_alarm.png */,
 				66E1B4671FF4EBD700531857 /* icon_device_safety.png */,
 				66E1B45A1FF4975500531857 /* icon_white_logo.png */,
@@ -657,6 +669,8 @@
 			children = (
 				660F56211FDE9BF500788D6C /* CWColorUtils.h */,
 				660F56221FDE9BF500788D6C /* CWColorUtils.m */,
+				66D6F68F2006002400179B40 /* CWTextUtils.h */,
+				66D6F6902006002400179B40 /* CWTextUtils.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -830,6 +844,7 @@
 		66D442CC1FEA14DA00D89F5E /* Frame */ = {
 			isa = PBXGroup;
 			children = (
+				66D6F6922006222400179B40 /* View */,
 				66E1B7D61FF1E4740070B2C2 /* MBProgress */,
 				66D442CD1FEA14E300D89F5E /* SlidUIView */,
 			);
@@ -922,6 +937,15 @@
 				66D443221FEA55EC00D89F5E /* ThingsResponseDelegate.h */,
 			);
 			path = Delegate;
+			sourceTree = "<group>";
+		};
+		66D6F6922006222400179B40 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				66D6F6932006223F00179B40 /* UITextLabel.h */,
+				66D6F6942006223F00179B40 /* UITextLabel.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		66D7AC461FECB23200FDDBA0 /* Common */ = {
@@ -1205,6 +1229,7 @@
 				66F038471FF0FD3E00884FC1 /* app_logo_58.png in Resources */,
 				66E1B7F71FF229C60070B2C2 /* SettingTextViewCell.xib in Resources */,
 				66D442CA1FEA0AE900D89F5E /* icon_account_user_name.png in Resources */,
+				66D6F68E2005ABBF00179B40 /* icon_device_detail_system.png in Resources */,
 				66DFF1771FEB4944009086C5 /* icon_home_message_tip.png in Resources */,
 				66DFF1821FEB93CC009086C5 /* img_home_alarm.png in Resources */,
 				66F038451FF0FD3E00884FC1 /* app_logo_60.png in Resources */,
@@ -1220,6 +1245,7 @@
 				6695412E1FE3B1F4000D4638 /* Localizable.strings in Resources */,
 				66DFF1871FEBA0C8009086C5 /* icon_home_recommend.png in Resources */,
 				66DFF1831FEB93CC009086C5 /* img_home_other.png in Resources */,
+				66D6F68D2005ABBF00179B40 /* icon_device_detail_avatar.png in Resources */,
 				66D442C21FEA05CE00D89F5E /* tab_icon_home_normal.png in Resources */,
 				660F56041FDE631300788D6C /* Assets.xcassets in Resources */,
 				66E1B8001FF23D140070B2C2 /* icon_loading_logo.png in Resources */,
@@ -1246,6 +1272,7 @@
 				66A60D4C1FFF66D1006C9261 /* DeviceDetailViewController.m in Sources */,
 				66E1B7F61FF229C60070B2C2 /* SettingTextViewCell.m in Sources */,
 				66D4431C1FEA23B300D89F5E /* UIImage+GIF.m in Sources */,
+				66D6F6952006223F00179B40 /* UITextLabel.m in Sources */,
 				66F038341FF0E11900884FC1 /* BigViewCell.m in Sources */,
 				66D443171FEA23B300D89F5E /* SDImageCache.m in Sources */,
 				66F1006F1FE0CC56004CFA52 /* AccountBackgroundView.m in Sources */,
@@ -1307,6 +1334,7 @@
 				66127ED81FE7AAEB00D56869 /* CWPart.m in Sources */,
 				669541661FE3B43D000D4638 /* DeviceStatusModel.m in Sources */,
 				669541381FE3B2F9000D4638 /* LoginUserInfo.m in Sources */,
+				66D6F6912006002400179B40 /* CWTextUtils.m in Sources */,
 				66D443191FEA23B300D89F5E /* UIView+WebCacheOperation.m in Sources */,
 				6695415D1FE3B43C000D4638 /* AlarmUserLocation.m in Sources */,
 				66D443141FEA23B300D89F5E /* SDWebImageDownloader.m in Sources */,

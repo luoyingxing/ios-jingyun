@@ -7,11 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DeviceMessageModel.h"
+#import "UITextLabel.h"
 
 @interface DeviceMessageServerCell : UITableViewCell
 
-@property (strong, nonatomic) UILabel *contentLabel;
+@property (strong, nonatomic) UILabel *timeLabel;
+@property (strong, nonatomic) UITextLabel *contentLabel;
+@property (strong, nonatomic) UIImageView* photoImageView;
 
-+ (CGFloat) getCellHeight;
++ (CGFloat) getCellHeight:(DeviceMessageModel*) messageModel;
 
 @end

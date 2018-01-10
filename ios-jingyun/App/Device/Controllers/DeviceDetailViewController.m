@@ -327,7 +327,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     NSUInteger index = [indexPath row];
-    
     DeviceMessageModel* messageModel = [self.dataArray objectAtIndex:index];
     
     if (messageModel.messageType == MessageTypeForLOCAL) {
@@ -339,6 +338,7 @@
         cell.accessoryType = UITableViewCellAccessoryNone;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
+        cell.timeLabel.text = messageModel.dateTime;
         cell.contentLabel.text = messageModel.text;
     
         return cell;
@@ -352,13 +352,61 @@
 
         cell.accessoryType = UITableViewCellAccessoryNone;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        cell.timeLabel.text = messageModel.dateTime;
+        
+        NSString* contentText = messageModel.text;
+        if (contentText) {
+            cell.contentLabel.hidden = NO;
+            cell.photoImageView.hidden = YES;
+            
+            CGFloat labelWidth = [UIScreen mainScreen].bounds.size.width - 40 - 14 - 40 - 14;
+            cell.contentLabel.frame = CGRectMake(40 + 14, 10 + 12 + 16 + 4, labelWidth, messageModel.cellHeight - 10 - 12 - 16 - 4 - 8);
+            
+            //设置圆角
+            cell.contentLabel.layer.masksToBounds = YES;
+            cell.contentLabel.layer.cornerRadius = 4;
+            
+            if(messageModel.messageStatusType == 1) {
+                cell.contentLabel.backgroundColor = [CWColorUtils colorWithHexString:@"#f28c8c"];
+            }else if(messageModel.messageStatusType == 5) {
+                cell.contentLabel.backgroundColor = [CWColorUtils colorWithHexString:@"#f5c790"];
+            }else if(messageModel.messageStatusType == 8) {
+                cell.contentLabel.backgroundColor = [CWColorUtils colorWithHexString:@"#d1ec8f"];
+            }else if(messageModel.messageStatusType == 9) {
+                cell.contentLabel.backgroundColor = [CWColorUtils colorWithHexString:@"#ffff66"];
+            }else{
+                cell.contentLabel.backgroundColor = [UIColor yellowColor];
+            }
 
-        cell.contentLabel.text = messageModel.text;
-
+            contentText = [contentText stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+            contentText = [contentText stringByReplacingOccurrencesOfString:@"\\\\r\\\\n" withString:@"\r"];
+            contentText = [contentText stringByReplacingOccurrencesOfString:@"\r\n" withString:@"\r"];
+            cell.contentLabel.text = contentText;
+            
+        }else{
+            cell.contentLabel.hidden = YES;
+            cell.photoImageView.hidden = NO;
+            
+            if (messageModel.smallImage){
+                cell.photoImageView.image = messageModel.smallImage;
+            }else if (messageModel.imageName) {
+                cell.photoImageView.image = [UIImage imageNamed:messageModel.imageName];
+            }
+            
+        }
+        
         return cell;
     }
     
     return nil;
+}
+
+/**
+ *  给出cell的估计高度，主要目的是优化cell高度的计算次数
+ */
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 60;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -366,12 +414,16 @@
     DeviceMessageModel* messageModel = [self.dataArray objectAtIndex:index];
     
     if (messageModel.messageType == MessageTypeForLOCAL) {
-        return [DeviceMessageLocalCell getCellHeight];
+        CGFloat cellHeight = [DeviceMessageLocalCell getCellHeight];
+        messageModel.cellHeight = cellHeight;
+        return cellHeight;
     }else{
-        return [DeviceMessageServerCell getCellHeight];
+        CGFloat cellHeight = [DeviceMessageServerCell getCellHeight:messageModel];
+        messageModel.cellHeight = cellHeight;
+        return cellHeight;
     }
     
-    return 30;
+    return 0;
 }
 
 - (void) filterOnclickListener{
@@ -384,7 +436,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NSLog(@"click item %li", indexPath.row);
     
+    DeviceMessageModel* messageModel = [self.dataArray objectAtIndex:indexPath.row];
     
+    NSLog(@"-------------> text:%@   dateTime:%@   userName:%@   iconName:%@   imageName:%@   bgImageName:%@   tid:%@   messageStatusType:%lu   messageType:%lu", messageModel.text, messageModel.dateTime, messageModel.userName, messageModel.iconName, messageModel.imageName, messageModel.bgImageName, messageModel.tid, messageModel.messageStatusType, messageModel.messageType);
 }
 
 - (NSDictionary *) dictionaryWithJsonString:(NSString *)jsonString {

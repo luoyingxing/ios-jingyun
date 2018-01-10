@@ -1774,7 +1774,7 @@ static CWDataManager *sharedInstance = nil;
                 }
                 else if ([my_tid isEqualToString:to_tid]) {
                     chat_model.bgImageName = @"chatfrom_bg_normal";
-                    chat_model.messageType = MessageTypeForLOCAL;
+                    chat_model.messageType = MessageTypeForServer;
                     //name = [[CWThings4Interface sharedInstance] get_var_with_path:[my_tid UTF8String] path:[name_path UTF8String] sessions:YES];
                     if ([format isEqualToString:@"task"]) {
                         name = [[CWThings4Interface sharedInstance] get_var_with_path:[things_tid UTF8String] path:[name_path UTF8String] sessions:YES];

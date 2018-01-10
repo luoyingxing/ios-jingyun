@@ -10,6 +10,7 @@
 
 @interface DeviceMessageLocalCell : UITableViewCell
 
+@property (strong, nonatomic) UILabel *timeLabel;
 @property (strong, nonatomic) UILabel *contentLabel;
 
 + (CGFloat) getCellHeight;

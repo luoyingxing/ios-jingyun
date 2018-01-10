@@ -31,4 +31,6 @@ typedef enum : NSUInteger {
 @property (nonatomic, assign) NSInteger mid;
 @property (nonatomic, assign) NSInteger messageStatusType;
 
+@property (nonatomic, assign) CGFloat cellHeight;
+
 @end
