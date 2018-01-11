@@ -16,6 +16,8 @@
 #import "ZoneViewCell.h"
 #import "DeviceMessageModel.h"
 #import "DeviceMessageServerCell.h"
+#import "CWThings4Interface.h"
+#import "DeviceZoneModel.h"
 
 #define CellIdentifierZone @"CellIdentifierZone"
 
@@ -30,6 +32,9 @@
 
 //保存数据列表
 @property (nonatomic,strong) NSMutableArray* deviceArray;
+
+//保存防区列表
+@property (nonatomic,strong) NSMutableArray* zoneArray;
 
 @property (nonatomic, assign) NSInteger preMessageCount;
 
@@ -60,6 +65,7 @@
     screenHeight = self.view.bounds.size.height;
     screenWidth = self.view.bounds.size.width;
     self.deviceArray = [[NSMutableArray alloc] init];
+    self.zoneArray = [[NSMutableArray alloc] init];
 
     [self addToolbarView];
     [self addTopView];
@@ -195,10 +201,9 @@
         message_update_timer = [NSTimer scheduledTimerWithTimeInterval:palFrame target:self selector:@selector(message_update_func) userInfo:nil repeats:YES];
     }
     
-    
     _deviceStatusModel.unread_count = 0;
     [self loadDeviceData:NO];
-    [self loadZoneData];
+    [self updateDeviceInfo];
     
     
 //    rcTable = self.tableView.frame;
@@ -226,7 +231,7 @@
 }
 
 //加载防区等信息
-- (void) loadZoneData{
+- (void) updateDeviceInfo{
     if (_deviceStatusModel) {
         if (_deviceStatusModel.caption != nil) {
             titleLabel.text = _deviceStatusModel.caption;
@@ -247,12 +252,52 @@
         }else if ([_deviceStatusModel.globalSatus isEqualToString:@"1"]) {
             subtitleLabel.text = @"设备状态：连接";
         }else {
-           subtitleLabel.text = @"设备状态：未知";
+            subtitleLabel.text = @"设备状态：未知";
         }
-        
-        
     }
     
+    //load zone data
+    [self.zoneArray removeAllObjects];
+    
+    if ([_deviceStatusModel.partID isEqualToString:@"2000"]) {
+        int count = [[CWThings4Interface sharedInstance] get_var_nodes_with_tid:[_deviceStatusModel.tid UTF8String] path:"zones"];
+        //后台数据的顺序是倒叙的，无奈重新排序
+        for (int i = count - 1; i >= 0; i --) {
+            DeviceZoneModel* zoneModel = [[DeviceZoneModel alloc] init];
+            
+            char* channel_name = [[CWThings4Interface sharedInstance] get_var_with_path_ex:[_deviceStatusModel.tid UTF8String] prepath:"zones" member:i backpath:NULL];
+            
+            if (channel_name && strcmp(channel_name, "default") == 0) {
+                continue;
+            }
+            zoneModel.name = [NSString stringWithUTF8String:channel_name];
+
+            char* zone_status = [[CWThings4Interface sharedInstance] get_var_with_path_ex:[_deviceStatusModel.tid UTF8String] prepath:"zones" member:i backpath:"stat"];
+            
+            zoneModel.status = [NSString stringWithUTF8String:zone_status];
+            
+            [self.zoneArray addObject:zoneModel];
+        }
+    }else{
+        int count = [[CWThings4Interface sharedInstance] get_var_nodes_with_tid:[_deviceStatusModel.tid UTF8String] path:"z"];
+         //后台数据的顺序是倒叙的，无奈重新排序
+        for (int i = count - 1; i >= 0; i --) {
+            DeviceZoneModel* zoneModel = [[DeviceZoneModel alloc] init];
+            
+            char* channel_name = [[CWThings4Interface sharedInstance] get_var_with_path_ex:[_deviceStatusModel.tid UTF8String] prepath:"z" member:i backpath:NULL];
+            if (channel_name && strcmp(channel_name, "default") == 0) {
+                continue;
+            }
+            zoneModel.name = [NSString stringWithUTF8String:channel_name];
+            
+            //            NSLog(@"count = %d   channel_name: %s", count, channel_name);
+            char* zone_status = [[CWThings4Interface sharedInstance] get_var_with_path_ex:[_deviceStatusModel.tid UTF8String] prepath:"z" member:i backpath:"s"];
+            zoneModel.status = [NSString stringWithUTF8String:zone_status];
+            
+            [self.zoneArray addObject:zoneModel];
+        }
+    }
+
     [collectionView reloadData];
 }
 
@@ -303,13 +348,26 @@
 
 #pragma mark - UICollectionViewDelegate
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 7;
+    return self.zoneArray.count;
 }
 
 #pragma mark - UICollectionViewDelegate
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     ZoneViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifierZone forIndexPath:indexPath];
     
+    DeviceZoneModel* model = [self.zoneArray objectAtIndex:indexPath.row];
+    
+    cell.contentLabel.text = model.name;
+    
+    if ([model.status isEqualToString:@"alarm"]) {
+        cell.contentLabel.textColor = [UIColor redColor];
+    }else if ([model.status isEqualToString:@"bypass"]) {
+        cell.contentLabel.textColor = [UIColor orangeColor];
+    }else if ([model.status isEqualToString:@"nr"] || [model.status isEqualToString:@"na"]) {
+        cell.contentLabel.textColor = [UIColor blackColor];
+    }else{
+        cell.contentLabel.textColor = [CWColorUtils getThemeColor];
+    }
     
     return cell;
 }
@@ -317,7 +375,6 @@
 #pragma mark - UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"select indexPath.row : %lu", indexPath.row);
-    
 }
 
 #pragma mark --UITableViewDataSource 协议方法
@@ -367,16 +424,16 @@
             cell.contentLabel.layer.masksToBounds = YES;
             cell.contentLabel.layer.cornerRadius = 4;
             
-            if(messageModel.messageStatusType == 1) {
+            if(messageModel.backgroundType == 1) {
                 cell.contentLabel.backgroundColor = [CWColorUtils colorWithHexString:@"#f28c8c"];
-            }else if(messageModel.messageStatusType == 5) {
+            }else if(messageModel.backgroundType == 5) {
                 cell.contentLabel.backgroundColor = [CWColorUtils colorWithHexString:@"#f5c790"];
-            }else if(messageModel.messageStatusType == 8) {
+            }else if(messageModel.backgroundType == 8) {
                 cell.contentLabel.backgroundColor = [CWColorUtils colorWithHexString:@"#d1ec8f"];
-            }else if(messageModel.messageStatusType == 9) {
+            }else if(messageModel.backgroundType == 9) {
                 cell.contentLabel.backgroundColor = [CWColorUtils colorWithHexString:@"#ffff66"];
             }else{
-                cell.contentLabel.backgroundColor = [UIColor yellowColor];
+                cell.contentLabel.backgroundColor = [UIColor whiteColor];
             }
 
             contentText = [contentText stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
@@ -434,10 +491,7 @@
 
 // like item click listener
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"click item %li", indexPath.row);
-    
     DeviceMessageModel* messageModel = [self.dataArray objectAtIndex:indexPath.row];
-    
     NSLog(@"-------------> text:%@   dateTime:%@   userName:%@   iconName:%@   imageName:%@   bgImageName:%@   tid:%@   messageStatusType:%lu   messageType:%lu", messageModel.text, messageModel.dateTime, messageModel.userName, messageModel.iconName, messageModel.imageName, messageModel.bgImageName, messageModel.tid, messageModel.messageStatusType, messageModel.messageType);
 }
 
@@ -458,7 +512,6 @@
 
 - (void) goback{
     //back to device controller
-    
     [self dismissViewControllerAnimated:TRUE completion:^{
         NSLog(@"back to device ");
     }];
@@ -488,13 +541,137 @@
         }
         
         [CWDataManager sharedInstance]->chat_message_update = NO;
-        /*if ([self.dataArray count] > 5) {
-         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:([self.dataArray count] - 1) inSection:0];
-         [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
-         }*/
+//        if ([self.dataArray count] > 5) {
+//            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:([self.dataArray count] - 1) inSection:0];
+//            [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+//         }
     }
     
-//    [_chatStatusView updateStatus];
+    [self loadDeviceInfo];
+    [self updateDeviceInfo];
 }
+
+- (void) loadDeviceInfo{
+    NSString* tid = _deviceStatusModel.tid;
+    if (tid) {
+        //设备状态
+        char *device_status;
+        if ([_deviceStatusModel.partID isEqualToString:@"2000"]) {
+            device_status= [[CWThings4Interface sharedInstance] get_var_with_path_ex:[tid UTF8String] prepath:"areas" member:0 backpath:"stat"];
+        }else{
+            if ([_deviceStatusModel.partID isEqualToString:@"1100"] || [_deviceStatusModel.partID isEqualToString:@"1101"] || [_deviceStatusModel.partID isEqualToString:@"1104"]) {
+                device_status = [[CWThings4Interface sharedInstance] get_var_with_path:[tid UTF8String] path:"pnl.r.s" sessions:YES];
+            }else{
+                device_status = [[CWThings4Interface sharedInstance] get_var_with_path:[tid UTF8String] path:"pnl.s.s" sessions:YES];
+            }
+        }
+        
+        NSString* deviceStatusString;
+        if (device_status) {
+            deviceStatusString = [NSString stringWithUTF8String:device_status];
+        }
+  
+        //防区状态
+        BOOL isZoneAlarm = NO;
+        char* zone_status = [[CWThings4Interface sharedInstance] get_var_with_path:[tid UTF8String] path:"zones" sessions:YES];
+        if (zone_status) {
+            NSString* zoneStatusString = [NSString stringWithUTF8String:zone_status];
+            NSData *jsonData = [zoneStatusString dataUsingEncoding:NSUTF8StringEncoding];
+            NSDictionary *zoneDit = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil];
+            
+            for (NSString *key in zoneDit) {
+                NSString* stat = [zoneDit[key] objectForKey:@"stat"];
+                if ([stat isEqualToString:@"alarm"]) {
+                    isZoneAlarm = YES;
+                    break;
+                }
+            }
+        }
+        //设备在线状态
+        BOOL isOnline = NO;
+        char *online = [[CWThings4Interface sharedInstance] get_var_with_path:[tid UTF8String] path:"online" sessions:NO];
+        if (online && strcmp(online, "true") == 0) {
+            isOnline = YES;
+        }
+        
+        //public static final int OFF_LINE = 9;
+        //public static final int SAFETY = 10;
+        //public static final int SAFETY_ALARM = 11;
+        //public static final int OPEN = 12;
+        //public static final int OPEN_ALARM = 13;
+        //public static final int STAY = 14;
+        //public static final int STAY_ALARM = 15;
+        //public static final int UNREADY = 16;
+        //public static final int UNREADY_ALARM = 17;
+        //public static final int UNKNOWN = 18;
+        //public static final int UNKNOWN_ALARM = 19;
+        //statusNumber用来记录设备的状态，当时ui的要求不会直接使用，但在此说明
+        int statusNumber = 10;
+        if (!isOnline || ![_deviceStatusModel.deviceType isEqualToString:@"device"]) {
+            statusNumber = 9;
+        }else if (deviceStatusString == nil || deviceStatusString.length == 0) {
+            statusNumber = 18;
+        }else{
+            if ([deviceStatusString isEqualToString:@"open"]) {
+                if (isZoneAlarm) {
+                    statusNumber = 13;
+                    _deviceStatusModel.isDeviceOpen = YES;
+                }else{
+                    statusNumber = 12;
+                    _deviceStatusModel.isDeviceOpen = YES;
+                }
+            }else if([deviceStatusString isEqualToString:@"away"] || [deviceStatusString isEqualToString:@"away delay"] || [deviceStatusString isEqualToString:@"away entery delay"]){
+                if (isZoneAlarm) {
+                    statusNumber = 11;
+                    _deviceStatusModel.isDeviceOpen = NO;
+                }else{
+                    statusNumber = 10;
+                    _deviceStatusModel.isDeviceOpen = NO;
+                }
+            }else if([deviceStatusString isEqualToString:@"stay"] || [deviceStatusString isEqualToString:@"stay delay"] || [deviceStatusString isEqualToString:@"stay entery delay"]){
+                if (isZoneAlarm) {
+                    statusNumber = 15;
+                    _deviceStatusModel.isDeviceOpen = YES;
+                }else{
+                    statusNumber = 14;
+                    _deviceStatusModel.isDeviceOpen = NO;
+                }
+            }else if([deviceStatusString isEqualToString:@"nr"]){
+                if (isZoneAlarm) {
+                    statusNumber = 17;
+                    _deviceStatusModel.isDeviceOpen = YES;
+                }else{
+                    statusNumber = 16;
+                    _deviceStatusModel.isDeviceOpen = NO;
+                }
+            }else if([deviceStatusString isEqualToString:@"na"]){
+                if (isZoneAlarm) {
+                    statusNumber = 19;
+                    _deviceStatusModel.isDeviceOpen = YES;
+                }else{
+                    statusNumber = 18;
+                    _deviceStatusModel.isDeviceOpen = NO;
+                }
+            }else{
+                _deviceStatusModel.isDeviceOpen = NO;
+            }
+        }
+
+        //全局状态
+        NSString* connected = @"-1";
+        if([_deviceStatusModel.partID isEqualToString:@"1000"] || [_deviceStatusModel.partID isEqualToString:@"1001"] || [_deviceStatusModel.partID isEqualToString:@"1002"]){
+            char* deviceConnectStr = [[CWThings4Interface sharedInstance] get_var_with_path:[tid UTF8String] path:"pnl.s.net.connected" sessions:YES];
+            if (deviceConnectStr) {
+                connected = [NSString stringWithUTF8String:deviceConnectStr];
+            }
+        }else{
+            connected = isOnline ? @"1" : @"0";
+        }
+        _deviceStatusModel.globalSatus = connected;
+        
+    }
+}
+
+
 
 @end

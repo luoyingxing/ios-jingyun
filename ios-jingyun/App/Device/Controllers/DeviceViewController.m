@@ -376,8 +376,10 @@
                     }else if([deviceStatusString isEqualToString:@"away"] || [deviceStatusString isEqualToString:@"away delay"] || [deviceStatusString isEqualToString:@"away entery delay"]){
                         if (isZoneAlarm) {
                             statusNumber = 11;
+                            model.isDeviceOpen = NO;
                         }else{
                             statusNumber = 10;
+                            model.isDeviceOpen = NO;
                         }
                     }else if([deviceStatusString isEqualToString:@"stay"] || [deviceStatusString isEqualToString:@"stay delay"] || [deviceStatusString isEqualToString:@"stay entery delay"]){
                         if (isZoneAlarm) {
@@ -385,6 +387,7 @@
                             model.isDeviceOpen = YES;
                         }else{
                             statusNumber = 14;
+                            model.isDeviceOpen = NO;
                         }
                     }else if([deviceStatusString isEqualToString:@"nr"]){
                         if (isZoneAlarm) {
@@ -392,6 +395,7 @@
                             model.isDeviceOpen = YES;
                         }else{
                             statusNumber = 16;
+                            model.isDeviceOpen = NO;
                         }
                     }else if([deviceStatusString isEqualToString:@"na"]){
                         if (isZoneAlarm) {
@@ -399,7 +403,10 @@
                             model.isDeviceOpen = YES;
                         }else{
                             statusNumber = 18;
+                            model.isDeviceOpen = NO;
                         }
+                    }else{
+                        model.isDeviceOpen = NO;
                     }
                 }
 

@@ -1771,9 +1771,11 @@ static CWDataManager *sharedInstance = nil;
                     chat_model.messageType = MessageTypeForLOCAL;
                     name = "我";
                     chat_model.bgImageName = @"chatto_bg_normal";
+                    chat_model.backgroundType = 0;
                 }
                 else if ([my_tid isEqualToString:to_tid]) {
                     chat_model.bgImageName = @"chatfrom_bg_normal";
+                    chat_model.backgroundType = 0;
                     chat_model.messageType = MessageTypeForServer;
                     //name = [[CWThings4Interface sharedInstance] get_var_with_path:[my_tid UTF8String] path:[name_path UTF8String] sessions:YES];
                     if ([format isEqualToString:@"task"]) {
@@ -1786,6 +1788,7 @@ static CWDataManager *sharedInstance = nil;
                 }
                 else {
                     chat_model.bgImageName = @"chatfrom_bg_normal";
+                    chat_model.backgroundType = 0;
                     chat_model.messageType = MessageTypeForServer;
                     if ([format isEqualToString:@"task"]) {
                         name = [[CWThings4Interface sharedInstance] get_var_with_path:[things_tid UTF8String] path:[name_path UTF8String] sessions:YES];
@@ -1853,14 +1856,17 @@ static CWDataManager *sharedInstance = nil;
                             NSString *e_8 = [cid substringWithRange:range];
                             if ([e_7 isEqualToString:@"3"] && [e_8 isEqualToString:@"4"]) {
                                 chat_model.bgImageName = @"chatfrom_bg_away.png";
+                                chat_model.backgroundType = 8;
                                 //msg_body->fuc_image_bg = @"chatfrom_bg_away.png";
                             }
                             else if ([e_7 isEqualToString:@"1"] && [e_8 isEqualToString:@"4"]) {
                                 chat_model.bgImageName = @"chatfrom_bg_open.png";
+                                chat_model.backgroundType = 9;
                                 //msg_body->fuc_image_bg = @"chatfrom_bg_open.png";
                             }
                             else if (([e_7 isEqualToString:@"E"] || [e_7 isEqualToString:@"1"]) && [e_8 isEqualToString:@"5"]) {
                                 chat_model.bgImageName = @"chatfrom_bg_panglu.png";
+                                chat_model.backgroundType = 5;
                                 //msg_body->fuc_image_bg = @"chatfrom_bg_panglu.png";
                             }
                             //else if (([e_7 isEqualToString:@"R"] || [e_7 isEqualToString:@"3"]) && [e_8 isEqualToString:@"5"]) {
@@ -1868,10 +1874,12 @@ static CWDataManager *sharedInstance = nil;
                             //}
                             else if([e_7 isEqualToString:@"1"] && [e_8 isEqualToString:@"1"]) {
                                 chat_model.bgImageName = @"chatfrom_bg_baojin.png";
+                                chat_model.backgroundType = 1;
                                 //msg_body->fuc_image_bg = @"chatfrom_bg_baojin.png";
                             }
                             else {
                                 chat_model.bgImageName = @"chatfrom_bg_normal";
+                                chat_model.backgroundType = 0;
                                 //msg_body->fuc_image_bg = @"chatfrom_bg_normal";
                             }
                         }
@@ -1912,6 +1920,7 @@ static CWDataManager *sharedInstance = nil;
                             body = [[NSString alloc] initWithFormat:@"%@,%@", NSLocalizedString(@"DataManager_UnBypassRequest", @""), sub_content];
                         }
                         chat_model.bgImageName = @"chatfrom_bg_panlu.png";
+                        chat_model.backgroundType = 5;
                         //msg_body->fuc_image_bg = @"chatfrom_bg_panlu.png";
                     }
                     else {
@@ -1930,6 +1939,7 @@ static CWDataManager *sharedInstance = nil;
                                 body = [[NSString alloc] initWithFormat:@"%@,%@", NSLocalizedString(@"DataManager_BypassRequest", @""), sub_content];
                             }
                             chat_model.bgImageName = @"chatfrom_bg_panlu.png";
+                            chat_model.backgroundType = 5;
                             //msg_body->fuc_image_bg = @"chatfrom_bg_panlu.png";
                         }
                     }
@@ -1989,14 +1999,17 @@ static CWDataManager *sharedInstance = nil;
                                     NSString *e_8 = [cid substringWithRange:range];
                                     if ([e_7 isEqualToString:@"3"] && [e_8 isEqualToString:@"4"]) {
                                         chat_model.bgImageName = @"chatfrom_bg_away.png";
+                                        chat_model.backgroundType = 8;
                                         //msg_body->fuc_image_bg = @"chatfrom_bg_away.png";
                                     }
                                     else if ([e_7 isEqualToString:@"1"] && [e_8 isEqualToString:@"4"]) {
                                         chat_model.bgImageName = @"chatfrom_bg_open.png";
+                                        chat_model.backgroundType = 9;
                                         //msg_body->fuc_image_bg = @"chatfrom_bg_open.png";
                                     }
                                     else if (([e_7 isEqualToString:@"E"] || [e_7 isEqualToString:@"1"]) && [e_8 isEqualToString:@"5"]) {
                                         chat_model.bgImageName = @"chatfrom_bg_panglu.png";
+                                        chat_model.backgroundType = 5;
                                         //msg_body->fuc_image_bg = @"chatfrom_bg_panglu.png";
                                     }
                                     //else if (([e_7 isEqualToString:@"R"] || [e_7 isEqualToString:@"3"]) && [e_8 isEqualToString:@"5"]) {
@@ -2004,10 +2017,12 @@ static CWDataManager *sharedInstance = nil;
                                     //}
                                     else if([e_7 isEqualToString:@"1"] && [e_8 isEqualToString:@"1"]) {
                                         chat_model.bgImageName = @"chatfrom_bg_baojin.png";
+                                        chat_model.backgroundType = 1;
                                         //msg_body->fuc_image_bg = @"chatfrom_bg_baojin.png";
                                     }
                                     else {
                                         chat_model.bgImageName = @"chatfrom_bg_normal";
+                                        chat_model.backgroundType = 0;
                                         //msg_body->fuc_image_bg = @"chatfrom_bg_normal";
                                     }
                                 }
@@ -2233,9 +2248,11 @@ static CWDataManager *sharedInstance = nil;
             chat_model.messageType = MessageTypeForLOCAL;
             name = "我";
             chat_model.bgImageName = @"chatto_bg_normal";
+            chat_model.backgroundType = 0;
         }
         else if ([my_tid isEqualToString:to_tid]) {
             chat_model.bgImageName = @"chatfrom_bg_normal";
+            chat_model.backgroundType = 0;
             chat_model.messageType = MessageTypeForServer;
             if ([format isEqualToString:@"task"]) {
                 name = [[CWThings4Interface sharedInstance] get_var_with_path:[things_tid UTF8String] path:[name_path UTF8String] sessions:YES];
@@ -2246,6 +2263,7 @@ static CWDataManager *sharedInstance = nil;
         }
         else {
             chat_model.bgImageName = @"chatfrom_bg_normal";
+            chat_model.backgroundType = 0;
             chat_model.messageType = MessageTypeForServer;
             if ([format isEqualToString:@"task"]) {
                 name = [[CWThings4Interface sharedInstance] get_var_with_path:[things_tid UTF8String] path:[name_path UTF8String] sessions:YES];
@@ -2487,9 +2505,11 @@ static CWDataManager *sharedInstance = nil;
             chat_model.messageType = MessageTypeForLOCAL;
             name = "我";
             chat_model.bgImageName = @"chatto_bg_normal";
+            chat_model.backgroundType = 0;
         }
         else {
             chat_model.bgImageName = @"chatfrom_bg_normal";
+            chat_model.backgroundType = 0;
             chat_model.messageType = MessageTypeForServer;
             if ([format isEqualToString:@"task"]) {
                 name = [[CWThings4Interface sharedInstance] get_var_with_path:[things_tid UTF8String] path:[name_path UTF8String] sessions:YES];
@@ -2571,14 +2591,17 @@ static CWDataManager *sharedInstance = nil;
                             NSString *e_8 = [cid substringWithRange:range];
                             if ([e_7 isEqualToString:@"3"] && [e_8 isEqualToString:@"4"]) {
                                 chat_model.bgImageName = @"chatfrom_bg_away.png";
+                                chat_model.backgroundType = 8;
                                 //msg_body->fuc_image_bg = @"chatfrom_bg_away.png";
                             }
                             else if ([e_7 isEqualToString:@"1"] && [e_8 isEqualToString:@"4"]) {
                                 chat_model.bgImageName = @"chatfrom_bg_open.png";
+                                chat_model.backgroundType = 9;
                                 //msg_body->fuc_image_bg = @"chatfrom_bg_open.png";
                             }
                             else if (([e_7 isEqualToString:@"E"] || [e_7 isEqualToString:@"1"]) && [e_8 isEqualToString:@"5"]) {
                                 chat_model.bgImageName = @"chatfrom_bg_panglu.png";
+                                chat_model.backgroundType = 5;
                                 //msg_body->fuc_image_bg = @"chatfrom_bg_panglu.png";
                             }
                             //else if (([e_7 isEqualToString:@"R"] || [e_7 isEqualToString:@"3"]) && [e_8 isEqualToString:@"5"]) {
@@ -2586,10 +2609,12 @@ static CWDataManager *sharedInstance = nil;
                             //}
                             else if([e_7 isEqualToString:@"1"] && [e_8 isEqualToString:@"1"]) {
                                 chat_model.bgImageName = @"chatfrom_bg_baojin.png";
+                                chat_model.backgroundType = 1;
                                 //msg_body->fuc_image_bg = @"chatfrom_bg_baojin.png";
                             }
                             else {
                                 chat_model.bgImageName = @"chatfrom_bg_normal";
+                                chat_model.backgroundType = 0;
                                 //msg_body->fuc_image_bg = @"chatfrom_bg_normal";
                             }
                         }
