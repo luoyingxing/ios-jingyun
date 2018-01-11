@@ -52,6 +52,8 @@
     UILabel* statusLabel;
     UICollectionView* collectionView;
     
+    UIRefreshControl *refreshControl;
+    
     CGFloat screenHeight;
     CGFloat screenWidth;
     CGFloat childViewsY;
@@ -193,6 +195,11 @@
     [tableView registerClass:[DeviceMessageServerCell class] forCellReuseIdentifier:CellIdentifierServer];
     
     [self.view addSubview:tableView];
+    
+    refreshControl = [[UIRefreshControl alloc] init];
+    refreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"下拉加载更多消息"];
+    [refreshControl addTarget:self action:@selector(refreshClick:) forControlEvents:UIControlEventValueChanged];
+    [tableView addSubview:refreshControl];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -202,9 +209,10 @@
     }
     
     _deviceStatusModel.unread_count = 0;
-    [self loadDeviceData:NO];
-    [self updateDeviceInfo];
     
+    [self updateDeviceInfo];
+    [refreshControl beginRefreshing];
+    [self refreshClick:refreshControl];
     
 //    rcTable = self.tableView.frame;
 //    [_chat_bar setSuperViewHeight:[UIScreen mainScreen].bounds.size.height];
@@ -228,6 +236,15 @@
 //    else {
     
 //    }
+}
+
+// 下拉刷新触发，在此获取数据
+- (void)refreshClick:(UIRefreshControl *) refreshControl {
+    NSLog(@"refreshClick:刷新");
+    if (refreshControl.refreshing) {
+        refreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"加载中..."];
+        [self loadDeviceData:YES];
+    }
 }
 
 //加载防区等信息
@@ -310,9 +327,9 @@
         DeviceMessageModel *chat_model = [self.dataArray objectAtIndex:0];
         if (chat_model && more) {
             if ([[CWDataManager sharedInstance] isOldSystemVersion]) {
-                sprintf(cmd, "/get_msg_of?tid=%s&mode=before&mid=%ld&cnt=%d", [_deviceStatusModel.tid UTF8String], (long)chat_model.mid, 15);
+                sprintf(cmd, "/get_msg_of?tid=%s&mode=before&mid=%ld&cnt=%d", [_deviceStatusModel.tid UTF8String], (long)chat_model.mid, 10);
             }else {
-                sprintf(cmd, "/message/last?of=%s&limit=%d&dir=before&mid=%ld", [_deviceStatusModel.tid UTF8String], 30, (long)chat_model.mid);
+                sprintf(cmd, "/message/last?of=%s&limit=%d&dir=before&mid=%ld", [_deviceStatusModel.tid UTF8String], 10, (long)chat_model.mid);
             }
         }
     }
@@ -320,9 +337,9 @@
         NSMutableArray *messageArray = [[CWDataManager sharedInstance] getChatMessageArray4Tid:_deviceStatusModel.tid];
         if (messageArray == nil || [messageArray count] == 0) {
             if ([[CWDataManager sharedInstance] isOldSystemVersion]) {
-                sprintf(cmd, "/get_msg_of?tid=%s&mode=%s&cnt=%ld", [_deviceStatusModel.tid UTF8String], "last", (long)30);
+                sprintf(cmd, "/get_msg_of?tid=%s&mode=%s&cnt=%ld", [_deviceStatusModel.tid UTF8String], "last", (long)10);
             }else {
-                sprintf(cmd, "/message/last?of=%s&limit=%d", [_deviceStatusModel.tid UTF8String], 30);
+                sprintf(cmd, "/message/last?of=%s&limit=%d", [_deviceStatusModel.tid UTF8String], 10);
             }
         }else {
             self.dataArray = messageArray;
@@ -331,11 +348,11 @@
     
     if (strlen(cmd) > 0) {
         [[CWThings4Interface sharedInstance] request:"." URL:cmd UrlLen:(int)strlen(cmd) ReqID:"messageLast"];
-    }
-    else {
+    }else {
         [tableView reloadData];
-//        [_myRefreshView endRefreshing];
-        
+        [refreshControl endRefreshing];
+        refreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"下拉加载更多消息"];
+
         if ([self.dataArray count] > 5) {
             NSIndexPath *indexPath = [NSIndexPath indexPathForRow:([self.dataArray count] - 1) inSection:0];
             if (indexPath != nil) {
@@ -533,7 +550,8 @@
         //load message data
         self.dataArray = [[CWDataManager sharedInstance] getChatMessageArray4Tid:_deviceStatusModel.tid];
         [tableView reloadData];
-//        [_myRefreshView endRefreshing];
+        [refreshControl endRefreshing];
+        refreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"下拉加载更多消息"];
         
         NSInteger messageCountInteger = [self.dataArray count] - _preMessageCount;
         if (messageCountInteger) {
