@@ -24,7 +24,11 @@
 #define CellIdentifierForDefault @"CellIdentifierForDefault"
 #define CellIdentifierForImage @"CellIdentifierForImage"
 
-@interface DeviceViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface DeviceViewController ()<UITableViewDelegate, UITableViewDataSource>{
+    
+    NSTimer *device_update_timer;
+    
+}
 
 //保存数据列表
 @property (nonatomic,strong) NSMutableArray* deviceArray;
@@ -223,6 +227,11 @@
 
 - (void) viewWillAppear:(BOOL)animated{
     [self loadDeviceData];
+    
+    if (device_update_timer == nil) {
+        float palFrame = 2.0;
+        device_update_timer = [NSTimer scheduledTimerWithTimeInterval:palFrame target:self selector:@selector(device_update_func) userInfo:nil repeats:YES];
+    }
 }
 
 //- (void)tableView:(UITableView *)tableView willDisplayFooterView:(UIView *)view forSection:(NSInteger)section {
@@ -623,6 +632,20 @@
     tipLabel.text = [NSString stringWithFormat:@"全部%lu/撤防%d", _deviceArray.count, openDeviceCount];
     
     [tableView reloadData];
+}
+
+- (void) device_update_func{
+    if ([CWDataManager sharedInstance]->followed_things_init_grid == YES ) {
+        [self loadDeviceData];
+        [CWDataManager sharedInstance]->followed_things_init_grid = NO;
+    }
+}
+
+- (void) viewWillDisappear:(BOOL)animated{
+    if (device_update_timer) {
+        [device_update_timer invalidate];
+        device_update_timer = nil;
+    }
 }
 
 #pragma mark --UITableViewDataSource 协议方法
