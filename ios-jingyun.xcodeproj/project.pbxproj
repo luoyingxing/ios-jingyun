@@ -164,6 +164,7 @@
 		66F835BE1FFCE3AA008829E6 /* ic_lc_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 66F835BA1FFCE3A9008829E6 /* ic_lc_logo.png */; };
 		66F835BF1FFCE3AA008829E6 /* ic_hm_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 66F835BB1FFCE3A9008829E6 /* ic_hm_logo.png */; };
 		66F835C01FFCE3AA008829E6 /* ic_cw_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 66F835BC1FFCE3AA008829E6 /* ic_cw_logo.png */; };
+		66F93A32200863AB00C25D35 /* SampleAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 66F93A31200863AB00C25D35 /* SampleAlertView.m */; };
 		66FF01F91FF1041C005BE42C /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66FF01F81FF1041C005BE42C /* WebViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -459,6 +460,8 @@
 		66F835BA1FFCE3A9008829E6 /* ic_lc_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_lc_logo.png; sourceTree = "<group>"; };
 		66F835BB1FFCE3A9008829E6 /* ic_hm_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_hm_logo.png; sourceTree = "<group>"; };
 		66F835BC1FFCE3AA008829E6 /* ic_cw_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_cw_logo.png; sourceTree = "<group>"; };
+		66F93A30200863AB00C25D35 /* SampleAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SampleAlertView.h; sourceTree = "<group>"; };
+		66F93A31200863AB00C25D35 /* SampleAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SampleAlertView.m; sourceTree = "<group>"; };
 		66FF01F71FF1041C005BE42C /* WebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		66FF01F81FF1041C005BE42C /* WebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -947,6 +950,8 @@
 			children = (
 				66D6F6932006223F00179B40 /* UITextLabel.h */,
 				66D6F6942006223F00179B40 /* UITextLabel.m */,
+				66F93A30200863AB00C25D35 /* SampleAlertView.h */,
+				66F93A31200863AB00C25D35 /* SampleAlertView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1295,6 +1300,7 @@
 				669541631FE3B43D000D4638 /* AlarmDataModel.m in Sources */,
 				66D442D91FEA21E200D89F5E /* SDCollectionViewCell.m in Sources */,
 				66E1B7E81FF1EAD60070B2C2 /* NSObject+BAProgressHUD.m in Sources */,
+				66F93A32200863AB00C25D35 /* SampleAlertView.m in Sources */,
 				660F55F91FDE631300788D6C /* AppDelegate.m in Sources */,
 				66D442E41FEA220100D89F5E /* TADotView.m in Sources */,
 				669541611FE3B43D000D4638 /* DXAudioTool.m in Sources */,
@@ -1525,6 +1531,7 @@
 				OTHER_LIBTOOLFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "con.conwin.ios-jingyun";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos11.1;
 				SWIFT_OBJC_BRIDGING_HEADER = "ios-jingyun/App/Account/DAO/ios-jingyun-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -1556,6 +1563,7 @@
 				OTHER_LIBTOOLFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "con.conwin.ios-jingyun";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos11.1;
 				SWIFT_OBJC_BRIDGING_HEADER = "ios-jingyun/App/Account/DAO/ios-jingyun-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

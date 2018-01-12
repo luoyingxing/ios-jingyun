@@ -607,7 +607,7 @@
     if (isFilterAll) {
         titleStrings = [titleStrings stringByAppendingString:@"全部 | "];
     }else{
-        if (isFilterAlarm) {
+        if (isFilterAway) {
             titleStrings = [titleStrings stringByAppendingString:@"布防 | "];
         }
         
@@ -795,8 +795,93 @@
 }
 
 - (void) filterOnclickListener{
-    NSLog(@"filterOnclickListener");
+    UIAlertController* filterController = [[UIAlertController alloc] init];
+    UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        NSLog(@"Tap 取消 Button");
+    }];
+
+    UIAlertAction* adllAction = [UIAlertAction actionWithTitle:@"全部" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+        if (isFilterAll) {
+            isFilterAway = NO;
+            isFilterOPen = NO;
+            isFilterAlarm = NO;
+            isFilterOnline = NO;
+            isFilterOffline = NO;
+        }else{
+            isFilterAway = YES;
+            isFilterOPen = YES;
+            isFilterAlarm = YES;
+            isFilterOnline = YES;
+            isFilterOffline = YES;
+        }
+        isFilterAll = !isFilterAll;
+        [self loadDeviceData];
+    }];
+    if (isFilterAll) {
+        [adllAction setValue:[UIColor redColor] forKey:@"_titleTextColor"];
+    }else{
+        [adllAction setValue:[CWColorUtils colorWithHexString:@"#a8a8a8"] forKey:@"_titleTextColor"];
+    }
+
+    UIAlertAction* awayAction = [UIAlertAction actionWithTitle:@"布防" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        isFilterAway = !isFilterAway;
+        [self loadDeviceData];
+    }];
+    if (isFilterAway) {
+        [awayAction setValue:[CWColorUtils getThemeColor] forKey:@"_titleTextColor"];
+    }else{
+        [awayAction setValue:[CWColorUtils colorWithHexString:@"#a8a8a8"] forKey:@"_titleTextColor"];
+    }
     
+    UIAlertAction* openAction = [UIAlertAction actionWithTitle:@"撤防" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        isFilterOPen = !isFilterOPen;
+        [self loadDeviceData];
+    }];
+    if (isFilterOPen) {
+        [openAction setValue:[CWColorUtils getThemeColor] forKey:@"_titleTextColor"];
+    }else{
+        [openAction setValue:[CWColorUtils colorWithHexString:@"#a8a8a8"] forKey:@"_titleTextColor"];
+    }
+    
+    UIAlertAction* alarmAction = [UIAlertAction actionWithTitle:@"报警" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        isFilterAlarm = !isFilterAlarm;
+        [self loadDeviceData];
+    }];
+    if (isFilterAlarm) {
+        [alarmAction setValue:[CWColorUtils getThemeColor] forKey:@"_titleTextColor"];
+    }else{
+        [alarmAction setValue:[CWColorUtils colorWithHexString:@"#a8a8a8"] forKey:@"_titleTextColor"];
+    }
+
+    UIAlertAction* onlineAction = [UIAlertAction actionWithTitle:@"在线" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        isFilterOnline = !isFilterOnline;
+        [self loadDeviceData];
+    }];
+    if (isFilterOnline) {
+        [onlineAction setValue:[CWColorUtils getThemeColor] forKey:@"_titleTextColor"];
+    }else{
+        [onlineAction setValue:[CWColorUtils colorWithHexString:@"#a8a8a8"] forKey:@"_titleTextColor"];
+    }
+    
+    UIAlertAction* offlineAction = [UIAlertAction actionWithTitle:@"离线" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        isFilterOffline = !isFilterOffline;
+        [self loadDeviceData];
+    }];
+    if (isFilterOffline) {
+        [offlineAction setValue:[CWColorUtils getThemeColor] forKey:@"_titleTextColor"];
+    }else{
+        [offlineAction setValue:[CWColorUtils colorWithHexString:@"#a8a8a8"] forKey:@"_titleTextColor"];
+    }
+
+    [filterController addAction:cancelAction];
+    [filterController addAction:adllAction];
+    [filterController addAction:awayAction];
+    [filterController addAction:openAction];
+    [filterController addAction:alarmAction];
+    [filterController addAction:onlineAction];
+    [filterController addAction:offlineAction];
+    
+    [self presentViewController:filterController animated:TRUE completion:nil];
 }
 
 - (void) allOnclickListener{
@@ -810,6 +895,12 @@
     videoLabel.textColor = [UIColor whiteColor];
     otherLabel.backgroundColor = [CWColorUtils getThemeColor];
     otherLabel.textColor = [UIColor whiteColor];
+    isFilterAll = YES;
+    isFilterAway = YES;
+    isFilterOPen = YES;
+    isFilterAlarm = YES;
+    isFilterOnline = YES;
+    isFilterOffline = YES;
     [self loadDeviceData];
 }
 
@@ -824,6 +915,12 @@
     videoLabel.textColor = [UIColor whiteColor];
     otherLabel.backgroundColor = [CWColorUtils getThemeColor];
     otherLabel.textColor = [UIColor whiteColor];
+    isFilterAll = YES;
+    isFilterAway = YES;
+    isFilterOPen = YES;
+    isFilterAlarm = YES;
+    isFilterOnline = YES;
+    isFilterOffline = YES;
     [self loadDeviceData];
 }
 
@@ -838,6 +935,12 @@
     alarmLabel.textColor = [UIColor whiteColor];
     otherLabel.backgroundColor = [CWColorUtils getThemeColor];
     otherLabel.textColor = [UIColor whiteColor];
+    isFilterAll = YES;
+    isFilterAway = YES;
+    isFilterOPen = YES;
+    isFilterAlarm = YES;
+    isFilterOnline = YES;
+    isFilterOffline = YES;
     [self loadDeviceData];
 }
 
@@ -852,6 +955,12 @@
     videoLabel.textColor = [UIColor whiteColor];
     allLabel.backgroundColor = [CWColorUtils getThemeColor];
     allLabel.textColor = [UIColor whiteColor];
+    isFilterAll = YES;
+    isFilterAway = YES;
+    isFilterOPen = YES;
+    isFilterAlarm = YES;
+    isFilterOnline = YES;
+    isFilterOffline = YES;
     [self loadDeviceData];
 }
 
