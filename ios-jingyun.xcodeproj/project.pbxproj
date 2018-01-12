@@ -164,7 +164,8 @@
 		66F835BE1FFCE3AA008829E6 /* ic_lc_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 66F835BA1FFCE3A9008829E6 /* ic_lc_logo.png */; };
 		66F835BF1FFCE3AA008829E6 /* ic_hm_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 66F835BB1FFCE3A9008829E6 /* ic_hm_logo.png */; };
 		66F835C01FFCE3AA008829E6 /* ic_cw_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 66F835BC1FFCE3AA008829E6 /* ic_cw_logo.png */; };
-		66F93A32200863AB00C25D35 /* SampleAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 66F93A31200863AB00C25D35 /* SampleAlertView.m */; };
+		66F93A32200863AB00C25D35 /* AlarmReportAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 66F93A31200863AB00C25D35 /* AlarmReportAlertView.m */; };
+		66F93A342008B52300C25D35 /* img_home_alarm_dialog.png in Resources */ = {isa = PBXBuildFile; fileRef = 66F93A332008B52300C25D35 /* img_home_alarm_dialog.png */; };
 		66FF01F91FF1041C005BE42C /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66FF01F81FF1041C005BE42C /* WebViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -460,8 +461,9 @@
 		66F835BA1FFCE3A9008829E6 /* ic_lc_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_lc_logo.png; sourceTree = "<group>"; };
 		66F835BB1FFCE3A9008829E6 /* ic_hm_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_hm_logo.png; sourceTree = "<group>"; };
 		66F835BC1FFCE3AA008829E6 /* ic_cw_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_cw_logo.png; sourceTree = "<group>"; };
-		66F93A30200863AB00C25D35 /* SampleAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SampleAlertView.h; sourceTree = "<group>"; };
-		66F93A31200863AB00C25D35 /* SampleAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SampleAlertView.m; sourceTree = "<group>"; };
+		66F93A30200863AB00C25D35 /* AlarmReportAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlarmReportAlertView.h; sourceTree = "<group>"; };
+		66F93A31200863AB00C25D35 /* AlarmReportAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlarmReportAlertView.m; sourceTree = "<group>"; };
+		66F93A332008B52300C25D35 /* img_home_alarm_dialog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_home_alarm_dialog.png; sourceTree = "<group>"; };
 		66FF01F71FF1041C005BE42C /* WebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		66FF01F81FF1041C005BE42C /* WebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -636,6 +638,7 @@
 		660F561B1FDE826700788D6C /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				66F93A332008B52300C25D35 /* img_home_alarm_dialog.png */,
 				66EBD8A020036E0D0015DBFB /* bg_device_detail_zone.png */,
 				66EBD89F20036E0D0015DBFB /* icon_device_detail_status.png */,
 				66F835BC1FFCE3AA008829E6 /* ic_cw_logo.png */,
@@ -950,8 +953,8 @@
 			children = (
 				66D6F6932006223F00179B40 /* UITextLabel.h */,
 				66D6F6942006223F00179B40 /* UITextLabel.m */,
-				66F93A30200863AB00C25D35 /* SampleAlertView.h */,
-				66F93A31200863AB00C25D35 /* SampleAlertView.m */,
+				66F93A30200863AB00C25D35 /* AlarmReportAlertView.h */,
+				66F93A31200863AB00C25D35 /* AlarmReportAlertView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1236,6 +1239,7 @@
 				66EBD8A72003744F0015DBFB /* ZoneViewCell.xib in Resources */,
 				66F038441FF0FD3E00884FC1 /* app_logo_40.png in Resources */,
 				66D442C11FEA05CE00D89F5E /* tab_icon_home_selected.png in Resources */,
+				66F93A342008B52300C25D35 /* img_home_alarm_dialog.png in Resources */,
 				66F038471FF0FD3E00884FC1 /* app_logo_58.png in Resources */,
 				66E1B7F71FF229C60070B2C2 /* SettingTextViewCell.xib in Resources */,
 				66D442CA1FEA0AE900D89F5E /* icon_account_user_name.png in Resources */,
@@ -1300,7 +1304,7 @@
 				669541631FE3B43D000D4638 /* AlarmDataModel.m in Sources */,
 				66D442D91FEA21E200D89F5E /* SDCollectionViewCell.m in Sources */,
 				66E1B7E81FF1EAD60070B2C2 /* NSObject+BAProgressHUD.m in Sources */,
-				66F93A32200863AB00C25D35 /* SampleAlertView.m in Sources */,
+				66F93A32200863AB00C25D35 /* AlarmReportAlertView.m in Sources */,
 				660F55F91FDE631300788D6C /* AppDelegate.m in Sources */,
 				66D442E41FEA220100D89F5E /* TADotView.m in Sources */,
 				669541611FE3B43D000D4638 /* DXAudioTool.m in Sources */,

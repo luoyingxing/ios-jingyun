@@ -21,6 +21,7 @@
 #import "LeftViewCell.h"
 #import "RightViewCell.h"
 #import "TextViewCell.h"
+#import "AlarmReportAlertView.h"
 
 #define GET_SLIDE_INFO_URL @"/get_slideshow_info"
 #define GET_SLIDE_VIEW_ID "getSlideInfoArray"
@@ -658,6 +659,14 @@
 
 - (void) policOnclickListener{
     NSLog(@"紧急求助");
+    
+    AlarmReportAlertView *alarmAlertView = [[AlarmReportAlertView alloc] initWithDefaultStyle];
+    alarmAlertView.resultIndex = ^(NSInteger index){
+        //回调---处理一系列动作
+        NSLog(@"回调---处理一系列动作 %lu", index);
+    };
+    
+    [alarmAlertView show];
 }
 
 - (void) paymentOnclickListener{

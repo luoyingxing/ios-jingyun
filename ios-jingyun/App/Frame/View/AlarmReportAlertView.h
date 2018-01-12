@@ -18,13 +18,12 @@
 
 typedef void(^AlertResult)(NSInteger index);
 
-@interface SampleAlertView : UIView
+@interface AlarmReportAlertView : UIView
 
 @property (nonatomic,copy) AlertResult resultIndex;
 
-- (instancetype)initWithTitle:(NSString *)title message:(NSString *)message sureBtn:(NSString *)sureTitle cancleBtn:(NSString *)cancleTitle;
+- (instancetype) initWithDefaultStyle;
 
-- (void)showFliterAlertView;
-
+- (void) show;
 
 @end
