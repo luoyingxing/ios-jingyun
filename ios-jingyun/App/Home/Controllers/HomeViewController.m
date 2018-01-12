@@ -674,10 +674,12 @@
 
 - (void) alarmOnclickListener{
     NSLog(@"报警");
+    [self.tabBarController setSelectedIndex:1];
 }
 
 - (void) videoOnclickListener{
     NSLog(@"视频");
+    [self.tabBarController setSelectedIndex:1];
 }
 
 - (void) smartOnclickListener{
