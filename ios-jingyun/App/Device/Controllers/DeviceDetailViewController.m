@@ -36,8 +36,12 @@
 //保存防区列表
 @property (nonatomic,strong) NSMutableArray* zoneArray;
 
+//未读消息条数
 @property (nonatomic, assign) NSInteger preMessageCount;
 
+@property (nonatomic, assign) BOOL isEndOfTableView;
+
+@property (nonatomic, assign) BOOL isRefreshing;
 
 @end
 
@@ -47,6 +51,7 @@
     UILabel* titleLabel;
     UILabel* subtitleLabel;
     UILabel* zoneLabel;
+    UILabel* unreadTipLabel;
     
     UIImageView* statusImageView;
     UILabel* statusLabel;
@@ -68,11 +73,15 @@
     screenWidth = self.view.bounds.size.width;
     self.deviceArray = [[NSMutableArray alloc] init];
     self.zoneArray = [[NSMutableArray alloc] init];
-
+    _preMessageCount = 0;
+    _isEndOfTableView = YES;
+    _isRefreshing = YES;
+    
     [self addToolbarView];
     [self addTopView];
     [self addCollectionView];
     [self initTableView];
+    [self addUnreadLabel];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -165,13 +174,13 @@
     layout.itemSize = CGSizeMake((screenWidth - 16 - 80 - 4) / 4, 22);
     //设置整个CollectionView的内边距
     layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
-
+    
     //设置单元格之间的间距
     layout.minimumInteritemSpacing = 0;
-
+    
     collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(8 + 80, topY, screenWidth - 8 - 8 - 80, 80 - 6) collectionViewLayout:layout];
     //设置可重用单元格标识与单元格类型
-//    [collectionView registerNib:[ZoneViewCell class]  forCellWithReuseIdentifier:CellIdentifierZone];
+    //    [collectionView registerNib:[ZoneViewCell class]  forCellWithReuseIdentifier:CellIdentifierZone];
     [collectionView registerNib:[UINib nibWithNibName:@"ZoneViewCell" bundle:nil] forCellWithReuseIdentifier:CellIdentifierZone];
     
     collectionView.backgroundColor = [CWColorUtils colorWithHexString:@"#ffffff" alpha:0.0f];
@@ -202,6 +211,28 @@
     [tableView addSubview:refreshControl];
 }
 
+- (void) addUnreadLabel{
+    unreadTipLabel = [[UILabel alloc] initWithFrame:CGRectMake(screenWidth - 90, childViewsY + 10, 80, 30)];
+    unreadTipLabel.textAlignment = NSTextAlignmentRight;
+    unreadTipLabel.font = [UIFont systemFontOfSize:15];
+    unreadTipLabel.textColor = [UIColor redColor];
+    unreadTipLabel.backgroundColor = [CWColorUtils colorWithHexString:@"eeeeee" alpha:0.5];
+    //    unreadTipLabel.text = @"78条未读消息";
+    UITapGestureRecognizer *onclickListener = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(unreadOnclickListener)];
+    [unreadTipLabel addGestureRecognizer:onclickListener];
+    unreadTipLabel.userInteractionEnabled = YES;
+    
+    //设置绘制的圆角
+    unreadTipLabel.layer.masksToBounds = YES;
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:unreadTipLabel.bounds  byRoundingCorners:UIRectCornerBottomLeft | UIRectCornerTopLeft cornerRadii:CGSizeMake(14, 14)];//设置圆角大小，弧度为5
+    CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
+    maskLayer.frame = unreadTipLabel.bounds;
+    maskLayer.path = maskPath.CGPath;
+    unreadTipLabel.layer.mask = maskLayer;
+    unreadTipLabel.hidden = YES;
+    [self.view addSubview:unreadTipLabel];
+}
+
 - (void)viewDidAppear:(BOOL)animated{
     if (message_update_timer == nil) {
         float palFrame = 1.0;
@@ -214,14 +245,9 @@
     [refreshControl beginRefreshing];
     [self refreshClick:refreshControl];
     
-//    rcTable = self.tableView.frame;
-//    [_chat_bar setSuperViewHeight:[UIScreen mainScreen].bounds.size.height];
-    
-//    _isUnDidLoadController = YES;
 }
 
 - (void) viewWillDisappear:(BOOL)animated{
-    
     if (message_update_timer) {
         [message_update_timer invalidate];
         message_update_timer = nil;
@@ -230,20 +256,14 @@
     _deviceStatusModel.unread_count = 0;
     [[CWDataManager sharedInstance] saveUnreadEvent4Things:_deviceStatusModel.tid value:0];
     
-//    if (_isUnDidLoadController == YES) {
-//        [[DHVideoDeviceHelper sharedInstance] DisconnectDevice];
-//    }
-//    else {
-    
-//    }
 }
 
 // 下拉刷新触发，在此获取数据
 - (void)refreshClick:(UIRefreshControl *) refreshControl {
-    NSLog(@"refreshClick:刷新");
     if (refreshControl.refreshing) {
         refreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"加载中..."];
-        [self loadDeviceData:YES];
+        [self loadMessageData:YES];
+        _isRefreshing = YES;
     }
 }
 
@@ -288,7 +308,7 @@
                 continue;
             }
             zoneModel.name = [NSString stringWithUTF8String:channel_name];
-
+            
             char* zone_status = [[CWThings4Interface sharedInstance] get_var_with_path_ex:[_deviceStatusModel.tid UTF8String] prepath:"zones" member:i backpath:"stat"];
             
             zoneModel.status = [NSString stringWithUTF8String:zone_status];
@@ -297,7 +317,7 @@
         }
     }else{
         int count = [[CWThings4Interface sharedInstance] get_var_nodes_with_tid:[_deviceStatusModel.tid UTF8String] path:"z"];
-         //后台数据的顺序是倒叙的，无奈重新排序
+        //后台数据的顺序是倒叙的，无奈重新排序
         for (int i = count - 1; i >= 0; i --) {
             DeviceZoneModel* zoneModel = [[DeviceZoneModel alloc] init];
             
@@ -314,53 +334,8 @@
             [self.zoneArray addObject:zoneModel];
         }
     }
-
-    [collectionView reloadData];
-}
-
-/*
- * 加载消息数据
- */
-- (void) loadDeviceData:(BOOL)more{
-    char cmd[128] = {0};
-    if ([self.dataArray count]) {
-        DeviceMessageModel *chat_model = [self.dataArray objectAtIndex:0];
-        if (chat_model && more) {
-            if ([[CWDataManager sharedInstance] isOldSystemVersion]) {
-                sprintf(cmd, "/get_msg_of?tid=%s&mode=before&mid=%ld&cnt=%d", [_deviceStatusModel.tid UTF8String], (long)chat_model.mid, 10);
-            }else {
-                sprintf(cmd, "/message/last?of=%s&limit=%d&dir=before&mid=%ld", [_deviceStatusModel.tid UTF8String], 10, (long)chat_model.mid);
-            }
-        }
-    }
-    else {
-        NSMutableArray *messageArray = [[CWDataManager sharedInstance] getChatMessageArray4Tid:_deviceStatusModel.tid];
-        if (messageArray == nil || [messageArray count] == 0) {
-            if ([[CWDataManager sharedInstance] isOldSystemVersion]) {
-                sprintf(cmd, "/get_msg_of?tid=%s&mode=%s&cnt=%ld", [_deviceStatusModel.tid UTF8String], "last", (long)10);
-            }else {
-                sprintf(cmd, "/message/last?of=%s&limit=%d", [_deviceStatusModel.tid UTF8String], 10);
-            }
-        }else {
-            self.dataArray = messageArray;
-        }
-    }
     
-    if (strlen(cmd) > 0) {
-        [[CWThings4Interface sharedInstance] request:"." URL:cmd UrlLen:(int)strlen(cmd) ReqID:"messageLast"];
-    }else {
-        [tableView reloadData];
-        [refreshControl endRefreshing];
-        refreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"下拉加载更多消息"];
-
-        if ([self.dataArray count] > 5) {
-            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:([self.dataArray count] - 1) inSection:0];
-            if (indexPath != nil) {
-                [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
-            }
-            _preMessageCount = [self.dataArray count];
-        }
-    }
+    [collectionView reloadData];
 }
 
 #pragma mark - UICollectionViewDelegate
@@ -414,7 +389,7 @@
         
         cell.timeLabel.text = messageModel.dateTime;
         cell.contentLabel.text = messageModel.text;
-    
+        
         return cell;
         
     }else{
@@ -423,7 +398,7 @@
         if (cell == nil) {
             cell = [[DeviceMessageServerCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifierServer];
         }
-
+        
         cell.accessoryType = UITableViewCellAccessoryNone;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
@@ -452,7 +427,7 @@
             }else{
                 cell.contentLabel.backgroundColor = [UIColor whiteColor];
             }
-
+            
             contentText = [contentText stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
             contentText = [contentText stringByReplacingOccurrencesOfString:@"\\\\r\\\\n" withString:@"\r"];
             contentText = [contentText stringByReplacingOccurrencesOfString:@"\r\n" withString:@"\r"];
@@ -500,31 +475,10 @@
     return 0;
 }
 
-- (void) filterOnclickListener{
-    NSLog(@"filterOnclickListener");
-    
-}
-
-
 // like item click listener
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     DeviceMessageModel* messageModel = [self.dataArray objectAtIndex:indexPath.row];
     NSLog(@"-------------> text:%@   dateTime:%@   userName:%@   iconName:%@   imageName:%@   bgImageName:%@   tid:%@   messageStatusType:%lu   messageType:%lu", messageModel.text, messageModel.dateTime, messageModel.userName, messageModel.iconName, messageModel.imageName, messageModel.bgImageName, messageModel.tid, messageModel.messageStatusType, messageModel.messageType);
-}
-
-- (NSDictionary *) dictionaryWithJsonString:(NSString *)jsonString {
-    if (jsonString == nil) {
-        return nil;
-    }
-    
-    NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
-    NSError *err;
-    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&err];
-    if(err) {
-        NSLog(@"json解析失败：%@",err);
-        return nil;
-    }
-    return dic;
 }
 
 - (void) goback{
@@ -549,27 +503,110 @@
     if ([CWDataManager sharedInstance]->chat_message_update == YES) {
         //load message data
         self.dataArray = [[CWDataManager sharedInstance] getChatMessageArray4Tid:_deviceStatusModel.tid];
+
+        NSInteger messageCountInteger = [self.dataArray count] - _preMessageCount;
+        if (messageCountInteger) {
+            if (!_isEndOfTableView && !_isRefreshing) {
+                unreadTipLabel.hidden = NO;
+                unreadTipLabel.text = [NSString stringWithFormat:@"%lu条新消息", messageCountInteger];
+            }
+
+            if (_isRefreshing) {
+                _isRefreshing = NO;
+            }
+        }
+        
+        [CWDataManager sharedInstance]->chat_message_update = NO;
+        
+        _preMessageCount = [self.dataArray count];
         [tableView reloadData];
         [refreshControl endRefreshing];
         refreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"下拉加载更多消息"];
         
-        NSInteger messageCountInteger = [self.dataArray count] - _preMessageCount;
-        if (messageCountInteger) {
-//            [_message_bar ShowMessageCount:messageCountInteger];
+        if (_isEndOfTableView) {
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:([self.dataArray count] - 1) inSection:0];
+            if (indexPath != nil) {
+                [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+            }
         }
-        
-        [CWDataManager sharedInstance]->chat_message_update = NO;
-//        if ([self.dataArray count] > 5) {
-//            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:([self.dataArray count] - 1) inSection:0];
-//            [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
-//         }
     }
     
-    [self loadDeviceInfo];
+    [self updateInfo];
     [self updateDeviceInfo];
 }
 
-- (void) loadDeviceInfo{
+/*
+ * 加载消息数据
+ */
+- (void) loadMessageData:(BOOL)more{
+    char cmd[128] = {0};
+    if ([self.dataArray count]) {
+        DeviceMessageModel *chat_model = [self.dataArray objectAtIndex:0];
+        if (chat_model && more) {
+            if ([[CWDataManager sharedInstance] isOldSystemVersion]) {
+                sprintf(cmd, "/get_msg_of?tid=%s&mode=before&mid=%ld&cnt=%d", [_deviceStatusModel.tid UTF8String], (long)chat_model.mid, 10);
+            }else {
+                sprintf(cmd, "/message/last?of=%s&limit=%d&dir=before&mid=%ld", [_deviceStatusModel.tid UTF8String], 10, (long)chat_model.mid);
+            }
+        }
+    }else {
+        NSMutableArray *messageArray = [[CWDataManager sharedInstance] getChatMessageArray4Tid:_deviceStatusModel.tid];
+        if (messageArray == nil || [messageArray count] == 0) {
+            if ([[CWDataManager sharedInstance] isOldSystemVersion]) {
+                sprintf(cmd, "/get_msg_of?tid=%s&mode=%s&cnt=%ld", [_deviceStatusModel.tid UTF8String], "last", (long)10);
+            }else {
+                sprintf(cmd, "/message/last?of=%s&limit=%d", [_deviceStatusModel.tid UTF8String], 10);
+            }
+        }else {
+            self.dataArray = messageArray;
+        }
+    }
+    
+    if (strlen(cmd) > 0) {
+        [[CWThings4Interface sharedInstance] request:"." URL:cmd UrlLen:(int)strlen(cmd) ReqID:"messageLast"];
+    }else {
+        [tableView reloadData];
+        [refreshControl endRefreshing];
+        refreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"下拉加载更多消息"];
+        
+        if (_preMessageCount < 4) {
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:([self.dataArray count] - 1) inSection:0];
+            if (indexPath != nil) {
+                [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+            }
+            _preMessageCount = [self.dataArray count];
+        }
+    }
+}
+
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    CGPoint contentOffsetPoint = tableView.contentOffset;
+    CGRect frame = tableView.frame;
+    NSLog(@"[contentOffsetPoint.y = %f  tableViewHeight: %f  frameheight: %f" , contentOffsetPoint.y , tableView.contentSize.height , frame.size.height);
+    if (tableView.contentSize.height - frame.size.height - contentOffsetPoint.y < 1 || tableView.contentSize.height < frame.size.height){
+        _isEndOfTableView = YES;
+        
+        if (!unreadTipLabel.isHidden) {
+            unreadTipLabel.hidden = YES;
+        }
+        
+        _preMessageCount = [self.dataArray count];
+    }else{
+        _isEndOfTableView = NO;
+    }
+}
+
+//点击未读消息，滚动到底部，查阅最新的消息
+- (void) unreadOnclickListener{
+    _preMessageCount = [self.dataArray count];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:([self.dataArray count] - 1) inSection:0];
+    [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    unreadTipLabel.hidden = YES;
+    _isEndOfTableView = YES;
+}
+
+- (void) updateInfo{
     NSString* tid = _deviceStatusModel.tid;
     if (tid) {
         //设备状态
@@ -588,7 +625,7 @@
         if (device_status) {
             deviceStatusString = [NSString stringWithUTF8String:device_status];
         }
-  
+        
         //防区状态
         BOOL isZoneAlarm = NO;
         char* zone_status = [[CWThings4Interface sharedInstance] get_var_with_path:[tid UTF8String] path:"zones" sessions:YES];
@@ -674,7 +711,7 @@
                 _deviceStatusModel.isDeviceOpen = NO;
             }
         }
-
+        
         //全局状态
         NSString* connected = @"-1";
         if([_deviceStatusModel.partID isEqualToString:@"1000"] || [_deviceStatusModel.partID isEqualToString:@"1001"] || [_deviceStatusModel.partID isEqualToString:@"1002"]){
@@ -693,3 +730,4 @@
 
 
 @end
+
