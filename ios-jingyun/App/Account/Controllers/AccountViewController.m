@@ -46,6 +46,7 @@
 }
 
 - (void) viewWillAppear:(BOOL)animated{
+    self.navigationItem.title = @"登陆";
     [self intUserInfoData];
     [self.tableView reloadData];
 }
