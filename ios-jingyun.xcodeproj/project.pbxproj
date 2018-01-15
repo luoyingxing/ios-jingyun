@@ -26,6 +26,8 @@
 		66157893200C8BA20016087C /* VideoTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66157891200C8BA20016087C /* VideoTypeViewController.m */; };
 		66157894200C8BA20016087C /* VideoTypeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66157892200C8BA20016087C /* VideoTypeViewController.xib */; };
 		66157896200C8FAB0016087C /* icon_small_circle_check.png in Resources */ = {isa = PBXBuildFile; fileRef = 66157895200C8FAA0016087C /* icon_small_circle_check.png */; };
+		6615789A200CA3700016087C /* ResetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66157898200CA3700016087C /* ResetPasswordViewController.m */; };
+		6615789B200CA3700016087C /* ResetPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66157899200CA3700016087C /* ResetPasswordViewController.xib */; };
 		6695412E1FE3B1F4000D4638 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6695412D1FE3B1F4000D4638 /* Localizable.strings */; };
 		669541381FE3B2F9000D4638 /* LoginUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 669541331FE3B2F9000D4638 /* LoginUserInfo.m */; };
 		669541591FE3B43C000D4638 /* RepairUserLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6695413B1FE3B439000D4638 /* RepairUserLocation.m */; };
@@ -224,6 +226,9 @@
 		66157891200C8BA20016087C /* VideoTypeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoTypeViewController.m; sourceTree = "<group>"; };
 		66157892200C8BA20016087C /* VideoTypeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoTypeViewController.xib; sourceTree = "<group>"; };
 		66157895200C8FAA0016087C /* icon_small_circle_check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_small_circle_check.png; sourceTree = "<group>"; };
+		66157897200CA3700016087C /* ResetPasswordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResetPasswordViewController.h; sourceTree = "<group>"; };
+		66157898200CA3700016087C /* ResetPasswordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResetPasswordViewController.m; sourceTree = "<group>"; };
+		66157899200CA3700016087C /* ResetPasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResetPasswordViewController.xib; sourceTree = "<group>"; };
 		6695406B1FE3AD23000D4638 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		6695406C1FE3AD2E000D4638 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		6695406D1FE3AD38000D4638 /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
@@ -862,6 +867,9 @@
 				66157890200C8BA20016087C /* VideoTypeViewController.h */,
 				66157891200C8BA20016087C /* VideoTypeViewController.m */,
 				66157892200C8BA20016087C /* VideoTypeViewController.xib */,
+				66157897200CA3700016087C /* ResetPasswordViewController.h */,
+				66157898200CA3700016087C /* ResetPasswordViewController.m */,
+				66157899200CA3700016087C /* ResetPasswordViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1261,6 +1269,7 @@
 				66E1B7F71FF229C60070B2C2 /* SettingTextViewCell.xib in Resources */,
 				66D442CA1FEA0AE900D89F5E /* icon_account_user_name.png in Resources */,
 				66D6F68E2005ABBF00179B40 /* icon_device_detail_system.png in Resources */,
+				6615789B200CA3700016087C /* ResetPasswordViewController.xib in Resources */,
 				66DFF1771FEB4944009086C5 /* icon_home_message_tip.png in Resources */,
 				66DFF1821FEB93CC009086C5 /* img_home_alarm.png in Resources */,
 				66157896200C8FAB0016087C /* icon_small_circle_check.png in Resources */,
@@ -1378,6 +1387,7 @@
 				66DFF1921FEBB10E009086C5 /* HomeViewController.m in Sources */,
 				66E1B4601FF4D46000531857 /* DeviceDefaultCell.m in Sources */,
 				66DEB3EA2007163E00E0BCF2 /* DeviceZoneModel.m in Sources */,
+				6615789A200CA3700016087C /* ResetPasswordViewController.m in Sources */,
 				66D442E71FEA220100D89F5E /* TAAnimatedDotView.m in Sources */,
 				66D443181FEA23B300D89F5E /* SDWebImagePrefetcher.m in Sources */,
 				66E1B7FD1FF22DCA0070B2C2 /* SettingCheckedViewCell.m in Sources */,

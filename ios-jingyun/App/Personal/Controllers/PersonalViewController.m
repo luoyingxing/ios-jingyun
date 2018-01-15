@@ -17,6 +17,7 @@
 #import "SettingItem.h"
 #import "CWFileUtils.h"
 #import "VideoTypeViewController.h"
+#import "ResetPasswordViewController.h"
 
 #define CellIdentifierForSettingText @"CellIdentifierForSettingText"
 #define CellIdentifierForSettingChecked @"CellIdentifierForSettingChecked"
@@ -186,12 +187,21 @@
 // like item click listener
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NSLog(@"click item is %li", indexPath.row);
-    NSInteger index = indexPath.row;
+    NSUInteger index = [indexPath row];
+    SettingItem  *item = self.settingListData[index];
+    NSInteger itemId = item.itemId;
     
-    if (index == 0) {
+    if (itemId == 3001) {
+        //video connect type
         VideoTypeViewController* videoController = [[VideoTypeViewController alloc] init];
         UINavigationController* navigationController = [[UINavigationController alloc]
                                                             initWithRootViewController:videoController];
+        [self presentViewController:navigationController animated:TRUE completion:nil];
+    }else if (itemId == 3006){
+        //update password
+        ResetPasswordViewController* passwordController = [[ResetPasswordViewController alloc] init];
+        UINavigationController* navigationController = [[UINavigationController alloc]
+                                                        initWithRootViewController:passwordController];
         [self presentViewController:navigationController animated:TRUE completion:nil];
     }
     
