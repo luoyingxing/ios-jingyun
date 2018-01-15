@@ -73,6 +73,7 @@
         
         //两个按钮
         self.alarmButton = [UIButton buttonWithType:UIButtonTypeSystem];
+        self.alarmButton.font = [UIFont systemFontOfSize: 20];
         self.alarmButton.frame = CGRectMake(0, CGRectGetMaxY(self.lineView.frame), (self.alertViewWidth) / 2, 40);
         [self.alarmButton setBackgroundImage:[self imageWithColor:[UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:0.2]] forState:UIControlStateNormal];
         [self.alarmButton setBackgroundImage:[self imageWithColor:[UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:0.2]] forState:UIControlStateSelected];
@@ -94,6 +95,7 @@
         
             
         self.detailButton = [UIButton buttonWithType:UIButtonTypeSystem];
+        self.detailButton.font = [UIFont systemFontOfSize: 20];
         self.detailButton.frame = CGRectMake(CGRectGetMaxX(self.verLineView.frame), CGRectGetMaxY(self.lineView.frame), (self.alertViewWidth) / 2, 40);
         [self.detailButton setBackgroundImage:[self imageWithColor:[UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:0.2]] forState:UIControlStateNormal];
         [self.detailButton setBackgroundImage:[self imageWithColor:[UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:0.2]] forState:UIControlStateSelected];
