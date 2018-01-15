@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VideoTypeViewController">
+            <connections>
+                <outlet property="directButton" destination="3D9-Ct-U0x" id="pJ7-3g-q2r"/>
+                <outlet property="directImageView" destination="2pO-XK-U0S" id="mUb-O6-e46"/>
+                <outlet property="p2pButton" destination="flu-ya-Xzz" id="gKe-m3-PGg"/>
+                <outlet property="p2pImageView" destination="5cL-ft-pGx" id="Ibx-8S-cDj"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_small_circle_check.png" translatesAutoresizingMaskIntoConstraints="NO" id="5cL-ft-pGx">
+                    <rect key="frame" x="339" y="154" width="20" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="Zz4-iC-EDI"/>
+                        <constraint firstAttribute="width" constant="20" id="c3d-dS-vrn"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_small_circle_check.png" translatesAutoresizingMaskIntoConstraints="NO" id="2pO-XK-U0S">
+                    <rect key="frame" x="339" y="110" width="20" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="20" id="g9n-Hv-XuE"/>
+                        <constraint firstAttribute="width" constant="20" id="mRb-cs-McE"/>
+                        <constraint firstAttribute="height" constant="20" id="ntU-nF-Uqn"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="wuQ-yr-6Oq"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3D9-Ct-U0x">
+                    <rect key="frame" x="16" y="100" width="343" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="2cD-uc-wu7"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <state key="normal" title="直连模式">
+                        <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="directOnClick:" destination="-1" eventType="touchUpInside" id="QYu-p3-smx"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="flu-ya-Xzz">
+                    <rect key="frame" x="16" y="144" width="343" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="CBV-Pm-ECP"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <state key="normal" title="P2P模式">
+                        <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="p2pOnClick:" destination="-1" eventType="touchUpInside" id="YDO-RR-B50"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="5cL-ft-pGx" secondAttribute="trailing" constant="16" id="68l-bZ-syD"/>
+                <constraint firstItem="flu-ya-Xzz" firstAttribute="top" secondItem="3D9-Ct-U0x" secondAttribute="bottom" constant="4" id="6UP-HE-IOY"/>
+                <constraint firstItem="flu-ya-Xzz" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="16" id="Cpm-4E-R8T"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="3D9-Ct-U0x" secondAttribute="trailing" constant="16" id="PLk-qZ-ge9"/>
+                <constraint firstItem="3D9-Ct-U0x" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="16" id="U6V-96-Znk"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="2pO-XK-U0S" secondAttribute="trailing" constant="16" id="d0n-SB-eFB"/>
+                <constraint firstItem="3D9-Ct-U0x" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="80" id="i58-oF-NDj"/>
+                <constraint firstItem="2pO-XK-U0S" firstAttribute="centerY" secondItem="3D9-Ct-U0x" secondAttribute="centerY" id="n9Y-J8-OPC"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="flu-ya-Xzz" secondAttribute="trailing" constant="16" id="qcA-k8-IU4"/>
+                <constraint firstItem="5cL-ft-pGx" firstAttribute="centerY" secondItem="flu-ya-Xzz" secondAttribute="centerY" id="zXf-vK-n5w"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <point key="canvasLocation" x="26.5" y="52.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_small_circle_check.png" width="64" height="64"/>
+    </resources>
+</document>

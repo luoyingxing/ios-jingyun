@@ -16,6 +16,7 @@
 #import "SettingCheckedViewCell.h"
 #import "SettingItem.h"
 #import "CWFileUtils.h"
+#import "VideoTypeViewController.h"
 
 #define CellIdentifierForSettingText @"CellIdentifierForSettingText"
 #define CellIdentifierForSettingChecked @"CellIdentifierForSettingChecked"
@@ -185,7 +186,14 @@
 // like item click listener
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NSLog(@"click item is %li", indexPath.row);
+    NSInteger index = indexPath.row;
     
+    if (index == 0) {
+        VideoTypeViewController* videoController = [[VideoTypeViewController alloc] init];
+        UINavigationController* navigationController = [[UINavigationController alloc]
+                                                            initWithRootViewController:videoController];
+        [self presentViewController:navigationController animated:TRUE completion:nil];
+    }
     
 }
 

@@ -23,6 +23,9 @@
 		66127EDB1FE7AAEB00D56869 /* CWService.m in Sources */ = {isa = PBXBuildFile; fileRef = 66127ED21FE7AAEB00D56869 /* CWService.m */; };
 		66127EDC1FE7AAEB00D56869 /* CWZoneObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 66127ED41FE7AAEB00D56869 /* CWZoneObject.m */; };
 		6615788F200C80DC0016087C /* CWFileUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 6615788E200C80DC0016087C /* CWFileUtils.m */; };
+		66157893200C8BA20016087C /* VideoTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66157891200C8BA20016087C /* VideoTypeViewController.m */; };
+		66157894200C8BA20016087C /* VideoTypeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66157892200C8BA20016087C /* VideoTypeViewController.xib */; };
+		66157896200C8FAB0016087C /* icon_small_circle_check.png in Resources */ = {isa = PBXBuildFile; fileRef = 66157895200C8FAA0016087C /* icon_small_circle_check.png */; };
 		6695412E1FE3B1F4000D4638 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6695412D1FE3B1F4000D4638 /* Localizable.strings */; };
 		669541381FE3B2F9000D4638 /* LoginUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 669541331FE3B2F9000D4638 /* LoginUserInfo.m */; };
 		669541591FE3B43C000D4638 /* RepairUserLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6695413B1FE3B439000D4638 /* RepairUserLocation.m */; };
@@ -217,6 +220,10 @@
 		66127F191FE7B34B00D56869 /* libz.1.1.3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.1.3.tbd; path = usr/lib/libz.1.1.3.tbd; sourceTree = SDKROOT; };
 		6615788D200C80DC0016087C /* CWFileUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CWFileUtils.h; sourceTree = "<group>"; };
 		6615788E200C80DC0016087C /* CWFileUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CWFileUtils.m; sourceTree = "<group>"; };
+		66157890200C8BA20016087C /* VideoTypeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoTypeViewController.h; sourceTree = "<group>"; };
+		66157891200C8BA20016087C /* VideoTypeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoTypeViewController.m; sourceTree = "<group>"; };
+		66157892200C8BA20016087C /* VideoTypeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoTypeViewController.xib; sourceTree = "<group>"; };
+		66157895200C8FAA0016087C /* icon_small_circle_check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_small_circle_check.png; sourceTree = "<group>"; };
 		6695406B1FE3AD23000D4638 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		6695406C1FE3AD2E000D4638 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		6695406D1FE3AD38000D4638 /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
@@ -616,6 +623,7 @@
 		660F561A1FDE825F00788D6C /* Icon */ = {
 			isa = PBXGroup;
 			children = (
+				66157895200C8FAA0016087C /* icon_small_circle_check.png */,
 				66D6F68B2005ABBD00179B40 /* icon_device_detail_avatar.png */,
 				66D6F68C2005ABBE00179B40 /* icon_device_detail_system.png */,
 				66E1B4681FF4EBD700531857 /* icon_device_alarm.png */,
@@ -851,6 +859,9 @@
 			children = (
 				66D442AF1FE9FEDA00D89F5E /* PersonalViewController.h */,
 				66D442B01FE9FEDA00D89F5E /* PersonalViewController.m */,
+				66157890200C8BA20016087C /* VideoTypeViewController.h */,
+				66157891200C8BA20016087C /* VideoTypeViewController.m */,
+				66157892200C8BA20016087C /* VideoTypeViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1227,6 +1238,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66157894200C8BA20016087C /* VideoTypeViewController.xib in Resources */,
 				660F56071FDE631300788D6C /* LaunchScreen.storyboard in Resources */,
 				66DFF1851FEB93CC009086C5 /* img_home_smart.png in Resources */,
 				66F100741FE0D0DD004CFA52 /* AccountViewCell.xib in Resources */,
@@ -1251,6 +1263,7 @@
 				66D6F68E2005ABBF00179B40 /* icon_device_detail_system.png in Resources */,
 				66DFF1771FEB4944009086C5 /* icon_home_message_tip.png in Resources */,
 				66DFF1821FEB93CC009086C5 /* img_home_alarm.png in Resources */,
+				66157896200C8FAB0016087C /* icon_small_circle_check.png in Resources */,
 				66F038451FF0FD3E00884FC1 /* app_logo_60.png in Resources */,
 				66D442C71FEA05CE00D89F5E /* tab_icon_more_selected.png in Resources */,
 				66F038461FF0FD3E00884FC1 /* app_logo_89.png in Resources */,
@@ -1317,6 +1330,7 @@
 				66D4430E1FEA23B300D89F5E /* UIImageView+WebCache.m in Sources */,
 				66D443151FEA23B300D89F5E /* SDWebImageDecoder.m in Sources */,
 				660F560A1FDE631300788D6C /* main.m in Sources */,
+				66157893200C8BA20016087C /* VideoTypeViewController.m in Sources */,
 				66D442DB1FEA21E200D89F5E /* UIView+SDExtension.m in Sources */,
 				660F56231FDE9BF500788D6C /* CWColorUtils.m in Sources */,
 				66EBD8A62003744F0015DBFB /* ZoneViewCell.m in Sources */,

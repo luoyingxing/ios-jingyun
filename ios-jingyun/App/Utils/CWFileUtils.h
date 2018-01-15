@@ -16,6 +16,10 @@
 
 - (BOOL) showChannelName;
 
+- (void) videoConnectType:(NSInteger) value;
+
+- (NSInteger) videoConnectType;
+
 - (void) useLockScreen:(BOOL) value;
 
 - (BOOL) useLockScreen;

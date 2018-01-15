@@ -11,6 +11,7 @@
 #define Save_Channel_Name @"Save_Channel_Name"
 #define Save_Control_Password @"Save_Control_Password"
 #define Use_Lock_Screen @"Use_Lock_Screen"
+#define Video_Connect_Type @"Video_Connect_Type"
 
 @implementation CWFileUtils
 
@@ -28,6 +29,16 @@ static CWFileUtils *sharedInstance = nil;
 //设置通道类型显示类型为（ch*）
 - (BOOL) showChannelName{
     return [[CWFileUtils sharedInstance] readBOOL:Save_Channel_Name];
+}
+
+//视频访问方式 0为直连 1为p2p
+- (void) videoConnectType:(NSInteger) value{
+    [[CWFileUtils sharedInstance] saveInteger:Video_Connect_Type value:value];
+}
+
+//视频访问方式 0为直连 1为p2p
+- (NSInteger) videoConnectType{
+    return [[CWFileUtils sharedInstance] readInteger:Video_Connect_Type];
 }
 
 //启动密码锁屏
