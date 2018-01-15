@@ -523,7 +523,7 @@
         [refreshControl endRefreshing];
         refreshControl.attributedTitle = [[NSAttributedString alloc]initWithString:@"下拉加载更多消息"];
         
-        if (_isEndOfTableView) {
+        if (_isEndOfTableView && _preMessageCount > 0) {
             NSIndexPath *indexPath = [NSIndexPath indexPathForRow:([self.dataArray count] - 1) inSection:0];
             if (indexPath != nil) {
                 [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
