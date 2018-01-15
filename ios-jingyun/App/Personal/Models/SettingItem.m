@@ -7,6 +7,7 @@
 //
 
 #import "SettingItem.h"
+#import "CWFileUtils.h"
 
 #define SHOW_CHANNEL_NAME @"showChannelName"
 #define LOCK_SCREEN @"lockScreen"
@@ -49,7 +50,7 @@ static SettingItem *sharedInstance = nil;
 }
 
 - (NSMutableArray*) get_setting_list{
-    NSDictionary* dict = [NSDictionary dictionaryWithContentsOfFile:self.get_flile_path];
+//    NSDictionary* dict = [NSDictionary dictionaryWithContentsOfFile:self.get_flile_path];
 
     NSMutableArray* array = [[NSMutableArray alloc] init];
  
@@ -57,15 +58,18 @@ static SettingItem *sharedInstance = nil;
     [array addObject:videoMode];
     
     SettingItem* channelShow = [[SettingItem alloc] initWithTitle:@"设置通道显示类型为(ch*)" checkedMode:YES itemId:3002];
-    channelShow.isChecked = [dict[SHOW_CHANNEL_NAME] boolValue];
+//    channelShow.isChecked = [dict[SHOW_CHANNEL_NAME] boolValue];
+    channelShow.isChecked =  [[CWFileUtils sharedInstance] showChannelName];
     [array addObject:channelShow];
     
     SettingItem* lockScreen = [[SettingItem alloc] initWithTitle:@"启动密码锁屏" checkedMode:YES itemId:3003];
-    lockScreen.isChecked = [dict[LOCK_SCREEN] boolValue];
+//    lockScreen.isChecked = [dict[LOCK_SCREEN] boolValue];
+    lockScreen.isChecked =  [[CWFileUtils sharedInstance] useLockScreen];
     [array addObject:lockScreen];
     
     SettingItem* control = [[SettingItem alloc] initWithTitle:@"保存反控密码" checkedMode:YES itemId:3004];
-    control.isChecked = [dict[SAVE_CONTROL_PASSWORD] boolValue];
+//    control.isChecked = [dict[SAVE_CONTROL_PASSWORD] boolValue];
+    control.isChecked =  [[CWFileUtils sharedInstance] saveControlPassword];
     [array addObject:control];
     
     SettingItem* voice = [[SettingItem alloc] initWithTitle:@"后台声音提醒" checkedMode:NO itemId:3005];

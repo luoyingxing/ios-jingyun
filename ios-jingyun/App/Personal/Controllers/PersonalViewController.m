@@ -15,6 +15,7 @@
 #import "AccountViewController.h"
 #import "SettingCheckedViewCell.h"
 #import "SettingItem.h"
+#import "CWFileUtils.h"
 
 #define CellIdentifierForSettingText @"CellIdentifierForSettingText"
 #define CellIdentifierForSettingChecked @"CellIdentifierForSettingChecked"
@@ -198,15 +199,17 @@
     if (itemId == 3002) {
         //设置通道类型
         NSLog(@"设置通道类型 %lu  %d",itemId , isButtonOn);
-        [[SettingItem sharedInstance] showChannelName:isButtonOn];
+        [[CWFileUtils sharedInstance] showChannelName:isButtonOn];
+        
     }else if(itemId == 3003){
         //密码锁屏
         NSLog(@"密码锁屏 %lu  %d",itemId , isButtonOn);
+        [[CWFileUtils sharedInstance] useLockScreen:isButtonOn];
         
     }else if(itemId == 3004){
         //保存反控密码
         NSLog(@"保存反控密码 %lu  %d",itemId , isButtonOn);
-        [[SettingItem sharedInstance] saveControlPassword:isButtonOn];
+        [[CWFileUtils sharedInstance] saveControlPassword:isButtonOn];
     }
 }
 
