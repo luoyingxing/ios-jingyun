@@ -29,6 +29,10 @@
 
 @property (nonatomic,assign) CGFloat screenWidth;
 
+@property (nonatomic,assign) CGFloat alertViewWidth;
+
+@property (nonatomic,assign) CGFloat alertViewHeight;
+
 @end
 
 @implementation AlarmReportAlertView
@@ -38,8 +42,8 @@
         self.frame = [UIScreen mainScreen].bounds;
         self.screenWidth = [UIScreen mainScreen].bounds.size.width;
         
-        CGFloat alertViewWidth = 280;
-        CGFloat alertViewHeight = 180;
+        self.alertViewWidth = 280;
+        self.alertViewHeight = 180;
         
         self.backgroundColor = [UIColor colorWithWhite:0.8 alpha:0.6];
         
@@ -47,29 +51,29 @@
         self.alertView.backgroundColor = [UIColor whiteColor];
         self.alertView.layer.cornerRadius = 2.0;
 
-        self.alertView.frame = CGRectMake(0, 0, alertViewWidth, alertViewHeight);
+        self.alertView.frame = CGRectMake(0, 0, self.alertViewWidth, self.alertViewHeight);
         self.alertView.layer.position = self.center;
         
-        self.topView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, alertViewWidth, 34)];
+        self.topView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.alertViewWidth, 34)];
         self.topView.backgroundColor = [CWColorUtils getThemeColor];
         [self.alertView addSubview:self.topView];
         
         //img_home_alarm_dialog
             
-        self.policeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(alertViewWidth / 2 - 30, 10 , 60, 120)];
+        self.policeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.alertViewWidth / 2 - 30, 10 , 60, 120)];
         UIImage* policeImage = [UIImage imageNamed:@"img_home_alarm_dialog.png"];
         self.policeImageView.image = policeImage;
         self.policeImageView.contentMode =  UIViewContentModeScaleToFill;
         [self.alertView addSubview:self.policeImageView];
         
         self.lineView = [[UIView alloc] init];
-        self.lineView.frame = CGRectMake(0, alertViewHeight - 40, alertViewWidth, 1);
+        self.lineView.frame = CGRectMake(0, self.alertViewHeight - 40, self.alertViewWidth, 1);
         self.lineView.backgroundColor = [UIColor colorWithWhite:0.8 alpha:0.6];
         [self.alertView addSubview:self.lineView];
         
         //两个按钮
         self.alarmButton = [UIButton buttonWithType:UIButtonTypeSystem];
-        self.alarmButton.frame = CGRectMake(0, CGRectGetMaxY(self.lineView.frame), (alertViewWidth) / 2, 40);
+        self.alarmButton.frame = CGRectMake(0, CGRectGetMaxY(self.lineView.frame), (self.alertViewWidth) / 2, 40);
         [self.alarmButton setBackgroundImage:[self imageWithColor:[UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:0.2]] forState:UIControlStateNormal];
         [self.alarmButton setBackgroundImage:[self imageWithColor:[UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:0.2]] forState:UIControlStateSelected];
         [self.alarmButton setTitle:@"紧急求助" forState:UIControlStateNormal];
@@ -90,7 +94,7 @@
         
             
         self.detailButton = [UIButton buttonWithType:UIButtonTypeSystem];
-        self.detailButton.frame = CGRectMake(CGRectGetMaxX(self.verLineView.frame), CGRectGetMaxY(self.lineView.frame), (alertViewWidth) / 2, 40);
+        self.detailButton.frame = CGRectMake(CGRectGetMaxX(self.verLineView.frame), CGRectGetMaxY(self.lineView.frame), (self.alertViewWidth) / 2, 40);
         [self.detailButton setBackgroundImage:[self imageWithColor:[UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:0.2]] forState:UIControlStateNormal];
         [self.detailButton setBackgroundImage:[self imageWithColor:[UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:0.2]] forState:UIControlStateSelected];
         [self.detailButton setTitle:@"上报详情" forState:UIControlStateNormal];
@@ -126,7 +130,7 @@
     }];
 }
 
-#pragma mark - 回调 -设置只有2  -- > 确定才回调
+#pragma mark - 回调
 - (void)buttonEvent:(UIButton *)sender{
     if (self.resultIndex) {
         self.resultIndex(sender.tag);
@@ -167,5 +171,15 @@
     return theImage;
 }
 
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    UITouch *touch = [touches anyObject];
+    // 计算搜索框范围
+    CGPoint touchPoint = [touch locationInView:self.alertView];
+    
+    NSLog(@"x = %f, y = %f", touchPoint.x, touchPoint.y);
+    if (touchPoint.x < 0 || touchPoint.x > self.alertViewWidth || touchPoint.y < 0 || touchPoint.y > self.alertViewHeight) {
+        [self removeFromSuperview];
+    }
+}
 
 @end

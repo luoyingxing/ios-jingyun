@@ -27,6 +27,8 @@
 #define GET_SLIDE_VIEW_ID "getSlideInfoArray"
 #define GET_NEWS_URL @"/get_news_info"
 #define GET_NEWS_ID "getNewsArray"
+#define GET_FOREIGN_KEY @"/sys/get-profile?type=pub"
+#define GET_FOREIGN_KEY_ID "getprofile"
 
 #define HeaderSectionID @"headerSectionID"
 
@@ -462,6 +464,21 @@
         }
         
         [self.tableView reloadData];
+    }else if(strcmp(inReqID, GET_FOREIGN_KEY_ID) == 0 && inStatus == 200){
+        //get foreign key
+        NSString* body = [NSString stringWithUTF8String:inBody];
+        NSData* jsonData = [body dataUsingEncoding:NSUTF8StringEncoding];
+        
+        NSError *error;
+        NSDictionary* root = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&error];
+        if (!root || error) {
+            NSLog(@"HomeViewController ---> 新闻数据结构有误，解析失败");
+            return;
+        }
+        
+        NSDictionary *result_data = [root objectForKey:@"result"];
+        NSString* foreignkey = result_data[@"foreignkey"];
+        [self alarm:foreignkey];
     }
     
 }
@@ -659,13 +676,14 @@
 
 - (void) policOnclickListener{
     NSLog(@"紧急求助");
-    
     AlarmReportAlertView *alarmAlertView = [[AlarmReportAlertView alloc] initWithDefaultStyle];
     alarmAlertView.resultIndex = ^(NSInteger index){
-        //回调---处理一系列动作
-        NSLog(@"回调---处理一系列动作 %lu", index);
+        if (index == 0) {
+            [self requestForeignKey];
+        }else if(index == 1){
+            [self showToast];
+        }
     };
-    
     [alarmAlertView show];
 }
 
@@ -706,12 +724,16 @@
  * [mbProgress hide:YES];
  */
 - (void) showToast {
+    [self showToast:@"该功能即将推出，敬请期待！"];
+}
+
+- (void) showToast:(NSString*) message{
     mbProgress = [[MBProgressHUD alloc] initWithView:self.view];
     [self.view addSubview:mbProgress];
     mbProgress.color = [CWColorUtils colorWithHexString:@"#00c7c7" alpha:0.8f];
-    mbProgress.labelText = @"该功能即将推出，敬请期待！";
+    mbProgress.labelText = message;
     mbProgress.mode = MBProgressHUDModeText;
-
+    
     //指定距离中心点的X轴和Y轴的偏移量，如果不指定则在屏幕中间显示
     mbProgress.yOffset = [UIScreen mainScreen].bounds.size.height / 4 ;
     //mbProgress.xOffset = 100.0f;
@@ -724,15 +746,31 @@
     }];
 }
 
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
+- (void) requestForeignKey{
+    [[CWThings4Interface sharedInstance] request:"." URL:[GET_FOREIGN_KEY UTF8String] UrlLen:(int)[GET_FOREIGN_KEY length]  ReqID:GET_FOREIGN_KEY_ID];
+}
+
+- (void) alarm:foreignkey{
+    if(foreignkey){
+        NSString* key;
+        if ([foreignkey length] > 4) {
+            key = [foreignkey substringFromIndex:[foreignkey length] - 4];
+        }else{
+            key = foreignkey;
+        }
+        
+        //e,8,{"msg":{"dat":"APP用户紧急求助","fmt":"text"},"usr":{"cid":"000718112901001","eid":"0c84ea61-da86-4efe-a5b4-6c442317dde2"}}
+        NSString* uuid = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+        NSString* message = [NSString stringWithFormat:@"8,{\"msg\":{\"dat\":\"APP用户紧急求助\",\"fmt\":\"text\"},\"usr\":{\"cid\":\"%@18112901001\",\"eid\":\"%@\"}}", key, uuid];
+        
+        NSLog(@"push message:  %@", message);
+        [[CWThings4Interface sharedInstance] push_msg:[message UTF8String] MsgLen:(int)[message length] MsgType:"e"];
+        [self showToast:@"紧急求助成功！"];
+        
+    }else{
+        [self showToast:@"用户编号未识别，请联系中心管理人员！"];
+    }
+}
 
 @end
 
