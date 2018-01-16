@@ -1577,7 +1577,7 @@
 					"-ObjC",
 				);
 				OTHER_LIBTOOLFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = "con.conwin.ios-jingyun";
+				PRODUCT_BUNDLE_IDENTIFIER = con.conwin.jingyun;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos11.1;
 				SWIFT_OBJC_BRIDGING_HEADER = "ios-jingyun/App/Account/DAO/ios-jingyun-Bridging-Header.h";
@@ -1609,7 +1609,7 @@
 					"-ObjC",
 				);
 				OTHER_LIBTOOLFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = "con.conwin.ios-jingyun";
+				PRODUCT_BUNDLE_IDENTIFIER = con.conwin.jingyun;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos11.1;
 				SWIFT_OBJC_BRIDGING_HEADER = "ios-jingyun/App/Account/DAO/ios-jingyun-Bridging-Header.h";
