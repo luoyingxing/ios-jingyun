@@ -62,24 +62,24 @@ static SettingItem *sharedInstance = nil;
     channelShow.isChecked =  [[CWFileUtils sharedInstance] showChannelName];
     [array addObject:channelShow];
     
-    SettingItem* lockScreen = [[SettingItem alloc] initWithTitle:@"启动密码锁屏" checkedMode:YES itemId:3003];
-//    lockScreen.isChecked = [dict[LOCK_SCREEN] boolValue];
-    lockScreen.isChecked =  [[CWFileUtils sharedInstance] useLockScreen];
-    [array addObject:lockScreen];
+//    SettingItem* lockScreen = [[SettingItem alloc] initWithTitle:@"启动密码锁屏" checkedMode:YES itemId:3003];
+////    lockScreen.isChecked = [dict[LOCK_SCREEN] boolValue];
+//    lockScreen.isChecked =  [[CWFileUtils sharedInstance] useLockScreen];
+//    [array addObject:lockScreen];
     
     SettingItem* control = [[SettingItem alloc] initWithTitle:@"保存反控密码" checkedMode:YES itemId:3004];
 //    control.isChecked = [dict[SAVE_CONTROL_PASSWORD] boolValue];
     control.isChecked =  [[CWFileUtils sharedInstance] saveControlPassword];
     [array addObject:control];
     
-    SettingItem* voice = [[SettingItem alloc] initWithTitle:@"后台声音提醒" checkedMode:NO itemId:3005];
-    [array addObject:voice];
+//    SettingItem* voice = [[SettingItem alloc] initWithTitle:@"后台声音提醒" checkedMode:NO itemId:3005];
+//    [array addObject:voice];
     
     SettingItem* alterPassword = [[SettingItem alloc] initWithTitle:@"修改登陆密码" checkedMode:NO itemId:3006];
     [array addObject:alterPassword];
     
-    SettingItem* help = [[SettingItem alloc] initWithTitle:@"系统帮助" checkedMode:NO itemId:3007];
-    [array addObject:help];
+//    SettingItem* help = [[SettingItem alloc] initWithTitle:@"系统帮助" checkedMode:NO itemId:3007];
+//    [array addObject:help];
     
     SettingItem* about = [[SettingItem alloc] initWithTitle:@"关于警云" checkedMode:NO itemId:3008];
     [array addObject:about];
