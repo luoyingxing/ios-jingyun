@@ -28,6 +28,19 @@
 }
 
 - (void) viewWillAppear:(BOOL)animated{
+    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+    CFShow((__bridge CFTypeRef)(infoDictionary));
+    // app名称
+    NSString *app_name = [infoDictionary objectForKey:@"CFBundleDisplayName"];
+    // app版本
+    NSString *app_version = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+    // app build版本
+    NSString *app_build = [infoDictionary objectForKey:@"CFBundleVersion"];
+    
+    if (app_version) {
+        self.versionLabel.text = [NSString stringWithFormat:@"版本号 %@", app_version];
+    }
+    
     NSString *center_name = [[NSUserDefaults standardUserDefaults] stringForKey:@"cw_center_name"];
     if (center_name) {
         self.centerNameLabel.text = center_name;
