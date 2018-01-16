@@ -22,6 +22,7 @@
 #import "RightViewCell.h"
 #import "TextViewCell.h"
 #import "AlarmReportAlertView.h"
+#import "CWTextUtils.h"
 
 #define GET_SLIDE_INFO_URL @"/get_slideshow_info"
 #define GET_SLIDE_VIEW_ID "getSlideInfoArray"
@@ -750,8 +751,10 @@
     [[CWThings4Interface sharedInstance] request:"." URL:[GET_FOREIGN_KEY UTF8String] UrlLen:(int)[GET_FOREIGN_KEY length]  ReqID:GET_FOREIGN_KEY_ID];
 }
 
-- (void) alarm:foreignkey{
-    if(foreignkey){
+- (void) alarm:(NSString*) foreignkey{
+    if([CWTextUtils isEmpty:foreignkey]){
+        [self showToast:@"用户编号未识别，请联系中心管理人员！"];
+    }else{
         NSString* key;
         if ([foreignkey length] > 4) {
             key = [foreignkey substringFromIndex:[foreignkey length] - 4];
@@ -766,9 +769,6 @@
         NSLog(@"push message:  %@", message);
         [[CWThings4Interface sharedInstance] push_msg:[message UTF8String] MsgLen:(int)[message length] MsgType:"e"];
         [self showToast:@"紧急求助成功！"];
-        
-    }else{
-        [self showToast:@"用户编号未识别，请联系中心管理人员！"];
     }
 }
 

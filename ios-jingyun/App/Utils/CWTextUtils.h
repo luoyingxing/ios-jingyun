@@ -20,4 +20,7 @@
 //计算字符串高度
 + (CGFloat) textHeight:(NSString *)textStr textWidth:(float)width textfont:(id)font;
 
+//判断id是否为空
++ (BOOL) isEmpty:(id)string;
+
 @end
