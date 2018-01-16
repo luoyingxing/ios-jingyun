@@ -93,6 +93,12 @@
 		66DDBFBE200D94840076B63C /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66DDBFBC200D94840076B63C /* AboutViewController.m */; };
 		66DDBFBF200D94840076B63C /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66DDBFBD200D94840076B63C /* AboutViewController.xib */; };
 		66DDBFC1200D95FA0076B63C /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 66DDBFC0200D95FA0076B63C /* logo.png */; };
+		66DDBFC8200E16850076B63C /* app_logo_167.png in Resources */ = {isa = PBXBuildFile; fileRef = 66DDBFC2200E16830076B63C /* app_logo_167.png */; };
+		66DDBFC9200E16850076B63C /* app_logo_29.png in Resources */ = {isa = PBXBuildFile; fileRef = 66DDBFC3200E16830076B63C /* app_logo_29.png */; };
+		66DDBFCA200E16850076B63C /* app_logo_80.png in Resources */ = {isa = PBXBuildFile; fileRef = 66DDBFC4200E16840076B63C /* app_logo_80.png */; };
+		66DDBFCB200E16850076B63C /* app_logo_20.png in Resources */ = {isa = PBXBuildFile; fileRef = 66DDBFC5200E16840076B63C /* app_logo_20.png */; };
+		66DDBFCC200E16850076B63C /* app_logo_76.png in Resources */ = {isa = PBXBuildFile; fileRef = 66DDBFC6200E16840076B63C /* app_logo_76.png */; };
+		66DDBFCD200E16850076B63C /* app_logo_152.png in Resources */ = {isa = PBXBuildFile; fileRef = 66DDBFC7200E16840076B63C /* app_logo_152.png */; };
 		66DEB3EA2007163E00E0BCF2 /* DeviceZoneModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 66DEB3E92007163E00E0BCF2 /* DeviceZoneModel.m */; };
 		66DFF1771FEB4944009086C5 /* icon_home_message_tip.png in Resources */ = {isa = PBXBuildFile; fileRef = 66DFF1761FEB4944009086C5 /* icon_home_message_tip.png */; };
 		66DFF17B1FEB4CF4009086C5 /* img_home_privilege.png in Resources */ = {isa = PBXBuildFile; fileRef = 66DFF1781FEB4CF4009086C5 /* img_home_privilege.png */; };
@@ -365,6 +371,12 @@
 		66DDBFBC200D94840076B63C /* AboutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		66DDBFBD200D94840076B63C /* AboutViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
 		66DDBFC0200D95FA0076B63C /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		66DDBFC2200E16830076B63C /* app_logo_167.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = app_logo_167.png; sourceTree = "<group>"; };
+		66DDBFC3200E16830076B63C /* app_logo_29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = app_logo_29.png; sourceTree = "<group>"; };
+		66DDBFC4200E16840076B63C /* app_logo_80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = app_logo_80.png; sourceTree = "<group>"; };
+		66DDBFC5200E16840076B63C /* app_logo_20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = app_logo_20.png; sourceTree = "<group>"; };
+		66DDBFC6200E16840076B63C /* app_logo_76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = app_logo_76.png; sourceTree = "<group>"; };
+		66DDBFC7200E16840076B63C /* app_logo_152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = app_logo_152.png; sourceTree = "<group>"; };
 		66DEB3E82007163E00E0BCF2 /* DeviceZoneModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceZoneModel.h; sourceTree = "<group>"; };
 		66DEB3E92007163E00E0BCF2 /* DeviceZoneModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceZoneModel.m; sourceTree = "<group>"; };
 		66DFF1761FEB4944009086C5 /* icon_home_message_tip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_home_message_tip.png; sourceTree = "<group>"; };
@@ -684,6 +696,12 @@
 		660F561D1FDE83B700788D6C /* App */ = {
 			isa = PBXGroup;
 			children = (
+				66DDBFC5200E16840076B63C /* app_logo_20.png */,
+				66DDBFC3200E16830076B63C /* app_logo_29.png */,
+				66DDBFC6200E16840076B63C /* app_logo_76.png */,
+				66DDBFC4200E16840076B63C /* app_logo_80.png */,
+				66DDBFC7200E16840076B63C /* app_logo_152.png */,
+				66DDBFC2200E16830076B63C /* app_logo_167.png */,
 				66DDBFC0200D95FA0076B63C /* logo.png */,
 				66E1B7FF1FF23D140070B2C2 /* icon_loading_logo.png */,
 				66F0383E1FF0FD3E00884FC1 /* app_logo_40.png */,
@@ -1225,7 +1243,7 @@
 					660F55F31FDE631300788D6C = {
 						CreatedOnToolsVersion = 9.1;
 						LastSwiftMigration = 0910;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					66EC461120046622008F9AB6 = {
 						CreatedOnToolsVersion = 9.1;
@@ -1272,6 +1290,7 @@
 				66F038491FF0FD3E00884FC1 /* app_logo_180.png in Resources */,
 				66D442C31FEA05CE00D89F5E /* tab_icon_device_normal.png in Resources */,
 				66F835BF1FFCE3AA008829E6 /* ic_hm_logo.png in Resources */,
+				66DDBFCD200E16850076B63C /* app_logo_152.png in Resources */,
 				66F835BE1FFCE3AA008829E6 /* ic_lc_logo.png in Resources */,
 				66D442C01FEA05CE00D89F5E /* tab_icon_device_selected.png in Resources */,
 				66EBD8A72003744F0015DBFB /* ZoneViewCell.xib in Resources */,
@@ -1289,6 +1308,7 @@
 				66F038451FF0FD3E00884FC1 /* app_logo_60.png in Resources */,
 				66D442C71FEA05CE00D89F5E /* tab_icon_more_selected.png in Resources */,
 				66F038461FF0FD3E00884FC1 /* app_logo_89.png in Resources */,
+				66DDBFCB200E16850076B63C /* app_logo_20.png in Resources */,
 				66D443201FEA3AAC00D89F5E /* img_empty_conwin.png in Resources */,
 				66D442C51FEA05CE00D89F5E /* tab_icon_more_normal.png in Resources */,
 				66D4431E1FEA390D00D89F5E /* img_slide_default.gif in Resources */,
@@ -1296,21 +1316,25 @@
 				66EBD8A120036E0E0015DBFB /* icon_device_detail_status.png in Resources */,
 				66E1B46A1FF4EBD700531857 /* icon_device_alarm.png in Resources */,
 				66F835BD1FFCE3AA008829E6 /* ic_ez_logo.png in Resources */,
+				66DDBFC9200E16850076B63C /* app_logo_29.png in Resources */,
 				6695412E1FE3B1F4000D4638 /* Localizable.strings in Resources */,
 				66DFF1871FEBA0C8009086C5 /* icon_home_recommend.png in Resources */,
 				66DFF1831FEB93CC009086C5 /* img_home_other.png in Resources */,
 				66D6F68D2005ABBF00179B40 /* icon_device_detail_avatar.png in Resources */,
 				66D442C21FEA05CE00D89F5E /* tab_icon_home_normal.png in Resources */,
+				66DDBFC8200E16850076B63C /* app_logo_167.png in Resources */,
 				660F56041FDE631300788D6C /* Assets.xcassets in Resources */,
 				66E1B8001FF23D140070B2C2 /* icon_loading_logo.png in Resources */,
 				66D442C61FEA05CE00D89F5E /* tab_icon_personal_selected.png in Resources */,
 				66F282E41FDF6A4700719AB2 /* AddAccountViewController.xib in Resources */,
 				66F038481FF0FD3E00884FC1 /* app_logo_120.png in Resources */,
+				66DDBFCC200E16850076B63C /* app_logo_76.png in Resources */,
 				66DFF17C1FEB4CF4009086C5 /* img_home_polic.png in Resources */,
 				66EBD8A220036E0E0015DBFB /* bg_device_detail_zone.png in Resources */,
 				66D442CB1FEA0AE900D89F5E /* icon_back_white.png in Resources */,
 				66EFDBEC1FF338DD00AF54A4 /* SettingItemList.plist in Resources */,
 				66DFF17D1FEB4CF4009086C5 /* img_home_payment.png in Resources */,
+				66DDBFCA200E16850076B63C /* app_logo_80.png in Resources */,
 				660F561F1FDE83D300788D6C /* app_logo.png in Resources */,
 				66E1B45B1FF4975500531857 /* icon_white_logo.png in Resources */,
 			);
@@ -1562,8 +1586,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2H9UL4H6T4;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: SHENZHEN CONWIN TECH. LTD. (88Z62HW94C)";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Distribution: SHENZHEN CONWIN TECH. LTD. (88Z62HW94C)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 88Z62HW94C;
 				ENABLE_BITCODE = NO;
 				GCC_INPUT_FILETYPE = automatic;
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/ios-jingyun/Curl/lib";
@@ -1577,8 +1604,10 @@
 					"-ObjC",
 				);
 				OTHER_LIBTOOLFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = con.conwin.jingyun;
+				PRODUCT_BUNDLE_IDENTIFIER = com.conwin.jingyun;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "0e47897d-e8ea-46ba-a631-6103a9a56aeb";
+				PROVISIONING_PROFILE_SPECIFIER = jingyun;
 				SDKROOT = iphoneos11.1;
 				SWIFT_OBJC_BRIDGING_HEADER = "ios-jingyun/App/Account/DAO/ios-jingyun-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1594,8 +1623,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2H9UL4H6T4;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: SHENZHEN CONWIN TECH. LTD. (88Z62HW94C)";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Distribution: SHENZHEN CONWIN TECH. LTD. (88Z62HW94C)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 88Z62HW94C;
 				ENABLE_BITCODE = NO;
 				GCC_INPUT_FILETYPE = automatic;
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/ios-jingyun/Curl/lib";
@@ -1609,8 +1641,10 @@
 					"-ObjC",
 				);
 				OTHER_LIBTOOLFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = con.conwin.jingyun;
+				PRODUCT_BUNDLE_IDENTIFIER = com.conwin.jingyun;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "0e47897d-e8ea-46ba-a631-6103a9a56aeb";
+				PROVISIONING_PROFILE_SPECIFIER = jingyun;
 				SDKROOT = iphoneos11.1;
 				SWIFT_OBJC_BRIDGING_HEADER = "ios-jingyun/App/Account/DAO/ios-jingyun-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
@@ -1623,6 +1657,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: SHENZHEN CONWIN TECH. LTD. (88Z62HW94C)";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Distribution: SHENZHEN CONWIN TECH. LTD. (88Z62HW94C)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2H9UL4H6T4;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -1630,6 +1666,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "0e47897d-e8ea-46ba-a631-6103a9a56aeb";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "arm64 armv7 armv7s";
@@ -1640,6 +1677,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: SHENZHEN CONWIN TECH. LTD. (88Z62HW94C)";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Distribution: SHENZHEN CONWIN TECH. LTD. (88Z62HW94C)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2H9UL4H6T4;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -1647,6 +1686,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "0e47897d-e8ea-46ba-a631-6103a9a56aeb";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "arm64 armv7 armv7s";
