@@ -90,6 +90,9 @@
 		66D6F68E2005ABBF00179B40 /* icon_device_detail_system.png in Resources */ = {isa = PBXBuildFile; fileRef = 66D6F68C2005ABBE00179B40 /* icon_device_detail_system.png */; };
 		66D6F6912006002400179B40 /* CWTextUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D6F6902006002400179B40 /* CWTextUtils.m */; };
 		66D6F6952006223F00179B40 /* UITextLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D6F6942006223F00179B40 /* UITextLabel.m */; };
+		66DDBFBE200D94840076B63C /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66DDBFBC200D94840076B63C /* AboutViewController.m */; };
+		66DDBFBF200D94840076B63C /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66DDBFBD200D94840076B63C /* AboutViewController.xib */; };
+		66DDBFC1200D95FA0076B63C /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 66DDBFC0200D95FA0076B63C /* logo.png */; };
 		66DEB3EA2007163E00E0BCF2 /* DeviceZoneModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 66DEB3E92007163E00E0BCF2 /* DeviceZoneModel.m */; };
 		66DFF1771FEB4944009086C5 /* icon_home_message_tip.png in Resources */ = {isa = PBXBuildFile; fileRef = 66DFF1761FEB4944009086C5 /* icon_home_message_tip.png */; };
 		66DFF17B1FEB4CF4009086C5 /* img_home_privilege.png in Resources */ = {isa = PBXBuildFile; fileRef = 66DFF1781FEB4CF4009086C5 /* img_home_privilege.png */; };
@@ -358,6 +361,10 @@
 		66D6F6902006002400179B40 /* CWTextUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CWTextUtils.m; sourceTree = "<group>"; };
 		66D6F6932006223F00179B40 /* UITextLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UITextLabel.h; sourceTree = "<group>"; };
 		66D6F6942006223F00179B40 /* UITextLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UITextLabel.m; sourceTree = "<group>"; };
+		66DDBFBB200D94840076B63C /* AboutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		66DDBFBC200D94840076B63C /* AboutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		66DDBFBD200D94840076B63C /* AboutViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
+		66DDBFC0200D95FA0076B63C /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		66DEB3E82007163E00E0BCF2 /* DeviceZoneModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceZoneModel.h; sourceTree = "<group>"; };
 		66DEB3E92007163E00E0BCF2 /* DeviceZoneModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceZoneModel.m; sourceTree = "<group>"; };
 		66DFF1761FEB4944009086C5 /* icon_home_message_tip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_home_message_tip.png; sourceTree = "<group>"; };
@@ -677,6 +684,7 @@
 		660F561D1FDE83B700788D6C /* App */ = {
 			isa = PBXGroup;
 			children = (
+				66DDBFC0200D95FA0076B63C /* logo.png */,
 				66E1B7FF1FF23D140070B2C2 /* icon_loading_logo.png */,
 				66F0383E1FF0FD3E00884FC1 /* app_logo_40.png */,
 				66F038411FF0FD3E00884FC1 /* app_logo_58.png */,
@@ -870,6 +878,9 @@
 				66157897200CA3700016087C /* ResetPasswordViewController.h */,
 				66157898200CA3700016087C /* ResetPasswordViewController.m */,
 				66157899200CA3700016087C /* ResetPasswordViewController.xib */,
+				66DDBFBB200D94840076B63C /* AboutViewController.h */,
+				66DDBFBC200D94840076B63C /* AboutViewController.m */,
+				66DDBFBD200D94840076B63C /* AboutViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1250,11 +1261,13 @@
 				660F56071FDE631300788D6C /* LaunchScreen.storyboard in Resources */,
 				66DFF1851FEB93CC009086C5 /* img_home_smart.png in Resources */,
 				66F100741FE0D0DD004CFA52 /* AccountViewCell.xib in Resources */,
+				66DDBFC1200D95FA0076B63C /* logo.png in Resources */,
 				66E1B7F91FF22A3F0070B2C2 /* icon_personal_list_right.png in Resources */,
 				66E1B7FE1FF22DCA0070B2C2 /* SettingCheckedViewCell.xib in Resources */,
 				66DFF17B1FEB4CF4009086C5 /* img_home_privilege.png in Resources */,
 				66E1B4691FF4EBD700531857 /* icon_device_safety.png in Resources */,
 				66F835C01FFCE3AA008829E6 /* ic_cw_logo.png in Resources */,
+				66DDBFBF200D94840076B63C /* AboutViewController.xib in Resources */,
 				66DFF1841FEB93CC009086C5 /* img_home_video.png in Resources */,
 				66F038491FF0FD3E00884FC1 /* app_logo_180.png in Resources */,
 				66D442C31FEA05CE00D89F5E /* tab_icon_device_normal.png in Resources */,
@@ -1344,6 +1357,7 @@
 				660F56231FDE9BF500788D6C /* CWColorUtils.m in Sources */,
 				66EBD8A62003744F0015DBFB /* ZoneViewCell.m in Sources */,
 				66F0383D1FF0F5A900884FC1 /* TextViewCell.m in Sources */,
+				66DDBFBE200D94840076B63C /* AboutViewController.m in Sources */,
 				66D442A41FE9FC9F00D89F5E /* MainTabBarController.m in Sources */,
 				66F282F41FDF6F1A00719AB2 /* AccountCell.m in Sources */,
 				66F283131FDFCA8A00719AB2 /* UserInfoModel.m in Sources */,

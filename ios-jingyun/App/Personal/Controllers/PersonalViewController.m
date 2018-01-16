@@ -18,6 +18,7 @@
 #import "CWFileUtils.h"
 #import "VideoTypeViewController.h"
 #import "ResetPasswordViewController.h"
+#import "AboutViewController.h"
 
 #define CellIdentifierForSettingText @"CellIdentifierForSettingText"
 #define CellIdentifierForSettingChecked @"CellIdentifierForSettingChecked"
@@ -202,6 +203,12 @@
         ResetPasswordViewController* passwordController = [[ResetPasswordViewController alloc] init];
         UINavigationController* navigationController = [[UINavigationController alloc]
                                                         initWithRootViewController:passwordController];
+        [self presentViewController:navigationController animated:TRUE completion:nil];
+    }else if (itemId == 3008){
+        //about app
+        AboutViewController* aboutController = [[AboutViewController alloc] init];
+        UINavigationController* navigationController = [[UINavigationController alloc]
+                                                        initWithRootViewController:aboutController];
         [self presentViewController:navigationController animated:TRUE completion:nil];
     }
     
