@@ -13,6 +13,8 @@
 
 @property (nonatomic, strong) NSMutableArray* dataArray;
 
+@property (nonatomic, strong) NSMutableArray* imageArray;
+
 @property (strong, nonatomic) DeviceStatusModel* deviceStatusModel;
 
 @end

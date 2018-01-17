@@ -283,7 +283,7 @@
     }
     
     NSString *server_url = [[NSString alloc] initWithFormat:@"host=%@;port=%@", userInfo.serverAddress, userInfo.port];
-    [CWDataManager sharedInstance]->server_addr_ = server_url;
+    [CWDataManager sharedInstance]->server_addr_ = userInfo.serverAddress;
     [[CWThings4Interface sharedInstance] connect_to:[server_url UTF8String]];
 }
 

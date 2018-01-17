@@ -18,13 +18,14 @@
 #import "DeviceMessageServerCell.h"
 #import "CWThings4Interface.h"
 #import "DeviceZoneModel.h"
+#import "SDPhotoBrowser.h"
 
 #define CellIdentifierZone @"CellIdentifierZone"
 
 #define CellIdentifierLocal @"CellIdentifierLocal"
 #define CellIdentifierServer @"CellIdentifierServer"
 
-@interface DeviceDetailViewController ()<UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource>{
+@interface DeviceDetailViewController ()<UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, SDPhotoBrowserDelegate>{
     
     NSTimer *message_update_timer;
     
@@ -478,8 +479,50 @@
 // like item click listener
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     DeviceMessageModel* messageModel = [self.dataArray objectAtIndex:indexPath.row];
-    NSLog(@"-------------> text:%@   dateTime:%@   userName:%@   iconName:%@   imageName:%@   bgImageName:%@   tid:%@   messageStatusType:%lu   messageType:%lu", messageModel.text, messageModel.dateTime, messageModel.userName, messageModel.iconName, messageModel.imageName, messageModel.bgImageName, messageModel.tid, messageModel.messageStatusType, messageModel.messageType);
+    
+    //点击显示大图
+    if (messageModel.messageType == MessageTypeForServer && !messageModel.text){
+        
+        if (_imageArray == nil) {
+            _imageArray = [NSMutableArray new];
+        }else {
+            [_imageArray removeAllObjects];
+        }
+        
+        int image_count = 0;
+        int current_image_index = 0;
+        for (DeviceMessageModel* model in self.dataArray) {
+            if (model && model.smallImage) {
+                [_imageArray addObject:model];
+                if (messageModel == model) {
+                    current_image_index = image_count;
+                }
+                image_count++;
+            }
+        }
+        
+        SDPhotoBrowser *browser = [[SDPhotoBrowser alloc] init];
+        browser.currentImageIndex = current_image_index;
+        browser.sourceImagesContainerView = tableView;
+        browser.imageCount = image_count;
+        browser.delegate = self;
+        [browser show];
+    }
 }
+
+#pragma mark - SDPhotoBrowserDelegate
+- (NSURL *)photoBrowser:(SDPhotoBrowser *)browser highQualityImageURLForIndex:(NSInteger)index{
+    DeviceMessageModel* messageModel = [self.imageArray objectAtIndex:index];
+    NSURL *url = [NSURL URLWithString:messageModel.imageName];
+    return url;
+}
+
+#pragma mark - SDPhotoBrowserDelegate 返回默认的占位图片
+- (UIImage *)photoBrowser:(SDPhotoBrowser *)browser placeholderImageForIndex:(NSInteger)index{
+//    return [UIImage imageNamed:@"img_empty_conwin.png"];
+    return nil;
+}
+
 
 - (void) goback{
     //back to device controller
