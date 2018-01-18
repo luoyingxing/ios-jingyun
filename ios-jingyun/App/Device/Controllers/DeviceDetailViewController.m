@@ -19,6 +19,7 @@
 #import "CWThings4Interface.h"
 #import "DeviceZoneModel.h"
 #import "SDPhotoBrowser.h"
+#import "ZoneViewController.h"
 
 #define CellIdentifierZone @"CellIdentifierZone"
 
@@ -533,6 +534,11 @@
 
 - (void) zoneOnclickListener{
     NSLog(@"zoneOnclickListener");
+    ZoneViewController* zoneVC = [[ZoneViewController alloc] init];
+    zoneVC.deviceStatusModel= _deviceStatusModel;
+    UINavigationController* navigationController = [[UINavigationController alloc]
+                                                    initWithRootViewController:zoneVC];
+    [self presentViewController:navigationController animated:TRUE completion:nil];
 }
 
 - (NSMutableArray *) dataArray{

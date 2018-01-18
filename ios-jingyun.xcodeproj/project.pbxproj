@@ -92,6 +92,13 @@
 		66D6F68E2005ABBF00179B40 /* icon_device_detail_system.png in Resources */ = {isa = PBXBuildFile; fileRef = 66D6F68C2005ABBE00179B40 /* icon_device_detail_system.png */; };
 		66D6F6912006002400179B40 /* CWTextUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D6F6902006002400179B40 /* CWTextUtils.m */; };
 		66D6F6952006223F00179B40 /* UITextLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D6F6942006223F00179B40 /* UITextLabel.m */; };
+		66DD8389201036AE00885D53 /* ZoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66DD8388201036AE00885D53 /* ZoneViewController.m */; };
+		66DD838D20104D0400885D53 /* DeviceZoneViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 66DD838B20104D0400885D53 /* DeviceZoneViewCell.m */; };
+		66DD839420104F3600885D53 /* icon_item_zone_orange.png in Resources */ = {isa = PBXBuildFile; fileRef = 66DD838F20104F3500885D53 /* icon_item_zone_orange.png */; };
+		66DD839520104F3600885D53 /* icon_item_zone_list_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 66DD839020104F3600885D53 /* icon_item_zone_list_gray.png */; };
+		66DD839620104F3600885D53 /* icon_item_zone_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 66DD839120104F3600885D53 /* icon_item_zone_normal.png */; };
+		66DD839720104F3600885D53 /* icon_item_zone_black.png in Resources */ = {isa = PBXBuildFile; fileRef = 66DD839220104F3600885D53 /* icon_item_zone_black.png */; };
+		66DD839820104F3600885D53 /* icon_item_zone_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 66DD839320104F3600885D53 /* icon_item_zone_red.png */; };
 		66DDBFBE200D94840076B63C /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66DDBFBC200D94840076B63C /* AboutViewController.m */; };
 		66DDBFBF200D94840076B63C /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66DDBFBD200D94840076B63C /* AboutViewController.xib */; };
 		66DDBFC1200D95FA0076B63C /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 66DDBFC0200D95FA0076B63C /* logo.png */; };
@@ -374,6 +381,16 @@
 		66D6F6902006002400179B40 /* CWTextUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CWTextUtils.m; sourceTree = "<group>"; };
 		66D6F6932006223F00179B40 /* UITextLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UITextLabel.h; sourceTree = "<group>"; };
 		66D6F6942006223F00179B40 /* UITextLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UITextLabel.m; sourceTree = "<group>"; };
+		66DD8387201036AE00885D53 /* ZoneViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZoneViewController.h; sourceTree = "<group>"; };
+		66DD8388201036AE00885D53 /* ZoneViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZoneViewController.m; sourceTree = "<group>"; };
+		66DD838A20104D0400885D53 /* DeviceZoneViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceZoneViewCell.h; sourceTree = "<group>"; };
+		66DD838B20104D0400885D53 /* DeviceZoneViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceZoneViewCell.m; sourceTree = "<group>"; };
+		66DD838F20104F3500885D53 /* icon_item_zone_orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_item_zone_orange.png; sourceTree = "<group>"; };
+		66DD839020104F3600885D53 /* icon_item_zone_list_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_item_zone_list_gray.png; sourceTree = "<group>"; };
+		66DD839120104F3600885D53 /* icon_item_zone_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_item_zone_normal.png; sourceTree = "<group>"; };
+		66DD839220104F3600885D53 /* icon_item_zone_black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_item_zone_black.png; sourceTree = "<group>"; };
+		66DD839320104F3600885D53 /* icon_item_zone_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_item_zone_red.png; sourceTree = "<group>"; };
+		66DD8399201062DC00885D53 /* ZoneOnItemClickDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZoneOnItemClickDelegate.h; sourceTree = "<group>"; };
 		66DDBFBB200D94840076B63C /* AboutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		66DDBFBC200D94840076B63C /* AboutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		66DDBFBD200D94840076B63C /* AboutViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
@@ -654,6 +671,11 @@
 		660F561A1FDE825F00788D6C /* Icon */ = {
 			isa = PBXGroup;
 			children = (
+				66DD839220104F3600885D53 /* icon_item_zone_black.png */,
+				66DD839020104F3600885D53 /* icon_item_zone_list_gray.png */,
+				66DD839120104F3600885D53 /* icon_item_zone_normal.png */,
+				66DD838F20104F3500885D53 /* icon_item_zone_orange.png */,
+				66DD839320104F3600885D53 /* icon_item_zone_red.png */,
 				66157895200C8FAA0016087C /* icon_small_circle_check.png */,
 				66D6F68B2005ABBD00179B40 /* icon_device_detail_avatar.png */,
 				66D6F68C2005ABBE00179B40 /* icon_device_detail_system.png */,
@@ -917,6 +939,7 @@
 		66D442A81FE9FE8E00D89F5E /* Device */ = {
 			isa = PBXGroup;
 			children = (
+				66DD839C201072B800885D53 /* Delegate */,
 				66EC49042004BF18008F9AB6 /* Models */,
 				66E1B45C1FF4D43800531857 /* Views */,
 				66D442A91FE9FE9600D89F5E /* Controllers */,
@@ -931,6 +954,8 @@
 				66D442AB1FE9FEAF00D89F5E /* DeviceViewController.m */,
 				66A60D4A1FFF66D1006C9261 /* DeviceDetailViewController.h */,
 				66A60D4B1FFF66D1006C9261 /* DeviceDetailViewController.m */,
+				66DD8387201036AE00885D53 /* ZoneViewController.h */,
+				66DD8388201036AE00885D53 /* ZoneViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1039,6 +1064,14 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		66DD839C201072B800885D53 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				66DD8399201062DC00885D53 /* ZoneOnItemClickDelegate.h */,
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
 		66E1B45C1FF4D43800531857 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -1053,6 +1086,8 @@
 				66EBD8A52003744F0015DBFB /* ZoneViewCell.xib */,
 				66EC49082004C882008F9AB6 /* DeviceMessageServerCell.h */,
 				66EC49092004C882008F9AB6 /* DeviceMessageServerCell.m */,
+				66DD838A20104D0400885D53 /* DeviceZoneViewCell.h */,
+				66DD838B20104D0400885D53 /* DeviceZoneViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1305,9 +1340,11 @@
 				66DFF17B1FEB4CF4009086C5 /* img_home_privilege.png in Resources */,
 				66E1B4691FF4EBD700531857 /* icon_device_safety.png in Resources */,
 				66F835C01FFCE3AA008829E6 /* ic_cw_logo.png in Resources */,
+				66DD839420104F3600885D53 /* icon_item_zone_orange.png in Resources */,
 				66DDBFBF200D94840076B63C /* AboutViewController.xib in Resources */,
 				66DFF1841FEB93CC009086C5 /* img_home_video.png in Resources */,
 				66F038491FF0FD3E00884FC1 /* app_logo_180.png in Resources */,
+				66DD839520104F3600885D53 /* icon_item_zone_list_gray.png in Resources */,
 				66D442C31FEA05CE00D89F5E /* tab_icon_device_normal.png in Resources */,
 				66F835BF1FFCE3AA008829E6 /* ic_hm_logo.png in Resources */,
 				66DDBFCD200E16850076B63C /* app_logo_152.png in Resources */,
@@ -1318,6 +1355,7 @@
 				66D442C11FEA05CE00D89F5E /* tab_icon_home_selected.png in Resources */,
 				66F93A342008B52300C25D35 /* img_home_alarm_dialog.png in Resources */,
 				66F038471FF0FD3E00884FC1 /* app_logo_58.png in Resources */,
+				66DD839620104F3600885D53 /* icon_item_zone_normal.png in Resources */,
 				66E1B7F71FF229C60070B2C2 /* SettingTextViewCell.xib in Resources */,
 				66D442CA1FEA0AE900D89F5E /* icon_account_user_name.png in Resources */,
 				66D6F68E2005ABBF00179B40 /* icon_device_detail_system.png in Resources */,
@@ -1333,6 +1371,7 @@
 				66D442C51FEA05CE00D89F5E /* tab_icon_more_normal.png in Resources */,
 				66D4431E1FEA390D00D89F5E /* img_slide_default.gif in Resources */,
 				66D442C41FEA05CE00D89F5E /* tab_icon_personal_normal.png in Resources */,
+				66DD839720104F3600885D53 /* icon_item_zone_black.png in Resources */,
 				66EBD8A120036E0E0015DBFB /* icon_device_detail_status.png in Resources */,
 				66E1B46A1FF4EBD700531857 /* icon_device_alarm.png in Resources */,
 				66F835BD1FFCE3AA008829E6 /* ic_ez_logo.png in Resources */,
@@ -1347,6 +1386,7 @@
 				66E1B8001FF23D140070B2C2 /* icon_loading_logo.png in Resources */,
 				66D442C61FEA05CE00D89F5E /* tab_icon_personal_selected.png in Resources */,
 				66F282E41FDF6A4700719AB2 /* AddAccountViewController.xib in Resources */,
+				66DD839820104F3600885D53 /* icon_item_zone_red.png in Resources */,
 				66F038481FF0FD3E00884FC1 /* app_logo_120.png in Resources */,
 				66DDBFCC200E16850076B63C /* app_logo_76.png in Resources */,
 				66DFF17C1FEB4CF4009086C5 /* img_home_polic.png in Resources */,
@@ -1373,6 +1413,7 @@
 				6615788F200C80DC0016087C /* CWFileUtils.m in Sources */,
 				66E1B7F61FF229C60070B2C2 /* SettingTextViewCell.m in Sources */,
 				66D6F6952006223F00179B40 /* UITextLabel.m in Sources */,
+				66DD838D20104D0400885D53 /* DeviceZoneViewCell.m in Sources */,
 				66F038341FF0E11900884FC1 /* BigViewCell.m in Sources */,
 				66F1006F1FE0CC56004CFA52 /* AccountBackgroundView.m in Sources */,
 				66D31AA4200F4785008B8D79 /* SDWebImageDecoder.m in Sources */,
@@ -1429,6 +1470,7 @@
 				66D442AC1FE9FEAF00D89F5E /* DeviceViewController.m in Sources */,
 				66E1B7E31FF1EA7D0070B2C2 /* MBProgressHUD.m in Sources */,
 				66127ED91FE7AAEB00D56869 /* CWAccessPoint.m in Sources */,
+				66DD8389201036AE00885D53 /* ZoneViewController.m in Sources */,
 				6695415B1FE3B43C000D4638 /* NSString+NCAddition.m in Sources */,
 				66D442B11FE9FEDA00D89F5E /* PersonalViewController.m in Sources */,
 				66F038371FF0E5E400884FC1 /* LeftViewCell.m in Sources */,
