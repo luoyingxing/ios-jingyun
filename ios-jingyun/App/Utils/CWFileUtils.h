@@ -30,14 +30,16 @@
 
 - (void) saveString:(NSString*) key value:(NSString*)value;
 
-- (BOOL) readString:(NSString*) key;
+- (NSString*) readString:(NSString*) key;
 
 - (void) saveInteger:(NSString*) key value:(NSInteger)value;
 
-- (BOOL) readInteger:(NSString*) key;
+- (NSInteger) readInteger:(NSString*) key;
 
 - (void) saveBOOL:(NSString*) key value:(BOOL)value;
 
 - (BOOL) readBOOL:(NSString*) key;
+
+- (void) removeObject:(NSString*) key;
 
 @end

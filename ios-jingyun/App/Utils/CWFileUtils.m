@@ -65,7 +65,7 @@ static CWFileUtils *sharedInstance = nil;
     [[NSUserDefaults standardUserDefaults] setObject:value forKey:key];
 }
 
-- (BOOL) readString:(NSString*) key{
+- (NSString*) readString:(NSString*) key{
     return [[NSUserDefaults standardUserDefaults] objectForKey:key];
 }
 
@@ -73,7 +73,7 @@ static CWFileUtils *sharedInstance = nil;
     [[NSUserDefaults standardUserDefaults] setInteger:value forKey:key];
 }
 
-- (BOOL) readInteger:(NSString*) key{
+- (NSInteger) readInteger:(NSString*) key{
     return [[NSUserDefaults standardUserDefaults] integerForKey:key];
 }
 
@@ -85,5 +85,8 @@ static CWFileUtils *sharedInstance = nil;
     return [[NSUserDefaults standardUserDefaults] boolForKey:key];
 }
 
+- (void) removeObject:(NSString*) key{
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:key];
+}
 
 @end

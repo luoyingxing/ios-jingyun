@@ -15,10 +15,12 @@
 #import "CWThings4Interface.h"
 #import "CWDataManager.h"
 #import "MBProgressHUD.h"
+#import "CWFileUtils.h"
+#import "CWTextUtils.h"
 
 #define CellIdentifier @"DeviceZoneViewCell"
 
-@interface ZoneViewController ()<ZoneOnItemClickDelegate>{
+@interface ZoneViewController ()<ZoneOnItemClickDelegate, UIAlertViewDelegate>{
     MBProgressHUD *mbProgress;
 }
 
@@ -293,8 +295,66 @@
 }
 
 - (void) checkPushMessage:cmd content:(NSString*) content{
-    //
+    self.cmd = nil;
+    self.content = nil;
     
+    NSString* passwrod = [[CWFileUtils sharedInstance] readString:[NSString stringWithFormat:@"%@_password", _deviceStatusModel.tid]];
+    
+    if (passwrod == nil || passwrod.length == 0) {
+        [self showAlertDialog:cmd content:content];
+    }else{
+        if ([[CWFileUtils sharedInstance] saveControlPassword]) {
+            NSString* cont;
+            if ([CWTextUtils isEmpty:content]) {
+                cont = @"";
+            } else {
+                cont = [NSString stringWithFormat:@",%@", content];
+            }
+            
+            NSString* msg = [NSString stringWithFormat:@"%@%@%@", cmd, passwrod, cont];
+            [[CWThings4Interface sharedInstance] push_msg:[msg UTF8String] MsgLen:(int)msg.length MsgType:"im"];
+        } else {
+            [self showAlertDialog:cmd content:content];
+        }
+    }
+}
+
+//添加密码的对话框
+- (void) showAlertDialog:cmd content:(NSString*) content{
+    self.cmd = cmd;
+    self.content = content;
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请输入反控密码" message:@"" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    [alert setAlertViewStyle:UIAlertViewStylePlainTextInput];
+    UITextField *passwordField = [alert textFieldAtIndex:0];
+    passwordField.placeholder = @"请输入反控密码";
+    [alert show];
+}
+
+#pragma mark alertView
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 1) {
+        UITextField *passwordField = [alertView textFieldAtIndex:0];
+        NSLog(@"alertView: %@", passwordField.text);
+        NSString* password = passwordField.text;
+        if ([CWTextUtils isEmpty:password]) {
+            [self showToast:@"密码不能为空!"];
+        } else {
+            if ([[CWFileUtils sharedInstance] saveControlPassword]) {
+                [[CWFileUtils sharedInstance] saveString:[NSString stringWithFormat:@"%@_password", _deviceStatusModel.tid] value:password];
+            }
+            
+            NSString* cont;
+            if ([CWTextUtils isEmpty:self.content]) {
+                cont = @"";
+            } else {
+                cont = [NSString stringWithFormat:@",%@", self.content];
+            }
+            
+            NSString* msg = [NSString stringWithFormat:@"%@%@%@", self.cmd, password, cont];
+            [[CWThings4Interface sharedInstance] push_msg:[msg UTF8String] MsgLen:(int)msg.length MsgType:"im"];
+        }
+    }
+
 }
 
 - (void) back:(id)sender{

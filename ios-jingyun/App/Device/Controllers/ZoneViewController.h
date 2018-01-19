@@ -13,4 +13,8 @@
 
 @property (strong, nonatomic) DeviceStatusModel* deviceStatusModel;
 
+@property (strong, nonatomic) NSString* cmd;
+
+@property (strong, nonatomic) NSString* content;
+
 @end

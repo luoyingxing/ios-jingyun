@@ -19,6 +19,7 @@
 #import "VideoTypeViewController.h"
 #import "ResetPasswordViewController.h"
 #import "AboutViewController.h"
+#import "DeviceStatusModel.h"
 
 #define CellIdentifierForSettingText @"CellIdentifierForSettingText"
 #define CellIdentifierForSettingChecked @"CellIdentifierForSettingChecked"
@@ -235,6 +236,20 @@
         //保存反控密码
         NSLog(@"保存反控密码 %lu  %d",itemId , isButtonOn);
         [[CWFileUtils sharedInstance] saveControlPassword:isButtonOn];
+        
+        if (!isButtonOn) {
+            //清除反控密码
+            [self clearControllerPassword];
+        }
+    }
+}
+
+//清除反控密码
+- (void) clearControllerPassword{
+    NSInteger count =[[CWDataManager sharedInstance] getThingsObjectCount];
+    for (int i = 0; i < count ; i++) {
+        DeviceStatusModel *model = [[CWDataManager sharedInstance] ThingsMsgObjectAtIndex:i];
+        [[CWFileUtils sharedInstance] removeObject:[NSString stringWithFormat:@"%@_password", model.tid]];
     }
 }
 

@@ -17,6 +17,8 @@
 #import "MainTabBarController.h"
 //#import "curl.h"
 #import "MBProgressHUD.h"
+#import "CWFileUtils.h"
+#import "DeviceStatusModel.h"
 
 #define CellIdentifier @"CellIdentifier"
 
@@ -389,11 +391,21 @@
 
 //跳转到首页
 - (void) jumpToMainController{
+    [self clearControllerPassword];
     [mbProgress hide:YES];
     
     MainTabBarController* mainVC = [[MainTabBarController alloc] init];
     [self  presentViewController:mainVC  animated:YES completion:nil];
     
+}
+
+- (void) clearControllerPassword{
+    //清除反控密码
+    NSInteger count =[[CWDataManager sharedInstance] getThingsObjectCount];
+    for (int i = 0; i < count ; i++) {
+        DeviceStatusModel *model = [[CWDataManager sharedInstance] ThingsMsgObjectAtIndex:i];
+        [[CWFileUtils sharedInstance] removeObject:[NSString stringWithFormat:@"%@_password", model.tid]];
+    }
 }
 
 /*
