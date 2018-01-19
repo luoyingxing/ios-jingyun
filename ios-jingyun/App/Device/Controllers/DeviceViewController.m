@@ -881,6 +881,10 @@
     [filterController addAction:onlineAction];
     [filterController addAction:offlineAction];
     
+    filterController.popoverPresentationController.sourceView = self.view;
+    filterController.popoverPresentationController.sourceRect = CGRectMake(screenWidth, 100, 1.0, 1.0);
+    
+    
     [self presentViewController:filterController animated:TRUE completion:nil];
 }
 
