@@ -1298,7 +1298,7 @@
 					660F55F31FDE631300788D6C = {
 						CreatedOnToolsVersion = 9.1;
 						LastSwiftMigration = 0910;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					66EC461120046622008F9AB6 = {
 						CreatedOnToolsVersion = 9.1;
@@ -1652,8 +1652,8 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: SHENZHEN CONWIN TECH. LTD. (88Z62HW94C)";
 				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Distribution: SHENZHEN CONWIN TECH. LTD. (88Z62HW94C)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 88Z62HW94C;
 				ENABLE_BITCODE = NO;
 				GCC_INPUT_FILETYPE = automatic;
@@ -1670,8 +1670,8 @@
 				OTHER_LIBTOOLFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.conwin.jingyun;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "0e47897d-e8ea-46ba-a631-6103a9a56aeb";
+				PROVISIONING_PROFILE_SPECIFIER = jingyun;
 				SDKROOT = iphoneos11.1;
 				SWIFT_OBJC_BRIDGING_HEADER = "ios-jingyun/App/Account/DAO/ios-jingyun-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1689,8 +1689,8 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: SHENZHEN CONWIN TECH. LTD. (88Z62HW94C)";
 				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Distribution: SHENZHEN CONWIN TECH. LTD. (88Z62HW94C)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 88Z62HW94C;
 				ENABLE_BITCODE = NO;
 				GCC_INPUT_FILETYPE = automatic;
@@ -1707,8 +1707,8 @@
 				OTHER_LIBTOOLFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.conwin.jingyun;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "0e47897d-e8ea-46ba-a631-6103a9a56aeb";
+				PROVISIONING_PROFILE_SPECIFIER = jingyun;
 				SDKROOT = iphoneos11.1;
 				SWIFT_OBJC_BRIDGING_HEADER = "ios-jingyun/App/Account/DAO/ios-jingyun-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
