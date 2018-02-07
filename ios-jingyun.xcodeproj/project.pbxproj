@@ -190,6 +190,17 @@
 		66F835C01FFCE3AA008829E6 /* ic_cw_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 66F835BC1FFCE3AA008829E6 /* ic_cw_logo.png */; };
 		66F93A32200863AB00C25D35 /* AlarmReportAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 66F93A31200863AB00C25D35 /* AlarmReportAlertView.m */; };
 		66F93A342008B52300C25D35 /* img_home_alarm_dialog.png in Resources */ = {isa = PBXBuildFile; fileRef = 66F93A332008B52300C25D35 /* img_home_alarm_dialog.png */; };
+		66FDA8922027F45800B9E82C /* IOS.crt in Resources */ = {isa = PBXBuildFile; fileRef = 66FDA88F2027F45700B9E82C /* IOS.crt */; };
+		66FDA8932027F45800B9E82C /* IOS.key in Resources */ = {isa = PBXBuildFile; fileRef = 66FDA8902027F45700B9E82C /* IOS.key */; };
+		66FDA8942027F45800B9E82C /* IOS.pfx in Resources */ = {isa = PBXBuildFile; fileRef = 66FDA8912027F45700B9E82C /* IOS.pfx */; };
+		66FDAC132027FA8A00B9E82C /* libssl_iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66FDAC0C2027FA8800B9E82C /* libssl_iOS.a */; };
+		66FDAC142027FA8A00B9E82C /* libnghttp2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66FDAC0D2027FA8900B9E82C /* libnghttp2.a */; };
+		66FDAC152027FA8A00B9E82C /* libcurl_iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66FDAC0E2027FA8900B9E82C /* libcurl_iOS.a */; };
+		66FDAC162027FA8A00B9E82C /* libcrypto_iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66FDAC0F2027FA8900B9E82C /* libcrypto_iOS.a */; };
+		66FDAC172027FA8A00B9E82C /* libcurl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66FDAC102027FA8900B9E82C /* libcurl.a */; };
+		66FDAC182027FA8A00B9E82C /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66FDAC112027FA8900B9E82C /* libssl.a */; };
+		66FDAC192027FA8A00B9E82C /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66FDAC122027FA8900B9E82C /* libcrypto.a */; };
+		66FDAC1A2027FC6500B9E82C /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 669540791FE3ADAC000D4638 /* libz.tbd */; };
 		66FF01F91FF1041C005BE42C /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66FF01F81FF1041C005BE42C /* WebViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -522,6 +533,33 @@
 		66F93A30200863AB00C25D35 /* AlarmReportAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlarmReportAlertView.h; sourceTree = "<group>"; };
 		66F93A31200863AB00C25D35 /* AlarmReportAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlarmReportAlertView.m; sourceTree = "<group>"; };
 		66F93A332008B52300C25D35 /* img_home_alarm_dialog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_home_alarm_dialog.png; sourceTree = "<group>"; };
+		66FDA88F2027F45700B9E82C /* IOS.crt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = IOS.crt; sourceTree = "<group>"; };
+		66FDA8902027F45700B9E82C /* IOS.key */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = IOS.key; sourceTree = "<group>"; };
+		66FDA8912027F45700B9E82C /* IOS.pfx */ = {isa = PBXFileReference; lastKnownFileType = file; path = IOS.pfx; sourceTree = "<group>"; };
+		66FDA8952027F49900B9E82C /* curlbuild.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = curlbuild.h; sourceTree = "<group>"; };
+		66FDA8962027F49900B9E82C /* curlver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = curlver.h; sourceTree = "<group>"; };
+		66FDA8972027F49900B9E82C /* mprintf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mprintf.h; sourceTree = "<group>"; };
+		66FDA8982027F49A00B9E82C /* curl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = curl.h; sourceTree = "<group>"; };
+		66FDA8992027F49A00B9E82C /* multi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = multi.h; sourceTree = "<group>"; };
+		66FDA89A2027F49A00B9E82C /* stdcheaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stdcheaders.h; sourceTree = "<group>"; };
+		66FDA89B2027F49A00B9E82C /* curlrules.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = curlrules.h; sourceTree = "<group>"; };
+		66FDA89C2027F49A00B9E82C /* typecheck-gcc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "typecheck-gcc.h"; sourceTree = "<group>"; };
+		66FDA89D2027F49A00B9E82C /* easy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = easy.h; sourceTree = "<group>"; };
+		66FDA89E2027F6F200B9E82C /* libcurl_iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl_iOS.a; path = "../../../Downloads/jnode-ios-v2-master 只拷贝/TYeung/Others/third_party/libcurl/libcurl_iOS.a"; sourceTree = "<group>"; };
+		66FDA89F2027F6F300B9E82C /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = "../../../Downloads/jnode-ios-v2-master 只拷贝/TYeung/Others/third_party/libcurl/libcurl.a"; sourceTree = "<group>"; };
+		66FDA8A32027F76300B9E82C /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = "../../../Downloads/jnode-ios-v2-master 只拷贝/TYeung/Others/third_party/libcurl/libcrypto.a"; sourceTree = "<group>"; };
+		66FDA8A42027F76300B9E82C /* libcrypto_iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto_iOS.a; path = "../../../Downloads/jnode-ios-v2-master 只拷贝/TYeung/Others/third_party/libcurl/libcrypto_iOS.a"; sourceTree = "<group>"; };
+		66FDA8A52027F76300B9E82C /* libssl_iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl_iOS.a; path = "../../../Downloads/jnode-ios-v2-master 只拷贝/TYeung/Others/third_party/libcurl/libssl_iOS.a"; sourceTree = "<group>"; };
+		66FDA8A62027F76400B9E82C /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = "../../../Downloads/jnode-ios-v2-master 只拷贝/TYeung/Others/third_party/libcurl/libssl.a"; sourceTree = "<group>"; };
+		66FDA8A72027F76400B9E82C /* libnghttp2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libnghttp2.a; path = "../../../Downloads/jnode-ios-v2-master 只拷贝/TYeung/Others/third_party/libcurl/libnghttp2.a"; sourceTree = "<group>"; };
+		66FDA8AD2027F82D00B9E82C /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = "../../../Downloads/jnode-ios-v2-master 只拷贝/TYeung/Others/third_party/dhlib/libcrypto.a"; sourceTree = "<group>"; };
+		66FDAC0C2027FA8800B9E82C /* libssl_iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl_iOS.a; path = "ios-jingyun/Others/lib/libssl_iOS.a"; sourceTree = "<group>"; };
+		66FDAC0D2027FA8900B9E82C /* libnghttp2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libnghttp2.a; path = "ios-jingyun/Others/lib/libnghttp2.a"; sourceTree = "<group>"; };
+		66FDAC0E2027FA8900B9E82C /* libcurl_iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl_iOS.a; path = "ios-jingyun/Others/lib/libcurl_iOS.a"; sourceTree = "<group>"; };
+		66FDAC0F2027FA8900B9E82C /* libcrypto_iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto_iOS.a; path = "ios-jingyun/Others/lib/libcrypto_iOS.a"; sourceTree = "<group>"; };
+		66FDAC102027FA8900B9E82C /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = "ios-jingyun/Others/lib/libcurl.a"; sourceTree = "<group>"; };
+		66FDAC112027FA8900B9E82C /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = "ios-jingyun/Others/lib/libssl.a"; sourceTree = "<group>"; };
+		66FDAC122027FA8900B9E82C /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = "ios-jingyun/Others/lib/libcrypto.a"; sourceTree = "<group>"; };
 		66FF01F71FF1041C005BE42C /* WebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		66FF01F81FF1041C005BE42C /* WebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -531,6 +569,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66FDAC1A2027FC6500B9E82C /* libz.tbd in Frameworks */,
+				66FDAC132027FA8A00B9E82C /* libssl_iOS.a in Frameworks */,
+				66FDAC142027FA8A00B9E82C /* libnghttp2.a in Frameworks */,
+				66FDAC152027FA8A00B9E82C /* libcurl_iOS.a in Frameworks */,
+				66FDAC162027FA8A00B9E82C /* libcrypto_iOS.a in Frameworks */,
+				66FDAC172027FA8A00B9E82C /* libcurl.a in Frameworks */,
+				66FDAC182027FA8A00B9E82C /* libssl.a in Frameworks */,
+				66FDAC192027FA8A00B9E82C /* libcrypto.a in Frameworks */,
 				66EC489A20049CE1008F9AB6 /* libc++.1.tbd in Frameworks */,
 				66EC48A120049CE1008F9AB6 /* libc++abi.tbd in Frameworks */,
 				66EC489B20049CE1008F9AB6 /* libc++.tbd in Frameworks */,
@@ -574,6 +620,7 @@
 			isa = PBXGroup;
 			children = (
 				660F56101FDE7FC200788D6C /* App */,
+				66FDA88D2027F40E00B9E82C /* Others */,
 				660F56031FDE631300788D6C /* Assets.xcassets */,
 				660F56051FDE631300788D6C /* LaunchScreen.storyboard */,
 				660F56081FDE631300788D6C /* Info.plist */,
@@ -1224,6 +1271,21 @@
 		66F283511FDFDDC200719AB2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				66FDAC0F2027FA8900B9E82C /* libcrypto_iOS.a */,
+				66FDAC122027FA8900B9E82C /* libcrypto.a */,
+				66FDAC0E2027FA8900B9E82C /* libcurl_iOS.a */,
+				66FDAC102027FA8900B9E82C /* libcurl.a */,
+				66FDAC0D2027FA8900B9E82C /* libnghttp2.a */,
+				66FDAC0C2027FA8800B9E82C /* libssl_iOS.a */,
+				66FDAC112027FA8900B9E82C /* libssl.a */,
+				66FDA8AD2027F82D00B9E82C /* libcrypto.a */,
+				66FDA8A42027F76300B9E82C /* libcrypto_iOS.a */,
+				66FDA8A32027F76300B9E82C /* libcrypto.a */,
+				66FDA8A72027F76400B9E82C /* libnghttp2.a */,
+				66FDA8A52027F76300B9E82C /* libssl_iOS.a */,
+				66FDA8A62027F76400B9E82C /* libssl.a */,
+				66FDA89E2027F6F200B9E82C /* libcurl_iOS.a */,
+				66FDA89F2027F6F300B9E82C /* libcurl.a */,
 				66EC489F20049CE1008F9AB6 /* libc++abi.tbd */,
 				66EC489E20049CE1008F9AB6 /* libstdc++.6.tbd */,
 				66D442991FE9FAC900D89F5E /* libstdc++.6.0.9.tbd */,
@@ -1247,6 +1309,33 @@
 				66F283521FDFDDC200719AB2 /* libsqlite3.tbd */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		66FDA88D2027F40E00B9E82C /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				66FDA8912027F45700B9E82C /* IOS.pfx */,
+				66FDA88F2027F45700B9E82C /* IOS.crt */,
+				66FDA8902027F45700B9E82C /* IOS.key */,
+				66FDA88E2027F42600B9E82C /* Curl */,
+			);
+			path = Others;
+			sourceTree = "<group>";
+		};
+		66FDA88E2027F42600B9E82C /* Curl */ = {
+			isa = PBXGroup;
+			children = (
+				66FDA8982027F49A00B9E82C /* curl.h */,
+				66FDA8952027F49900B9E82C /* curlbuild.h */,
+				66FDA89B2027F49A00B9E82C /* curlrules.h */,
+				66FDA8962027F49900B9E82C /* curlver.h */,
+				66FDA89D2027F49A00B9E82C /* easy.h */,
+				66FDA8972027F49900B9E82C /* mprintf.h */,
+				66FDA8992027F49A00B9E82C /* multi.h */,
+				66FDA89A2027F49A00B9E82C /* stdcheaders.h */,
+				66FDA89C2027F49A00B9E82C /* typecheck-gcc.h */,
+			);
+			path = Curl;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1313,6 +1402,8 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
+				"zh-Hant",
 			);
 			mainGroup = 660F55EB1FDE631300788D6C;
 			productRefGroup = 660F55F51FDE631300788D6C /* Products */;
@@ -1332,6 +1423,7 @@
 			files = (
 				66157894200C8BA20016087C /* VideoTypeViewController.xib in Resources */,
 				660F56071FDE631300788D6C /* LaunchScreen.storyboard in Resources */,
+				66FDA8942027F45800B9E82C /* IOS.pfx in Resources */,
 				66DFF1851FEB93CC009086C5 /* img_home_smart.png in Resources */,
 				66F100741FE0D0DD004CFA52 /* AccountViewCell.xib in Resources */,
 				66DDBFC1200D95FA0076B63C /* logo.png in Resources */,
@@ -1387,6 +1479,7 @@
 				66D442C61FEA05CE00D89F5E /* tab_icon_personal_selected.png in Resources */,
 				66F282E41FDF6A4700719AB2 /* AddAccountViewController.xib in Resources */,
 				66DD839820104F3600885D53 /* icon_item_zone_red.png in Resources */,
+				66FDA8922027F45800B9E82C /* IOS.crt in Resources */,
 				66F038481FF0FD3E00884FC1 /* app_logo_120.png in Resources */,
 				66DDBFCC200E16850076B63C /* app_logo_76.png in Resources */,
 				66DFF17C1FEB4CF4009086C5 /* img_home_polic.png in Resources */,
@@ -1395,6 +1488,7 @@
 				66EFDBEC1FF338DD00AF54A4 /* SettingItemList.plist in Resources */,
 				66DFF17D1FEB4CF4009086C5 /* img_home_payment.png in Resources */,
 				66DDBFCA200E16850076B63C /* app_logo_80.png in Resources */,
+				66FDA8932027F45800B9E82C /* IOS.key in Resources */,
 				660F561F1FDE83D300788D6C /* app_logo.png in Resources */,
 				66E1B45B1FF4975500531857 /* icon_white_logo.png in Resources */,
 			);
@@ -1588,7 +1682,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1637,7 +1731,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -1661,7 +1755,7 @@
 				INFOPLIST_FILE = "ios-jingyun/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/ios-jingyun/Curl/lib";
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/ios-jingyun/Others/lib";
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1698,7 +1792,7 @@
 				INFOPLIST_FILE = "ios-jingyun/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/ios-jingyun/Curl/lib";
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/ios-jingyun/Others/lib";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
