@@ -916,10 +916,13 @@ static CWDataManager *sharedInstance = nil;
                 if (rights_things) {
                     id video_ = [rights_things objectForKey:@"视频操作"];
                     video_right = [video_ boolValue];
+                    _videoRight = video_right;
                     id away_ = [rights_things objectForKey:@"布防操作"];
                     away_right = [away_ boolValue];
+                    _awayRight = away_right;
                     id open_ = [rights_things objectForKey:@"撤防操作"];
                     open_right = [open_ boolValue];
+                    _openRight = open_right;
                     id bypass_ = [rights_things objectForKey:@"旁路操作"];
                     by_pass_right_ = [bypass_ boolValue];
                     id alarmCaseRight = [rights_things objectForKey:@"出警操作"];

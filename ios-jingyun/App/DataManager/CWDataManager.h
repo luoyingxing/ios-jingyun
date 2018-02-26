@@ -50,7 +50,6 @@
     BOOL                event_message_update;
     
     BOOL                    by_pass_right_;
-    
     BOOL                relay_mode_right_;
     
     BOOL                p2p_mode_right_;
@@ -232,6 +231,10 @@
 @property (nonatomic, assign) BOOL              modifyUserInfoRight;
 @property (nonatomic, assign) BOOL              alarmCaseRight;
 @property (nonatomic, assign) BOOL              repairCaseRight;
+
+@property (nonatomic, assign) BOOL  videoRight;
+@property (nonatomic, assign) BOOL  awayRight;
+@property (nonatomic, assign) BOOL  openRight;
 
 @property (nonatomic, assign) BOOL              isOldSystemVersion;
 

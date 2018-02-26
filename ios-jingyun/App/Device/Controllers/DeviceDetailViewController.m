@@ -17,9 +17,11 @@
 #import "DeviceMessageModel.h"
 #import "DeviceMessageServerCell.h"
 #import "CWThings4Interface.h"
+#import "MBProgressHUD.h"
 #import "DeviceZoneModel.h"
 #import "SDPhotoBrowser.h"
 #import "ZoneViewController.h"
+#import "ChannelAlertView.h"
 
 #define CellIdentifierZone @"CellIdentifierZone"
 
@@ -41,9 +43,14 @@
 //未读消息条数
 @property (nonatomic, assign) NSInteger preMessageCount;
 
+//通道数
+@property (nonatomic, strong) NSMutableArray* channelArray;
+
 @property (nonatomic, assign) BOOL isEndOfTableView;
 
 @property (nonatomic, assign) BOOL isRefreshing;
+
+@property (nonatomic, assign) BOOL isHideMenu;
 
 @end
 
@@ -59,12 +66,20 @@
     UILabel* statusLabel;
     UICollectionView* collectionView;
     
+    UIImageView* showMenu;
+    UIImageView* captureMenu;
+    UIImageView* awayMenu;
+    UIImageView* passMenu;
+    UIImageView* videoMenu;
+    UIImageView* recordMenu;
+    
     UIRefreshControl *refreshControl;
     
     CGFloat screenHeight;
     CGFloat screenWidth;
     CGFloat childViewsY;
     
+    MBProgressHUD *mbProgress;
 }
 
 - (void)viewDidLoad {
@@ -75,6 +90,8 @@
     screenWidth = self.view.bounds.size.width;
     self.deviceArray = [[NSMutableArray alloc] init];
     self.zoneArray = [[NSMutableArray alloc] init];
+    self.channelArray = [[NSMutableArray alloc] init];
+    
     _preMessageCount = 0;
     _isEndOfTableView = YES;
     _isRefreshing = YES;
@@ -84,6 +101,7 @@
     [self addCollectionView];
     [self initTableView];
     [self addUnreadLabel];
+    [self addControlMenu];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -233,6 +251,239 @@
     unreadTipLabel.layer.mask = maskLayer;
     unreadTipLabel.hidden = YES;
     [self.view addSubview:unreadTipLabel];
+}
+
+- (void) addControlMenu{
+    CGFloat memuSize = 40;
+    CGFloat memuY = screenHeight - memuSize - 30;
+    
+    showMenu = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_floating_button_hide.png"]];
+    showMenu.frame = CGRectMake(screenWidth - memuSize - 20, memuY, memuSize, memuSize);
+    showMenu.contentMode =  UIViewContentModeScaleToFill;
+    showMenu.clipsToBounds  = YES;
+    showMenu.userInteractionEnabled = YES;
+    UITapGestureRecognizer *listener = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showMenuControl:)];
+    [showMenu addGestureRecognizer:listener];
+    [self.view addSubview:showMenu];
+    memuY = memuY - 8 - memuSize;
+    
+    BOOL isOnline = NO;
+    char *online = [[CWThings4Interface sharedInstance] get_var_with_path:[_deviceStatusModel.tid UTF8String] path:"online" sessions:NO];
+    if (online && strcmp(online, "true") == 0) {
+        isOnline = YES;
+    }
+    
+    if (!isOnline) {
+        return;
+    }
+    
+    BOOL capture = NO;
+    BOOL away = NO;
+    BOOL pass = NO;
+    BOOL video = NO;
+    BOOL record = NO;
+    
+    if ([_deviceStatusModel.partID isEqualToString:@"1001"] || [_deviceStatusModel.partID isEqualToString:@"1002"]) {
+        away = YES;
+        pass = YES;
+    } else if ([_deviceStatusModel.partID isEqualToString:@"2000"]){
+        int count = [[CWThings4Interface sharedInstance] get_var_nodes_with_tid:[_deviceStatusModel.tid UTF8String] path:"zones"];
+        if (count > 0) {
+            capture = YES;
+            away = YES;
+            pass = YES;
+            video = YES;
+            record = YES;
+        } else {
+            capture = YES;
+            video = YES;
+            record = YES;
+        }
+    }
+    
+    if (record) {
+        recordMenu = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_floating_button_record.png"]];
+        recordMenu.frame = CGRectMake(screenWidth - memuSize - 20, memuY, memuSize, memuSize);
+        recordMenu.contentMode =  UIViewContentModeScaleToFill;
+        recordMenu.clipsToBounds  = YES;
+        recordMenu.hidden = YES;
+        recordMenu.userInteractionEnabled = YES;
+        UITapGestureRecognizer *record_listener = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(recordControl:)];
+        [recordMenu addGestureRecognizer:record_listener];
+        [self.view addSubview:recordMenu];
+        memuY = memuY - 8 - memuSize;
+    }
+    
+    if (video) {
+        videoMenu = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_floating_button_video.png"]];
+        videoMenu.frame = CGRectMake(screenWidth - memuSize - 20, memuY, memuSize, memuSize);
+        videoMenu.contentMode =  UIViewContentModeScaleToFill;
+        videoMenu.clipsToBounds  = YES;
+        videoMenu.hidden = YES;
+        videoMenu.userInteractionEnabled = YES;
+        UITapGestureRecognizer *video_listener = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(videoControl:)];
+        [videoMenu addGestureRecognizer:video_listener];
+        [self.view addSubview:videoMenu];
+        memuY = memuY - 8 - memuSize;
+    }
+    
+    if (pass) {
+        passMenu = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_floating_button_pass.png"]];
+        passMenu.frame = CGRectMake(screenWidth - memuSize - 20, memuY, memuSize, memuSize);
+        passMenu.contentMode =  UIViewContentModeScaleToFill;
+        passMenu.clipsToBounds  = YES;
+        passMenu.hidden = YES;
+        passMenu.userInteractionEnabled = YES;
+        UITapGestureRecognizer *pass_listener = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(passControl:)];
+        [passMenu addGestureRecognizer:pass_listener];
+        [self.view addSubview:passMenu];
+        memuY = memuY - 8 - memuSize;
+    }
+    
+    if (away) {
+        awayMenu = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_floating_button_away.png"]];
+        awayMenu.frame = CGRectMake(screenWidth - memuSize - 20, memuY, memuSize, memuSize);
+        awayMenu.contentMode =  UIViewContentModeScaleToFill;
+        awayMenu.clipsToBounds  = YES;
+        awayMenu.hidden = YES;
+        awayMenu.userInteractionEnabled = YES;
+        UITapGestureRecognizer *away_listener = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(awayControl:)];
+        [awayMenu addGestureRecognizer:away_listener];
+        [self.view addSubview:awayMenu];
+        memuY = memuY - 8 - memuSize;
+    }
+    
+    if (capture) {
+        captureMenu = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_floating_button_capture.png"]];
+        captureMenu.frame = CGRectMake(screenWidth - memuSize - 20, memuY, memuSize, memuSize);
+        captureMenu.contentMode =  UIViewContentModeScaleToFill;
+        captureMenu.clipsToBounds  = YES;
+        captureMenu.hidden = YES;
+        captureMenu.userInteractionEnabled = YES;
+        UITapGestureRecognizer *capture_listener = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(captureControl:)];
+        [captureMenu addGestureRecognizer:capture_listener];
+        [self.view addSubview:captureMenu];
+        memuY = memuY - 8 - memuSize;
+    }
+}
+
+- (void) showMenuControl:(UIGestureRecognizer *)gestureRecognizer{
+    [self showMenu:_isHideMenu];
+}
+
+/**
+ * 抓图
+ */
+- (void) captureControl:(UIGestureRecognizer *)gestureRecognizer{
+    [self showMenu:YES];
+    if ([self checkViewdoDevice]) {
+        if (self.channelArray.count == 1) {
+            NSString* sendCmd = [NSString stringWithFormat:@"%@,,cmd,capture,0,%@,0,1", _deviceStatusModel.tid, [_channelArray objectAtIndex:0]];
+            [[CWThings4Interface sharedInstance] push_msg:[sendCmd UTF8String] MsgLen:(int)sendCmd.length MsgType:"im"];
+        } else {
+            ChannelAlertView *channelAlertView = [[ChannelAlertView alloc] initWithDefaultStyle:self.channelArray];
+            channelAlertView.resultIndex = ^(NSString* channel, NSInteger index){
+                NSString* sendCmd = [NSString stringWithFormat:@"%@,,cmd,capture,0,%@,0,1", _deviceStatusModel.tid, [_channelArray objectAtIndex:index]];
+                [[CWThings4Interface sharedInstance] push_msg:[sendCmd UTF8String] MsgLen:(int)sendCmd.length MsgType:"im"];
+            };
+            
+            [channelAlertView show];
+        }
+        
+    }else{
+        [self showToast:@"该设备目前没有视频通道!"];
+    }
+}
+
+- (void) passControl:(UIGestureRecognizer *)gestureRecognizer{
+    [self showMenu:YES];
+    NSLog(@"passControl");
+}
+
+- (void) awayControl:(UIGestureRecognizer *)gestureRecognizer{
+    [self showMenu:YES];
+    NSLog(@"awayControl");
+}
+
+- (void) videoControl:(UIGestureRecognizer *)gestureRecognizer{
+    [self showMenu:YES];
+    NSLog(@"videoControl");
+}
+
+- (void) recordControl:(UIGestureRecognizer *)gestureRecognizer{
+    [self showMenu:YES];
+    NSLog(@"recordControl");
+}
+
+- (void) showMenu:(BOOL)show{
+    if (show) {
+        _isHideMenu = NO;
+        showMenu.image = [UIImage imageNamed:@"icon_floating_button_hide.png"];
+        if (captureMenu) {
+            captureMenu.hidden = YES;
+        }
+        if (awayMenu) {
+            awayMenu.hidden = YES;
+        }
+        if (passMenu) {
+            passMenu.hidden = YES;
+        }
+        if (videoMenu) {
+            videoMenu.hidden = YES;
+        }
+        if (recordMenu) {
+            recordMenu.hidden = YES;
+        }
+    }else{
+        _isHideMenu = YES;
+        showMenu.image = [UIImage imageNamed:@"icon_floating_button_show.png"];
+        if (captureMenu) {
+            captureMenu.hidden = NO;
+        }
+        if (awayMenu) {
+            awayMenu.hidden = NO;
+        }
+        if (passMenu) {
+            passMenu.hidden = NO;
+        }
+        if (videoMenu) {
+            videoMenu.hidden = NO;
+        }
+        if (recordMenu) {
+            recordMenu.hidden = NO;
+        }
+    }
+}
+
+/**
+ * 检查设备的视频通道数，如果为0，则不具备抓图、视频和录像功能
+ * return 视频通道数
+ */
+- (BOOL) checkViewdoDevice{
+    if ([CWDataManager sharedInstance].videoRight) {
+        int count = [[CWThings4Interface sharedInstance] get_var_nodes_with_tid:[_deviceStatusModel.tid UTF8String] path:"dev.videos"];
+        
+        [self.channelArray removeAllObjects];
+        
+        for (int i = 0; i < count; i ++) {
+            char* channel_name = [[CWThings4Interface sharedInstance] get_var_with_path_ex:[_deviceStatusModel.tid UTF8String] prepath:"dev.videos" member:i backpath:NULL];
+            
+            if (channel_name && strcmp(channel_name, "default") == 0) {
+                continue;
+            }
+
+            [self.channelArray addObject:[NSString stringWithFormat:@"*.%@", [NSString stringWithUTF8String:channel_name]]];
+        }
+        
+        if (self.channelArray.count> 0) {
+            return YES;
+        }
+        
+    }else{
+        [self showToast:@"没有操作权限!"];
+        return NO;
+    }
+    return NO;
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -776,6 +1027,24 @@
     }
 }
 
+- (void) showToast:(NSString*) message{
+    mbProgress = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:mbProgress];
+    mbProgress.color = [CWColorUtils colorWithHexString:@"#00c7c7" alpha:0.8f];
+    mbProgress.labelText = message;
+    mbProgress.mode = MBProgressHUDModeText;
+    
+    //指定距离中心点的X轴和Y轴的偏移量，如果不指定则在屏幕中间显示
+    mbProgress.yOffset = [UIScreen mainScreen].bounds.size.height / 4 ;
+    //mbProgress.xOffset = 100.0f;
+    
+    [mbProgress showAnimated:YES whileExecutingBlock:^{
+        sleep(2);
+    } completionBlock:^{
+        [mbProgress removeFromSuperview];
+        mbProgress = nil;
+    }];
+}
 
 
 @end

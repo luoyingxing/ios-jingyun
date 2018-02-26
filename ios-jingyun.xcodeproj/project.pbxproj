@@ -28,6 +28,14 @@
 		66157896200C8FAB0016087C /* icon_small_circle_check.png in Resources */ = {isa = PBXBuildFile; fileRef = 66157895200C8FAA0016087C /* icon_small_circle_check.png */; };
 		6615789A200CA3700016087C /* ResetPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66157898200CA3700016087C /* ResetPasswordViewController.m */; };
 		6615789B200CA3700016087C /* ResetPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66157899200CA3700016087C /* ResetPasswordViewController.xib */; };
+		661D1C022043A8460078DF26 /* icon_floating_button_record.png in Resources */ = {isa = PBXBuildFile; fileRef = 661D1BFB2043A8420078DF26 /* icon_floating_button_record.png */; };
+		661D1C032043A8460078DF26 /* icon_floating_button_video.png in Resources */ = {isa = PBXBuildFile; fileRef = 661D1BFC2043A8430078DF26 /* icon_floating_button_video.png */; };
+		661D1C042043A8460078DF26 /* icon_floating_button_capture.png in Resources */ = {isa = PBXBuildFile; fileRef = 661D1BFD2043A8440078DF26 /* icon_floating_button_capture.png */; };
+		661D1C052043A8460078DF26 /* icon_floating_button_away.png in Resources */ = {isa = PBXBuildFile; fileRef = 661D1BFE2043A8440078DF26 /* icon_floating_button_away.png */; };
+		661D1C062043A8460078DF26 /* icon_floating_button_show.png in Resources */ = {isa = PBXBuildFile; fileRef = 661D1BFF2043A8450078DF26 /* icon_floating_button_show.png */; };
+		661D1C072043A8460078DF26 /* icon_floating_button_hide.png in Resources */ = {isa = PBXBuildFile; fileRef = 661D1C002043A8450078DF26 /* icon_floating_button_hide.png */; };
+		661D1C082043A8460078DF26 /* icon_floating_button_pass.png in Resources */ = {isa = PBXBuildFile; fileRef = 661D1C012043A8460078DF26 /* icon_floating_button_pass.png */; };
+		661D1C0B204402BA0078DF26 /* ChannelAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 661D1C0A204402BA0078DF26 /* ChannelAlertView.m */; };
 		6695412E1FE3B1F4000D4638 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6695412D1FE3B1F4000D4638 /* Localizable.strings */; };
 		669541381FE3B2F9000D4638 /* LoginUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 669541331FE3B2F9000D4638 /* LoginUserInfo.m */; };
 		669541591FE3B43C000D4638 /* RepairUserLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6695413B1FE3B439000D4638 /* RepairUserLocation.m */; };
@@ -258,6 +266,15 @@
 		66157897200CA3700016087C /* ResetPasswordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResetPasswordViewController.h; sourceTree = "<group>"; };
 		66157898200CA3700016087C /* ResetPasswordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResetPasswordViewController.m; sourceTree = "<group>"; };
 		66157899200CA3700016087C /* ResetPasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResetPasswordViewController.xib; sourceTree = "<group>"; };
+		661D1BFB2043A8420078DF26 /* icon_floating_button_record.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_floating_button_record.png; sourceTree = "<group>"; };
+		661D1BFC2043A8430078DF26 /* icon_floating_button_video.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_floating_button_video.png; sourceTree = "<group>"; };
+		661D1BFD2043A8440078DF26 /* icon_floating_button_capture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_floating_button_capture.png; sourceTree = "<group>"; };
+		661D1BFE2043A8440078DF26 /* icon_floating_button_away.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_floating_button_away.png; sourceTree = "<group>"; };
+		661D1BFF2043A8450078DF26 /* icon_floating_button_show.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_floating_button_show.png; sourceTree = "<group>"; };
+		661D1C002043A8450078DF26 /* icon_floating_button_hide.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_floating_button_hide.png; sourceTree = "<group>"; };
+		661D1C012043A8460078DF26 /* icon_floating_button_pass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_floating_button_pass.png; sourceTree = "<group>"; };
+		661D1C09204402BA0078DF26 /* ChannelAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChannelAlertView.h; sourceTree = "<group>"; };
+		661D1C0A204402BA0078DF26 /* ChannelAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChannelAlertView.m; sourceTree = "<group>"; };
 		6695406B1FE3AD23000D4638 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		6695406C1FE3AD2E000D4638 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		6695406D1FE3AD38000D4638 /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
@@ -718,6 +735,13 @@
 		660F561A1FDE825F00788D6C /* Icon */ = {
 			isa = PBXGroup;
 			children = (
+				661D1BFE2043A8440078DF26 /* icon_floating_button_away.png */,
+				661D1BFD2043A8440078DF26 /* icon_floating_button_capture.png */,
+				661D1C002043A8450078DF26 /* icon_floating_button_hide.png */,
+				661D1C012043A8460078DF26 /* icon_floating_button_pass.png */,
+				661D1BFB2043A8420078DF26 /* icon_floating_button_record.png */,
+				661D1BFF2043A8450078DF26 /* icon_floating_button_show.png */,
+				661D1BFC2043A8430078DF26 /* icon_floating_button_video.png */,
 				66DD839220104F3600885D53 /* icon_item_zone_black.png */,
 				66DD839020104F3600885D53 /* icon_item_zone_list_gray.png */,
 				66DD839120104F3600885D53 /* icon_item_zone_normal.png */,
@@ -1100,6 +1124,8 @@
 				66D6F6942006223F00179B40 /* UITextLabel.m */,
 				66F93A30200863AB00C25D35 /* AlarmReportAlertView.h */,
 				66F93A31200863AB00C25D35 /* AlarmReportAlertView.m */,
+				661D1C09204402BA0078DF26 /* ChannelAlertView.h */,
+				661D1C0A204402BA0078DF26 /* ChannelAlertView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1427,6 +1453,7 @@
 				66DFF1851FEB93CC009086C5 /* img_home_smart.png in Resources */,
 				66F100741FE0D0DD004CFA52 /* AccountViewCell.xib in Resources */,
 				66DDBFC1200D95FA0076B63C /* logo.png in Resources */,
+				661D1C052043A8460078DF26 /* icon_floating_button_away.png in Resources */,
 				66E1B7F91FF22A3F0070B2C2 /* icon_personal_list_right.png in Resources */,
 				66E1B7FE1FF22DCA0070B2C2 /* SettingCheckedViewCell.xib in Resources */,
 				66DFF17B1FEB4CF4009086C5 /* img_home_privilege.png in Resources */,
@@ -1441,6 +1468,7 @@
 				66F835BF1FFCE3AA008829E6 /* ic_hm_logo.png in Resources */,
 				66DDBFCD200E16850076B63C /* app_logo_152.png in Resources */,
 				66F835BE1FFCE3AA008829E6 /* ic_lc_logo.png in Resources */,
+				661D1C082043A8460078DF26 /* icon_floating_button_pass.png in Resources */,
 				66D442C01FEA05CE00D89F5E /* tab_icon_device_selected.png in Resources */,
 				66EBD8A72003744F0015DBFB /* ZoneViewCell.xib in Resources */,
 				66F038441FF0FD3E00884FC1 /* app_logo_40.png in Resources */,
@@ -1451,6 +1479,7 @@
 				66E1B7F71FF229C60070B2C2 /* SettingTextViewCell.xib in Resources */,
 				66D442CA1FEA0AE900D89F5E /* icon_account_user_name.png in Resources */,
 				66D6F68E2005ABBF00179B40 /* icon_device_detail_system.png in Resources */,
+				661D1C032043A8460078DF26 /* icon_floating_button_video.png in Resources */,
 				6615789B200CA3700016087C /* ResetPasswordViewController.xib in Resources */,
 				66DFF1771FEB4944009086C5 /* icon_home_message_tip.png in Resources */,
 				66DFF1821FEB93CC009086C5 /* img_home_alarm.png in Resources */,
@@ -1458,13 +1487,16 @@
 				66F038451FF0FD3E00884FC1 /* app_logo_60.png in Resources */,
 				66D442C71FEA05CE00D89F5E /* tab_icon_more_selected.png in Resources */,
 				66F038461FF0FD3E00884FC1 /* app_logo_89.png in Resources */,
+				661D1C042043A8460078DF26 /* icon_floating_button_capture.png in Resources */,
 				66DDBFCB200E16850076B63C /* app_logo_20.png in Resources */,
 				66D443201FEA3AAC00D89F5E /* img_empty_conwin.png in Resources */,
 				66D442C51FEA05CE00D89F5E /* tab_icon_more_normal.png in Resources */,
 				66D4431E1FEA390D00D89F5E /* img_slide_default.gif in Resources */,
+				661D1C022043A8460078DF26 /* icon_floating_button_record.png in Resources */,
 				66D442C41FEA05CE00D89F5E /* tab_icon_personal_normal.png in Resources */,
 				66DD839720104F3600885D53 /* icon_item_zone_black.png in Resources */,
 				66EBD8A120036E0E0015DBFB /* icon_device_detail_status.png in Resources */,
+				661D1C062043A8460078DF26 /* icon_floating_button_show.png in Resources */,
 				66E1B46A1FF4EBD700531857 /* icon_device_alarm.png in Resources */,
 				66F835BD1FFCE3AA008829E6 /* ic_ez_logo.png in Resources */,
 				66DDBFC9200E16850076B63C /* app_logo_29.png in Resources */,
@@ -1472,6 +1504,7 @@
 				66DFF1871FEBA0C8009086C5 /* icon_home_recommend.png in Resources */,
 				66DFF1831FEB93CC009086C5 /* img_home_other.png in Resources */,
 				66D6F68D2005ABBF00179B40 /* icon_device_detail_avatar.png in Resources */,
+				661D1C072043A8460078DF26 /* icon_floating_button_hide.png in Resources */,
 				66D442C21FEA05CE00D89F5E /* tab_icon_home_normal.png in Resources */,
 				66DDBFC8200E16850076B63C /* app_logo_167.png in Resources */,
 				660F56041FDE631300788D6C /* Assets.xcassets in Resources */,
@@ -1542,6 +1575,7 @@
 				66EBD8A62003744F0015DBFB /* ZoneViewCell.m in Sources */,
 				66F0383D1FF0F5A900884FC1 /* TextViewCell.m in Sources */,
 				66DDBFBE200D94840076B63C /* AboutViewController.m in Sources */,
+				661D1C0B204402BA0078DF26 /* ChannelAlertView.m in Sources */,
 				66D442A41FE9FC9F00D89F5E /* MainTabBarController.m in Sources */,
 				66F282F41FDF6F1A00719AB2 /* AccountCell.m in Sources */,
 				66F283131FDFCA8A00719AB2 /* UserInfoModel.m in Sources */,
