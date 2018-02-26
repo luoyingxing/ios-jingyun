@@ -22,6 +22,8 @@
 #import "SDPhotoBrowser.h"
 #import "ZoneViewController.h"
 #import "ChannelAlertView.h"
+#import "CWFileUtils.h"
+#import "CWTextUtils.h"
 
 #define CellIdentifierZone @"CellIdentifierZone"
 
@@ -102,6 +104,31 @@
     [self initTableView];
     [self addUnreadLabel];
     [self addControlMenu];
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    if (message_update_timer == nil) {
+        float palFrame = 1.0;
+        message_update_timer = [NSTimer scheduledTimerWithTimeInterval:palFrame target:self selector:@selector(message_update_func) userInfo:nil repeats:YES];
+    }
+    
+    _deviceStatusModel.unread_count = 0;
+    
+    [self updateDeviceInfo];
+    [refreshControl beginRefreshing];
+    [self refreshClick:refreshControl];
+    
+}
+
+- (void) viewWillDisappear:(BOOL)animated{
+    if (message_update_timer) {
+        [message_update_timer invalidate];
+        message_update_timer = nil;
+    }
+    
+    _deviceStatusModel.unread_count = 0;
+    [[CWDataManager sharedInstance] saveUnreadEvent4Things:_deviceStatusModel.tid value:0];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -395,14 +422,30 @@
     }
 }
 
-- (void) passControl:(UIGestureRecognizer *)gestureRecognizer{
-    [self showMenu:YES];
-    NSLog(@"passControl");
-}
-
+/**
+ * 布防
+ */
 - (void) awayControl:(UIGestureRecognizer *)gestureRecognizer{
     [self showMenu:YES];
-    NSLog(@"awayControl");
+    if ([CWDataManager sharedInstance].awayRight) {
+        NSString* cmdStr = [NSString stringWithFormat:@"%@,,cmd,away,", _deviceStatusModel.tid];
+        [self checkPushMessage:cmdStr content:@"" type:@"im"];
+    }else{
+        [self showToast:@"没有操作权限!"];
+    }
+}
+
+/**
+ * 撤防
+ */
+- (void) passControl:(UIGestureRecognizer *)gestureRecognizer{
+    [self showMenu:YES];
+    if ([CWDataManager sharedInstance].openRight) {
+        NSString* cmdStr = [NSString stringWithFormat:@"%@,,cmd,open,", _deviceStatusModel.tid];
+        [self checkPushMessage:cmdStr content:@"" type:@"im"];
+    }else{
+        [self showToast:@"没有操作权限!"];
+    }
 }
 
 - (void) videoControl:(UIGestureRecognizer *)gestureRecognizer{
@@ -486,29 +529,71 @@
     return NO;
 }
 
-- (void)viewDidAppear:(BOOL)animated{
-    if (message_update_timer == nil) {
-        float palFrame = 1.0;
-        message_update_timer = [NSTimer scheduledTimerWithTimeInterval:palFrame target:self selector:@selector(message_update_func) userInfo:nil repeats:YES];
+- (void) checkPushMessage:(NSString*)cmd content:(NSString*)content type:(NSString*)type{
+    
+    NSString* passwrod = [[CWFileUtils sharedInstance] readString:[NSString stringWithFormat:@"%@_password", _deviceStatusModel.tid]];
+    
+    if (passwrod == nil || passwrod.length == 0) {
+        [self showAlertDialog:cmd content:content type:type];
+    }else{
+        if ([[CWFileUtils sharedInstance] saveControlPassword]) {
+            NSString* cont;
+            if ([CWTextUtils isEmpty:content]) {
+                cont = @"";
+            } else {
+                cont = [NSString stringWithFormat:@",%@", content];
+            }
+            
+            NSString* msg;
+            if ([CWTextUtils isEmpty:content]) {
+                msg = [NSString stringWithFormat:@"%@%@", cmd, passwrod];
+            }else{
+                msg = [NSString stringWithFormat:@"%@%@%@", cmd, passwrod, content];
+            }
+            
+            [[CWThings4Interface sharedInstance] push_msg:[msg UTF8String] MsgLen:(int)msg.length MsgType:[type UTF8String]];
+        } else {
+            [self showAlertDialog:cmd content:content type:type];
+        }
     }
-    
-    _deviceStatusModel.unread_count = 0;
-    
-    [self updateDeviceInfo];
-    [refreshControl beginRefreshing];
-    [self refreshClick:refreshControl];
-    
 }
 
-- (void) viewWillDisappear:(BOOL)animated{
-    if (message_update_timer) {
-        [message_update_timer invalidate];
-        message_update_timer = nil;
+//添加密码的对话框
+- (void) showAlertDialog:cmd content:(NSString*) content type:(NSString*)type{
+    self.cmd = cmd;
+    self.content = content;
+    self.type = type;
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请输入反控密码" message:@"" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    [alert setAlertViewStyle:UIAlertViewStylePlainTextInput];
+    UITextField *passwordField = [alert textFieldAtIndex:0];
+    passwordField.placeholder = @"请输入反控密码";
+    [alert show];
+}
+
+#pragma mark alertView
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 1) {
+        UITextField *passwordField = [alertView textFieldAtIndex:0];
+        NSLog(@"alertView: %@", passwordField.text);
+        NSString* password = passwordField.text;
+        if ([CWTextUtils isEmpty:password]) {
+            [self showToast:@"密码不能为空!"];
+        } else {
+            if ([[CWFileUtils sharedInstance] saveControlPassword]) {
+                [[CWFileUtils sharedInstance] saveString:[NSString stringWithFormat:@"%@_password", _deviceStatusModel.tid] value:password];
+            }
+            
+            NSString* msg;
+            if ([CWTextUtils isEmpty:self.content]) {
+                msg = [NSString stringWithFormat:@"%@%@", self.cmd, password];
+            }else{
+                msg = [NSString stringWithFormat:@"%@%@%@", self.cmd, password, self.content];
+            }
+            NSLog(@"msg -->  %@", msg);
+            [[CWThings4Interface sharedInstance] push_msg:[msg UTF8String] MsgLen:(int)msg.length MsgType:[self.type UTF8String]];
+        }
     }
-    
-    _deviceStatusModel.unread_count = 0;
-    [[CWDataManager sharedInstance] saveUnreadEvent4Things:_deviceStatusModel.tid value:0];
-    
 }
 
 // 下拉刷新触发，在此获取数据

@@ -17,4 +17,11 @@
 
 @property (strong, nonatomic) DeviceStatusModel* deviceStatusModel;
 
+//缓存布撤防的相关请求信息
+@property (strong, nonatomic) NSString* cmd;
+//缓存布撤防的相关请求信息
+@property (strong, nonatomic) NSString* content;
+//缓存布撤防的相关请求信息
+@property (strong, nonatomic) NSString* type;
+
 @end
