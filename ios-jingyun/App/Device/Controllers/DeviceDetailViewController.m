@@ -448,14 +448,37 @@
     }
 }
 
+//跳转到视频播放
 - (void) videoControl:(UIGestureRecognizer *)gestureRecognizer{
     [self showMenu:YES];
-    NSLog(@"videoControl");
+    if ([self checkViewdoDevice]) {
+        //跳转到视频播放
+        
+    }else{
+        [self showToast:@"该设备目前没有视频通道!"];
+    }
 }
 
+//跳转到录像回放
 - (void) recordControl:(UIGestureRecognizer *)gestureRecognizer{
     [self showMenu:YES];
-    NSLog(@"recordControl");
+    if ([self checkViewdoDevice]) {
+        //跳转到录像回放
+        if (self.channelArray.count == 1) {
+            NSLog(@"直接跳转到视频播放");
+            
+        } else {
+            ChannelAlertView *channelAlertView = [[ChannelAlertView alloc] initWithDefaultStyle:self.channelArray];
+            channelAlertView.resultIndex = ^(NSString* channel, NSInteger index){
+                NSLog(@"直接跳转到视频播放");
+            };
+            
+            [channelAlertView show];
+        }
+        
+    }else{
+        [self showToast:@"该设备目前没有视频通道!"];
+    }
 }
 
 - (void) showMenu:(BOOL)show{
