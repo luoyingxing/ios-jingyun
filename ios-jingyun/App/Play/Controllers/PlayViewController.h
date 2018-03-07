@@ -10,8 +10,6 @@
 
 @interface PlayViewController : UIViewController
 
-@property (nonatomic, strong) NSMutableArray *dataArray;
-
 @property (assign, nonatomic) NSInteger VideoPlayFormat;
 
 @property (assign, nonatomic) NSInteger DeviceChannel;

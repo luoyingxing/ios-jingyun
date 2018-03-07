@@ -17,11 +17,13 @@
 #import "UIView+SDAutoLayout.h"
 #import "NSObject+BAProgressHUD.h"
 #import "CWDataManager.h"
+#import "CWFileUtils.h"
+#import "CWColorUtils.h"
 
 ZFPlayerView *gTYPlayerView = nil;
 
-@interface PlayViewController () <VideoPlayViewDelegate, UITableViewDelegate, UITableViewDataSource>
-{
+@interface PlayViewController () <VideoPlayViewDelegate, UITableViewDelegate, UITableViewDataSource>{
+    
     BOOL                is_full_screen_video;
     
     UITableView         *video_play_table_view;
@@ -38,8 +40,6 @@ ZFPlayerView *gTYPlayerView = nil;
     BOOL                video_res;
     
     BOOL                video_record_stop_play;
-    
-    
     
     //temp
     CGRect playerFrame;
@@ -64,98 +64,141 @@ ZFPlayerView *gTYPlayerView = nil;
 @property (nonatomic, assign) NSInteger         videoType;
 
 @property (nonatomic, copy) NSString            *start_date_and_time;
+
 @property (nonatomic, copy) NSString            *end_date_and_time;
 
-@property (nonatomic, assign) BOOL isLocalFindRecordFiles;
+@property (nonatomic, strong) NSMutableArray *channelArray;
 
 @property (nonatomic, assign) BOOL isScrolling;
 @end
 
-@implementation PlayViewController
+@implementation PlayViewController{
+    CGFloat screenHeight;
+    CGFloat screenWidth;
+    
+    CGFloat chanelHeight;
+    
+    UIScrollView *channelScrollView;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
-    [[CWDataManager sharedInstance] setIsNavBarHidden:YES];
-    //[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+    screenHeight = self.view.bounds.size.height;
+    screenWidth = self.view.bounds.size.width;
+    chanelHeight = 50;
     
-    /*if ([[UIDevice currentDevice].systemVersion floatValue]>=7.0) {
-     if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
-     self.navigationController.interactivePopGestureRecognizer.enabled = YES;
-     self.navigationController.interactivePopGestureRecognizer.delegate = self;
-     }
-     }*/
-    
-    //self.automaticallyAdjustsScrollViewInsets = YES;
-    //_isFirstInit = YES;
-    _isLocalFindRecordFiles = NO;
-    
-    [self.view setBackgroundColor:[UIColor whiteColor]];
-    
-//    [self showRevealSide:NO withRight:NO];
-    
-//    _background_image_view_ = [UIImageView new];
-//    [_background_image_view_ setImage:[UIImage imageNamed:@"C201beijing"]];
-//    [self.view addSubview:_background_image_view_];
-//    _background_image_view_.sd_layout
-//    .spaceToSuperView(UIEdgeInsetsZero);
-    _videoType = _VideoPlayFormat;
-    _isScrolling = NO;
+    self.channelArray = [[NSMutableArray alloc] init];
     
     [[DHVideoDeviceHelper sharedInstance] ConnectDevice:_tid withNodeTID:nil withPartID:@"2000"];
     
     [self createPlayer];
-//    [self createVideoTypeView];
     [self createToolBar];
-    [self createTableView];
+    [self addChanelScrollView];
+    
+    [self loadChannelList];
+    [self showChannelArray];
     
     [self.playerView setVideoIsPlayingType:_VideoPlayFormat];
-    if (_VideoPlayFormat == 1) {
-        [[DHVideoDeviceHelper sharedInstance] StartRealStream:_DeviceChannel withView:[_playerView getVideoWnd]];
-        _videoType = 1;
+    [[DHVideoDeviceHelper sharedInstance] StartRealStream:_DeviceChannel withView:[_playerView getVideoWnd]];
+    
+    [_videoPlayTypeView selectButtonAtIndex:0 withClick:YES];
+
+}
+
+- (void) addChanelScrollView{
+    channelScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 20 + screenWidth * 9 / 16, screenWidth, chanelHeight)];
+    [channelScrollView setBackgroundColor:[UIColor whiteColor]];
+    [self.view addSubview:channelScrollView];
+    //设置不显示横拉动条
+    channelScrollView.showsHorizontalScrollIndicator = NO;
+    //设置反弹效果
+    channelScrollView.bounces = YES;
+    //决定是否可以滚动
+    //navigationController 默认为yes 自动调整uiscrollview的高度inset大小
+    self.automaticallyAdjustsScrollViewInsets = NO;
+}
+
+//fill the channel array in the scroll view
+- (void) showChannelArray{
+    if (self.channelArray.count > 0) {
+        NSString* title;
+        BOOL showChannelName = [[CWFileUtils sharedInstance] showChannelName];
+        if (showChannelName) {
+            title = @"ch";
+        }else{
+            title = @"通道";
+        }
         
-        _videoToolBar.hidden = NO;
-        _recordToolBar.hidden = YES;
-        _isLocalFindRecordFiles = YES;
+        int widthX = 0;
+        for (int i = 0; i< self.channelArray.count; i ++) {
+            ChannelInfoModel *model = [self.channelArray objectAtIndex:i];
+            
+            UILabel *lable = [[UILabel alloc] initWithFrame:CGRectMake(widthX, 5, 80, chanelHeight - 5 - 5)];
+            [lable setText:[NSString stringWithFormat:@"%@%@", title, model.channelName]];
+            [channelScrollView addSubview:lable];
+            [lable setTag:i];
+            lable.textAlignment = NSTextAlignmentCenter;
+            lable.textColor = [UIColor grayColor];
+            lable.userInteractionEnabled=YES;
+            UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(channelClickListener:)];
+            [lable addGestureRecognizer:recognizer];
+            widthX += 80 + 8;
+        }
         
-        [_videoPlayTypeView selectButtonAtIndex:0 withClick:YES];
+        CGSize size = channelScrollView.contentSize;
+        size.width = widthX;
+        channelScrollView.contentSize = size;
     }
-    else if (_VideoPlayFormat == 2) {
-        [[DHVideoDeviceHelper sharedInstance] StartRecordStream:_recordIndex withView:[_playerView getVideoWnd]];
-        _videoType = 2;
-        _videoToolBar.hidden = YES;
-        _recordToolBar.hidden = NO;
-        _isLocalFindRecordFiles = NO;
-        
-        [_videoPlayTypeView selectButtonAtIndex:1 withClick:YES];
+}
+
+// channel click listener
+-(void) channelClickListener:(UITapGestureRecognizer *)recognizer{
+    UILabel *label = (UILabel*)recognizer.view;
+    NSInteger position = label.tag;
+    NSLog(@"点击了通道 %lu ", position);
+    
+    if ([[DHVideoDeviceHelper sharedInstance] isStartRealStreamFinished] == NO) {
+        [self BA_showAlert:NSLocalizedString(@"正连接实时视频内容，请稍后", @"")];
+        return ;
+    }
+
+    ChannelInfoModel *channel_model  = [self.channelArray objectAtIndex:position];
+    NSInteger chanIndex = [channel_model.channelName integerValue];
+    
+    _DeviceChannel = chanIndex - 1;
+    
+    if ([[DHVideoDeviceHelper sharedInstance] isPlayingSound]) {
+        [_videoToolBar selectButtonAtIndex:1 withClick:NO];
+    }
+    if ([[DHVideoDeviceHelper sharedInstance] isTalking]) {
+        [_videoToolBar selectButtonAtIndex:0 withClick:NO];
     }
     
-    //UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleMoveFrom:)];
-    //[swipeRight setDirection:UISwipeGestureRecognizerDirectionRight];
-    //[self.view addGestureRecognizer:swipeRight];
+    [[DHVideoDeviceHelper sharedInstance] StartRealStream:_DeviceChannel withView:[_playerView getVideoWnd]];
+  
 }
 
 // 滑动事件
--(void)handleMoveFrom:(UISwipeGestureRecognizer *)swipe
-{
-    if(swipe.direction == UISwipeGestureRecognizerDirectionRight){
-        //[self showLeft];
-    }
-    if(swipe.direction == UISwipeGestureRecognizerDirectionLeft){
-        //[self showRight];
-    }
-}
+//-(void)handleMoveFrom:(UISwipeGestureRecognizer *)swipe
+//{
+//    if(swipe.direction == UISwipeGestureRecognizerDirectionRight){
+//        //[self showLeft];
+//    }
+//    if(swipe.direction == UISwipeGestureRecognizerDirectionLeft){
+//        //[self showRight];
+//    }
+//}
 
-- (void)createPlayer
-{
-    UIView *topView = [[UIView alloc] init];
-    topView.backgroundColor = [UIColor blackColor];
-    [self.view addSubview:topView];
-    [topView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.top.left.right.equalTo(self.view);
-        make.height.mas_offset(20);
-    }];
+- (void)createPlayer{
+    //status bar to black color
+//    UIView *topView = [[UIView alloc] init];
+//    topView.backgroundColor = [UIColor blackColor];
+//    [self.view addSubview:topView];
+//    [topView mas_updateConstraints:^(MASConstraintMaker *make) {
+//        make.top.left.right.equalTo(self.view);
+//        make.height.mas_offset(20);
+//    }];
     
     //self.playerView = [ZFPlayerView new];
     self.playerView = [[ZFPlayerView alloc] init];
@@ -167,7 +210,7 @@ ZFPlayerView *gTYPlayerView = nil;
         make.top.equalTo(self.view).offset(20);
         make.left.right.equalTo(self.view);
         // 注意此处，宽高比16：9优先级比1000低就行，在因为iPhone 4S宽高比不是16：9
-        make.height.equalTo(self.playerView.mas_width).multipliedBy(3.0f/4.0f).with.priority(750);
+        make.height.equalTo(self.playerView.mas_width).multipliedBy(9.0f / 16.0f).with.priority(750);
     }];
     
     // Back button event
@@ -180,7 +223,7 @@ ZFPlayerView *gTYPlayerView = nil;
                 make.left.right.equalTo(weakSelf.view);
                 make.bottom.equalTo(weakSelf.view);
                 // 注意此处，宽高比16：9优先级比1000低就行，在因为iPhone 4S宽高比不是16：9
-                //make.height.equalTo(weakSelf.playerView.mas_width).multipliedBy(9.0f/16.0f).with.priority(750);
+                make.height.equalTo(weakSelf.playerView.mas_width).multipliedBy(9.0f / 16.0f).with.priority(750);
             }];
         }
         else {
@@ -188,72 +231,75 @@ ZFPlayerView *gTYPlayerView = nil;
                 make.top.equalTo(weakSelf.view).offset(20);
                 make.left.right.equalTo(weakSelf.view);
                 // 注意此处，宽高比16：9优先级比1000低就行，在因为iPhone 4S宽高比不是16：9
-                make.height.equalTo(weakSelf.view.mas_width).multipliedBy(3.0f/4.0f).with.priority(750);
+                make.height.equalTo(weakSelf.view.mas_width).multipliedBy(9.0f / 16.0f).with.priority(750);
             }];
         }
     };
     
     self.playerView.goBackBlock = ^{
-        [weakSelf.navigationController popViewControllerAnimated:YES];
+//        [weakSelf.navigationController popViewControllerAnimated:YES];
+        [weakSelf dismissViewControllerAnimated:TRUE completion:^{
+            NSLog(@"back to device detial");
+        }];
     };
     
-    self.playerView.changeVideoBlock = ^(NSInteger index){
-        NSLog(@"change video type---%ld", (long)index);
-        _videoType = index;
-        
-        if (index == 1) {
-            if ([[DHVideoDeviceHelper sharedInstance] isFindRecordStreamFinished] == NO) {
-                [weakSelf BA_showAlert:NSLocalizedString(@"VideoController_IsFindingRecordFile", @"")];
-                return ;
-            }
-            [weakSelf getDeviceInfo];
-            [weakSelf.tableView reloadData];
-            
-            weakSelf.videoToolBar.hidden = NO;
-            weakSelf.recordToolBar.hidden = YES;
-        }
-        else {
-            //_isFindRecordFiles = YES;
-            weakSelf.videoToolBar.hidden = YES;
-            weakSelf.recordToolBar.hidden = NO;
-            NSDate *now = [NSDate date];
-            NSCalendar *calendar = [NSCalendar currentCalendar];
-            NSUInteger unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
-            NSDateComponents *dateComponent = [calendar components:unitFlags fromDate:now];
-            
-            weakSelf.start_date_and_time = [[NSString alloc] initWithFormat:@"%04d-%02d-%02d %02d:%02d:%02d", [dateComponent year], [dateComponent month], [dateComponent day], 0, 0, 0];
-            weakSelf.end_date_and_time = [[NSString alloc] initWithFormat:@"%04d-%02d-%02d %02d:%02d:%02d", [dateComponent year], [dateComponent month], [dateComponent day], 23, 59, 59];
-            
-            
-            float palFrame = 1.0;
-            if (weakSelf.handleTimer == nil) {
-                weakSelf.handleTimer = [NSTimer scheduledTimerWithTimeInterval:palFrame target:weakSelf selector:@selector(recordDateUpdate) userInfo:nil repeats:YES];
-            }
-            
-            [[DHVideoDeviceHelper sharedInstance] FindVideoRecord:weakSelf.DeviceChannel withStartTime:weakSelf.start_date_and_time withEndTime:weakSelf.end_date_and_time];
-        }
-    };
+//    self.playerView.changeVideoBlock = ^(NSInteger index){
+//        NSLog(@"change video type---%ld", (long)index);
+//        _videoType = index;
+//
+//        if (index == 1) {
+//            if ([[DHVideoDeviceHelper sharedInstance] isFindRecordStreamFinished] == NO) {
+//                [weakSelf BA_showAlert:NSLocalizedString(@"VideoController_IsFindingRecordFile", @"")];
+//                return ;
+//            }
+//            [weakSelf getDeviceInfo];
+//            [weakSelf.tableView reloadData];
+//
+//            weakSelf.videoToolBar.hidden = NO;
+//            weakSelf.recordToolBar.hidden = YES;
+//        }
+//        else {
+//            //_isFindRecordFiles = YES;
+//            weakSelf.videoToolBar.hidden = YES;
+//            weakSelf.recordToolBar.hidden = NO;
+//            NSDate *now = [NSDate date];
+//            NSCalendar *calendar = [NSCalendar currentCalendar];
+//            NSUInteger unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+//            NSDateComponents *dateComponent = [calendar components:unitFlags fromDate:now];
+//
+//            weakSelf.start_date_and_time = [[NSString alloc] initWithFormat:@"%04d-%02d-%02d %02d:%02d:%02d", [dateComponent year], [dateComponent month], [dateComponent day], 0, 0, 0];
+//            weakSelf.end_date_and_time = [[NSString alloc] initWithFormat:@"%04d-%02d-%02d %02d:%02d:%02d", [dateComponent year], [dateComponent month], [dateComponent day], 23, 59, 59];
+//
+//
+//            float palFrame = 1.0;
+//            if (weakSelf.handleTimer == nil) {
+//                weakSelf.handleTimer = [NSTimer scheduledTimerWithTimeInterval:palFrame target:weakSelf selector:@selector(recordDateUpdate) userInfo:nil repeats:YES];
+//            }
+//
+//            [[DHVideoDeviceHelper sharedInstance] FindVideoRecord:weakSelf.DeviceChannel withStartTime:weakSelf.start_date_and_time withEndTime:weakSelf.end_date_and_time];
+//        }
+//    };
 }
 
-- (void) recordDateUpdate
-{
-    if ([[DHVideoDeviceHelper sharedInstance] getVideoSearch] == YES) {
-        self.dataArray = [DHVideoDeviceHelper sharedInstance]->video_record_files_array;
-        [_tableView reloadData];
-        
-        [_handleTimer invalidate];
-        _handleTimer = nil;
-        //_isLocalFindRecordFiles = NO;//表示录像列表不是在本界面搜索出来的
-        [self BA_hideProgress];
-    }
-    else {
-        /*if (_videoType == 2 && _isFirstInit == YES) {
-         if ([[DHVideoDeviceHelper sharedInstance] isFindRecordStreamFinished]) {
-         [self BA_hideProgress];
-         }
-         }*/
-    }
-}
+//- (void) recordDateUpdate
+//{
+//    if ([[DHVideoDeviceHelper sharedInstance] getVideoSearch] == YES) {
+//        self.dataArray = [DHVideoDeviceHelper sharedInstance]->video_record_files_array;
+//        [_tableView reloadData];
+//
+//        [_handleTimer invalidate];
+//        _handleTimer = nil;
+//        //_isLocalFindRecordFiles = NO;//表示录像列表不是在本界面搜索出来的
+//        [self BA_hideProgress];
+//    }
+//    else {
+//        /*if (_videoType == 2 && _isFirstInit == YES) {
+//         if ([[DHVideoDeviceHelper sharedInstance] isFindRecordStreamFinished]) {
+//         [self BA_hideProgress];
+//         }
+//         }*/
+//    }
+//}
 
 //- (void) createVideoTypeView
 //{
@@ -277,15 +323,15 @@ ZFPlayerView *gTYPlayerView = nil;
 
 - (void) createTableView
 {
-    if (_videoType == 1) {
-        [self getDeviceInfo];
-    }
-    else {
-        float palFrame = 1.0;
-        if (self.handleTimer == nil) {
-            self.handleTimer = [NSTimer scheduledTimerWithTimeInterval:palFrame target:self selector:@selector(recordDateUpdate) userInfo:nil repeats:YES];
-        }
-    }
+//    if (_videoType == 1) {
+//        [self getDeviceInfo];
+//    }
+//    else {
+//        float palFrame = 1.0;
+//        if (self.handleTimer == nil) {
+//            self.handleTimer = [NSTimer scheduledTimerWithTimeInterval:palFrame target:self selector:@selector(recordDateUpdate) userInfo:nil repeats:YES];
+//        }
+//    }
     
     _tableView = [UITableView new];
     _tableView.hidden = NO;
@@ -411,55 +457,50 @@ ZFPlayerView *gTYPlayerView = nil;
     // Dispose of any resources that can be recreated.
 }
 
-- (void) getDeviceInfo
-{
-    [self.dataArray removeAllObjects];
+- (void) loadChannelList{
+    [self.channelArray removeAllObjects];
     
-    int local_channel_count = [[CWThings4Interface sharedInstance] get_var_nodes_with_tid:[_tid UTF8String] path:"devs.videos"];
-    if (local_channel_count > 0) {
-        for (int i = 0; i < local_channel_count; i++) {
+    int channel_count = [[CWThings4Interface sharedInstance] get_var_nodes_with_tid:[_tid UTF8String] path:"devs.videos"];
+    if (channel_count > 0) {
+        for (int i = 0; i < channel_count; i++) {
             char *chan_name = [[CWThings4Interface sharedInstance] get_var_with_path_ex:[_tid UTF8String] prepath:"devs.videos" member:i backpath:NULL];
             if (chan_name && strcmp(chan_name, "default") == 0) {
                 continue;
             }
-            
-            
-            //NSString *title = [[NSString alloc] initWithFormat:@"%@%03d", NSLocalizedString(@"VideoController_ChannelName", @""), i];
-            NSString *subtitle = [[NSString alloc] initWithFormat:@"%s", chan_name];
-            subtitle = [subtitle stringByReplacingOccurrencesOfString:@"ch" withString:NSLocalizedString(@"VideoController_ChannelName", @"")];
+
+            NSString *channel_name = [[NSString alloc] initWithFormat:@"%s", chan_name];
+            channel_name = [channel_name stringByReplacingOccurrencesOfString:@"ch" withString:NSLocalizedString(@"", @"")];
             ChannelInfoModel *channel_model = [[ChannelInfoModel alloc] init];
             channel_model.deviceName = _tid;
-            channel_model.channelName = subtitle;
-            [self.dataArray addObject:channel_model];
+            channel_model.channelName = channel_name;
+            [self.channelArray addObject:channel_model];
             
         }
-    }
-    else {
-        local_channel_count = [[CWThings4Interface sharedInstance] get_var_nodes_with_tid:[_tid UTF8String] path:"profile.devs.videos"];
-        if (local_channel_count > 0) {
-            for (int i = 0; i < local_channel_count; i++) {
+    }else {
+        channel_count = [[CWThings4Interface sharedInstance] get_var_nodes_with_tid:[_tid UTF8String] path:"profile.devs.videos"];
+        if (channel_count > 0) {
+            for (int i = 0; i < channel_count; i++) {
                 char *chan_name = [[CWThings4Interface sharedInstance] get_var_with_path_ex:[_tid UTF8String] prepath:"profile.devs.videos" member:i backpath:NULL];
                 if (chan_name && strcmp(chan_name, "default") == 0) {
                     continue;
                 }
                 
-                NSString *subtitle = [[NSString alloc] initWithFormat:@"%s", chan_name];
-                subtitle = [subtitle stringByReplacingOccurrencesOfString:@"ch" withString:NSLocalizedString(@"VideoController_ChannelName", @"")];
-                //NSString *title = [[NSString alloc] initWithFormat:@"%@%03d", NSLocalizedString(@"VideoController_ChannelName", @""), i];
+                NSString *channel_name = [[NSString alloc] initWithFormat:@"%s", chan_name];
+                channel_name = [channel_name stringByReplacingOccurrencesOfString:@"ch" withString:NSLocalizedString(@"", @"")];
                 ChannelInfoModel *channel_model = [[ChannelInfoModel alloc] init];
                 channel_model.deviceName = _tid;
-                channel_model.channelName = subtitle;
-                [self.dataArray addObject:channel_model];
+                channel_model.channelName = channel_name;
+                [self.channelArray addObject:channel_model];
             }
         }
     }
+    
     int tid_count = [[CWThings4Interface sharedInstance] get_var_nodes_with_tid:[_tid UTF8String] path:"parts"];
     for (int j = 0; j < tid_count; j++) {
         char *tid_name = [[CWThings4Interface sharedInstance] get_var_with_path_ex:[_tid UTF8String] prepath:"parts" member:j backpath:NULL];
         if (tid_name && strcmp(tid_name, "settings") == 0) {
             continue;
-        }
-        else if (tid_name) {
+        }else if (tid_name) {
             char node_part_path[128] = {0};
             sprintf(node_part_path, "parts.%s.devs.videos", tid_name);
             int node_channel_count = [[CWThings4Interface sharedInstance] get_var_nodes_with_tid:[_tid UTF8String] path:node_part_path];
@@ -470,16 +511,14 @@ ZFPlayerView *gTYPlayerView = nil;
                         continue;
                     }
                     
-                    NSString *subtitle = [[NSString alloc] initWithFormat:@"%s", chan_name];
-                    subtitle = [subtitle stringByReplacingOccurrencesOfString:@"ch" withString:NSLocalizedString(@"VideoController_ChannelName", @"")];
-                    //NSString *title = [[NSString alloc] initWithFormat:@"%s.%@%03d", tid_name, NSLocalizedString(@"VideoController_ChannelName", @""), i];
+                    NSString *channel_name = [[NSString alloc] initWithFormat:@"%s", chan_name];
+                    channel_name = [channel_name stringByReplacingOccurrencesOfString:@"ch" withString:NSLocalizedString(@"", @"")];
                     ChannelInfoModel *channel_model = [[ChannelInfoModel alloc] init];
                     channel_model.deviceName = [[NSString alloc] initWithUTF8String:tid_name];
-                    channel_model.channelName = subtitle;
-                    [self.dataArray addObject:channel_model];
+                    channel_model.channelName = channel_name;
+                    [self.channelArray addObject:channel_model];
                 }
-            }
-            else {
+            }else {
                 memset(node_part_path, 0, 128);
                 sprintf(node_part_path, "parts.%s.profile.devs.videos", tid_name);
                 node_channel_count = [[CWThings4Interface sharedInstance] get_var_nodes_with_tid:[_tid UTF8String] path:node_part_path];
@@ -490,13 +529,12 @@ ZFPlayerView *gTYPlayerView = nil;
                             continue;
                         }
                         
-                        NSString *subtitle = [[NSString alloc] initWithFormat:@"%s", chan_name];
-                        subtitle = [subtitle stringByReplacingOccurrencesOfString:@"ch" withString:NSLocalizedString(@"VideoController_ChannelName", @"")];
-                        //NSString *title = [[NSString alloc] initWithFormat:@"%s.%@%03d", tid_name, NSLocalizedString(@"VideoController_ChannelName", @""), i];
+                        NSString *channel_name = [[NSString alloc] initWithFormat:@"%s", chan_name];
+                        channel_name = [channel_name stringByReplacingOccurrencesOfString:@"ch" withString:NSLocalizedString(@"", @"")];
                         ChannelInfoModel *channel_model = [[ChannelInfoModel alloc] init];
                         channel_model.deviceName = [[NSString alloc] initWithUTF8String:tid_name];
-                        channel_model.channelName = subtitle;
-                        [self.dataArray addObject:channel_model];
+                        channel_model.channelName = channel_name;
+                        [self.channelArray addObject:channel_model];
                     }
                 }
             }
@@ -506,20 +544,18 @@ ZFPlayerView *gTYPlayerView = nil;
 
 #pragma mark - tableview delegate and datasource
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return [self.dataArray count];
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return [self.channelArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (_videoType == 1) {
-        ChannelInfoModel *model = [self.dataArray objectAtIndex:indexPath.row];
+//    if (_videoType == 1) {
+        ChannelInfoModel *model = [self.channelArray objectAtIndex:indexPath.row];
         static NSString *Identifier = @"VIDEO_PLAYER_CELL";
         VideoPlayerCell *cell = [tableView dequeueReusableCellWithIdentifier:Identifier];
         if (cell == nil) {
@@ -528,18 +564,18 @@ ZFPlayerView *gTYPlayerView = nil;
         
         [cell setModel:model];
         return cell;
-    }
-    else if (_videoType == 2){
-        CWRecordModel *model = [self.dataArray objectAtIndex:indexPath.row];
-        static NSString *Identifier = @"RECORD_PLAYER_CELL";
-        VideoPlayerCell *cell = [tableView dequeueReusableCellWithIdentifier:Identifier];
-        if (cell == nil) {
-            cell = [[VideoPlayerCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:Identifier];
-        }
-        
-        [cell setRecordModel:model];
-        return cell;
-    }
+//    }
+//    else if (_videoType == 2){
+//        CWRecordModel *model = [self.dataArray objectAtIndex:indexPath.row];
+//        static NSString *Identifier = @"RECORD_PLAYER_CELL";
+//        VideoPlayerCell *cell = [tableView dequeueReusableCellWithIdentifier:Identifier];
+//        if (cell == nil) {
+//            cell = [[VideoPlayerCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:Identifier];
+//        }
+//
+//        [cell setRecordModel:model];
+//        return cell;
+//    }
     return nil;
 }
 
@@ -558,7 +594,7 @@ ZFPlayerView *gTYPlayerView = nil;
 {
     VideoPlayerCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     if (cell) {
-        if (_videoType == 1) {
+//        if (_videoType == 1) {
             if ([[DHVideoDeviceHelper sharedInstance] isStartRealStreamFinished] == NO) {
                 [self BA_showAlert:NSLocalizedString(@"VideoController_IsOpeningRealVideo", @"")];
                 return ;
@@ -566,7 +602,7 @@ ZFPlayerView *gTYPlayerView = nil;
             
             [cell didSelectedCell];
             
-            ChannelInfoModel *channel_model  = [self.dataArray objectAtIndex:indexPath.row];
+            ChannelInfoModel *channel_model  = [self.channelArray objectAtIndex:indexPath.row];
             NSString *channel_name = NSLocalizedString(@"VideoController_ChannelName", @"");
             int chanIndex = [[channel_model.channelName substringFromIndex:[channel_name length]] intValue];
             
@@ -582,21 +618,21 @@ ZFPlayerView *gTYPlayerView = nil;
             _VideoPlayFormat = 1;
             _videoToolBar.hidden = NO;
             _recordToolBar.hidden = YES;
-        }
-        else if (_videoType == 2) {
-            if ([[DHVideoDeviceHelper sharedInstance] isStartRecordStreamFinished] == NO) {
-                [self BA_showAlert:NSLocalizedString(@"VideoController_IsOpeningRecordVideo", @"")];
-                return ;
-            }
-            [cell didSelectedCell];
-            
-            
-            [[DHVideoDeviceHelper sharedInstance] StartRecordStream:indexPath.row withView:[_playerView getVideoWnd]];
-            _VideoPlayFormat = 2;
-            _videoToolBar.hidden = YES;
-            _recordToolBar.hidden = NO;
-        }
-        
+//        }
+//        else if (_videoType == 2) {
+//            if ([[DHVideoDeviceHelper sharedInstance] isStartRecordStreamFinished] == NO) {
+//                [self BA_showAlert:NSLocalizedString(@"VideoController_IsOpeningRecordVideo", @"")];
+//                return ;
+//            }
+//            [cell didSelectedCell];
+//
+//
+//            [[DHVideoDeviceHelper sharedInstance] StartRecordStream:indexPath.row withView:[_playerView getVideoWnd]];
+//            _VideoPlayFormat = 2;
+//            _videoToolBar.hidden = YES;
+//            _recordToolBar.hidden = NO;
+//        }
+//
         [self.playerView setVideoIsPlayingType:_VideoPlayFormat];
     }
     
@@ -612,41 +648,41 @@ ZFPlayerView *gTYPlayerView = nil;
     return 48;
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    UIView *view = [UIView new];
-    [view setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.7]];
-    
-    UIImageView* _menu_separator_image_view = [UIImageView new];
-    [_menu_separator_image_view setTag:20003];
-    UIImage *separator_image = [UIImage imageNamed:@"video_play_jindutiao"];
-    [_menu_separator_image_view setImage:separator_image];
-    [view addSubview:_menu_separator_image_view];
-    _menu_separator_image_view.sd_layout
-    .leftSpaceToView(view, 0)
-    .rightSpaceToView(view, 0)
-    .bottomSpaceToView(view, 0)
-    .heightIs(1);
-    
-    UILabel *_tableHeaderLabel = [UILabel new];
-    [_tableHeaderLabel setTextColor:[UIColor whiteColor]];
-    [_tableHeaderLabel setTextAlignment:NSTextAlignmentLeft];
-    if (_videoType == 1) {
-        [_tableHeaderLabel setText:NSLocalizedString(@"VideoController_ChannelListTitle", @"")];
-    }
-    else if (_videoType == 2) {
-        [_tableHeaderLabel setText:NSLocalizedString(@"VideoController_RecordListTitle", @"")];
-    }
-    [view addSubview:_tableHeaderLabel];
-    
-    _tableHeaderLabel.sd_layout
-    .leftSpaceToView(view, 16)
-    .rightSpaceToView(view, 16)
-    .centerYEqualToView(view)
-    .heightIs(24);
-    
-    return view;
-}
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+//{
+//    UIView *view = [UIView new];
+//    [view setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.7]];
+//
+//    UIImageView* _menu_separator_image_view = [UIImageView new];
+//    [_menu_separator_image_view setTag:20003];
+//    UIImage *separator_image = [UIImage imageNamed:@"video_play_jindutiao"];
+//    [_menu_separator_image_view setImage:separator_image];
+//    [view addSubview:_menu_separator_image_view];
+//    _menu_separator_image_view.sd_layout
+//    .leftSpaceToView(view, 0)
+//    .rightSpaceToView(view, 0)
+//    .bottomSpaceToView(view, 0)
+//    .heightIs(1);
+//
+//    UILabel *_tableHeaderLabel = [UILabel new];
+//    [_tableHeaderLabel setTextColor:[UIColor whiteColor]];
+//    [_tableHeaderLabel setTextAlignment:NSTextAlignmentLeft];
+//    if (_videoType == 1) {
+//        [_tableHeaderLabel setText:NSLocalizedString(@"VideoController_ChannelListTitle", @"")];
+//    }
+//    else if (_videoType == 2) {
+//        [_tableHeaderLabel setText:NSLocalizedString(@"VideoController_RecordListTitle", @"")];
+//    }
+//    [view addSubview:_tableHeaderLabel];
+//
+//    _tableHeaderLabel.sd_layout
+//    .leftSpaceToView(view, 16)
+//    .rightSpaceToView(view, 16)
+//    .centerYEqualToView(view)
+//    .heightIs(24);
+//
+//    return view;
+//}
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
@@ -776,7 +812,7 @@ ZFPlayerView *gTYPlayerView = nil;
         }
         
         [self BA_showBusy];
-        _isLocalFindRecordFiles = YES;
+//        _isLocalFindRecordFiles = YES;
         [_recordToolBar selectButtonAtIndex:index withClick:NO];
         
         switch (index) {
