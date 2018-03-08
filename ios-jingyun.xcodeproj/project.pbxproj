@@ -228,6 +228,7 @@
 		66ECA57E20511982003E0C0B /* ic_play_menu_capture.png in Resources */ = {isa = PBXBuildFile; fileRef = 66ECA57820511981003E0C0B /* ic_play_menu_capture.png */; };
 		66ECA57F20511982003E0C0B /* ic_play_menu_local.png in Resources */ = {isa = PBXBuildFile; fileRef = 66ECA57920511982003E0C0B /* ic_play_menu_local.png */; };
 		66ECA58020511982003E0C0B /* ic_play_menu_talking.png in Resources */ = {isa = PBXBuildFile; fileRef = 66ECA57A20511982003E0C0B /* ic_play_menu_talking.png */; };
+		66ECA58220514332003E0C0B /* ic_play_menu_hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 66ECA58120514332003E0C0B /* ic_play_menu_hd.png */; };
 		66EFDBEC1FF338DD00AF54A4 /* SettingItemList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 66EFDBEB1FF338DD00AF54A4 /* SettingItemList.plist */; };
 		66EFDBEF1FF3729900AF54A4 /* SettingItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 66EFDBED1FF3729900AF54A4 /* SettingItem.m */; };
 		66F038311FF0DAB400884FC1 /* MultiViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 66F038301FF0DAB400884FC1 /* MultiViewCell.m */; };
@@ -661,6 +662,7 @@
 		66ECA57820511981003E0C0B /* ic_play_menu_capture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_play_menu_capture.png; sourceTree = "<group>"; };
 		66ECA57920511982003E0C0B /* ic_play_menu_local.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_play_menu_local.png; sourceTree = "<group>"; };
 		66ECA57A20511982003E0C0B /* ic_play_menu_talking.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_play_menu_talking.png; sourceTree = "<group>"; };
+		66ECA58120514332003E0C0B /* ic_play_menu_hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_play_menu_hd.png; sourceTree = "<group>"; };
 		66EFDBEB1FF338DD00AF54A4 /* SettingItemList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = SettingItemList.plist; sourceTree = "<group>"; };
 		66EFDBED1FF3729900AF54A4 /* SettingItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingItem.m; sourceTree = "<group>"; };
 		66EFDBEE1FF3729900AF54A4 /* SettingItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingItem.h; sourceTree = "<group>"; };
@@ -1006,6 +1008,7 @@
 		660F561A1FDE825F00788D6C /* Icon */ = {
 			isa = PBXGroup;
 			children = (
+				66ECA58120514332003E0C0B /* ic_play_menu_hd.png */,
 				66ECA57820511981003E0C0B /* ic_play_menu_capture.png */,
 				66ECA57520511980003E0C0B /* ic_play_menu_card.png */,
 				66ECA57620511981003E0C0B /* ic_play_menu_cloud.png */,
@@ -1862,6 +1865,7 @@
 				66DD839720104F3600885D53 /* icon_item_zone_black.png in Resources */,
 				66EBD8A120036E0E0015DBFB /* icon_device_detail_status.png in Resources */,
 				661D1C062043A8460078DF26 /* icon_floating_button_show.png in Resources */,
+				66ECA58220514332003E0C0B /* ic_play_menu_hd.png in Resources */,
 				66E1B46A1FF4EBD700531857 /* icon_device_alarm.png in Resources */,
 				66F835BD1FFCE3AA008829E6 /* ic_ez_logo.png in Resources */,
 				66DDBFC9200E16850076B63C /* app_logo_29.png in Resources */,

@@ -41,11 +41,14 @@ ZFPlayerView *gTYPlayerView = nil;
     UIView* captureUIView;
     UIView* talkUIView;
     UIView* listenerUIView;
+    UIView* hdUIView;
     UILabel *talkLabel;
     UILabel *listenerLabel;
+    UILabel *hdLabel;
     
     BOOL talking;
     BOOL listening;
+    BOOL hd;
     
     NSInteger _deviceChannel;
 }
@@ -178,6 +181,32 @@ ZFPlayerView *gTYPlayerView = nil;
     listenerLabel.font = [UIFont systemFontOfSize:15];
     listenerLabel.textColor = [CWColorUtils colorWithHexString:@"#333333"];
     [listenerUIView addSubview:listenerLabel];
+    
+    // -----  hd  ---------
+    hdUIView = [[UIView alloc] initWithFrame:CGRectMake(10 + perWidth + 10 + perWidth + 10 + perWidth + 10, controllerY, perWidth, perHeight)];
+    hdUIView.backgroundColor = [UIColor whiteColor];
+    //添加边框
+    CALayer * hdLayer = [hdUIView layer];
+    hdLayer.borderColor = [[CWColorUtils colorWithHexString:@"#f7f7f7"] CGColor];
+    hdLayer.borderWidth = 1.0f;
+    UITapGestureRecognizer *hdOnclickListener = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(hdOnclickListener)];
+    [hdUIView addGestureRecognizer:hdOnclickListener];
+    hdUIView.userInteractionEnabled = YES; // 可以理解为设置label可被点击
+    [self.view addSubview:hdUIView];
+    
+    UIImage *hdImage = [[UIImage alloc] init];
+    hdImage = [UIImage imageNamed:@"ic_play_menu_hd.png"];
+    //注意此处的x，y，是添加到uiview里面，所以位置要相对uiview来确立
+    UIImageView* hd = [[UIImageView alloc] initWithFrame:CGRectMake(perWidth / 4, 8, perWidth / 2, perWidth / 2)];
+    hd.image = hdImage;
+    [hdUIView addSubview:hd];
+    
+    hdLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, perWidth / 2 + 8 + 4, perWidth, perHeight - (perWidth / 2 + 8 + 4))];
+    hdLabel.textAlignment = NSTextAlignmentCenter;
+    hdLabel.text = @"流畅";
+    hdLabel.font = [UIFont systemFontOfSize:15];
+    hdLabel.textColor = [CWColorUtils colorWithHexString:@"#333333"];
+    [hdUIView addSubview:hdLabel];
 }
 
 //fill the channel array in the scroll view
@@ -221,8 +250,10 @@ ZFPlayerView *gTYPlayerView = nil;
     
     talking = NO;
     listening = NO;
+    hd = NO;
     talkLabel.text = @"对讲";
     listenerLabel.text = @"监听";
+    hdLabel.text = @"流畅";
     
     if ([[DHVideoDeviceHelper sharedInstance] isStartRealStreamFinished] == NO) {
         [self BA_showAlert:NSLocalizedString(@"正连接实时视频内容，请稍后", @"")];
@@ -271,6 +302,21 @@ ZFPlayerView *gTYPlayerView = nil;
         }
     }else {
         NSLog(@"打开监听失败，请稍候再试");
+    }
+}
+
+- (void) hdOnclickListener{
+    NSLog(@"hd");
+    BOOL bRet = [[DHVideoDeviceHelper sharedInstance] ChangeResType:hd];
+    if (bRet == YES) {
+        hd = !hd;
+        if (hd) {
+            hdLabel.text = @"高清";
+        }else{
+            hdLabel.text = @"流畅";
+        }
+    }else {
+        NSLog(@"切换失败，请稍候再试");
     }
 }
 
@@ -325,6 +371,7 @@ ZFPlayerView *gTYPlayerView = nil;
     captureUIView.hidden = isFullScreen;
     talkUIView.hidden = isFullScreen;
     listenerUIView.hidden = isFullScreen;
+    hdUIView.hidden = isFullScreen;
 }
 
 - (void)viewWillAppear:(BOOL)animated{
