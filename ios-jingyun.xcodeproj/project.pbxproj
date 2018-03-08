@@ -222,6 +222,12 @@
 		66EC48A120049CE1008F9AB6 /* libc++abi.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 66EC489F20049CE1008F9AB6 /* libc++abi.tbd */; };
 		66EC49072004BF51008F9AB6 /* DeviceMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 66EC49062004BF51008F9AB6 /* DeviceMessageModel.m */; };
 		66EC490A2004C882008F9AB6 /* DeviceMessageServerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 66EC49092004C882008F9AB6 /* DeviceMessageServerCell.m */; };
+		66ECA57B20511982003E0C0B /* ic_play_menu_card.png in Resources */ = {isa = PBXBuildFile; fileRef = 66ECA57520511980003E0C0B /* ic_play_menu_card.png */; };
+		66ECA57C20511982003E0C0B /* ic_play_menu_cloud.png in Resources */ = {isa = PBXBuildFile; fileRef = 66ECA57620511981003E0C0B /* ic_play_menu_cloud.png */; };
+		66ECA57D20511982003E0C0B /* ic_play_menu_listener.png in Resources */ = {isa = PBXBuildFile; fileRef = 66ECA57720511981003E0C0B /* ic_play_menu_listener.png */; };
+		66ECA57E20511982003E0C0B /* ic_play_menu_capture.png in Resources */ = {isa = PBXBuildFile; fileRef = 66ECA57820511981003E0C0B /* ic_play_menu_capture.png */; };
+		66ECA57F20511982003E0C0B /* ic_play_menu_local.png in Resources */ = {isa = PBXBuildFile; fileRef = 66ECA57920511982003E0C0B /* ic_play_menu_local.png */; };
+		66ECA58020511982003E0C0B /* ic_play_menu_talking.png in Resources */ = {isa = PBXBuildFile; fileRef = 66ECA57A20511982003E0C0B /* ic_play_menu_talking.png */; };
 		66EFDBEC1FF338DD00AF54A4 /* SettingItemList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 66EFDBEB1FF338DD00AF54A4 /* SettingItemList.plist */; };
 		66EFDBEF1FF3729900AF54A4 /* SettingItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 66EFDBED1FF3729900AF54A4 /* SettingItem.m */; };
 		66F038311FF0DAB400884FC1 /* MultiViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 66F038301FF0DAB400884FC1 /* MultiViewCell.m */; };
@@ -649,6 +655,12 @@
 		66EC49062004BF51008F9AB6 /* DeviceMessageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceMessageModel.m; sourceTree = "<group>"; };
 		66EC49082004C882008F9AB6 /* DeviceMessageServerCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceMessageServerCell.h; sourceTree = "<group>"; };
 		66EC49092004C882008F9AB6 /* DeviceMessageServerCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceMessageServerCell.m; sourceTree = "<group>"; };
+		66ECA57520511980003E0C0B /* ic_play_menu_card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_play_menu_card.png; sourceTree = "<group>"; };
+		66ECA57620511981003E0C0B /* ic_play_menu_cloud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_play_menu_cloud.png; sourceTree = "<group>"; };
+		66ECA57720511981003E0C0B /* ic_play_menu_listener.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_play_menu_listener.png; sourceTree = "<group>"; };
+		66ECA57820511981003E0C0B /* ic_play_menu_capture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_play_menu_capture.png; sourceTree = "<group>"; };
+		66ECA57920511982003E0C0B /* ic_play_menu_local.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_play_menu_local.png; sourceTree = "<group>"; };
+		66ECA57A20511982003E0C0B /* ic_play_menu_talking.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_play_menu_talking.png; sourceTree = "<group>"; };
 		66EFDBEB1FF338DD00AF54A4 /* SettingItemList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = SettingItemList.plist; sourceTree = "<group>"; };
 		66EFDBED1FF3729900AF54A4 /* SettingItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingItem.m; sourceTree = "<group>"; };
 		66EFDBEE1FF3729900AF54A4 /* SettingItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingItem.h; sourceTree = "<group>"; };
@@ -994,6 +1006,12 @@
 		660F561A1FDE825F00788D6C /* Icon */ = {
 			isa = PBXGroup;
 			children = (
+				66ECA57820511981003E0C0B /* ic_play_menu_capture.png */,
+				66ECA57520511980003E0C0B /* ic_play_menu_card.png */,
+				66ECA57620511981003E0C0B /* ic_play_menu_cloud.png */,
+				66ECA57720511981003E0C0B /* ic_play_menu_listener.png */,
+				66ECA57920511982003E0C0B /* ic_play_menu_local.png */,
+				66ECA57A20511982003E0C0B /* ic_play_menu_talking.png */,
 				661D1BFE2043A8440078DF26 /* icon_floating_button_away.png */,
 				661D1BFD2043A8440078DF26 /* icon_floating_button_capture.png */,
 				661D1C002043A8450078DF26 /* icon_floating_button_hide.png */,
@@ -1817,7 +1835,9 @@
 				66EBD8A72003744F0015DBFB /* ZoneViewCell.xib in Resources */,
 				66F038441FF0FD3E00884FC1 /* app_logo_40.png in Resources */,
 				66D442C11FEA05CE00D89F5E /* tab_icon_home_selected.png in Resources */,
+				66ECA57B20511982003E0C0B /* ic_play_menu_card.png in Resources */,
 				66F93A342008B52300C25D35 /* img_home_alarm_dialog.png in Resources */,
+				66ECA57E20511982003E0C0B /* ic_play_menu_capture.png in Resources */,
 				66F038471FF0FD3E00884FC1 /* app_logo_58.png in Resources */,
 				66DD839620104F3600885D53 /* icon_item_zone_normal.png in Resources */,
 				66E1B7F71FF229C60070B2C2 /* SettingTextViewCell.xib in Resources */,
@@ -1831,6 +1851,7 @@
 				66F038451FF0FD3E00884FC1 /* app_logo_60.png in Resources */,
 				66D442C71FEA05CE00D89F5E /* tab_icon_more_selected.png in Resources */,
 				66F038461FF0FD3E00884FC1 /* app_logo_89.png in Resources */,
+				66ECA57F20511982003E0C0B /* ic_play_menu_local.png in Resources */,
 				661D1C042043A8460078DF26 /* icon_floating_button_capture.png in Resources */,
 				66DDBFCB200E16850076B63C /* app_logo_20.png in Resources */,
 				66D443201FEA3AAC00D89F5E /* img_empty_conwin.png in Resources */,
@@ -1852,11 +1873,14 @@
 				66D442C21FEA05CE00D89F5E /* tab_icon_home_normal.png in Resources */,
 				66DDBFC8200E16850076B63C /* app_logo_167.png in Resources */,
 				660F56041FDE631300788D6C /* Assets.xcassets in Resources */,
+				66ECA58020511982003E0C0B /* ic_play_menu_talking.png in Resources */,
 				66E1B8001FF23D140070B2C2 /* icon_loading_logo.png in Resources */,
 				66D442C61FEA05CE00D89F5E /* tab_icon_personal_selected.png in Resources */,
 				66F282E41FDF6A4700719AB2 /* AddAccountViewController.xib in Resources */,
+				66ECA57D20511982003E0C0B /* ic_play_menu_listener.png in Resources */,
 				66DD839820104F3600885D53 /* icon_item_zone_red.png in Resources */,
 				66FDA8922027F45800B9E82C /* IOS.crt in Resources */,
+				66ECA57C20511982003E0C0B /* ic_play_menu_cloud.png in Resources */,
 				66F038481FF0FD3E00884FC1 /* app_logo_120.png in Resources */,
 				66DDBFCC200E16850076B63C /* app_logo_76.png in Resources */,
 				66DFF17C1FEB4CF4009086C5 /* img_home_polic.png in Resources */,

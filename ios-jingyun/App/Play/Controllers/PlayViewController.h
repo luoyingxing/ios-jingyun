@@ -10,12 +10,6 @@
 
 @interface PlayViewController : UIViewController
 
-@property (assign, nonatomic) NSInteger VideoPlayFormat;
-
-@property (assign, nonatomic) NSInteger DeviceChannel;
-
 @property (nonatomic, copy)  NSString  *tid;
-
-@property (nonatomic, assign) NSInteger recordIndex;
 
 @end

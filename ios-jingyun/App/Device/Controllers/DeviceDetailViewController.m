@@ -455,8 +455,6 @@
     if ([self checkViewdoDevice]) {
         //跳转到视频播放
         PlayViewController *play_controller = [[PlayViewController alloc] init];
-        [play_controller setVideoPlayFormat:1];
-        [play_controller setDeviceChannel:0];
         [play_controller setTid:_deviceStatusModel.tid];
         UINavigationController* navigationController = [[UINavigationController alloc] initWithRootViewController:play_controller];
         [self presentViewController:navigationController animated:TRUE completion:nil];
