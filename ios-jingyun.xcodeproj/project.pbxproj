@@ -22,13 +22,13 @@
 		66037CA02049004D00D58BAC /* ZFBrightnessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 66037C9E2049004D00D58BAC /* ZFBrightnessView.m */; };
 		66037CA32049006E00D58BAC /* ZFDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 66037CA12049006E00D58BAC /* ZFDownloadManager.m */; };
 		66037CA62049009600D58BAC /* ZFSessionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 66037CA52049009600D58BAC /* ZFSessionModel.m */; };
-		66037CD42049279800D58BAC /* CWRecordModel.mm in Sources */ = {isa = PBXBuildFile; fileRef = 66037CD32049279800D58BAC /* CWRecordModel.mm */; };
 		66037CEF2049280900D58BAC /* bitrate_range.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 66037CE12049280900D58BAC /* bitrate_range.cpp */; };
 		66037CF02049280900D58BAC /* globle_functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 66037CE42049280900D58BAC /* globle_functions.cpp */; };
 		66037CF12049280900D58BAC /* IPParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 66037CE72049280900D58BAC /* IPParser.m */; };
 		66037CF32049280900D58BAC /* patch$UNIX.c in Sources */ = {isa = PBXBuildFile; fileRef = 66037CEA2049280900D58BAC /* patch$UNIX.c */; };
 		66037CF42049280900D58BAC /* resolution.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 66037CEB2049280900D58BAC /* resolution.cpp */; };
 		66037CF62049293B00D58BAC /* ZFPlayer.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 66037CF52049293B00D58BAC /* ZFPlayer.bundle */; };
+		6608492320561778000F7C11 /* RecordViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6608492220561778000F7C11 /* RecordViewController.mm */; };
 		660B92272047E5B0003CFE5F /* PlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 660B92262047E5B0003CFE5F /* PlayViewController.m */; };
 		660F55F91FDE631300788D6C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 660F55F81FDE631300788D6C /* AppDelegate.m */; };
 		660F56041FDE631300788D6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 660F56031FDE631300788D6C /* Assets.xcassets */; };
@@ -86,6 +86,11 @@
 		662F5D0020480B1C00D7DE67 /* libadpcmdec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 662F5CE520480B1B00D7DE67 /* libadpcmdec.a */; };
 		662F5D0120480B1C00D7DE67 /* libh264parser.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 662F5CE620480B1B00D7DE67 /* libh264parser.a */; };
 		662F5D0220480B1C00D7DE67 /* libmjpegdec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 662F5CE720480B1C00D7DE67 /* libmjpegdec.a */; };
+		666043F32056326700DFE95D /* Shader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 666043F12056326700DFE95D /* Shader.fsh */; };
+		666043F42056326700DFE95D /* Shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 666043F22056326700DFE95D /* Shader.vsh */; };
+		666043F72056339100DFE95D /* CWRecordModel.mm in Sources */ = {isa = PBXBuildFile; fileRef = 666043F52056339000DFE95D /* CWRecordModel.mm */; };
+		666044002056820500DFE95D /* RecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 666043FE2056820500DFE95D /* RecordCell.m */; };
+		666044012056820500DFE95D /* RecordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 666043FF2056820500DFE95D /* RecordCell.xib */; };
 		6695412E1FE3B1F4000D4638 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6695412D1FE3B1F4000D4638 /* Localizable.strings */; };
 		669541381FE3B2F9000D4638 /* LoginUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 669541331FE3B2F9000D4638 /* LoginUserInfo.m */; };
 		669541591FE3B43C000D4638 /* RepairUserLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6695413B1FE3B439000D4638 /* RepairUserLocation.m */; };
@@ -318,8 +323,6 @@
 		66037CA22049006E00D58BAC /* ZFDownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFDownloadManager.h; sourceTree = "<group>"; };
 		66037CA42049009600D58BAC /* ZFSessionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFSessionModel.h; sourceTree = "<group>"; };
 		66037CA52049009600D58BAC /* ZFSessionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFSessionModel.m; sourceTree = "<group>"; };
-		66037CD22049279800D58BAC /* CWRecordModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWRecordModel.h; sourceTree = "<group>"; };
-		66037CD32049279800D58BAC /* CWRecordModel.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CWRecordModel.mm; sourceTree = "<group>"; };
 		66037CD6204927C600D58BAC /* ProxyClientCWrap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProxyClientCWrap.h; sourceTree = "<group>"; };
 		66037CD7204927C600D58BAC /* Defs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Defs.h; sourceTree = "<group>"; };
 		66037CD8204927C600D58BAC /* avglobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = avglobal.h; sourceTree = "<group>"; };
@@ -343,6 +346,8 @@
 		66037CED2049280900D58BAC /* scopeguard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scopeguard.h; sourceTree = "<group>"; };
 		66037CEE2049280900D58BAC /* SynthesizeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SynthesizeSingleton.h; sourceTree = "<group>"; };
 		66037CF52049293B00D58BAC /* ZFPlayer.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ZFPlayer.bundle; sourceTree = "<group>"; };
+		6608492120561778000F7C11 /* RecordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecordViewController.h; sourceTree = "<group>"; };
+		6608492220561778000F7C11 /* RecordViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = RecordViewController.mm; sourceTree = "<group>"; };
 		660B92252047E5B0003CFE5F /* PlayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayViewController.h; sourceTree = "<group>"; };
 		660B92262047E5B0003CFE5F /* PlayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayViewController.m; sourceTree = "<group>"; };
 		660F55F41FDE631300788D6C /* ios-jingyun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-jingyun.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -420,6 +425,13 @@
 		662F5CE520480B1B00D7DE67 /* libadpcmdec.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libadpcmdec.a; path = "ios-jingyun/Others/lib/libadpcmdec.a"; sourceTree = "<group>"; };
 		662F5CE620480B1B00D7DE67 /* libh264parser.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libh264parser.a; path = "ios-jingyun/Others/lib/libh264parser.a"; sourceTree = "<group>"; };
 		662F5CE720480B1C00D7DE67 /* libmjpegdec.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmjpegdec.a; path = "ios-jingyun/Others/lib/libmjpegdec.a"; sourceTree = "<group>"; };
+		666043F12056326700DFE95D /* Shader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Shader.fsh; sourceTree = "<group>"; };
+		666043F22056326700DFE95D /* Shader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Shader.vsh; sourceTree = "<group>"; };
+		666043F52056339000DFE95D /* CWRecordModel.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CWRecordModel.mm; sourceTree = "<group>"; };
+		666043F62056339100DFE95D /* CWRecordModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWRecordModel.h; sourceTree = "<group>"; };
+		666043FD2056820500DFE95D /* RecordCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecordCell.h; sourceTree = "<group>"; };
+		666043FE2056820500DFE95D /* RecordCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecordCell.m; sourceTree = "<group>"; };
+		666043FF2056820500DFE95D /* RecordCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordCell.xib; sourceTree = "<group>"; };
 		6695406B1FE3AD23000D4638 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		6695406C1FE3AD2E000D4638 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		6695406D1FE3AD38000D4638 /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
@@ -849,6 +861,7 @@
 		66037CD5204927A900D58BAC /* Dh */ = {
 			isa = PBXGroup;
 			children = (
+				666043F02056326700DFE95D /* shader */,
 				66037CDD2049280900D58BAC /* util */,
 				66037CD8204927C600D58BAC /* avglobal.h */,
 				66037CD9204927C600D58BAC /* configsdk.h */,
@@ -1125,6 +1138,8 @@
 			children = (
 				660B92252047E5B0003CFE5F /* PlayViewController.h */,
 				660B92262047E5B0003CFE5F /* PlayViewController.m */,
+				6608492120561778000F7C11 /* RecordViewController.h */,
+				6608492220561778000F7C11 /* RecordViewController.mm */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1144,6 +1159,9 @@
 				66037C802048FDA200D58BAC /* VideoWnd.m */,
 				66037C752048FD0A00D58BAC /* VideoPlayView.h */,
 				66037C762048FD0A00D58BAC /* VideoPlayView.m */,
+				666043FD2056820500DFE95D /* RecordCell.h */,
+				666043FE2056820500DFE95D /* RecordCell.m */,
+				666043FF2056820500DFE95D /* RecordCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1151,12 +1169,21 @@
 		662F5C19204800F200D7DE67 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				66037CD22049279800D58BAC /* CWRecordModel.h */,
-				66037CD32049279800D58BAC /* CWRecordModel.mm */,
+				666043F62056339100DFE95D /* CWRecordModel.h */,
+				666043F52056339000DFE95D /* CWRecordModel.mm */,
 				66037C8C2048FE8300D58BAC /* ChannelInfoModel.h */,
 				66037C8B2048FE8200D58BAC /* ChannelInfoModel.m */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		666043F02056326700DFE95D /* shader */ = {
+			isa = PBXGroup;
+			children = (
+				666043F12056326700DFE95D /* Shader.fsh */,
+				666043F22056326700DFE95D /* Shader.vsh */,
+			);
+			path = shader;
 			sourceTree = "<group>";
 		};
 		6695412B1FE3B17A000D4638 /* Strings */ = {
@@ -1841,10 +1868,12 @@
 				66ECA57B20511982003E0C0B /* ic_play_menu_card.png in Resources */,
 				66F93A342008B52300C25D35 /* img_home_alarm_dialog.png in Resources */,
 				66ECA57E20511982003E0C0B /* ic_play_menu_capture.png in Resources */,
+				666044012056820500DFE95D /* RecordCell.xib in Resources */,
 				66F038471FF0FD3E00884FC1 /* app_logo_58.png in Resources */,
 				66DD839620104F3600885D53 /* icon_item_zone_normal.png in Resources */,
 				66E1B7F71FF229C60070B2C2 /* SettingTextViewCell.xib in Resources */,
 				66D442CA1FEA0AE900D89F5E /* icon_account_user_name.png in Resources */,
+				666043F32056326700DFE95D /* Shader.fsh in Resources */,
 				66D6F68E2005ABBF00179B40 /* icon_device_detail_system.png in Resources */,
 				661D1C032043A8460078DF26 /* icon_floating_button_video.png in Resources */,
 				6615789B200CA3700016087C /* ResetPasswordViewController.xib in Resources */,
@@ -1881,6 +1910,7 @@
 				66E1B8001FF23D140070B2C2 /* icon_loading_logo.png in Resources */,
 				66D442C61FEA05CE00D89F5E /* tab_icon_personal_selected.png in Resources */,
 				66F282E41FDF6A4700719AB2 /* AddAccountViewController.xib in Resources */,
+				666043F42056326700DFE95D /* Shader.vsh in Resources */,
 				66ECA57D20511982003E0C0B /* ic_play_menu_listener.png in Resources */,
 				66DD839820104F3600885D53 /* icon_item_zone_red.png in Resources */,
 				66FDA8922027F45800B9E82C /* IOS.crt in Resources */,
@@ -1968,9 +1998,11 @@
 				66DD838D20104D0400885D53 /* DeviceZoneViewCell.m in Sources */,
 				66037C7E2048FD5800D58BAC /* UIView+JMExtension.m in Sources */,
 				66F038341FF0E11900884FC1 /* BigViewCell.m in Sources */,
+				6608492320561778000F7C11 /* RecordViewController.mm in Sources */,
 				66037C7D2048FD5800D58BAC /* JMNavbarMenu.m in Sources */,
 				66F1006F1FE0CC56004CFA52 /* AccountBackgroundView.m in Sources */,
 				66D31AA4200F4785008B8D79 /* SDWebImageDecoder.m in Sources */,
+				666044002056820500DFE95D /* RecordCell.m in Sources */,
 				66037C812048FDA200D58BAC /* VideoWnd.m in Sources */,
 				669541671FE3B43D000D4638 /* TYToastView.m in Sources */,
 				66F282E31FDF6A4700719AB2 /* AddAccountViewController.m in Sources */,
@@ -1996,6 +2028,7 @@
 				669541611FE3B43D000D4638 /* DXAudioTool.m in Sources */,
 				660F560A1FDE631300788D6C /* main.m in Sources */,
 				66037CEF2049280900D58BAC /* bitrate_range.cpp in Sources */,
+				666043F72056339100DFE95D /* CWRecordModel.mm in Sources */,
 				66037C992048FFC200D58BAC /* ZFPlayerView.m in Sources */,
 				66037CF02049280900D58BAC /* globle_functions.cpp in Sources */,
 				66157893200C8BA20016087C /* VideoTypeViewController.m in Sources */,
@@ -2023,7 +2056,6 @@
 				66127ED71FE7AAEB00D56869 /* CWVideoChannel.m in Sources */,
 				66127EDA1FE7AAEB00D56869 /* CWDataManager.m in Sources */,
 				66127EDB1FE7AAEB00D56869 /* CWService.m in Sources */,
-				66037CD42049279800D58BAC /* CWRecordModel.mm in Sources */,
 				66D31AAD200F4785008B8D79 /* UIImageView+HighlightedWebCache.m in Sources */,
 				66F038311FF0DAB400884FC1 /* MultiViewCell.m in Sources */,
 				669541621FE3B43D000D4638 /* AlarmTaskCellModel.m in Sources */,

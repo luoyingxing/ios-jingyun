@@ -25,6 +25,7 @@
 #import "CWFileUtils.h"
 #import "CWTextUtils.h"
 #import "PlayViewController.h"
+#import "RecordViewController.h"
 
 #define CellIdentifierZone @"CellIdentifierZone"
 
@@ -472,10 +473,23 @@
         if (self.channelArray.count == 1) {
             NSLog(@"直接跳转到视频播放");
             
+            RecordViewController* recordVC = [[RecordViewController alloc] init];
+//            recordVC.deviceStatusModel= _deviceStatusModel;
+            UINavigationController* navigationController = [[UINavigationController alloc]
+                                                            initWithRootViewController:recordVC];
+            [self presentViewController:navigationController animated:TRUE completion:nil];
+            
         } else {
             ChannelAlertView *channelAlertView = [[ChannelAlertView alloc] initWithDefaultStyle:self.channelArray];
             channelAlertView.resultIndex = ^(NSString* channel, NSInteger index){
                 NSLog(@"直接跳转到视频播放");
+                
+                NSInteger channelIndex = [channel intValue];
+                RecordViewController* recordVC = [[RecordViewController alloc] init];
+                [recordVC setDeviceChannel:channelIndex];
+                [recordVC setTid:_deviceStatusModel.tid];
+                UINavigationController* navigationController = [[UINavigationController alloc] initWithRootViewController:recordVC];
+                [self presentViewController:navigationController animated:TRUE completion:nil];
             };
             
             [channelAlertView show];
