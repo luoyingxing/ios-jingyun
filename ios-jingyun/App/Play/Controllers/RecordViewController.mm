@@ -289,7 +289,19 @@
     yesterdayLabel.textColor = [UIColor grayColor];
     customLabel.backgroundColor = [UIColor whiteColor];
     customLabel.textColor = [UIColor grayColor];
-
+    
+    NSDate *now = [NSDate date];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSUInteger unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+    NSDateComponents *dateComponent = [calendar components:unitFlags fromDate:now];
+    
+    start_date_and_time = [[NSString alloc] initWithFormat:@"%04d-%02d-%02d %02d:%02d:%02d", [dateComponent year], [dateComponent month], [dateComponent day], 0, 0, 0];
+    end_date_and_time = [[NSString alloc] initWithFormat:@"%04d-%02d-%02d %02d:%02d:%02d", [dateComponent year], [dateComponent month], [dateComponent day], 23, 59, 59];
+    
+    float palFrame = 0.5;
+    timer = [NSTimer scheduledTimerWithTimeInterval:palFrame target:self selector:@selector(message_update) userInfo:nil repeats:YES];
+    
+    [[DHVideoDeviceHelper sharedInstance] FindVideoRecord:_deviceChannel withStartTime:start_date_and_time withEndTime:end_date_and_time];
 }
 
 - (void) yesterdayOnclickListener{
@@ -301,6 +313,18 @@
     customLabel.backgroundColor = [UIColor whiteColor];
     customLabel.textColor = [UIColor grayColor];
     
+    NSDate *yesterday = [NSDate dateWithTimeIntervalSinceNow:-(24*60*60)];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSUInteger unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+    NSDateComponents *dateComponent = [calendar components:unitFlags fromDate:yesterday];
+    
+    start_date_and_time = [[NSString alloc] initWithFormat:@"%04d-%02d-%02d %02d:%02d:%02d", [dateComponent year], [dateComponent month], [dateComponent day], 0, 0, 0];
+    end_date_and_time = [[NSString alloc] initWithFormat:@"%04d-%02d-%02d %02d:%02d:%02d", [dateComponent year], [dateComponent month], [dateComponent day], 23, 59, 59];
+    
+    float palFrame = 0.5;
+    timer = [NSTimer scheduledTimerWithTimeInterval:palFrame target:self selector:@selector(message_update) userInfo:nil repeats:YES];
+    
+    [[DHVideoDeviceHelper sharedInstance] FindVideoRecord:_deviceChannel withStartTime:start_date_and_time withEndTime:end_date_and_time];
 }
 
 - (void) customOnclickListener{
@@ -311,9 +335,110 @@
     todayLabel.textColor = [UIColor grayColor];
     yesterdayLabel.backgroundColor = [UIColor whiteColor];
     yesterdayLabel.textColor = [UIColor grayColor];
-    
+    [self showDataPicker];
 }
 
+- (void) showDataPicker{
+    CGFloat dialogWidth = screenWidth - 10 - 10;
+    
+    UIDatePicker *datePicker = [[UIDatePicker alloc] init];
+    datePicker.datePickerMode = UIDatePickerModeDateAndTime;
+    datePicker.frame = CGRectMake(0, 0, dialogWidth, 160);
+    [datePicker addTarget:self action:@selector(datePickerValueChanged:) forControlEvents:UIControlEventValueChanged];
+    
+    UIAlertController *alert = nil;
+    if (INTERFACE_IS_IPAD){
+        alert = [UIAlertController alertControllerWithTitle:@"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    }else {
+        alert = [UIAlertController alertControllerWithTitle:@"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    }
+    
+    [alert.view addSubview:datePicker];
+    
+    UIView * pre_view = [[UIView alloc] init];
+    pre_view.frame = CGRectMake(0, 160, dialogWidth, 50);
+    [pre_view setBackgroundColor:[CWColorUtils colorWithHexString:@"#dcdcdc"]];
+    
+    UIButton *start_btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    start_btn.frame = CGRectMake(20, 160, 90, 50);
+    [start_btn setTitle:@"开始时间" forState:UIControlStateNormal];
+    [start_btn addTarget:self action:@selector(startDateTimeSelected:) forControlEvents:UIControlEventTouchUpInside];
+    UILabel *start_Label = [[UILabel alloc] init];
+    start_Label.frame = CGRectMake(110, 160, dialogWidth - 110, 50);
+    start_Label.textColor = [CWColorUtils colorWithHexString:@"#707070"];
+    [start_Label setText:@"请选择开始时间"];
+    start_time_label_ = start_Label;
+    
+    [alert.view addSubview:pre_view];
+    [alert.view addSubview:start_btn];
+    [alert.view addSubview:start_Label];
+    
+    UIView * back_view = [[UIView alloc] init];
+    back_view.frame = CGRectMake(0, 160 + 50, dialogWidth, 50);
+    [back_view setBackgroundColor:[CWColorUtils colorWithHexString:@"#dcdcdc"]];
+    [alert.view addSubview:back_view];
+    
+    UIButton *end_btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    end_btn.frame = CGRectMake(20, 160 + 50, 90, 50);
+    [end_btn setTitle:@"结束时间" forState:UIControlStateNormal];
+    [end_btn addTarget:self action:@selector(endDateTimeSelected:) forControlEvents:UIControlEventTouchUpInside];
+    UILabel *end_Label = [[UILabel alloc] init];
+    end_Label.frame = CGRectMake(110, 160 + 50, dialogWidth - 110, 50);
+    end_Label.textColor = [CWColorUtils colorWithHexString:@"#707070"];
+    [end_Label setText:@"请选择结束时间"];
+    end_time_label_ = end_Label;
+    
+    [alert.view addSubview:end_btn];
+    [alert.view addSubview:end_Label];
+    
+    UIAlertAction *commit_btn = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        NSLog(@"start date time : %@, end date time : %@", start_time_label_.text, end_time_label_.text);
+        start_date_and_time = start_time_label_.text;
+        end_date_and_time = end_time_label_.text;
+        
+        float palFrame = 0.5;
+        timer = [NSTimer scheduledTimerWithTimeInterval:palFrame target:self selector:@selector(message_update) userInfo:nil repeats:YES];
+        
+        [[DHVideoDeviceHelper sharedInstance] FindVideoRecord:_deviceChannel withStartTime:start_date_and_time withEndTime:end_date_and_time];
+    }];
+    
+    UIAlertAction *cancel_btn = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        NSLog(@"cancel to picker time");
+    }];
+    
+    [alert addAction:commit_btn];
+    [alert addAction:cancel_btn];
+    
+    [self presentViewController:alert animated:YES completion:^{ }];
+}
 
+- (void)datePickerValueChanged:(id)sender{
+    UIDatePicker *datePicker = (UIDatePicker*)sender;
+    NSDateFormatter* dateFormat = [[NSDateFormatter alloc] init];
+    //实例化一个NSDateFormatter对象
+    [dateFormat setDateFormat:@"yyyy-MM-dd HH:mm:ss"];//设定时间格式
+    NSString *dateString = [dateFormat stringFromDate:datePicker.date];
+    //求出当天的时间字符串
+    NSLog(@"Selected date and time : %@",dateString);
+    
+    
+    if (start_time_label_ && selected_time_mode_ == 1) {
+        [start_time_label_ setText:dateString];
+    } else if (end_time_label_ && selected_time_mode_ == 2) {
+        [end_time_label_ setText:dateString];
+    }
+}
+
+- (void)startDateTimeSelected:(id)sender{
+    [start_time_label_ setTextColor:[UIColor redColor]];
+    [end_time_label_ setTextColor:[CWColorUtils colorWithHexString:@"#707070"]];
+    selected_time_mode_ = 1;
+}
+
+- (void)endDateTimeSelected:(id)sender{
+    [start_time_label_ setTextColor:[CWColorUtils colorWithHexString:@"#707070"]];
+    [end_time_label_ setTextColor:[UIColor redColor]];
+    selected_time_mode_ = 2;
+}
 
 @end
