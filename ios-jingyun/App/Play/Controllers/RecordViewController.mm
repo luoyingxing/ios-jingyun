@@ -11,6 +11,7 @@
 #import "DHVideoDeviceHelper.h"
 #import "CWRecordModel.h"
 #import "RecordCell.h"
+#import "RecordPlayViewController.h"
 
 #define CellIdentifier @"CellIdentifier"
 
@@ -23,8 +24,6 @@
     UILabel* todayLabel;
     UILabel* yesterdayLabel;
     UILabel* customLabel;
-    
-    BOOL play_record_video;
     
     NSThread *handle_thread;
     NSTimer *timer;
@@ -68,8 +67,6 @@
     selected_time_mode_ = 1;
     start_time_label_ = nil;
     end_time_label_ = nil;
-    play_record_video = NO;
-    
     
     NSDate *now = [NSDate date];
     NSCalendar *calendar = [NSCalendar currentCalendar];
@@ -234,30 +231,27 @@
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NSLog(@"click %lu", indexPath.row);
     
+    if ([[DHVideoDeviceHelper sharedInstance] isFindRecordStreamFinished] == NO) {
+        return ;
+    }
+    
+    if (self.dataArray == nil || [self.dataArray count] == 0) {
+        return;
+    }
+    
+    RecordPlayViewController *recordPlayCV = [[RecordPlayViewController new] init];
+    [recordPlayCV setDeviceChannelIndex:indexPath.row];
+    [recordPlayCV setTid:self.tid];
+    UINavigationController* navigationController = [[UINavigationController alloc] initWithRootViewController:recordPlayCV];
+    [self presentViewController:navigationController animated:TRUE completion:nil];
 }
 
 - (void) viewDidAppear:(BOOL)animated{
-    if (play_record_video == NO)  {
-        float palFrame = 0.5;
-        timer = [NSTimer scheduledTimerWithTimeInterval:palFrame target:self selector:@selector(message_update) userInfo:nil repeats:YES];
+    NSLog(@"viewDidAppear _deviceChannel = %lu", _deviceChannel);
+    float palFrame = 0.5;
+    timer = [NSTimer scheduledTimerWithTimeInterval:palFrame target:self selector:@selector(message_update) userInfo:nil repeats:YES];
         
-        [[DHVideoDeviceHelper sharedInstance] FindVideoRecord:_deviceChannel withStartTime:start_date_and_time withEndTime:end_date_and_time];
-    }else {//表示进入播放录像返回的
-        if ([[DHVideoDeviceHelper sharedInstance] getVideoSearch] == YES) {
-            [self.dataArray removeAllObjects];
-            for (CWRecordModel *recordModel in [DHVideoDeviceHelper sharedInstance]->video_record_files_array) {
-                [self.dataArray addObject:recordModel];
-            }
-            self.dataArray = [DHVideoDeviceHelper sharedInstance]->video_record_files_array;
-            [self.tableView reloadData];
-
-        }else {
-            float palFrame = 0.5;
-            timer = [NSTimer scheduledTimerWithTimeInterval:palFrame target:self selector:@selector(message_update) userInfo:nil repeats:YES];
-            
-            [[DHVideoDeviceHelper sharedInstance] FindVideoRecord:_deviceChannel withStartTime:start_date_and_time withEndTime:end_date_and_time];
-        }
-    }
+    [[DHVideoDeviceHelper sharedInstance] FindVideoRecord:_deviceChannel withStartTime:start_date_and_time withEndTime:end_date_and_time];
 }
 
 - (void)message_update{

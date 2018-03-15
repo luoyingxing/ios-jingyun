@@ -471,7 +471,7 @@
     if ([self checkViewdoDevice]) {
         //跳转到录像回放
         if (self.channelArray.count == 1) {
-            NSLog(@"直接跳转到视频播放");
+            NSLog(@"跳转到录像回放");
             
             RecordViewController* recordVC = [[RecordViewController alloc] init];
 //            recordVC.deviceStatusModel= _deviceStatusModel;
@@ -482,11 +482,13 @@
         } else {
             ChannelAlertView *channelAlertView = [[ChannelAlertView alloc] initWithDefaultStyle:self.channelArray];
             channelAlertView.resultIndex = ^(NSString* channel, NSInteger index){
-                NSLog(@"直接跳转到视频播放");
+                NSLog(@"跳转到录像回放");
                 
-                NSInteger channelIndex = [channel intValue];
+                //从字符串指定位置开始截取到最后（包含该位置）  [ *.ch1 或者  x.通道1 ]
+                NSInteger channelIndex = [[channel substringFromIndex:4] intValue];
+                
                 RecordViewController* recordVC = [[RecordViewController alloc] init];
-                [recordVC setDeviceChannel:channelIndex];
+                [recordVC setDeviceChannel:channelIndex - 1];
                 [recordVC setTid:_deviceStatusModel.tid];
                 UINavigationController* navigationController = [[UINavigationController alloc] initWithRootViewController:recordVC];
                 [self presentViewController:navigationController animated:TRUE completion:nil];

@@ -86,6 +86,7 @@
 		662F5D0020480B1C00D7DE67 /* libadpcmdec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 662F5CE520480B1B00D7DE67 /* libadpcmdec.a */; };
 		662F5D0120480B1C00D7DE67 /* libh264parser.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 662F5CE620480B1B00D7DE67 /* libh264parser.a */; };
 		662F5D0220480B1C00D7DE67 /* libmjpegdec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 662F5CE720480B1C00D7DE67 /* libmjpegdec.a */; };
+		663F82DB205A1B2100943202 /* RecordPlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 663F82DA205A1B2100943202 /* RecordPlayViewController.m */; };
 		666043F32056326700DFE95D /* Shader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 666043F12056326700DFE95D /* Shader.fsh */; };
 		666043F42056326700DFE95D /* Shader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 666043F22056326700DFE95D /* Shader.vsh */; };
 		666043F72056339100DFE95D /* CWRecordModel.mm in Sources */ = {isa = PBXBuildFile; fileRef = 666043F52056339000DFE95D /* CWRecordModel.mm */; };
@@ -425,6 +426,8 @@
 		662F5CE520480B1B00D7DE67 /* libadpcmdec.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libadpcmdec.a; path = "ios-jingyun/Others/lib/libadpcmdec.a"; sourceTree = "<group>"; };
 		662F5CE620480B1B00D7DE67 /* libh264parser.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libh264parser.a; path = "ios-jingyun/Others/lib/libh264parser.a"; sourceTree = "<group>"; };
 		662F5CE720480B1C00D7DE67 /* libmjpegdec.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmjpegdec.a; path = "ios-jingyun/Others/lib/libmjpegdec.a"; sourceTree = "<group>"; };
+		663F82D9205A1B2100943202 /* RecordPlayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecordPlayViewController.h; sourceTree = "<group>"; };
+		663F82DA205A1B2100943202 /* RecordPlayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecordPlayViewController.m; sourceTree = "<group>"; };
 		666043F12056326700DFE95D /* Shader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Shader.fsh; sourceTree = "<group>"; };
 		666043F22056326700DFE95D /* Shader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Shader.vsh; sourceTree = "<group>"; };
 		666043F52056339000DFE95D /* CWRecordModel.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CWRecordModel.mm; sourceTree = "<group>"; };
@@ -1140,6 +1143,8 @@
 				660B92262047E5B0003CFE5F /* PlayViewController.m */,
 				6608492120561778000F7C11 /* RecordViewController.h */,
 				6608492220561778000F7C11 /* RecordViewController.mm */,
+				663F82D9205A1B2100943202 /* RecordPlayViewController.h */,
+				663F82DA205A1B2100943202 /* RecordPlayViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -2004,6 +2009,7 @@
 				66D31AA4200F4785008B8D79 /* SDWebImageDecoder.m in Sources */,
 				666044002056820500DFE95D /* RecordCell.m in Sources */,
 				66037C812048FDA200D58BAC /* VideoWnd.m in Sources */,
+				663F82DB205A1B2100943202 /* RecordPlayViewController.m in Sources */,
 				669541671FE3B43D000D4638 /* TYToastView.m in Sources */,
 				66F282E31FDF6A4700719AB2 /* AddAccountViewController.m in Sources */,
 				6695415A1FE3B43C000D4638 /* CLLocation+YCLocation.m in Sources */,
