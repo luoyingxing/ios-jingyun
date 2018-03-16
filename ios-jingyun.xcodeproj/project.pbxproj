@@ -2271,6 +2271,7 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_INPUT_FILETYPE = automatic;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/ios-jingyun/App/Resource/PCH/DefineLocalPCH.pch";
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/ios-jingyun/Curl/lib";
 				INFOPLIST_FILE = "ios-jingyun/Info.plist";
@@ -2315,6 +2316,7 @@
 				DEVELOPMENT_TEAM = 88Z62HW94C;
 				ENABLE_BITCODE = NO;
 				GCC_INPUT_FILETYPE = automatic;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/ios-jingyun/App/Resource/PCH/DefineLocalPCH.pch";
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/ios-jingyun/Curl/lib";
 				INFOPLIST_FILE = "ios-jingyun/Info.plist";

@@ -18,6 +18,8 @@
 #import "CWFileUtils.h"
 #import "CWColorUtils.h"
 
+extern ZFPlayerView *gTYPlayerView ;
+
 @interface RecordPlayViewController (){
     
 }
@@ -49,6 +51,7 @@
 
 - (void)createPlayer{
     self.playerView = [[ZFPlayerView alloc] init];
+    gTYPlayerView = self.playerView;
     [self.view addSubview:self.playerView];
     self.playerView.playerLayerGravity = ZFPlayerLayerGravityResize;
     self.playerView.videoURL = [NSURL URLWithString:@""];
@@ -102,8 +105,9 @@
 
 - (void) viewWillDisappear:(BOOL)animated{
     [self.playerView stop];
+    gTYPlayerView = nil;
     
-    [[DHVideoDeviceHelper sharedInstance] StopRecordStream:YES];
+    [[DHVideoDeviceHelper sharedInstance] StopRecordStream:NO];
 //    [[CWDataManager sharedInstance] setIsNavBarHidden:NO];
 //    [self.navigationController setNavigationBarHidden:NO];
 //    [[DHVideoDeviceHelper sharedInstance] DisconnectDevice];
