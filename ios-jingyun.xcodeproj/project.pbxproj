@@ -157,6 +157,7 @@
 		66D6F68E2005ABBF00179B40 /* icon_device_detail_system.png in Resources */ = {isa = PBXBuildFile; fileRef = 66D6F68C2005ABBE00179B40 /* icon_device_detail_system.png */; };
 		66D6F6912006002400179B40 /* CWTextUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D6F6902006002400179B40 /* CWTextUtils.m */; };
 		66D6F6952006223F00179B40 /* UITextLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D6F6942006223F00179B40 /* UITextLabel.m */; };
+		66DBE983205B72EC0009E9CA /* img_player_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 66DBE982205B72EC0009E9CA /* img_player_background.png */; };
 		66DD8389201036AE00885D53 /* ZoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66DD8388201036AE00885D53 /* ZoneViewController.m */; };
 		66DD838D20104D0400885D53 /* DeviceZoneViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 66DD838B20104D0400885D53 /* DeviceZoneViewCell.m */; };
 		66DD839420104F3600885D53 /* icon_item_zone_orange.png in Resources */ = {isa = PBXBuildFile; fileRef = 66DD838F20104F3500885D53 /* icon_item_zone_orange.png */; };
@@ -571,6 +572,7 @@
 		66D6F6902006002400179B40 /* CWTextUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CWTextUtils.m; sourceTree = "<group>"; };
 		66D6F6932006223F00179B40 /* UITextLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UITextLabel.h; sourceTree = "<group>"; };
 		66D6F6942006223F00179B40 /* UITextLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UITextLabel.m; sourceTree = "<group>"; };
+		66DBE982205B72EC0009E9CA /* img_player_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_player_background.png; sourceTree = "<group>"; };
 		66DD8387201036AE00885D53 /* ZoneViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZoneViewController.h; sourceTree = "<group>"; };
 		66DD8388201036AE00885D53 /* ZoneViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZoneViewController.m; sourceTree = "<group>"; };
 		66DD838A20104D0400885D53 /* DeviceZoneViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceZoneViewCell.h; sourceTree = "<group>"; };
@@ -1069,6 +1071,7 @@
 		660F561B1FDE826700788D6C /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				66DBE982205B72EC0009E9CA /* img_player_background.png */,
 				66F93A332008B52300C25D35 /* img_home_alarm_dialog.png */,
 				66EBD8A020036E0D0015DBFB /* bg_device_detail_zone.png */,
 				66EBD89F20036E0D0015DBFB /* icon_device_detail_status.png */,
@@ -1925,6 +1928,7 @@
 				66DFF17C1FEB4CF4009086C5 /* img_home_polic.png in Resources */,
 				66EBD8A220036E0E0015DBFB /* bg_device_detail_zone.png in Resources */,
 				66D442CB1FEA0AE900D89F5E /* icon_back_white.png in Resources */,
+				66DBE983205B72EC0009E9CA /* img_player_background.png in Resources */,
 				66EFDBEC1FF338DD00AF54A4 /* SettingItemList.plist in Resources */,
 				66DFF17D1FEB4CF4009086C5 /* img_home_payment.png in Resources */,
 				66DDBFCA200E16850076B63C /* app_logo_80.png in Resources */,

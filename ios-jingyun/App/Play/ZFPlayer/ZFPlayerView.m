@@ -362,7 +362,7 @@ typedef NS_ENUM(NSInteger, ZFPlayerState) {
     _videoURL = videoURL;*/
     
     // 播放开始之前（加载中）设置站位图
-    UIImage *image = [UIImage imageNamed:ZFPlayerSrcName(@"bofangqi")];
+    UIImage *image = [UIImage imageNamed:@"img_player_background.png"];
     self.layer.contents = (id) image.CGImage;
     
     // 每次加载视频URL都设置重播为NO
