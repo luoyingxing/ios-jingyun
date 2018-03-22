@@ -33,6 +33,7 @@
 #import "AlarmUserLocation.h"
 #import "RepairUserLocation.h"
 #import "CLLocation+YCLocation.h"
+#import "CWFileUtils.h"
 
 #define MY_APP_URL @"http://itunes.apple.com/lookup?id=940312644"
 
@@ -154,8 +155,11 @@ static CWDataManager *sharedInstance = nil;
     
     memset(fuzzy_query_text_, 0, NAME_LEN_);
     
-    p2p_mode_right_ = [[NSUserDefaults standardUserDefaults] boolForKey:@"open_device_p2p"];
-    relay_mode_right_ = [[NSUserDefaults standardUserDefaults] boolForKey:@"open_device_relay"];
+    // 0为直连 1为p2p
+    NSInteger count = [[CWFileUtils sharedInstance] videoConnectType];
+    
+    p2p_mode_right_ = count == 1;
+    relay_mode_right_ = NO;
     _bindUID2Device = [[NSUserDefaults standardUserDefaults] boolForKey:@"bindUID2Device"];
     
     _isOpenMessageSound = [[NSUserDefaults standardUserDefaults] boolForKey:@"open_sound_switch"];
