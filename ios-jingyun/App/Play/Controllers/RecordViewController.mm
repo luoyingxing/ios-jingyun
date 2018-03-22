@@ -243,6 +243,7 @@
     [recordPlayCV setDeviceChannelIndex:indexPath.row];
     [recordPlayCV setTid:self.tid];
     UINavigationController* navigationController = [[UINavigationController alloc] initWithRootViewController:recordPlayCV];
+    [navigationController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
     [self presentViewController:navigationController animated:TRUE completion:nil];
 }
 

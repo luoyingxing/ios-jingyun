@@ -77,6 +77,7 @@
     AddAccountViewController* addController = [[AddAccountViewController alloc] init];
     UINavigationController* navigationController = [[UINavigationController alloc]
                                                     initWithRootViewController:addController];
+    [navigationController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
     [self presentViewController:navigationController animated:TRUE completion:nil];
 }
 
@@ -271,6 +272,7 @@
     AddAccountViewController* addController = [[AddAccountViewController alloc] init];
     addController.userInfoModel = info;
     UINavigationController* navigationController = [[UINavigationController alloc] initWithRootViewController:addController];
+    [navigationController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
     [self presentViewController:navigationController animated:TRUE completion:nil];
 }
 
@@ -397,6 +399,7 @@
     [mbProgress hide:YES];
     
     MainTabBarController* mainVC = [[MainTabBarController alloc] init];
+    [mainVC setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
     [self  presentViewController:mainVC  animated:YES completion:nil];
     
 }

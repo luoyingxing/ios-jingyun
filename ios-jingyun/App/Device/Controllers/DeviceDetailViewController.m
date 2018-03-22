@@ -458,6 +458,7 @@
         PlayViewController *play_controller = [[PlayViewController alloc] init];
         [play_controller setTid:_deviceStatusModel.tid];
         UINavigationController* navigationController = [[UINavigationController alloc] initWithRootViewController:play_controller];
+        [navigationController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
         [self presentViewController:navigationController animated:TRUE completion:nil];
         
     }else{
@@ -477,6 +478,7 @@
 //            recordVC.deviceStatusModel= _deviceStatusModel;
             UINavigationController* navigationController = [[UINavigationController alloc]
                                                             initWithRootViewController:recordVC];
+            [navigationController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
             [self presentViewController:navigationController animated:TRUE completion:nil];
             
         } else {
@@ -491,6 +493,7 @@
                 [recordVC setDeviceChannel:channelIndex - 1];
                 [recordVC setTid:_deviceStatusModel.tid];
                 UINavigationController* navigationController = [[UINavigationController alloc] initWithRootViewController:recordVC];
+                [navigationController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
                 [self presentViewController:navigationController animated:TRUE completion:nil];
             };
             
@@ -918,6 +921,7 @@
     zoneVC.deviceStatusModel= _deviceStatusModel;
     UINavigationController* navigationController = [[UINavigationController alloc]
                                                     initWithRootViewController:zoneVC];
+    [navigationController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
     [self presentViewController:navigationController animated:TRUE completion:nil];
 }
 

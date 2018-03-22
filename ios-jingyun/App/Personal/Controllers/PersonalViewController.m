@@ -198,18 +198,21 @@
         VideoTypeViewController* videoController = [[VideoTypeViewController alloc] init];
         UINavigationController* navigationController = [[UINavigationController alloc]
                                                             initWithRootViewController:videoController];
+        [navigationController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
         [self presentViewController:navigationController animated:TRUE completion:nil];
     }else if (itemId == 3006){
         //update password
         ResetPasswordViewController* passwordController = [[ResetPasswordViewController alloc] init];
         UINavigationController* navigationController = [[UINavigationController alloc]
                                                         initWithRootViewController:passwordController];
+        [navigationController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
         [self presentViewController:navigationController animated:TRUE completion:nil];
     }else if (itemId == 3008){
         //about app
         AboutViewController* aboutController = [[AboutViewController alloc] init];
         UINavigationController* navigationController = [[UINavigationController alloc]
                                                         initWithRootViewController:aboutController];
+        [navigationController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
         [self presentViewController:navigationController animated:TRUE completion:nil];
     }
     
@@ -269,7 +272,7 @@
         [[CWDataManager sharedInstance] reportNotHandleEvent:NO];
         [[CWThings4Interface sharedInstance] disconnect];
         [CWDataManager sharedInstance]->user_login_ok = NO;
-
+        [self.tabBarController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
         [self.tabBarController dismissViewControllerAnimated:NO completion:^{
             NSLog(@"dismissViewControllerAnimated");
         }];

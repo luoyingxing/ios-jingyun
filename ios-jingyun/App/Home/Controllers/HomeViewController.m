@@ -496,6 +496,7 @@
         WebViewController *webController = [[WebViewController alloc] init];
         webController.url = slideInfo[@"url"];
         UINavigationController* navigationController = [[UINavigationController alloc] initWithRootViewController:webController];
+        [navigationController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
         [self presentViewController:navigationController animated:TRUE completion:nil];
     }
 
@@ -663,6 +664,7 @@
     webController.url = news[@"url"];
     webController.contentTitle = news[@"title"];
     UINavigationController* navigationController = [[UINavigationController alloc] initWithRootViewController:webController];
+    [navigationController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
     [self presentViewController:navigationController animated:TRUE completion:nil];
 }
 
@@ -697,6 +699,7 @@
     NSLog(@"热门优惠");
     PrivilegeViewController *controller = [[PrivilegeViewController alloc] init];
     UINavigationController* navigationController = [[UINavigationController alloc] initWithRootViewController:controller];
+    [navigationController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
     [self presentViewController:navigationController animated:TRUE completion:nil];
 }
 

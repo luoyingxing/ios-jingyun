@@ -294,6 +294,7 @@
     webController.url = news[@"url"];
     webController.contentTitle = news[@"title"];
     UINavigationController* navigationController = [[UINavigationController alloc] initWithRootViewController:webController];
+    [navigationController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
     [self presentViewController:navigationController animated:TRUE completion:nil];
 }
 

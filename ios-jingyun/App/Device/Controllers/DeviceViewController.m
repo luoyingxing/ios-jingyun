@@ -975,6 +975,7 @@
     
     DeviceDetailViewController *controller = [[DeviceDetailViewController alloc] init];
     controller.deviceStatusModel = [_deviceArray objectAtIndex:indexPath.row];
+    [controller setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
     [self presentViewController:controller animated:TRUE completion:nil];
 }
 
