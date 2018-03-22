@@ -11,7 +11,7 @@
 #import "UserInfoModel.h"
 #import "UserInfoDAO.h"
 
-@interface AddAccountViewController ()
+@interface AddAccountViewController ()<UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *userNameField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
@@ -22,6 +22,12 @@
 @property (weak, nonatomic) IBOutlet UISwitch *domainLoginSwitch;
 - (IBAction)domainLoginClick:(id)sender;
 - (IBAction)loginClick:(id)sender;
+
+@property (nonatomic, strong) UITextField *inputTextField;
+
+@property (nonatomic, assign) BOOL isShowKeyBoard;
+
+@property (nonatomic, assign) CGFloat keyBoardHeight;
 
 @end
 
@@ -38,6 +44,7 @@
     icon.contentMode =UIViewContentModeCenter;
     self.userNameField.leftView =icon;
     self.userNameField.leftViewMode = UITextFieldViewModeAlways;
+    self.userNameField.delegate = self;
  
     UIImageView *icon1 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 0)];
     icon1.image = [UIImage imageNamed:@"icon_account_user_name"];
@@ -45,24 +52,28 @@
     self.passwordField.leftView =icon1;
     self.passwordField.leftViewMode = UITextFieldViewModeAlways;
     [self.passwordField setSecureTextEntry:YES];
+    self.passwordField.delegate = self;
     
     UIImageView *icon2 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 0)];
     icon2.image = [UIImage imageNamed:@"icon_account_user_name"];
     icon2.contentMode =UIViewContentModeCenter;
     self.serverNameField.leftView =icon2;
     self.serverNameField.leftViewMode = UITextFieldViewModeAlways;
+    self.serverNameField.delegate = self;
     
     UIImageView *icon3 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 0)];
     icon3.image = [UIImage imageNamed:@"icon_account_user_name"];
     icon3.contentMode =UIViewContentModeCenter;
     self.serverAddressField.leftView =icon3;
     self.serverAddressField.leftViewMode = UITextFieldViewModeAlways;
+    self.serverAddressField.delegate = self;
     
     UIImageView *icon4 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 0)];
     icon4.image = [UIImage imageNamed:@"icon_account_user_name"];
     icon4.contentMode =UIViewContentModeCenter;
     self.portField.leftView =icon4;
     self.portField.leftViewMode = UITextFieldViewModeAlways;
+    self.portField.delegate = self;
     
     [self settingFiled];
     
@@ -74,7 +85,7 @@
     
     //去除导航栏下方的横线
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
-    
+    [self registNotification];
 }
 
 - (void) setNaigaBar{
@@ -121,7 +132,6 @@
 
 - (void) back:(id)sender{
     //jump to add account controller
- 
     [self dismissViewControllerAnimated:TRUE completion:^{
         NSLog(@"back to account ");
     }];
@@ -131,16 +141,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 - (IBAction)domainLoginClick:(id)sender {
     UISwitch *domainLogin = (UISwitch *) sender;
@@ -206,5 +206,101 @@
     }];
 }
 
+- (void) viewWillDisappear:(BOOL)animated{
+    [self removeNotification];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [self.userNameField resignFirstResponder];
+    [self.passwordField resignFirstResponder];
+    [self.serverNameField resignFirstResponder];
+    [self.serverAddressField resignFirstResponder];
+    [self.portField resignFirstResponder];
+    return YES;
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    [self.userNameField resignFirstResponder];
+    [self.passwordField resignFirstResponder];
+    [self.serverNameField resignFirstResponder];
+    [self.serverAddressField resignFirstResponder];
+    [self.portField resignFirstResponder];
+}
+
+//开始编辑输入框的时候，软键盘出现，执行此事件
+-(void)textFieldDidBeginEditing:(UITextField *) textField{
+    if (textField) {
+        self.inputTextField = textField;
+    }
+}
+
+//输入框编辑完成以后，将视图恢复到原始状态
+-(void)textFieldDidEndEditing:(UITextField *)textField{
+    self.inputTextField = nil;
+}
+
+/*! 先注册通知，然后实现具体当键盘弹出来要做什么，键盘收起来要做什么 */
+-(void)registNotification{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasShown:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasHidden:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void)removeNotification{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)keyboardWasShown:(NSNotification *)notification{
+    NSDictionary *info = [notification userInfo];
+    double duration = [info [UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    CGFloat curkeyBoardHeight = [[info objectForKey:@"UIKeyboardBoundsUserInfoKey"] CGRectValue].size.height;
+    CGRect begin = [[info objectForKey:@"UIKeyboardFrameBeginUserInfoKey"] CGRectValue];
+    CGRect end = [[info objectForKey:@"UIKeyboardFrameEndUserInfoKey"] CGRectValue];
+    
+    if (_isShowKeyBoard && _keyBoardHeight == curkeyBoardHeight){
+        return;
+    }
+    
+    if (_keyBoardHeight != curkeyBoardHeight) {
+        [UIView animateWithDuration:duration animations:^{
+            CGRect viewFrame = self.view.frame;
+            viewFrame.origin.y = 0;
+            _keyBoardHeight = 0;
+            self.view.frame = viewFrame;
+            _isShowKeyBoard = NO;
+        }];
+    }
+    
+    /*! 第三方键盘回调三次问题，监听仅执行最后一次 */
+    if(begin.size.height > 0 && (begin.origin.y - end.origin.y > 0)){
+        _keyBoardHeight = curkeyBoardHeight;
+        [UIView animateWithDuration:duration animations:^{
+            CGRect frame = self.inputTextField.frame;
+            NSInteger hTextField = CGRectGetHeight(self.view.frame) - frame.origin.y - 64;
+            if (hTextField > _keyBoardHeight) return ;
+            
+            CGRect viewFrame = self.view.frame;
+            viewFrame.origin.y -= (_keyBoardHeight - hTextField + 64);
+            self.view.frame = viewFrame;
+            _isShowKeyBoard = YES;
+        }];
+    }
+}
+
+- (void)keyboardWasHidden:(NSNotification *)notification{
+    if (_isShowKeyBoard == NO) {
+        return;
+    }
+    
+    NSDictionary *info = [notification userInfo];
+    double duration = [info[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    
+    [UIView animateWithDuration:duration animations:^{
+        CGRect viewFrame = self.view.frame;
+        viewFrame.origin.y = 0;
+        _keyBoardHeight = 0;
+        self.view.frame = viewFrame;
+        _isShowKeyBoard = NO;
+    }];
+}
 
 @end
