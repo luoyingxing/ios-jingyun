@@ -3050,9 +3050,9 @@ static CWDataManager *sharedInstance = nil;
 
 -(void) pushNotifyEvent:(NSString*)eventBody
 {
-    if (_isOpenMessageSound == NO) {
-        return;
-    }
+//    if (_isOpenMessageSound == NO) {
+//        return;
+//    }
     if (eventBody == nil) return ;
     //NSDate *date = [NSDate dateWithTimeIntervalSinceNow:1];
     //chuagjian一个本地推送
