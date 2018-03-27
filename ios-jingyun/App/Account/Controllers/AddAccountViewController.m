@@ -40,14 +40,14 @@
     
 
     UIImageView *icon = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 0)];
-    icon.image = [UIImage imageNamed:@"icon_account_user_name"];
+    icon.image = [UIImage imageNamed:@"icon_account_user_name.png"];
     icon.contentMode =UIViewContentModeCenter;
     self.userNameField.leftView =icon;
     self.userNameField.leftViewMode = UITextFieldViewModeAlways;
     self.userNameField.delegate = self;
  
     UIImageView *icon1 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 0)];
-    icon1.image = [UIImage imageNamed:@"icon_account_user_name"];
+    icon1.image = [UIImage imageNamed:@"icon_account_user_password.png"];
     icon1.contentMode =UIViewContentModeCenter;
     self.passwordField.leftView =icon1;
     self.passwordField.leftViewMode = UITextFieldViewModeAlways;
@@ -55,21 +55,21 @@
     self.passwordField.delegate = self;
     
     UIImageView *icon2 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 0)];
-    icon2.image = [UIImage imageNamed:@"icon_account_user_name"];
+    icon2.image = [UIImage imageNamed:@"icon_account_user_server_name.png"];
     icon2.contentMode =UIViewContentModeCenter;
     self.serverNameField.leftView =icon2;
     self.serverNameField.leftViewMode = UITextFieldViewModeAlways;
     self.serverNameField.delegate = self;
     
     UIImageView *icon3 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 0)];
-    icon3.image = [UIImage imageNamed:@"icon_account_user_name"];
+    icon3.image = [UIImage imageNamed:@"icon_account_user_address.png"];
     icon3.contentMode =UIViewContentModeCenter;
     self.serverAddressField.leftView =icon3;
     self.serverAddressField.leftViewMode = UITextFieldViewModeAlways;
     self.serverAddressField.delegate = self;
     
     UIImageView *icon4 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 0)];
-    icon4.image = [UIImage imageNamed:@"icon_account_user_name"];
+    icon4.image = [UIImage imageNamed:@"icon_account_user_port.png"];
     icon4.contentMode =UIViewContentModeCenter;
     self.portField.leftView =icon4;
     self.portField.leftViewMode = UITextFieldViewModeAlways;

@@ -174,6 +174,10 @@
 		66DDBFCB200E16850076B63C /* app_logo_20.png in Resources */ = {isa = PBXBuildFile; fileRef = 66DDBFC5200E16840076B63C /* app_logo_20.png */; };
 		66DDBFCC200E16850076B63C /* app_logo_76.png in Resources */ = {isa = PBXBuildFile; fileRef = 66DDBFC6200E16840076B63C /* app_logo_76.png */; };
 		66DDBFCD200E16850076B63C /* app_logo_152.png in Resources */ = {isa = PBXBuildFile; fileRef = 66DDBFC7200E16840076B63C /* app_logo_152.png */; };
+		66DDCB5C206A2ADF00E12B4F /* icon_account_user_password.png in Resources */ = {isa = PBXBuildFile; fileRef = 66DDCB58206A2ADE00E12B4F /* icon_account_user_password.png */; };
+		66DDCB5D206A2ADF00E12B4F /* icon_account_user_port.png in Resources */ = {isa = PBXBuildFile; fileRef = 66DDCB59206A2ADE00E12B4F /* icon_account_user_port.png */; };
+		66DDCB5E206A2ADF00E12B4F /* icon_account_user_server_name.png in Resources */ = {isa = PBXBuildFile; fileRef = 66DDCB5A206A2ADF00E12B4F /* icon_account_user_server_name.png */; };
+		66DDCB5F206A2ADF00E12B4F /* icon_account_user_address.png in Resources */ = {isa = PBXBuildFile; fileRef = 66DDCB5B206A2ADF00E12B4F /* icon_account_user_address.png */; };
 		66DEB3EA2007163E00E0BCF2 /* DeviceZoneModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 66DEB3E92007163E00E0BCF2 /* DeviceZoneModel.m */; };
 		66DFF1771FEB4944009086C5 /* icon_home_message_tip.png in Resources */ = {isa = PBXBuildFile; fileRef = 66DFF1761FEB4944009086C5 /* icon_home_message_tip.png */; };
 		66DFF17B1FEB4CF4009086C5 /* img_home_privilege.png in Resources */ = {isa = PBXBuildFile; fileRef = 66DFF1781FEB4CF4009086C5 /* img_home_privilege.png */; };
@@ -593,6 +597,10 @@
 		66DDBFC5200E16840076B63C /* app_logo_20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = app_logo_20.png; sourceTree = "<group>"; };
 		66DDBFC6200E16840076B63C /* app_logo_76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = app_logo_76.png; sourceTree = "<group>"; };
 		66DDBFC7200E16840076B63C /* app_logo_152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = app_logo_152.png; sourceTree = "<group>"; };
+		66DDCB58206A2ADE00E12B4F /* icon_account_user_password.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_account_user_password.png; sourceTree = "<group>"; };
+		66DDCB59206A2ADE00E12B4F /* icon_account_user_port.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_account_user_port.png; sourceTree = "<group>"; };
+		66DDCB5A206A2ADF00E12B4F /* icon_account_user_server_name.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_account_user_server_name.png; sourceTree = "<group>"; };
+		66DDCB5B206A2ADF00E12B4F /* icon_account_user_address.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_account_user_address.png; sourceTree = "<group>"; };
 		66DEB3E82007163E00E0BCF2 /* DeviceZoneModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceZoneModel.h; sourceTree = "<group>"; };
 		66DEB3E92007163E00E0BCF2 /* DeviceZoneModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceZoneModel.m; sourceTree = "<group>"; };
 		66DF18512064B2CF0078E2D6 /* ios-jingyun.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "ios-jingyun.entitlements"; sourceTree = "<group>"; };
@@ -1028,6 +1036,10 @@
 		660F561A1FDE825F00788D6C /* Icon */ = {
 			isa = PBXGroup;
 			children = (
+				66DDCB5B206A2ADF00E12B4F /* icon_account_user_address.png */,
+				66DDCB58206A2ADE00E12B4F /* icon_account_user_password.png */,
+				66DDCB59206A2ADE00E12B4F /* icon_account_user_port.png */,
+				66DDCB5A206A2ADF00E12B4F /* icon_account_user_server_name.png */,
 				66ECA58120514332003E0C0B /* ic_play_menu_hd.png */,
 				66ECA57820511981003E0C0B /* ic_play_menu_capture.png */,
 				66ECA57520511980003E0C0B /* ic_play_menu_card.png */,
@@ -1875,6 +1887,7 @@
 				66F038491FF0FD3E00884FC1 /* app_logo_180.png in Resources */,
 				66DD839520104F3600885D53 /* icon_item_zone_list_gray.png in Resources */,
 				66D442C31FEA05CE00D89F5E /* tab_icon_device_normal.png in Resources */,
+				66DDCB5D206A2ADF00E12B4F /* icon_account_user_port.png in Resources */,
 				66F835BF1FFCE3AA008829E6 /* ic_hm_logo.png in Resources */,
 				66DDBFCD200E16850076B63C /* app_logo_152.png in Resources */,
 				66F835BE1FFCE3AA008829E6 /* ic_lc_logo.png in Resources */,
@@ -1883,6 +1896,7 @@
 				66EBD8A72003744F0015DBFB /* ZoneViewCell.xib in Resources */,
 				66F038441FF0FD3E00884FC1 /* app_logo_40.png in Resources */,
 				66D442C11FEA05CE00D89F5E /* tab_icon_home_selected.png in Resources */,
+				66DDCB5C206A2ADF00E12B4F /* icon_account_user_password.png in Resources */,
 				66ECA57B20511982003E0C0B /* ic_play_menu_card.png in Resources */,
 				66F93A342008B52300C25D35 /* img_home_alarm_dialog.png in Resources */,
 				66ECA57E20511982003E0C0B /* ic_play_menu_capture.png in Resources */,
@@ -1892,6 +1906,7 @@
 				66E1B7F71FF229C60070B2C2 /* SettingTextViewCell.xib in Resources */,
 				66D442CA1FEA0AE900D89F5E /* icon_account_user_name.png in Resources */,
 				666043F32056326700DFE95D /* Shader.fsh in Resources */,
+				66DDCB5F206A2ADF00E12B4F /* icon_account_user_address.png in Resources */,
 				66D6F68E2005ABBF00179B40 /* icon_device_detail_system.png in Resources */,
 				661D1C032043A8460078DF26 /* icon_floating_button_video.png in Resources */,
 				6615789B200CA3700016087C /* ResetPasswordViewController.xib in Resources */,
@@ -1920,6 +1935,7 @@
 				66DFF1871FEBA0C8009086C5 /* icon_home_recommend.png in Resources */,
 				66DFF1831FEB93CC009086C5 /* img_home_other.png in Resources */,
 				66D6F68D2005ABBF00179B40 /* icon_device_detail_avatar.png in Resources */,
+				66DDCB5E206A2ADF00E12B4F /* icon_account_user_server_name.png in Resources */,
 				661D1C072043A8460078DF26 /* icon_floating_button_hide.png in Resources */,
 				66D442C21FEA05CE00D89F5E /* tab_icon_home_normal.png in Resources */,
 				66DDBFC8200E16850076B63C /* app_logo_167.png in Resources */,
