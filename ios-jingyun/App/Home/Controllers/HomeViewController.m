@@ -590,19 +590,24 @@
         NSString *source = [NSString stringWithFormat:@"%@  %@", news[@"source"], news[@"time"]];
         cell.sourceLabel.text = source;
         
-        NSURL *imageUrlOne = news[@"image1"];
-        if (imageUrlOne != nil) {
+        NSString* image1 = news[@"image1"];
+        if (image1 != nil && ![image1 isEqualToString:@""]) {
+            NSURL *imageUrlOne = [[NSURL alloc] initWithString:image1];
             [cell.imageOne sd_setImageWithURL:imageUrlOne placeholderImage:[UIImage imageNamed:@"img_empty_conwin"]];
         }
         
-        NSURL *imageUrlTwo = news[@"image2"];
-        if (imageUrlTwo != nil) {
+        NSString* image2 = news[@"image2"];
+        if (image2 != nil && ![image2 isEqualToString:@""]) {
+            NSURL *imageUrlTwo = [[NSURL alloc] initWithString:image2];
             [cell.imageTwo sd_setImageWithURL:imageUrlTwo placeholderImage:[UIImage imageNamed:@"img_empty_conwin"]];
         }
         
-        NSURL *imageUrlThree = news[@"image3"];
-        if (imageUrlThree != nil) {
-            [cell.imageThree sd_setImageWithURL:imageUrlThree placeholderImage:[UIImage imageNamed:@"img_empty_conwin"]];
+        NSString* image3 = news[@"image3"];
+        if (image3 != nil && ![image3 isEqualToString:@""]) {
+            NSURL *imageUrlThree = [[NSURL alloc] initWithString:image3];
+            if (imageUrlThree != nil) {
+                [cell.imageThree sd_setImageWithURL:imageUrlThree placeholderImage:[UIImage imageNamed:@"img_empty_conwin"]];
+            }
         }
         
         return cell;
