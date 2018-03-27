@@ -595,6 +595,7 @@
 		66DDBFC7200E16840076B63C /* app_logo_152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = app_logo_152.png; sourceTree = "<group>"; };
 		66DEB3E82007163E00E0BCF2 /* DeviceZoneModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceZoneModel.h; sourceTree = "<group>"; };
 		66DEB3E92007163E00E0BCF2 /* DeviceZoneModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceZoneModel.m; sourceTree = "<group>"; };
+		66DF18512064B2CF0078E2D6 /* ios-jingyun.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "ios-jingyun.entitlements"; sourceTree = "<group>"; };
 		66DFF1761FEB4944009086C5 /* icon_home_message_tip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_home_message_tip.png; sourceTree = "<group>"; };
 		66DFF1781FEB4CF4009086C5 /* img_home_privilege.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_home_privilege.png; sourceTree = "<group>"; };
 		66DFF1791FEB4CF4009086C5 /* img_home_polic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_home_polic.png; sourceTree = "<group>"; };
@@ -926,6 +927,7 @@
 		660F55F61FDE631300788D6C /* ios-jingyun */ = {
 			isa = PBXGroup;
 			children = (
+				66DF18512064B2CF0078E2D6 /* ios-jingyun.entitlements */,
 				660F56101FDE7FC200788D6C /* App */,
 				66FDA88D2027F40E00B9E82C /* Others */,
 				660F56031FDE631300788D6C /* Assets.xcassets */,
@@ -1813,6 +1815,14 @@
 						CreatedOnToolsVersion = 9.1;
 						LastSwiftMigration = 0910;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					66EC461120046622008F9AB6 = {
 						CreatedOnToolsVersion = 9.1;
@@ -2267,6 +2277,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "ios-jingyun/ios-jingyun.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: SHENZHEN CONWIN TECH. LTD. (88Z62HW94C)";
 				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Distribution: SHENZHEN CONWIN TECH. LTD. (88Z62HW94C)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -2313,6 +2324,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "ios-jingyun/ios-jingyun.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: SHENZHEN CONWIN TECH. LTD. (88Z62HW94C)";
 				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Distribution: SHENZHEN CONWIN TECH. LTD. (88Z62HW94C)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";

@@ -29,6 +29,8 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
     [self setContentVC];
     curl_global_init(0L);
     
+    [self initNotification:application];
+    
     return YES;
 }
 
@@ -121,6 +123,23 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
     }
 }
 
+//由于ios8的推送跟ios7及以下的不一样，所以需要加判断来注册消息推送。
+- (void) initNotification:(UIApplication *) application{
+    if ([application respondsToSelector:@selector(isRegisteredForRemoteNotifications)]){
+        //IOS8
+        //创建UIUserNotificationSettings，并设置消息的显示类类型
+        UIUserNotificationSettings *notiSettings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeAlert | UIRemoteNotificationTypeSound) categories:nil];
+    
+        [application registerUserNotificationSettings:notiSettings];
+        
+    } else{
+        // ios7
+        [application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound |UIRemoteNotificationTypeAlert)];
+    }
+    
+    [[UIApplication sharedApplication] registerForRemoteNotifications];
+}
+
 #pragma mark - push
 //获取DeviceToken成功
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)pToken{
@@ -132,13 +151,11 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 //注册消息推送失败
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error{
-    
     NSLog(@"Regist fail%@",error);
 }
 
 //处理收到的消息推送
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
-{
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
     NSLog(@"Receive remote notification : %@",userInfo);
     //[[CWDataManager sharedInstance] showToast:@"网络连接异常，请检查网络" withTID:@"" withType:1];
 }
