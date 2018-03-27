@@ -91,7 +91,7 @@
 }
 
 - (void) initTableView{
-    tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 126, screenWidth, screenHeight - 126) style:UITableViewStylePlain];
+    tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 126, screenWidth, screenHeight - 126 - 49) style:UITableViewStylePlain];
     tableView.delegate = self;
     tableView.dataSource = self;
     //分割线颜色
