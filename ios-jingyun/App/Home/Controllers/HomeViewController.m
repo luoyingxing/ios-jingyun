@@ -135,7 +135,7 @@
     CGFloat height = screenWidth / 2;
     childViewsY += height;
     
-    slideView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, screenWidth, height) delegate:self placeholderImage:[UIImage imageNamed:@"img_empty_conwin"]];
+    slideView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, screenWidth, height) delegate:self placeholderImage:nil];
     slideView.currentPageDotImage = [UIImage imageNamed:@"pageControlCurrentDot"];
     slideView.pageDotImage = [UIImage imageNamed:@"pageControlDot"];
     slideView.imageURLStringsGroup = slideImageArray;
