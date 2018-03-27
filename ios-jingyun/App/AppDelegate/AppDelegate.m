@@ -143,10 +143,12 @@ blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 #pragma mark - push
 //获取DeviceToken成功
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)pToken{
-    NSLog(@"---Token--%@", pToken);
+    NSLog(@"---pToken--%@", pToken);
     NSString *pushToken = [[[[pToken description] stringByReplacingOccurrencesOfString:@"<" withString:@""] stringByReplacingOccurrencesOfString:@">" withString:@""] stringByReplacingOccurrencesOfString:@" " withString:@""] ;
-    NSLog(@"---Token--%@", pushToken);
-    [[CWDataManager sharedInstance] setDeviceToken:pushToken];
+    NSLog(@"---pushToken--%@", pushToken);
+    NSString *token = [NSString stringWithFormat:@"%@@%@", pushToken, @"jingyun"];
+    NSLog(@"---token--%@", token);
+    [[CWDataManager sharedInstance] setDeviceToken:token];
 }
 
 //注册消息推送失败
