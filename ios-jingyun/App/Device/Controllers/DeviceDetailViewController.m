@@ -700,7 +700,7 @@
             
             [self.zoneArray addObject:zoneModel];
         }
-    }else{
+    }else if(![_deviceStatusModel.partID isEqualToString:@"1003"]){
         int count = [[CWThings4Interface sharedInstance] get_var_nodes_with_tid:[_deviceStatusModel.tid UTF8String] path:"z"];
         //后台数据的顺序是倒叙的，无奈重新排序
         for (int i = count - 1; i >= 0; i --) {
