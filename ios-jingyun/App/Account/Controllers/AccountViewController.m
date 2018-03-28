@@ -205,6 +205,7 @@
     float palFrame = 0.5;
     if (domianLogin) {
         loop_timer = [NSTimer scheduledTimerWithTimeInterval:palFrame target:self selector:@selector(message_loop) userInfo:nil repeats:YES];
+        userInfo = info;
         [self callCurl];
     } else {
         loop_timer = [NSTimer scheduledTimerWithTimeInterval:palFrame target:self selector:@selector(message_loop) userInfo:nil repeats:YES];
@@ -216,6 +217,7 @@
 - (void) callCurl{
     _curl = curl_easy_init();
     NSString *server_url = [[NSString alloc] initWithFormat:@"https://api.jingyun.cn/opid2host?opid=%@", userInfo.serverAddress];
+    NSLog(@"server_url: %@", server_url);
     curl_easy_setopt(_curl, CURLOPT_URL, [server_url UTF8String]);
     NSString *certPath = [[NSBundle mainBundle] pathForResource:@"IOS" ofType:@"pfx"];
     curl_easy_setopt(_curl, CURLOPT_SSL_VERIFYPEER, 0L);
@@ -225,42 +227,53 @@
     curl_easy_setopt(_curl, CURLOPT_WRITEDATA, self);
 
     CURLcode errorCode = curl_easy_perform(_curl);
-    NSLog(@"errorCode: %d", errorCode);
-    if (errorCode == CURLE_OK) {
 
-        //CURLcode http_code = curl_easy_getinfo(_curl, CURLINFO_RESPONSE_CODE);
+    if (errorCode == CURLE_OK) {
         if (_get_server_info_index == 2) {
 
         }else {
             UIAlertView * alertview = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"UserLoginIndicator_AlertTitle",@"") message:NSLocalizedString(@"UserLoginIndicator_AlertSSHErr",@"") delegate:self cancelButtonTitle:NSLocalizedString(@"UserLoginIndicator_AlertOK",@"") otherButtonTitles:nil, nil];
             [alertview show];
 
-            if (loop_timer)
+            if (loop_timer){
                 [loop_timer invalidate];
-
-//            if (_photoLoadingView) {
-//                [_photoLoadingView stopAnimating];
-//            }
+            }
         }
-    }
-    else {
+    }else {
         _get_server_info_index = 3;
     }
 }
 
  size_t responseCallback(char *ptr, size_t size, size_t nmemb, void *userdata){
-     NSLog(@"----> responseCallback: %s", ptr);
     AccountViewController *controller = (__bridge AccountViewController *)userdata;
     const size_t sizeInBytes = size*nmemb;
     if (sizeInBytes > 0 && ptr) {
         NSData *data = [[NSData alloc] initWithBytes:ptr length:sizeInBytes];
         NSDictionary *tempDictQueryDiamond = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
         NSString *server_host = [tempDictQueryDiamond objectForKey:@"host"];
-        controller->userInfo.port = [tempDictQueryDiamond objectForKey:@"port"];
+        NSString *port = [tempDictQueryDiamond objectForKey:@"port"];
+        NSLog(@"server_host: %@  port: %@", server_host, port);
+        controller->userInfo.port = port;
         controller->userInfo.serverAddress = server_host;
+        [controller user_login:server_host];
         controller->_get_server_info_index = 2;
     }
     return sizeInBytes;
+}
+
+- (void) user_login:(NSString*) host{
+    [[CWThings4Interface sharedInstance] set_login_delegate:self];
+    [[CWThings4Interface sharedInstance] user_login:userInfo.userName pass:userInfo.password];
+    
+    if (userInfo.port == nil) {
+        UIAlertView * alertview = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"UserLoginIndicator_AlertTitle", @"") message:NSLocalizedString(@"UserLoginIndicator_AlertServerErr", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"UserLoginIndicator_AlertOK", @"") otherButtonTitles:nil, nil];
+        [alertview show];
+        [self performSegueWithIdentifier:@"show_server_controller" sender:self];
+        return;
+    }
+    
+    NSString *server_url = [[NSString alloc] initWithFormat:@"host=%@;port=%@", host, userInfo.port];
+    [[CWThings4Interface sharedInstance] connect_to:[server_url UTF8String]];
 }
 
 //跳转编辑

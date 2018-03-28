@@ -270,9 +270,7 @@
 		66FDA8922027F45800B9E82C /* IOS.crt in Resources */ = {isa = PBXBuildFile; fileRef = 66FDA88F2027F45700B9E82C /* IOS.crt */; };
 		66FDA8932027F45800B9E82C /* IOS.key in Resources */ = {isa = PBXBuildFile; fileRef = 66FDA8902027F45700B9E82C /* IOS.key */; };
 		66FDA8942027F45800B9E82C /* IOS.pfx in Resources */ = {isa = PBXBuildFile; fileRef = 66FDA8912027F45700B9E82C /* IOS.pfx */; };
-		66FDAC132027FA8A00B9E82C /* libssl_iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66FDAC0C2027FA8800B9E82C /* libssl_iOS.a */; };
 		66FDAC142027FA8A00B9E82C /* libnghttp2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66FDAC0D2027FA8900B9E82C /* libnghttp2.a */; };
-		66FDAC152027FA8A00B9E82C /* libcurl_iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66FDAC0E2027FA8900B9E82C /* libcurl_iOS.a */; };
 		66FDAC162027FA8A00B9E82C /* libcrypto_iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66FDAC0F2027FA8900B9E82C /* libcrypto_iOS.a */; };
 		66FDAC172027FA8A00B9E82C /* libcurl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66FDAC102027FA8900B9E82C /* libcurl.a */; };
 		66FDAC182027FA8A00B9E82C /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 66FDAC112027FA8900B9E82C /* libssl.a */; };
@@ -797,10 +795,8 @@
 				662F5D0220480B1C00D7DE67 /* libmjpegdec.a in Frameworks */,
 				66FDAC162027FA8A00B9E82C /* libcrypto_iOS.a in Frameworks */,
 				66FDAC192027FA8A00B9E82C /* libcrypto.a in Frameworks */,
-				66FDAC152027FA8A00B9E82C /* libcurl_iOS.a in Frameworks */,
 				66FDAC172027FA8A00B9E82C /* libcurl.a in Frameworks */,
 				66FDAC142027FA8A00B9E82C /* libnghttp2.a in Frameworks */,
-				66FDAC132027FA8A00B9E82C /* libssl_iOS.a in Frameworks */,
 				66FDAC182027FA8A00B9E82C /* libssl.a in Frameworks */,
 				66FDAC1A2027FC6500B9E82C /* libz.tbd in Frameworks */,
 				66EC489A20049CE1008F9AB6 /* libc++.1.tbd in Frameworks */,
