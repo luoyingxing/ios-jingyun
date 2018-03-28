@@ -255,13 +255,13 @@
         NSLog(@"server_host: %@  port: %@", server_host, port);
         controller->userInfo.port = port;
         controller->userInfo.serverAddress = server_host;
-        [controller user_login:server_host];
+        [controller user_login];
         controller->_get_server_info_index = 2;
     }
     return sizeInBytes;
 }
 
-- (void) user_login:(NSString*) host{
+- (void) user_login{
     [[CWThings4Interface sharedInstance] set_login_delegate:self];
     [[CWThings4Interface sharedInstance] user_login:userInfo.userName pass:userInfo.password];
     
@@ -272,7 +272,7 @@
         return;
     }
     
-    NSString *server_url = [[NSString alloc] initWithFormat:@"host=%@;port=%@", host, userInfo.port];
+    NSString *server_url = [[NSString alloc] initWithFormat:@"host=%@;port=%@", userInfo.serverAddress, userInfo.port];
     [[CWThings4Interface sharedInstance] connect_to:[server_url UTF8String]];
 }
 
