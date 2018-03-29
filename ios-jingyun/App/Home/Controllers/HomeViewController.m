@@ -158,7 +158,7 @@
     messageLabel.textColor = [CWColorUtils colorWithHexString:@"#333333"];
     messageLabel.numberOfLines = 1;
     messageLabel.font = [UIFont fontWithName:@"Helvetica" size:15];
-    messageLabel.text = @"系统很安全，暂无消息哦～";
+    messageLabel.text = @"系统安全保卫中~";
     UITapGestureRecognizer *messageOnclickListener = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(messageOnclickListener)];
     [messageLabel addGestureRecognizer:messageOnclickListener];
     messageLabel.userInteractionEnabled = YES; // 可以理解为设置label可被点击
