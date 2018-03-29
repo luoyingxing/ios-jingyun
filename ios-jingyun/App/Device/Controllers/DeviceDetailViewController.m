@@ -810,7 +810,7 @@
             }else if(messageModel.backgroundType == 9) {
                 cell.contentLabel.backgroundColor = [CWColorUtils colorWithHexString:@"#ffff66"];
             }else{
-                cell.contentLabel.backgroundColor = [UIColor whiteColor];
+                cell.contentLabel.backgroundColor = [CWColorUtils colorWithHexString:@"#c0e5f6"];
             }
             
             contentText = [contentText stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
